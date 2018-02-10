@@ -15,8 +15,7 @@ public class Gravity_on : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//rb = balls.GetComponent<Rigidbody>();
-		if (Game_State_Manager.Game_state) {
+		if (Game_State_Manager.Game_state == "play") {
 			rb.useGravity = true;
 		}
 		else {

@@ -38,6 +38,3 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/UnityARKitPlugin/Examples/FaceTracking/FaceDirectionalLightEstimate.unity
     guid: 360fd35caee4f4e069485021a27c0b06
-  - enabled: 1
-    path: Assets/Mathland.unity
-    guid: 65899332be4084e1bbb6728aa8e947fb

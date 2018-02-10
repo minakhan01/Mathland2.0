@@ -4,9 +4,11 @@ using UnityEngine;
 
 public static class Game_State_Manager {
 
-	private static bool game_state = false;
+	//game states that can exist are:
+	//"build" "play" "tool menu" "graph menu" "start menu"
+	private static string game_state = "build"; //will implement start menu later
 
-	public static bool Game_state {
+	public static string Game_state {
 		
 		get {
 			return game_state;

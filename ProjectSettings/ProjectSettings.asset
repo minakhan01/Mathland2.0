@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 14
-  productGUID: 35875639e4940499da3581811e3c06e9
+  productGUID: 00000000000000000000000000000000
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   defaultScreenOrientation: 4
@@ -161,7 +161,7 @@ PlayerSettings:
     Android: com.Company.ProductName
     Standalone: unity.Unity Technologies.Native Rendering Plugin Example
     Tizen: com.Company.ProductName
-    iOS: com.mathlandV2
+    iOS: com.unity.arkitscene
     tvOS: com.Company.ProductName
   buildNumber:
     iOS: 0
@@ -383,7 +383,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: camera use
+  cameraUsageDescription: AR BABY
   locationUsageDescription: 
   microphoneUsageDescription: 
   switchNetLibKey: 
@@ -764,7 +764,7 @@ PlayerSettings:
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
   cloudProjectId: 11c9c184-75ff-4cfd-aed8-7d99d1bebf08
-  projectName: Mathland (2)
+  projectName: 
   organizationId: coltonstearns
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

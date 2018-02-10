@@ -13,19 +13,18 @@ public class ButtonClick : MonoBehaviour {
 		Button btn = gameObject.GetComponent<Button>();
 		btn.onClick.AddListener(TaskOnClick);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 
 	void TaskOnClick () {
-		Game_State_Manager.Game_state = !Game_State_Manager.Game_state;
-		if (Game_State_Manager.Game_state) {
+		//if play button is clicked
+		if (Game_State_Manager.Game_state == "play") {
+			Game_State_Manager.Game_state = "play";
 			playText.SetActive (false);
 			buildText.SetActive (true);
 		}
+		//if build button is clicked
 		else {
+			Game_State_Manager.Game_state = "build";
 			playText.SetActive (true);
 			buildText.SetActive (false);
 		}

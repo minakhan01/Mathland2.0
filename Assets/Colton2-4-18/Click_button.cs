@@ -18,7 +18,7 @@ public class Click_button : MonoBehaviour {
 			RaycastHit raycastHit;
 			if (Physics.Raycast (raycast, out raycastHit)) {
 				if (raycastHit.collider.tag == gameObject.tag) {
-					Game_State_Manager.Game_state = !Game_State_Manager.Game_state;
+					//Game_State_Manager.Game_state = !Game_State_Manager.Game_state;
 					if (button_material.color != Color.red) {
 						button_material.color = Color.red;
 					}
