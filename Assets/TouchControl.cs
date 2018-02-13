@@ -15,12 +15,15 @@ public class TouchControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		if (Input.touchCount == 1) {
+			//if hold for several seconds, go to UniversalInteraction select
+
+		}
 		if (Input.touchCount == 2) {
 			// initial distance between finger
 			Touch touch = Input.GetTouch(1);
 			if (touch.phase == TouchPhase.Began) {
 				initialFingerDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
-				initialSize = ScaleTransform.localScale;
 			} else {
 				float currentFingerDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
 				float factor = currentFingerDistance / initialFingerDistance;
