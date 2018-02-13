@@ -16,10 +16,21 @@ public class TouchControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.touchCount == 1) {
-			//if hold for several seconds, go to UniversalInteraction select
-
+			Touch touch = Input.GetTouch(0);
+			Vector3 initialPosition = rb.position;
+			bool drag = false;
+			// if user touch the object = drag
+			if (touch.phase == TouchPhase.Began) {
+				initialPosition = rb.position;
+				if (Vector2.Distance (Input.touches[0].position, new Vector2(initialPosition.x, initialPosition.y)) < 0.0005) {
+					drag = true;
+				}
+			} else if (drag == true) {
+				Vector2 currentPosition = Input.touches[0].position;
+				UniversalInteractions.moveObject(currentPosition);
+			}
 		}
-		if (Input.touchCount == 2) {
+		else if (Input.touchCount == 2) {
 			// initial distance between finger
 			Touch touch = Input.GetTouch(1);
 			if (touch.phase == TouchPhase.Began) {
