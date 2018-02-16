@@ -23,4 +23,6 @@ public class DragObject : MonoBehaviour {
 		Vector3 worldPos = Camera.main.ScreenToWorldPoint(curPos);
 		transform.position = worldPos;
 	}
+	void Update(){
+	}
 }
