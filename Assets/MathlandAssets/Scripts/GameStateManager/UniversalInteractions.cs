@@ -16,28 +16,28 @@ public class UniversalInteractionsManager : Singleton<UniversalInteractionsManag
 	//to be called if button is pressed
 	public void pressButton (Button button) {
 		if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
-			throw new RuntimeException ("Not implemented yet");
+			throw new System.Exception ("Not implemented yet");
 		}
 	}
 
 	//to be called if rotation command occurs
 	public void rotateObject (Vector3 angles) {
 		if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
-			throw new RuntimeException ("Not implemented yet");
+			throw new System.Exception ("Not implemented yet");	
 		}
 	}
 
 	//to be called if move command occurs
 	public void moveObject (Vector3 newPosition) {
 		if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
-			throw new RuntimeException ("Not implemented yet");
+			throw new System.Exception ("Not implemented yet");
 		}
 	}
 
 	//to be called if resize command occurs
 	public void resizeObject (float percent_scaled) {
 		if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
-			throw new RuntimeException ("Not implemented yet");
+			throw new System.Exception ("Not implemented yet");
 		}
 	}
 		

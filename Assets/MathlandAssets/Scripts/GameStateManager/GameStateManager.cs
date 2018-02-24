@@ -13,7 +13,7 @@ public class GameStateManager : Singleton<GameStateManager> {
 
 	//game states are represented as an enum
 	public enum gameState {BUILD, PLAY, TOOL_MENU, MAIN_MENU, GRAPH_MENU};
-	gameState currentGameState { get; set; }
+	public static gameState currentGameState { get; set; }
 
 
 	void Start() {
