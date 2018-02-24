@@ -18,13 +18,13 @@ public class ResizeObjectRawInput : MonoBehaviour {
 			Vector3 initialPosition = rb.position;
 			if (Input.touchCount == 2) {
 			     // initial distance between finger
-			     Touch touch = Input.GetTouch(1);
+			     Touch touchDistance = Input.GetTouch(1);
 			     if (touch.phase == TouchPhase.Began) {
 				         initialFingerDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
 			     } else {
 				         float currentFingerDistance = Vector2.Distance (Input.touches [0].position, Input.touches [1].position);
 				         float factor = currentFingerDistance / initialFingerDistance;
-				         GameStateFunctions.resizeObject (factor);
+//				         GameStateFunctions.resizeObject (factor);
 			     }
 		  }
     }

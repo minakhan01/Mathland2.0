@@ -6,7 +6,8 @@
 /AppFolders/
 /Assets/AssetStoreTools*
 /App/
-/App_BLE/
+/Assets/UnityARKitPlugin/
+/ios/
 
 # Visual Studio 2015 cache directory
 /.vs/

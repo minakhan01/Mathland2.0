@@ -24,7 +24,7 @@ public class DragObjectRawInput : MonoBehaviour {
 				}
 			} else if (drag == true) {
 				Vector2 currentPosition = Input.touches[0].position;
-				GameStateFunctions.moveObject(currentPosition);
+//				GameStateFunctions.moveObject(currentPosition);
 			}
 		}
 	}
