@@ -103,13 +103,16 @@ public class TouchTest : MonoBehaviour {
 
 	private void ScaleGestureCallback(GestureRecognizer gesture)
 	{
-		Debug.Log ("ScaleGestureCallback");
+		if (gesture.State == GestureRecognizerState.Executing) {
+			Debug.Log ("ScaleGestureCallback:"+scaleGesture.ScaleMultiplier);
+		}
 	}
 
 	private void CreateScaleGesture()
 	{
 		scaleGesture = new ScaleGestureRecognizer();
 		scaleGesture.StateUpdated += ScaleGestureCallback;
+//		scaleGesture.ThresholdUnits
 		FingersScript.Instance.AddGesture(scaleGesture);
 	}
 
@@ -117,7 +120,7 @@ public class TouchTest : MonoBehaviour {
 	{
 		if (gesture.State == GestureRecognizerState.Executing)
 		{
-			Debug.Log ("RotateGestureCallback began" + rotateGesture.RotationRadiansDelta * Mathf.Rad2Deg);
+			Debug.Log ("RotateGestureCallback " + rotateGesture.RotationRadiansDelta * Mathf.Rad2Deg);
 		}
 	}
 
@@ -125,6 +128,7 @@ public class TouchTest : MonoBehaviour {
 	{
 		rotateGesture = new RotateGestureRecognizer();
 		rotateGesture.StateUpdated += RotateGestureCallback;
+		rotateGesture.AngleThreshold = 0.1f;
 		FingersScript.Instance.AddGesture(rotateGesture);
 	}
 
@@ -202,8 +206,8 @@ public class TouchTest : MonoBehaviour {
 		// pan, scale and rotate can all happen simultaneously
 //		panGesture.AllowSimultaneousExecution(scaleGesture);
 //		panGesture.AllowSimultaneousExecution(rotateGesture);
-//		scaleGesture.AllowSimultaneousExecution(rotateGesture);
-		scaleGesture.DisallowSimultaneousExecution(rotateGesture);
+		scaleGesture.AllowSimultaneousExecution(rotateGesture);
+//		scaleGesture.DisallowSimultaneousExecution(rotateGesture);
 		// prevent the one special no-pass button from passing through,
 		//  even though the parent scroll view allows pass through (see FingerScript.PassThroughObjects)
 		FingersScript.Instance.CaptureGestureHandler = CaptureGestureHandler;
