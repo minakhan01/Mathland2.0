@@ -43,19 +43,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    void showSettingsButton()
-    {
-        buttons.GetComponent<ButtonsUI>().settingsBtn.SetActive(true);
-    }
-
-    void hideSettingsButton()
-    {
-        buttons.GetComponent<ButtonsUI>().settingsBtn.SetActive(false);
-    }
 
     void showBuildUI()
     {
-        showEditObjectUI();
         buttons.GetComponent<ButtonsUI>().buildUI.SetActive(true);
     }
 
@@ -66,7 +56,6 @@ public class UIManager : MonoBehaviour
 
     void showPlayUI()
     {
-        showEditObjectUI();
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(true);
     }
 
@@ -77,7 +66,6 @@ public class UIManager : MonoBehaviour
 
     void showEditObjectUI()
     {
-        hideSettingsButton();
         buttons.GetComponent<ButtonsUI>().editObjectUI.SetActive(true);
     }
 

@@ -22,44 +22,36 @@ public class ButtonsUI : MonoBehaviour
 
     }
 
-    #region common callbacks
-
-    public void goToSettings()
-    {
-
-    }
-
-    #endregion
 
     #region build callbacks
 
     public void addObject()
     {
-
+        Debug.Log("Add Object");
     }
 
     public void play()
     {
-
+        Debug.Log("Play");
     }
 
     #endregion
 
     #region play callbacks
 
-    public void pause()
+    public void rewind()
     {
-
+        Debug.Log("Rewind");
     }
 
-    public void restart()
+    public void graph()
     {
-
+        Debug.Log("Graph");
     }
 
     public void build()
     {
-
+        Debug.Log("Build");
     }
 
     #endregion
@@ -68,22 +60,22 @@ public class ButtonsUI : MonoBehaviour
 
     public void move()
     {
-
+        Debug.Log("Move");
     }
 
     public void resize()
     {
-
+        Debug.Log("Resize");
     }
 
     public void rotate()
     {
-
+        Debug.Log("Rotate");
     }
 
     public void delete()
     {
-
+        Debug.Log("Delete");
     }
     #endregion
 }
