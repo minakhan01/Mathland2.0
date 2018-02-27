@@ -6,7 +6,7 @@ using HoloToolkit.Unity;
 public class GameToolManager : Singleton<GameToolManager> {
 
 	public GameObject ForceField, VelocityVector, Rope, Cube, Ramp;
-	public void createForceField() {
+	public void CreateForceField() {
 		CreateGameToolPrefab (ForceField);
 	}
 

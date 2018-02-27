@@ -41,8 +41,7 @@ public class BallStateManager : Singleton<BallStateManager> {
             }
         }
     }
-<<<<<<< HEAD
-		
+
 
 //	/// <summary>
 //	/// When the keyword recognizer hears a command this will be called.
@@ -68,8 +67,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 //			Launch ();
 //		}
 //	}
-=======
->>>>>>> bfbb10b928ec2fc5cdea521759f6ce35627683f4
+
 
 	public void Release() {
 		if (currentBallState != BallState.Released) {

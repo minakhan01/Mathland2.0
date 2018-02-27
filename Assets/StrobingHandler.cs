@@ -13,10 +13,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 
     // Use this for initialization
     void Start () {
-<<<<<<< HEAD
-=======
 
->>>>>>> bfbb10b928ec2fc5cdea521759f6ce35627683f4
     }
 		
 
