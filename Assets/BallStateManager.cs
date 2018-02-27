@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
-using UnityEngine.Windows.Speech;
 
 public class BallStateManager : Singleton<BallStateManager> {
 
@@ -11,17 +10,12 @@ public class BallStateManager : Singleton<BallStateManager> {
 	Rigidbody rbi;
 	public GameObject ballPositionText;
     public bool playingCatch; 
-	KeywordRecognizer keywordRecognizer;
     private Vector3 ballPosition;
 
     private GameObject ballJointConnectedBody = null;
-    private Quaternion ballJointConnectedBodyRotation;
-    private Vector3 ballJointConnectedBodyPosition;
+//    private Quaternion ballJointConnectedBodyRotation;
+//    private Vector3 ballJointConnectedBodyPosition;
 
-	string grabBallCommand = "Grab Ball";
-	string launchBallCommand = "Launch Ball";
-	string resetBallCommand = "Reset Ball";
-	string releaseBallCommand = "Release Ball";
 
 	public enum BallState
 	{
@@ -33,7 +27,6 @@ public class BallStateManager : Singleton<BallStateManager> {
     // Use this for initialization
     void Start () {
 		rbi = ball.GetComponent<Rigidbody>();
-		setupTestKeywords();
         playingCatch = false; 
     }
 
@@ -48,47 +41,32 @@ public class BallStateManager : Singleton<BallStateManager> {
             }
         }
     }
+		
 
-    void setupTestKeywords() {
-
-		// Setup a keyword recognizer to enable resetting the target location.
-		List<string> keywords = new List<string>();
-
-		keywords.Add(grabBallCommand);
-		//keywords.Add(releaseBallCommand);
-		keywords.Add (launchBallCommand);
-		keywords.Add (resetBallCommand);
-
-		keywordRecognizer = new KeywordRecognizer(keywords.ToArray());
-		keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
-		keywordRecognizer.Start();
-
-	}
-
-	/// <summary>
-	/// When the keyword recognizer hears a command this will be called.
-	/// In this case we only have one keyword, which will re-enable moving the
-	/// target.
-	/// </summary>
-	/// <param name="args">information to help route the voice command.</param>
-	private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
-	{
-		string stringDetected = args.text.ToLower ();
-		if (stringDetected.Equals(resetBallCommand.ToLower())) {
-            Reset();
-		}
-		else if (stringDetected.Equals(releaseBallCommand.ToLower()))  {
-			Release ();
-		}
-		else if (stringDetected.Equals(grabBallCommand.ToLower()))
-		{
-			Grab ();
-		}
-		else if (stringDetected.Equals(launchBallCommand.ToLower()))
-		{
-			Launch ();
-		}
-	}
+//	/// <summary>
+//	/// When the keyword recognizer hears a command this will be called.
+//	/// In this case we only have one keyword, which will re-enable moving the
+//	/// target.
+//	/// </summary>
+//	/// <param name="args">information to help route the voice command.</param>
+//	private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+//	{
+//		string stringDetected = args.text.ToLower ();
+//		if (stringDetected.Equals(resetBallCommand.ToLower())) {
+//            Reset();
+//		}
+//		else if (stringDetected.Equals(releaseBallCommand.ToLower()))  {
+//			Release ();
+//		}
+//		else if (stringDetected.Equals(grabBallCommand.ToLower()))
+//		{
+//			Grab ();
+//		}
+//		else if (stringDetected.Equals(launchBallCommand.ToLower()))
+//		{
+//			Launch ();
+//		}
+//	}
 
 	public void Release() {
 		if (currentBallState != BallState.Released) {
@@ -207,8 +185,8 @@ public class BallStateManager : Singleton<BallStateManager> {
     private void saveConnectedBody()
     {
         ballJointConnectedBody = ball.GetComponent<Joint>().connectedBody.gameObject; //Should be the last bone of the rope
-        ballJointConnectedBodyRotation = ballJointConnectedBody.transform.parent.rotation;
-        ballJointConnectedBodyPosition = ballJointConnectedBody.transform.parent.position;
+//        ballJointConnectedBodyRotation = ballJointConnectedBody.transform.parent.rotation;
+//        ballJointConnectedBodyPosition = ballJointConnectedBody.transform.parent.position;
         Debug.Log("Saved connectedBody to: " + ballJointConnectedBody.name); 
     }
 

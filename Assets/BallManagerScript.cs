@@ -30,7 +30,7 @@ public class BallManagerScript : MonoBehaviour {
     //create a trajectory predictor in code
     TrajectoryPredictor tp;
 
-    Transform lastLaunchTransform;
+//    Transform lastLaunchTransform;
 
     public bool directionLocked;
 
@@ -140,7 +140,7 @@ public class BallManagerScript : MonoBehaviour {
             //tell the predictor to predict a 3d line. this will also cause it to draw a prediction line
             //because drawDebugOnPredict is set to true
             tp.Predict3D(launchPoint.position, launchPoint.forward * force, Physics.gravity);
-            lastLaunchTransform = launchPoint;
+//            lastLaunchTransform = launchPoint;
 
             //Debug.Log("Hit Object: " + tp.hitInfo3D.collider.gameObject.name);
 

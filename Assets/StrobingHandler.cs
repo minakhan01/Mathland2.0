@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Windows.Speech;
 
 public class StrobingHandler : Singleton<StrobingHandler> {
 
@@ -11,23 +10,11 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	public GameObject ballPrefab;
 
     private List<GameObject> strobes = new List<GameObject>();
-    KeywordRecognizer keywordRecognizer;
 
     // Use this for initialization
     void Start () {
-        List<string> keywords = new List<string>();
-        keywords.Add("Clear Strobes");
-        keywordRecognizer = new KeywordRecognizer(keywords.ToArray());
-        keywordRecognizer.OnPhraseRecognized += KeywordRecognizer_OnPhraseRecognized;
-        keywordRecognizer.Start();
     }
-
-    private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
-    {
-        string stringDetected = args.text.ToLower();
-
-        clearStrobes();
-    }
+		
 
     // Update is called once per frame
     void Update () {
