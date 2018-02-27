@@ -1,0 +1,18 @@
+# Stereo RMS calibration error (Lower numbers are better)
+RMS: 24.8925
+# DSLR RMS calibration error (Lower numbers are better)
+DSLR RMS: 0.334151
+# HoloLens RMS calibration error (Lower numbers are better)
+HoloLens RMS: 0.330771
+# Delta in meters of Hololens from Camera:
+Translation: -0.000675944, 0.0075461, 0.330041
+# Row Major Matrix3x3 (This should be close to identity)
+Rotation: 0.999494, 0.0145907, 0.0282676, -0.0155877, 0.999253, 0.0353752, -0.0277303, -0.0357979, 0.998974
+# Field of View of DSLR:
+DSLR_fov: 61.6609, 34.5753
+# Field of View of HoloLens:
+Holo_fov: 49.3364, 27.9968
+# DSLR distortion coefficients:
+DSLR_distortion: 0.609472, -9.97829, 0.0860709, 0.00107115, 50.2282
+# DSLR camera Matrix: fx, fy, cx, cy:
+DSLR_camera_Matrix: 1179.54, 1272.31, 703.676, 386.421
