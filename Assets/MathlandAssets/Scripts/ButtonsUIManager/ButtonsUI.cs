@@ -45,7 +45,7 @@ public class ButtonsUI : MonoBehaviour
 
 	public void AddForceButtonHandler()
 	{
-		GameToolManager.Instance.createForceField ();
+		GameToolManager.Instance.CreateForceField ();
 		Debug.Log("Graph");
 	}
 
