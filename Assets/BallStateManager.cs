@@ -41,7 +41,6 @@ public class BallStateManager : Singleton<BallStateManager> {
             }
         }
     }
-<<<<<<< HEAD
 		
 
 //	/// <summary>
@@ -68,8 +67,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 //			Launch ();
 //		}
 //	}
-=======
->>>>>>> bfbb10b928ec2fc5cdea521759f6ce35627683f4
+
 
 	public void Release() {
 		if (currentBallState != BallState.Released) {
