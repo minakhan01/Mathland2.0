@@ -22,60 +22,94 @@ public class ButtonsUI : MonoBehaviour
 
     }
 
-
-    #region build callbacks
-
-    public void addObject()
+	//PLAY_SCREEN
+    public void AddButtonHandler()
     {
         Debug.Log("Add Object");
     }
 
-    public void play()
+    public void PlayButtonHandler()
     {
         Debug.Log("Play");
     }
 
-    #endregion
-
-    #region play callbacks
-
-    public void rewind()
+    public void RewindButtonHandler()
     {
         Debug.Log("Rewind");
     }
 
-    public void graph()
+    public void GraphButtonHandler()
     {
         Debug.Log("Graph");
     }
 
-    public void build()
-    {
-        Debug.Log("Build");
-    }
+	public void AddForceButtonHandler()
+	{
+		GameToolManager.Instance.createForceField ();
+		Debug.Log("Graph");
+	}
 
-    #endregion
+	public void AddVelocityButtonHandler()
+	{
+		GameToolManager.Instance.CreateVelocityVector ();
+		Debug.Log("Graph");
+	}
 
-    #region edit Object callbacks
+	public void AddRopeButtonHandler()
+	{
+		GameToolManager.Instance.CreateRope ();
+		Debug.Log("Graph");
+	}
 
-    public void move()
+	public void AddCubeButtonHandler()
+	{
+		GameToolManager.Instance.CreateCube ();
+		Debug.Log("Graph");
+	}
+
+	public void AddRampButtonHandler()
+	{
+		GameToolManager.Instance.CreateRamp ();
+		Debug.Log("Ramp");
+	}
+
+	//MODIFY_SCREEN
+    public void MoveButtonHandler()
     {
         Debug.Log("Move");
     }
 
-    public void resize()
+    public void ResizeButtonHandler()
     {
         Debug.Log("Resize");
     }
 
-    public void rotate()
+    public void RotateButtonHandler()
     {
         Debug.Log("Rotate");
     }
 
-    public void delete()
+    public void DeleteButtonHandler()
     {
         Debug.Log("Delete");
     }
-    #endregion
+
+	public void XAxisHandler()
+	{
+		Debug.Log("XAxisHandler");
+	}
+
+	public void YAxisHandler()
+	{
+		Debug.Log("YAxisHandler");
+	}
+
+	public void ZAxisHandler()
+	{
+		Debug.Log("ZAxisHandler");
+	}
+
+	public void SliderHandler() {
+		Debug.Log("Handle slider value");
+	}
 }
