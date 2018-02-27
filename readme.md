@@ -1,3 +1,5 @@
+![Alt text](readme_pictures/architecture3.png?raw=true "Title")
+
 ![Alt text](readme_pictures/architecture2.png?raw=true "Title")
 
 ![Alt text](readme_pictures/architecture.PNG?raw=true "Title")
