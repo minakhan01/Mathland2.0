@@ -14,7 +14,8 @@ public class StrobingHandler : Singleton<StrobingHandler> {
     // Use this for initialization
     void Start () {
 
-    }
+   }
+
 		
 
     // Update is called once per frame
