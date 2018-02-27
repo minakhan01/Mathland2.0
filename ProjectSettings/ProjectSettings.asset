@@ -382,7 +382,7 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: AR BABY
+  cameraUsageDescription: camera use
   locationUsageDescription: 
   microphoneUsageDescription: 
   switchNetLibKey: 

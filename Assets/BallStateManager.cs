@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
+
 public class BallStateManager : Singleton<BallStateManager> {
 
 	public BallState currentBallState = BallState.Released;
@@ -12,13 +13,9 @@ public class BallStateManager : Singleton<BallStateManager> {
     private Vector3 ballPosition;
 
     private GameObject ballJointConnectedBody = null;
-    private Quaternion ballJointConnectedBodyRotation;
-    private Vector3 ballJointConnectedBodyPosition;
+//    private Quaternion ballJointConnectedBodyRotation;
+//    private Vector3 ballJointConnectedBodyPosition;
 
-	string grabBallCommand = "Grab Ball";
-	string launchBallCommand = "Launch Ball";
-	string resetBallCommand = "Reset Ball";
-	string releaseBallCommand = "Release Ball";
 
 	public enum BallState
 	{
@@ -44,6 +41,35 @@ public class BallStateManager : Singleton<BallStateManager> {
             }
         }
     }
+<<<<<<< HEAD
+		
+
+//	/// <summary>
+//	/// When the keyword recognizer hears a command this will be called.
+//	/// In this case we only have one keyword, which will re-enable moving the
+//	/// target.
+//	/// </summary>
+//	/// <param name="args">information to help route the voice command.</param>
+//	private void KeywordRecognizer_OnPhraseRecognized(PhraseRecognizedEventArgs args)
+//	{
+//		string stringDetected = args.text.ToLower ();
+//		if (stringDetected.Equals(resetBallCommand.ToLower())) {
+//            Reset();
+//		}
+//		else if (stringDetected.Equals(releaseBallCommand.ToLower()))  {
+//			Release ();
+//		}
+//		else if (stringDetected.Equals(grabBallCommand.ToLower()))
+//		{
+//			Grab ();
+//		}
+//		else if (stringDetected.Equals(launchBallCommand.ToLower()))
+//		{
+//			Launch ();
+//		}
+//	}
+=======
+>>>>>>> bfbb10b928ec2fc5cdea521759f6ce35627683f4
 
 	public void Release() {
 		if (currentBallState != BallState.Released) {
@@ -162,8 +188,8 @@ public class BallStateManager : Singleton<BallStateManager> {
     private void saveConnectedBody()
     {
         ballJointConnectedBody = ball.GetComponent<Joint>().connectedBody.gameObject; //Should be the last bone of the rope
-        ballJointConnectedBodyRotation = ballJointConnectedBody.transform.parent.rotation;
-        ballJointConnectedBodyPosition = ballJointConnectedBody.transform.parent.position;
+//        ballJointConnectedBodyRotation = ballJointConnectedBody.transform.parent.rotation;
+//        ballJointConnectedBodyPosition = ballJointConnectedBody.transform.parent.position;
         Debug.Log("Saved connectedBody to: " + ballJointConnectedBody.name); 
     }
 

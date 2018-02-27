@@ -1332,6 +1332,15 @@ Prefab:
       propertyPath: m_Name
       value: BallPostion
       objectReference: {fileID: 0}
+    - target: {fileID: 1094615120602070, guid: a3f22fdb6763de94f8d59cb4805f0e89, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23330234333964904, guid: a3f22fdb6763de94f8d59cb4805f0e89,
+        type: 2}
+      propertyPath: m_PreserveUVs
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3f22fdb6763de94f8d59cb4805f0e89, type: 2}
   m_IsPrefabParent: 0

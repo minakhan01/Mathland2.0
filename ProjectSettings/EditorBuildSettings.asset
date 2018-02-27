@@ -16,7 +16,10 @@ EditorBuildSettings:
     guid: ed69d3f9b5a8e446896934f79e173d08
   - enabled: 0
     path: 
-    guid: 9efe05e3e8f3f4dc1a474f21991df84e
-  - enabled: 1
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/Scene1_Buttons.unity
     guid: 6673de9dcc01a4a89a6a768b9725ca50
+  - enabled: 1
+    path: Assets/MathlandAssets/Scenes/Scene1_BallTouchInput.unity
+    guid: 50944df1e94084214b12d2d9ac09e152
