@@ -168,7 +168,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 
 	public void Reset() {
         
-		rbi.useGravity = false;
+//		rbi.useGravity = false;
 		Debug.Log("ball state changed from "+currentBallState+" to reset");
         GameObject.Find("TrajectoryPredictor").GetComponent<TrajectoryPredictorScript>().resetBall();
         ball.GetComponent<VelocityReactor>().velocities = new List<GameObject>();
