@@ -19,8 +19,8 @@ public class TouchInputManager : MonoBehaviour {
 	static public float pinchDistanceDelta;
 	static public float pinchDistance;
 
-	public enum TouchState {Stationary, Repositioning, Resizing, Rotating, Deleting};
-	public TouchState CurrentTouchState;
+	public enum TouchState {Stationary, Repositioning, Resizing, Rotating, longPress};
+	public static TouchState CurrentTouchState;
 	private float HoldTime = 5;
 	private float AccumulateTime = 0;
 	public float zoomNearLimit = 5;
@@ -34,9 +34,12 @@ public class TouchInputManager : MonoBehaviour {
 	private float LongPressTreshold=3f;
 	float PreviousFingerDistance, zoomDistance, distWeight;
 
+	public static GameObject selectedObject;
+
 	// Use this for initialization
 	void Start () {
 		CurrentTouchState = TouchState.Stationary;
+		selectedObject = null;
 	}
 
 	static private float Angle (Vector2 pos1, Vector2 pos2) {
@@ -71,9 +74,9 @@ public class TouchInputManager : MonoBehaviour {
 		// ------ UniversalInputManager.ResizeObject (FingerDistanceDelta);
 	}
 
-	void deletingDetected() {
-		CurrentTouchState = TouchState.Deleting;
-		Debug.Log ("Delete Object");
+	void longPressDetected() {
+		CurrentTouchState = TouchState.longPress;
+		Debug.Log ("Long Press Object");
 		// ----- UniversalInputManager.DeleteObject ();
 	}
 
@@ -83,21 +86,54 @@ public class TouchInputManager : MonoBehaviour {
 		Debug.Log ("Stationary Object");
 	}
 
+	private Ray touchPositionRay;
+
+	void doRayCasting(Touch touch)
+	{
+		//get 2D pixel position of touch, convert into 3D point in space, turn into ray from cameraq
+		Camera camera = Camera.current;
+		Vector2 touchPosition = touch.position; //2D touch position in pixels
+
+		/////CONVERT PIXELS POSITION INTO 3D RAY
+		touchPositionRay = camera.ScreenPointToRay (touchPosition);
+	}
+
+	void checkRayCastHit()
+	{
+		RaycastHit hit;
+		if (Physics.Raycast (touchPositionRay, out hit)) {
+			if (hit.collider != null) {
+				GameObject collision = hit.transform.gameObject; //get gameobject clicked on
+				selectedObject = collision;
+
+				Debug.Log (selectedObject);
+				//for fix: look into GetComponent
+				//only objects with modifiable should be selected
+				//selectedObject.GetComponent<UniversalInteractions> ().SelectObject ();
+			}
+		} else {
+			selectedObject = null;
+			Debug.Log (selectedObject);
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
+		Touch touch = Input.GetTouch(0);
 		if (Input.touchCount > 0) {
 
 			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
 				stationaryDetected();
 			}
 			else if (Input.touchCount == 1) {
-
-				if (Input.GetTouch (0).phase == TouchPhase.Began) {
+				if (touch.phase == TouchPhase.Began) {
 					AccumulateTime = 0;
+					doRayCasting (touch);
+					checkRayCastHit ();
 				} else if (Input.GetTouch (0).phase == TouchPhase.Stationary) {
 					AccumulateTime += Input.GetTouch (0).deltaTime;
 					if(AccumulateTime > LongPressTreshold) {
-						deletingDetected();
+						longPressDetected();
 					}
 				} else if (Input.GetTouch (0).phase == TouchPhase.Moved) {
 					Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
