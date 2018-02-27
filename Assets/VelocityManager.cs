@@ -38,7 +38,6 @@ public class VelocityManager : MonoBehaviour {
     }
     private void OnDestroy()
     {
-        GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity vector Removed");
         BALL.GetComponent<VelocityReactor>().removeVelocityVector(gameObject);
     }
 }

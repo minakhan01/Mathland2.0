@@ -48,7 +48,7 @@ public class CheckpointManager : Singleton<CheckpointManager> {
     private void checkpointsCompleted()
     {
         Debug.Log("You win!");
-        LevelLoader.Instance.NextLevel(); 
+//        LevelLoader.Instance.NextLevel(); 
     }
 
     public void newCheckpointAdded()

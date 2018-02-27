@@ -1,5 +1,4 @@
-﻿using HoloToolkit.Sharing.Tests;
-using HoloToolkit.Unity;
+﻿using HoloToolkit.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,7 +27,6 @@ public class StrobingHandler : Singleton<StrobingHandler> {
         string stringDetected = args.text.ToLower();
 
         clearStrobes();
-        CustomMessages.Instance.SendClear(CustomMessages.ClearMessageType.ClearStrobes); 
     }
 
     // Update is called once per frame

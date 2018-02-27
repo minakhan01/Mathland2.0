@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
 using UnityEngine.Windows.Speech;
-using HoloToolkit.Sharing.Tests;
-using HoloToolkit.Sharing;
 
 public class BallStateManager : Singleton<BallStateManager> {
 
@@ -32,25 +30,11 @@ public class BallStateManager : Singleton<BallStateManager> {
 		Launched
 	}
 
-    void ProcessBallLaunched(NetworkInMessage msg)
-    {
-        Debug.Log("Someone else launched the ball");
-        Launch(); 
-    }
-
-    void ProcessBallReset(NetworkInMessage msg)
-    {
-        Debug.Log("Someone else reset the ball");
-        Reset(); 
-    }
-
     // Use this for initialization
     void Start () {
 		rbi = ball.GetComponent<Rigidbody>();
 		setupTestKeywords();
         playingCatch = false; 
-        CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.BallLaunched] = this.ProcessBallLaunched;
-        CustomMessages.Instance.MessageHandlers[CustomMessages.TestMessageID.BallReset] = this.ProcessBallReset;
     }
 
 
@@ -91,7 +75,6 @@ public class BallStateManager : Singleton<BallStateManager> {
 	{
 		string stringDetected = args.text.ToLower ();
 		if (stringDetected.Equals(resetBallCommand.ToLower())) {
-            CustomMessages.Instance.SendBallReset();
             Reset();
 		}
 		else if (stringDetected.Equals(releaseBallCommand.ToLower()))  {
@@ -103,7 +86,6 @@ public class BallStateManager : Singleton<BallStateManager> {
 		}
 		else if (stringDetected.Equals(launchBallCommand.ToLower()))
 		{
-            CustomMessages.Instance.SendBallLaunched(); 
 			Launch ();
 		}
 	}
@@ -119,7 +101,6 @@ public class BallStateManager : Singleton<BallStateManager> {
 		if (currentBallState != BallState.Grabbed) {
 			Debug.Log("ball state changed from "+currentBallState+" to grabbed");
 			currentBallState = BallState.Grabbed;
-			ball.GetComponent<ShareTransform> ().isEditingObject = true;
 		}
 	}
 
@@ -135,7 +116,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 		if (currentBallState != BallState.Launched) {
 			Debug.Log("ball state changed from "+currentBallState+" to launched");
 			currentBallState = BallState.Launched;
-            GameToolManager.Instance.freezePrefabs(false); 
+//            GameToolManager.Instance.freezePrefabs(false); 
 			LaunchBall ();
 		}
 	}
@@ -157,7 +138,6 @@ public class BallStateManager : Singleton<BallStateManager> {
 		Debug.Log ("Launch ball");
         if (playingCatch)
         {
-            GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Playing catch. Ball Launched.");
             rbi.isKinematic = false;
             rbi.velocity = new Vector3(1, 1, 1);
             return; 
@@ -167,7 +147,6 @@ public class BallStateManager : Singleton<BallStateManager> {
         rbi.isKinematic = false;
         rbi.velocity = ball.GetComponent<VelocityReactor>().initialvel;
         rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
-        GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Ball Launched.");
         Debug.Log("Ball should have moved as vel is " + rbi.velocity + " and force is " + ball.GetComponent<VelocityReactor>().experiencedforce);
         //rbi.isKinematic = false;
         //rbi.useGravity = true;
@@ -212,10 +191,9 @@ public class BallStateManager : Singleton<BallStateManager> {
 
         
         ball.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Ball reset successful");
         currentBallState = BallState.Released;
-        GameToolManager.Instance.freezePrefabs(true); //unfreeze
-        LevelLoader.Instance.resetLevel(); 
+//        GameToolManager.Instance.freezePrefabs(true); //unfreeze
+//        LevelLoader.Instance.resetLevel(); 
 
     }
 
@@ -241,12 +219,12 @@ public class BallStateManager : Singleton<BallStateManager> {
         Destroy(oldRope);
 
         // Create new rope
-        GameObject newRope = Instantiate(GameToolManager.Instance.GameToolPrefabsDictionary["Rope"].GetComponent<MenuItemRepresentation>().Itemtobeinstantiated, ballJointConnectedBodyPosition, ballJointConnectedBodyRotation);
-        GameToolManager.Instance.setupGameTool(newRope);
-        newRope.name = oldRopeName;
-        GameToolManager.Instance.InstantiatedGameToolPrefabs[oldRopeName] = newRope; 
-
-        ball.GetComponent<GameTool>().addJointTo(newRope.transform.GetChild(newRope.transform.childCount-1).gameObject); // Re-add joint to last bone in newRope
+//        GameObject newRope = Instantiate(GameToolManager.Instance.GameToolPrefabsDictionary["Rope"].GetComponent<MenuItemRepresentation>().Itemtobeinstantiated, ballJointConnectedBodyPosition, ballJointConnectedBodyRotation);
+//        GameToolManager.Instance.setupGameTool(newRope);
+//        newRope.name = oldRopeName;
+//        GameToolManager.Instance.InstantiatedGameToolPrefabs[oldRopeName] = newRope; 
+//
+//        ball.GetComponent<GameTool>().addJointTo(newRope.transform.GetChild(newRope.transform.childCount-1).gameObject); // Re-add joint to last bone in newRope
 
         Debug.Log("Reattached joint to ball");
     }

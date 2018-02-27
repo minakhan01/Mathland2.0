@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using HoloToolkit.Unity;
-using HoloToolkit.Unity.SpatialMapping;
-using HoloToolkit.Sharing.Tests;
 
 [RequireComponent(typeof(MeshCollider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -113,11 +111,6 @@ public class ProjectileBehavior : MonoBehaviour
         {
             collisionPoints.Add(collision.contacts[index].point);
         }
-
-        if (SpatialMappingManager.Instance.gameObject.activeSelf)
-        {
-            SpatialMappingDeformation.Instance.EmitParticles(collisionPoints);
-        }
     }
 
     /// <summary>
@@ -128,39 +121,7 @@ public class ProjectileBehavior : MonoBehaviour
     /// <returns>true = use the collision for exploding, false = bounce.</returns>
     protected virtual bool HitPlayer(Collision collision)
     {
-        if (collision.contacts[0].otherCollider.GetComponent<ExplodingBlob>() != null)
-        {
-            return true;
-        }
-
-        // Spin on hit is attached to user's heads.
-        FriendlyDrone soh = collision.contacts[0].otherCollider.GetComponent<FriendlyDrone>();
-        if (soh != null)
-        {
-            soh.PlayHit();
-
-            firstContact = true;
-
-            if (OwningUserId == 0 && soh.OwningUserId != 0)
-            {
-                // And send the message that we hit someone. 
-                CustomMessages.Instance.SendUserHit(soh.OwningUserId);
-            }
-
-            return true;
-        }
-
-        // Play the 'we hit something that's not the players head clip'.
-        audioSource.clip = bounceSoundEffect;
-        audioSource.Play();
-
-        // Tell spatial mapping deformation that we hit this point.  
-        // This causes the shader to do a little animation around the hit position.
-        if (SpatialMappingManager.Instance.gameObject.activeSelf)
-        {
-            SpatialMappingDeformation.Instance.SetHitPosition(collision.contacts[0].point);
-        }
-
+        
         return false;
     }
 }

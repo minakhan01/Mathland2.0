@@ -70,7 +70,6 @@ public class BallManagerScript : MonoBehaviour {
 
             if (directionLocked) {
                 setDirection = false;
-                gameManager.GetComponent<GameManager>().removeVuforia();
             }
             // ball.transform.Find("3DTextPrefab").gameObject.GetComponent<TextMesh>().text  = ballDirectionVector+"";
         }
@@ -159,7 +158,7 @@ public class BallManagerScript : MonoBehaviour {
         }
         if (directionLocked)
         {
-            tp.donKillLine = true;
+//            tp..donKillLine = true;
             // Debug.Log("launch point: " + launchPoint.position);
             //tp.Predict3D(launchPoint.position, launchPoint.forward * force, Physics.gravity);
             tp.Predict3D(launchPoint.position, launchPoint.forward * force, Physics.gravity);
