@@ -5,20 +5,30 @@ using HoloToolkit.Unity;
 
 public class GameToolManager : Singleton<GameToolManager> {
 
-	public void createForceField() {
-		// TODO: Ashris
+	public GameObject ForceField, VelocityVector, Rope, Cube, Ramp;
+	public void CreateForceField() {
+		CreateGameToolPrefab (ForceField);
 	}
 
 	public void CreateVelocityVector() {
+		CreateGameToolPrefab (VelocityVector);
 	}
 
 	public void CreateRope() {
+		CreateGameToolPrefab (Rope);
 	}
 
 	public void CreateCube() {
+		CreateGameToolPrefab (Cube);
 	}
 
+
 	public void CreateRamp() {
+		CreateGameToolPrefab (Ramp);
+	}
+
+		private void CreateGameToolPrefab(GameObject prefab){
+		Instantiate (prefab, new Vector3(1,0,5),Quaternion.identity);
 	}
 
 	// Use this for initialization

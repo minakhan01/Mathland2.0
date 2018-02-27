@@ -119,10 +119,9 @@ public class TouchInputManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		Touch touch = Input.GetTouch(0);
 		if (Input.touchCount > 0) {
-
-			if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+			Touch touch = Input.GetTouch(0);
+			if (touch.phase == TouchPhase.Ended) {
 				stationaryDetected();
 			}
 			else if (Input.touchCount == 1) {
@@ -130,19 +129,19 @@ public class TouchInputManager : MonoBehaviour {
 					AccumulateTime = 0;
 					doRayCasting (touch);
 					checkRayCastHit ();
-				} else if (Input.GetTouch (0).phase == TouchPhase.Stationary) {
+				} else if (touch.phase == TouchPhase.Stationary) {
 					AccumulateTime += Input.GetTouch (0).deltaTime;
 					if(AccumulateTime > LongPressTreshold) {
 						longPressDetected();
 					}
-				} else if (Input.GetTouch (0).phase == TouchPhase.Moved) {
+				} else if (touch.phase == TouchPhase.Moved) {
 					Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
 					if (touchDeltaPosition.magnitude > DraggingTreshold) {
 						// Move object across XY plane
 						draggingDetected();
 					}
 				}
-				else if (Input.GetTouch (0).phase == TouchPhase.Ended) {
+				else if (touch.phase == TouchPhase.Ended) {
 					stationaryDetected();
 				}
 			}

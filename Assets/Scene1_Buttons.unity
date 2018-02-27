@@ -1332,6 +1332,31 @@ Prefab:
       propertyPath: m_Name
       value: BallPostion
       objectReference: {fileID: 0}
+    - target: {fileID: 1094615120602070, guid: a3f22fdb6763de94f8d59cb4805f0e89, type: 2}
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+      propertyPath: m_IsActive
+=======
+=======
+>>>>>>> 534d075e95b1379655ff5eed1cd84da493baadfe
+=======
+>>>>>>> 534d075e95b1379655ff5eed1cd84da493baadfe
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 23330234333964904, guid: a3f22fdb6763de94f8d59cb4805f0e89,
+        type: 2}
+      propertyPath: m_PreserveUVs
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 534d075e95b1379655ff5eed1cd84da493baadfe
+=======
+>>>>>>> 534d075e95b1379655ff5eed1cd84da493baadfe
+=======
+>>>>>>> 534d075e95b1379655ff5eed1cd84da493baadfe
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a3f22fdb6763de94f8d59cb4805f0e89, type: 2}
   m_IsPrefabParent: 0
@@ -3363,6 +3388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89365ef668a742e683951dfc5ca044c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ForceField: {fileID: 1900116835226282, guid: c8b32822a10e04be18eeb8b5f0cb6cab, type: 2}
+  VelocityVector: {fileID: 1090844819109650, guid: 20c57102e962c45508b5b84865d08d5c,
+    type: 2}
+  Rope: {fileID: 0}
+  Cube: {fileID: 1674626878357300, guid: d883e3dcf9be74296b91e85653ed2ea9, type: 2}
+  Ramp: {fileID: 1237159240646912, guid: 665da72c02838be439ee0b64568190d5, type: 2}
 --- !u!4 &1539175446
 Transform:
   m_ObjectHideFlags: 0
