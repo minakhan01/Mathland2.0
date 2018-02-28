@@ -3760,6 +3760,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923417657}
   - component: {fileID: 1923417656}
+  - component: {fileID: 1923417658}
   m_Layer: 0
   m_Name: TouchListenerManager
   m_TagString: Untagged
@@ -3791,6 +3792,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923417658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1923417655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79d616666d2524e69871df17b2aa5bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  zoomNearLimit: 5
+  zoomFarLimit: 12
+  zoomScreenToWorldRatio: 3
+  orbitScreenToWorldRatio: 1
+  twistScreenToWorldRatio: 5
+  rotateMinLimit: 0
+  rotateMaxLimit: 80
 --- !u!1 &2016741309
 GameObject:
   m_ObjectHideFlags: 0
