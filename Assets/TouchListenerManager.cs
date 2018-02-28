@@ -35,6 +35,15 @@ public class TouchListenerManager : Singleton<GameStateManager> {
 	
 	// Update is called once per frame
 	void Update () {
+
+		// for testing
+		if (objectDragging())
+		{
+			Debug.Log ("dragging detected");
+			TouchInputManager.selectedObject.transform.position = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, 1);
+		}
+
+
 		if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.PLAY_SCREEN && longPressObjectDetected ()) 
 		{
 			Debug.Log ("change to modify screen");
