@@ -91,6 +91,7 @@ public class ButtonsUI : MonoBehaviour
 
     public void DeleteButtonHandler()
     {
+		GameToolManager.Instance.DestroyAllGameTools ();
         Debug.Log("Delete");
     }
 
