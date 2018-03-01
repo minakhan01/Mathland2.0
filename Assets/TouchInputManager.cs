@@ -106,7 +106,7 @@ public class TouchInputManager : MonoBehaviour {
 				GameObject collision = hit.transform.gameObject; //get gameobject clicked on
 				selectedObject = collision;
 
-				Debug.Log (selectedObject);
+				Debug.Log ("selectedObject: "+selectedObject);
 				//for fix: look into GetComponent
 				//only objects with modifiable should be selected
 				//selectedObject.GetComponent<UniversalInteractions> ().SelectObject ();
@@ -138,6 +138,8 @@ public class TouchInputManager : MonoBehaviour {
 					Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
 					if (touchDeltaPosition.magnitude > DraggingTreshold) {
 						// Move object across XY plane
+						doRayCasting (touch);
+						checkRayCastHit ();
 						draggingDetected();
 					}
 				}
