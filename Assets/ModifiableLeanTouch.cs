@@ -11,6 +11,8 @@ using Lean.Touch;
 
 [RequireComponent(typeof(LeanSelectable))]
 
+[RequireComponent(typeof(LeanSelectableRendererColor))]
+
 public class ModifiableLeanTouch : MonoBehaviour {
 
 	// Use this for initialization
