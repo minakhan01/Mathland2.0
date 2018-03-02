@@ -5,15 +5,16 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ModifiableManager : Singleton<GameStateManager>
+public class ModifiableManager : Singleton<ModifiableManager>
 {
     const int MAX_ROTATION_VALUE = 360;
+    const int MAX_REPOSITION_VALUE = 1000;
 
     public Slider slider;
 
     public enum ModifyingAction { ROTATE, RESIZE, REPOSITION };
     public bool[] myArray = { true, true, true };
-    public ModifyingAction action;
+    public ModifyingAction action { get; set; };
     public GameObject selectedObjectToModify;
 
     // Use this for initialization
@@ -35,8 +36,6 @@ public class ModifiableManager : Singleton<GameStateManager>
         Debug.Log(slider.value.ToString());
 
         float value = slider.value;
-
-        //value = slider.value;
 
         if (action == ModifyingAction.REPOSITION) {
             repositionAction(value);
@@ -123,7 +122,7 @@ public class ModifiableManager : Singleton<GameStateManager>
     #region Reposition
     void repositionAction(float value)
     {
-        value += 0.5f;
+        value *= MAX_REPOSITION_VALUE;
 
         if (myArray[0] && myArray[1] && myArray[2]) reposition(value);
         if (myArray[0] && myArray[1] && !myArray[2]) { repositionX(value); repositionY(value); }
