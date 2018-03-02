@@ -12,6 +12,10 @@ public class ButtonsUI : MonoBehaviour
     public GameObject editObjectUI;
     public Slider slider;
 
+	public Button XButton;
+	public Button YButton;
+	public Button ZButton;
+
     // Use this for initialization
     void Start()
     {
@@ -102,18 +106,39 @@ public class ButtonsUI : MonoBehaviour
 
 	public void XAxisHandler()
 	{
+		if (ModifiableManager.Instance.axisToModify [0]) {
+			Debug.Log ("Change X button to black");
+			XButton.targetGraphic.color = Color.black;
+		} else {
+			Debug.Log ("Change X button to white");
+			XButton.targetGraphic.color = Color.white;
+		}
         ModifiableManager.Instance.axisToModify[0] = !ModifiableManager.Instance.axisToModify[0];
 		Debug.Log("XAxisHandler");
 	}
 
 	public void YAxisHandler()
 	{
+		if (ModifiableManager.Instance.axisToModify [1]) {
+			Debug.Log ("Change Y button to black");
+			YButton.targetGraphic.color = Color.black;
+		} else {
+			Debug.Log ("Change Y button to white");
+			YButton.targetGraphic.color = Color.white;
+		}
         ModifiableManager.Instance.axisToModify[1] = !ModifiableManager.Instance.axisToModify[1];
 		Debug.Log("YAxisHandler");
 	}
 
 	public void ZAxisHandler()
 	{
+		if (ModifiableManager.Instance.axisToModify [2]) {
+			Debug.Log ("Change Z button to black");
+			ZButton.targetGraphic.color = Color.black;
+		} else {
+			Debug.Log ("Change Z button to white");
+			ZButton.targetGraphic.color = Color.white;
+		}
         ModifiableManager.Instance.axisToModify[2] = !ModifiableManager.Instance.axisToModify[2];
 		Debug.Log("ZAxisHandler");
 	}

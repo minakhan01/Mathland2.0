@@ -16,25 +16,34 @@ public class Reposition : MonoBehaviour {
 
     public void reposition(float valueSlider)
     {
-        Vector3 newValue = transform.position + new Vector3(valueSlider, valueSlider, valueSlider);
+		float convertedValue = convertSliderValue (valueSlider);
+		Vector3 newValue = transform.position + new Vector3(convertedValue, convertedValue, convertedValue);
         transform.localPosition = newValue;
     }
 
     public void repositionX(float valueSlider)
     {
-        Vector3 newValue = transform.localPosition + new Vector3(valueSlider, 0, 0);
+		float convertedValue = convertSliderValue (valueSlider);
+		Vector3 newValue = transform.localPosition + new Vector3(convertedValue, 0, 0);
         transform.localPosition = newValue;
     }
 
     public void repositionY(float valueSlider)
     {
-        Vector3 newValue = transform.localPosition + new Vector3(0, valueSlider, 0);
+		float convertedValue = convertSliderValue (valueSlider);
+		Vector3 newValue = transform.localPosition + new Vector3(0, convertedValue, 0);
         transform.localPosition = newValue;
     }
 
     public void repositionZ(float valueSlider)
     {
-        Vector3 newValue = transform.localPosition + new Vector3(0, 0, valueSlider);
+		float convertedValue = convertSliderValue (valueSlider);
+		Vector3 newValue = transform.localPosition + new Vector3(0, 0, convertedValue);
         transform.localPosition = newValue;
     }
+
+	float convertSliderValue(float originalValue) {
+		float convertedValue = (originalValue + 0.5f)*2f - 1f;
+		return convertedValue;
+	}
 }
