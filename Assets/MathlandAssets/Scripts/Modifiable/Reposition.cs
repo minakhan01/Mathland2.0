@@ -14,23 +14,27 @@ public class Reposition : MonoBehaviour {
 		
 	}
 
-    public void reposition()
+    public void reposition(GameObject selectedObjectToModify, float valueSlider)
     {
-
+        Vector3 newValue = selectedObjectToModify.transform.position + new Vector3(valueSlider, valueSlider, valueSlider);
+        selectedObjectToModify.transform.localPosition = newValue;
     }
 
-    public void repositionX()
+    public void repositionX(GameObject selectedObjectToModify, float valueSlider)
     {
-
+        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(valueSlider, 0, 0);
+        selectedObjectToModify.transform.localPosition = newValue;
     }
 
-    public void repositionY()
+    public void repositionY(GameObject selectedObjectToModify, float valueSlider)
     {
-
+        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(0, valueSlider, 0);
+        selectedObjectToModify.transform.localPosition = newValue;
     }
 
-    public void repositionZ()
+    public void repositionZ(GameObject selectedObjectToModify, float valueSlider)
     {
-
+        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(0, 0, valueSlider);
+        selectedObjectToModify.transform.localPosition = newValue;
     }
 }
