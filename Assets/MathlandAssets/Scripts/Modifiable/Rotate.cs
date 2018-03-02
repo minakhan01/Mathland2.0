@@ -14,26 +14,31 @@ public class Rotate : MonoBehaviour {
 		
 	}
 
+	float convertSliderValue(float originalValue) {
+		float convertedValue = (originalValue + 0.5f)*2*Mathf.PI - 1f;
+		return convertedValue;
+	}
+
     public void rotate (float valueSlider) {
-        Vector3 newValue = transform.localEulerAngles + new Vector3(valueSlider, valueSlider, valueSlider);
-        transform.Rotate(newValue);
+		float convertedValue = convertSliderValue (valueSlider);
+		transform.Rotate(new Vector3(convertedValue, convertedValue, convertedValue));
     }
 
     public void rotateX(float valueSlider)
     {
-        Vector3 newValue = transform.localEulerAngles + new Vector3(valueSlider, 0, 0);
-        transform.Rotate(newValue);
+		float convertedValue = convertSliderValue (valueSlider);
+		transform.Rotate(new Vector3(convertedValue, 0, 0));
     }
 
     public void rotateY(float valueSlider)
     {
-        Vector3 newValue = transform.localEulerAngles + new Vector3(0, valueSlider, 0);
-        transform.Rotate(newValue);
+		float convertedValue = convertSliderValue (valueSlider);
+		transform.Rotate(new Vector3(0, convertedValue, 0));
     }
 
     public void rotateZ(float valueSlider)
     {
-        Vector3 newValue = transform.localEulerAngles + new Vector3(0, 0, valueSlider);
-        transform.Rotate(newValue);
+		float convertedValue = convertSliderValue (valueSlider);
+		transform.Rotate(new Vector3(0, 0, convertedValue));
     }
 }
