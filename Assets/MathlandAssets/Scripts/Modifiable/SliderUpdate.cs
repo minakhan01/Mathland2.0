@@ -56,7 +56,6 @@ public class SliderUpdate : MonoBehaviour {
 
 	#region Rotate
 	void rotateAction (float value) {
-
 		value *= MAX_ROTATION_VALUE;
 
 		if (axisToModify[0] && axisToModify[1] && axisToModify[2]) rotate(value);
