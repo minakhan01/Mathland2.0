@@ -13,14 +13,14 @@ public class ModifiableManager : Singleton<ModifiableManager>
     public Slider slider;
 
     public enum ModifyingAction { ROTATE, RESIZE, REPOSITION };
-    public bool[] myArray = { true, true, true };
-    public ModifyingAction action { get; set; };
+    public bool[] axisToModify = { true, true, true };
+    public ModifyingAction action { get; set; }
     public GameObject selectedObjectToModify;
 
     // Use this for initialization
     void Start()
     {
-        slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
+        //slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
     }
 
@@ -29,14 +29,9 @@ public class ModifiableManager : Singleton<ModifiableManager>
     {
     }
 
-    void ValueChangeCheck()
+    public void sliderValueChangeHandler(float value)
     {
-
-        Debug.Log("SLIDER VALUE HAS CHANGED");
-        Debug.Log(slider.value.ToString());
-
-        float value = slider.value;
-
+        Debug.Log("AXIS TO MODIFY" + axisToModify[0].ToString() + axisToModify[1].ToString() + axisToModify[2].ToString());
         if (action == ModifyingAction.REPOSITION) {
             repositionAction(value);
         } else if (action == ModifyingAction.RESIZE) {
@@ -52,13 +47,13 @@ public class ModifiableManager : Singleton<ModifiableManager>
 
         value *= MAX_ROTATION_VALUE;
 
-        if (myArray[0] && myArray[1] && myArray[2]) rotate(value);
-        if (myArray[0] && myArray[1] && !myArray[2]) { rotateX(value); rotateY(value); }
-        if (myArray[0] && !myArray[1] && myArray[2]) { rotateX(value); rotateZ(value); }
-        if (myArray[0] && !myArray[1] && !myArray[2]) { rotateX(value); }
-        if (!myArray[0] && myArray[1] && myArray[2]) { rotateY(value); rotateZ(value); }
-        if (!myArray[0] && myArray[1] && !myArray[2]) { rotateY(value); }
-        if (!myArray[0] && !myArray[1] && myArray[2]) { rotateZ(value); }
+        if (axisToModify[0] && axisToModify[1] && axisToModify[2]) rotate(value);
+        if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateX(value); rotateY(value); }
+        if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateX(value); rotateZ(value); }
+        if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { rotateX(value); }
+        if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { rotateY(value); rotateZ(value); }
+        if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateY(value); }
+        if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateZ(value); }
     }
 
     void rotate(float value)
@@ -88,13 +83,13 @@ public class ModifiableManager : Singleton<ModifiableManager>
     {
         value += 0.5f;
 
-        if (myArray[0] && myArray[1] && myArray[2]) resize(value);
-        if (myArray[0] && myArray[1] && !myArray[2]) { resizeX(value); resizeY(value); }
-        if (myArray[0] && !myArray[1] && myArray[2]) { resizeX(value); resizeZ(value); }
-        if (myArray[0] && !myArray[1] && !myArray[2]) { resizeX(value); }
-        if (!myArray[0] && myArray[1] && myArray[2]) { resizeY(value); resizeZ(value); }
-        if (!myArray[0] && myArray[1] && !myArray[2]) { resizeY(value); }
-        if (!myArray[0] && !myArray[1] && myArray[2]) { resizeZ(value); }
+        if (axisToModify[0] && axisToModify[1] && axisToModify[2]) resize(value);
+        if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeX(value); resizeY(value); }
+        if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeX(value); resizeZ(value); }
+        if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { resizeX(value); }
+        if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { resizeY(value); resizeZ(value); }
+        if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeY(value); }
+        if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeZ(value); }
     }
 
     void resize(float value)
@@ -124,13 +119,13 @@ public class ModifiableManager : Singleton<ModifiableManager>
     {
         value *= MAX_REPOSITION_VALUE;
 
-        if (myArray[0] && myArray[1] && myArray[2]) reposition(value);
-        if (myArray[0] && myArray[1] && !myArray[2]) { repositionX(value); repositionY(value); }
-        if (myArray[0] && !myArray[1] && myArray[2]) { repositionX(value); repositionZ(value); }
-        if (myArray[0] && !myArray[1] && !myArray[2]) { repositionX(value); }
-        if (!myArray[0] && myArray[1] && myArray[2]) { repositionY(value); repositionZ(value); }
-        if (!myArray[0] && myArray[1] && !myArray[2]) { repositionY(value); }
-        if (!myArray[0] && !myArray[1] && myArray[2]) { repositionZ(value); }
+        if (axisToModify[0] && axisToModify[1] && axisToModify[2]) reposition(value);
+        if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionX(value); repositionY(value); }
+        if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionX(value); repositionZ(value); }
+        if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { repositionX(value); }
+        if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { repositionY(value); repositionZ(value); }
+        if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionY(value); }
+        if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionZ(value); }
     }
 
     void reposition(float value)

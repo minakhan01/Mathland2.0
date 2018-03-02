@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonsUI : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class ButtonsUI : MonoBehaviour
     public GameObject playUI;
     public GameObject buildUI;
     public GameObject editObjectUI;
+    public Slider slider;
 
     // Use this for initialization
     void Start()
@@ -76,16 +78,19 @@ public class ButtonsUI : MonoBehaviour
 	//MODIFY_SCREEN
     public void MoveButtonHandler()
     {
+        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
         Debug.Log("Move");
     }
 
     public void ResizeButtonHandler()
     {
+        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.RESIZE;
         Debug.Log("Resize");
     }
 
     public void RotateButtonHandler()
     {
+        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
         Debug.Log("Rotate");
     }
 
@@ -96,20 +101,24 @@ public class ButtonsUI : MonoBehaviour
 
 	public void XAxisHandler()
 	{
+        ModifiableManager.Instance.axisToModify[0] = !ModifiableManager.Instance.axisToModify[0];
 		Debug.Log("XAxisHandler");
 	}
 
 	public void YAxisHandler()
 	{
+        ModifiableManager.Instance.axisToModify[1] = !ModifiableManager.Instance.axisToModify[1];
 		Debug.Log("YAxisHandler");
 	}
 
 	public void ZAxisHandler()
 	{
+        ModifiableManager.Instance.axisToModify[2] = !ModifiableManager.Instance.axisToModify[2];
 		Debug.Log("ZAxisHandler");
 	}
 
 	public void SliderHandler() {
+        ModifiableManager.Instance.sliderValueChangeHandler(slider.value);
 		Debug.Log("Handle slider value");
 	}
 }
