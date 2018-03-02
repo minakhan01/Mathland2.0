@@ -19,13 +19,11 @@ public class ButtonsUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
 	//PLAY_SCREEN
@@ -144,7 +142,7 @@ public class ButtonsUI : MonoBehaviour
 	}
 
 	public void SliderHandler() {
-        ModifiableManager.Instance.sliderValueChangeHandler(slider.value);
-		Debug.Log("Handle slider value");
+		ModifiableManager.Instance.sliderValueChangeHandler (slider.value);
+		Debug.Log ("Handle slider value");
 	}
 }

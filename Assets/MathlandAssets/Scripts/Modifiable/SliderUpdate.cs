@@ -37,8 +37,10 @@ public class SliderUpdate : MonoBehaviour {
 		}
 
 		bool sliderValueChanged = ModifiableManager.Instance.sliderValueChanged;
+		Debug.Log ("before change " + sliderValueChanged);
 
 		if (!sliderValueChanged) {
+			Debug.Log ("Slider value not changed");
 			return;
 		}
 		ModifiableManager.ModifyingAction action = ModifiableManager.Instance.action;
@@ -49,9 +51,11 @@ public class SliderUpdate : MonoBehaviour {
 		} else if (action == ModifiableManager.ModifyingAction.RESIZE) {
 			resizeAction(value);
 		} else if (action == ModifiableManager.ModifyingAction.ROTATE) {
+			Debug.Log ("Call rotateAction");
 			rotateAction(value);
 		}
-		sliderValueChanged = false;
+		ModifiableManager.Instance.sliderValueChanged = false;
+		Debug.Log ("after change " + sliderValueChanged);
 		
 	}
 

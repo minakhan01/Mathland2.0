@@ -41,6 +41,7 @@ public class ModifiableManager : Singleton<ModifiableManager>
     {
 		sliderValue = value;
 		sliderValueChanged = true;
+		Debug.Log ("SliderValueChangeHandler Called");
     }
 
 //    #region Rotate
