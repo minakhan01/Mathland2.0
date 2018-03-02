@@ -10,8 +10,6 @@ public class ModifiableManager : Singleton<ModifiableManager>
     public int MAX_ROTATION_VALUE = 360; 
     public int MAX_REPOSITION_VALUE = 1000;
 
-    public Slider slider;
-
     public enum ModifyingAction { ROTATE, RESIZE, REPOSITION };
     public bool[] axisToModify = { true, true, true };
     public ModifyingAction action { get; set; }
