@@ -4241,11 +4241,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e89365ef668a742e683951dfc5ca044c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceField: {fileID: 0}
-  VelocityVector: {fileID: 0}
+  ForceField: {fileID: 1080795162658340, guid: 7fbb0221388c14227a8f24f13456479a, type: 2}
+  VelocityVector: {fileID: 1320043251653084, guid: 541af2bf342f0454d980f3ec37f99d90,
+    type: 2}
   Rope: {fileID: 0}
-  Cube: {fileID: 0}
-  Ramp: {fileID: 0}
+  Cube: {fileID: 1006255409773050, guid: d028103a764094a4e9555b7d348207bd, type: 2}
+  Ramp: {fileID: 1966564738976112, guid: bf86cbaa812ec463e996895cf9d3d289, type: 2}
 --- !u!4 &1539175446
 Transform:
   m_ObjectHideFlags: 0
