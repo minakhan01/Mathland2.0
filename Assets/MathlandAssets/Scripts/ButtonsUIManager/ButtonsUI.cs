@@ -106,7 +106,7 @@ public class ButtonsUI : MonoBehaviour
 
 	public void XAxisHandler()
 	{
-		if (ModifiableManager.Instance.axisToModify []) {
+		if (ModifiableManager.Instance.axisToModify [0]) {
 			XButton.targetGraphic.color = Color.black;
 		} else {
 			XButton.targetGraphic.color = Color.white;
