@@ -51,6 +51,7 @@ public class SliderUpdate : MonoBehaviour {
 		} else if (action == ModifiableManager.ModifyingAction.ROTATE) {
 			rotateAction(value);
 		}
+		sliderValueChanged = false;
 		
 	}
 
