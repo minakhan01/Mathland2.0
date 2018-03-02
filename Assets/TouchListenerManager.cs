@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
 
-public class TouchListenerManager : Singleton<GameStateManager> {
+public class TouchListenerManager : Singleton<TouchListenerManager> {
 
 	// Use this for initialization
 	void Start () {
@@ -22,6 +22,9 @@ public class TouchListenerManager : Singleton<GameStateManager> {
 
 	private bool objectDragging()
 	{
+		Debug.Log ("objectDragging");
+		Debug.Log ("TouchInputManager.CurrentTouchState: " + TouchInputManager.CurrentTouchState);
+		Debug.Log ("TouchInputManager.selectedObject: " + TouchInputManager.selectedObject);
 		return (TouchInputManager.CurrentTouchState == TouchInputManager.TouchState.Repositioning && TouchInputManager.selectedObject != null);
 	}
 
@@ -35,24 +38,25 @@ public class TouchListenerManager : Singleton<GameStateManager> {
 	
 	// Update is called once per frame
 	void Update () {
-
-		// for testing
+//		Debug.Log ("update");
 		if (objectDragging())
 		{
 			Debug.Log ("dragging detected");
-			TouchInputManager.selectedObject.transform.position = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, 1);
+			Transform previous = TouchInputManager.selectedObject.transform; 
+			TouchInputManager.selectedObject.transform.position = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, previous.position.z);
 		}
-
 
 		if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.PLAY_SCREEN && longPressObjectDetected ()) 
 		{
 			Debug.Log ("change to modify screen");
 			GameStateManager.switchDisplayState ();
 		} 
-		else if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.MODIFY_SCREEN && objectDragging())
-		{
-			TouchInputManager.selectedObject.transform.position = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, 1);
-		}
+//		else if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.MODIFY_SCREEN && objectDragging())
+//		{
+//			Debug.Log ("dragging detected");
+//			Transform previous = TouchInputManager.selectedObject.transform; 
+//			TouchInputManager.selectedObject.transform.position = new Vector3(Input.touches[0].position.x, Input.touches[0].position.y, previous.position.z);
+//		}
 		else if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.MODIFY_SCREEN && longPressOutsideDetected ()) 
 		{
 			Debug.Log ("change to play screen");
