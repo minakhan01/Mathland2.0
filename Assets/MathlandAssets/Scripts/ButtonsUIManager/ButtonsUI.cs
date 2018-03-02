@@ -108,10 +108,10 @@ public class ButtonsUI : MonoBehaviour
 	{
 		if (ModifiableManager.Instance.axisToModify [0]) {
 			Debug.Log ("Change X button to black");
-			XButton.colors.normalColor = Color.black;
+			XButton.targetGraphic.color = Color.black;
 		} else {
 			Debug.Log ("Change X button to white");
-			XButton.colors.normalColor = Color.white;
+			XButton.targetGraphic.color = Color.white;
 		}
         ModifiableManager.Instance.axisToModify[0] = !ModifiableManager.Instance.axisToModify[0];
 		Debug.Log("XAxisHandler");
