@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class ModifiableManager : Singleton<ModifiableManager>
 {
-    const int MAX_ROTATION_VALUE = 360;
-    const int MAX_REPOSITION_VALUE = 1000;
+    public int MAX_ROTATION_VALUE = 360; 
+    public int MAX_REPOSITION_VALUE = 1000;
 
     public Slider slider;
 
@@ -20,7 +20,6 @@ public class ModifiableManager : Singleton<ModifiableManager>
     // Use this for initialization
     void Start()
     {
-        //slider.onValueChanged.AddListener(delegate { ValueChangeCheck(); });
 
     }
 
@@ -58,21 +57,25 @@ public class ModifiableManager : Singleton<ModifiableManager>
 
     void rotate(float value)
     {
+        Debug.Log("Rotating all");
         selectedObjectToModify.GetComponent<Rotate>().rotate(selectedObjectToModify, value);
     }
 
     void rotateX(float value)
     {
+        Debug.Log("Rotating X");
         selectedObjectToModify.GetComponent<Rotate>().rotateX(selectedObjectToModify, value);
     }
 
     void rotateY(float value)
     {
+        Debug.Log("Rotating Y");
         selectedObjectToModify.GetComponent<Rotate>().rotateY(selectedObjectToModify, value);
     }
 
     void rotateZ(float value)
     {
+        Debug.Log("Rotating Z");
         selectedObjectToModify.GetComponent<Rotate>().rotateZ(selectedObjectToModify, value);
     }
 
