@@ -14,27 +14,27 @@ public class Reposition : MonoBehaviour {
 		
 	}
 
-    public void reposition(GameObject selectedObjectToModify, float valueSlider)
+    public void reposition(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.position + new Vector3(valueSlider, valueSlider, valueSlider);
-        selectedObjectToModify.transform.localPosition = newValue;
+        Vector3 newValue = transform.position + new Vector3(valueSlider, valueSlider, valueSlider);
+        transform.localPosition = newValue;
     }
 
-    public void repositionX(GameObject selectedObjectToModify, float valueSlider)
+    public void repositionX(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(valueSlider, 0, 0);
-        selectedObjectToModify.transform.localPosition = newValue;
+        Vector3 newValue = transform.localPosition + new Vector3(valueSlider, 0, 0);
+        transform.localPosition = newValue;
     }
 
-    public void repositionY(GameObject selectedObjectToModify, float valueSlider)
+    public void repositionY(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(0, valueSlider, 0);
-        selectedObjectToModify.transform.localPosition = newValue;
+        Vector3 newValue = transform.localPosition + new Vector3(0, valueSlider, 0);
+        transform.localPosition = newValue;
     }
 
-    public void repositionZ(GameObject selectedObjectToModify, float valueSlider)
+    public void repositionZ(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localPosition + new Vector3(0, 0, valueSlider);
-        selectedObjectToModify.transform.localPosition = newValue;
+        Vector3 newValue = transform.localPosition + new Vector3(0, 0, valueSlider);
+        transform.localPosition = newValue;
     }
 }

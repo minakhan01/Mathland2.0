@@ -9,6 +9,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rotate))]
 
+[RequireComponent(typeof(SliderUpdate))]
+
 public class Modifiable : MonoBehaviour {
 
 	// Use this for initialization

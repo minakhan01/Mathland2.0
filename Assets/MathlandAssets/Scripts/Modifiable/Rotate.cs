@@ -14,26 +14,26 @@ public class Rotate : MonoBehaviour {
 		
 	}
 
-    public void rotate (GameObject selectedObjectToModify, float valueSlider) {
-        Vector3 newValue = selectedObjectToModify.transform.localEulerAngles + new Vector3(valueSlider, valueSlider, valueSlider);
-        selectedObjectToModify.transform.Rotate(newValue);
+    public void rotate (float valueSlider) {
+        Vector3 newValue = transform.localEulerAngles + new Vector3(valueSlider, valueSlider, valueSlider);
+        transform.Rotate(newValue);
     }
 
-    public void rotateX(GameObject selectedObjectToModify, float valueSlider)
+    public void rotateX(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localEulerAngles + new Vector3(valueSlider, 0, 0);
-        selectedObjectToModify.transform.Rotate(newValue);
+        Vector3 newValue = transform.localEulerAngles + new Vector3(valueSlider, 0, 0);
+        transform.Rotate(newValue);
     }
 
-    public void rotateY(GameObject selectedObjectToModify, float valueSlider)
+    public void rotateY(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localEulerAngles + new Vector3(0, valueSlider, 0);
-        selectedObjectToModify.transform.Rotate(newValue);
+        Vector3 newValue = transform.localEulerAngles + new Vector3(0, valueSlider, 0);
+        transform.Rotate(newValue);
     }
 
-    public void rotateZ(GameObject selectedObjectToModify, float valueSlider)
+    public void rotateZ(float valueSlider)
     {
-        Vector3 newValue = selectedObjectToModify.transform.localEulerAngles + new Vector3(0, 0, valueSlider);
-        selectedObjectToModify.transform.Rotate(newValue);
+        Vector3 newValue = transform.localEulerAngles + new Vector3(0, 0, valueSlider);
+        transform.Rotate(newValue);
     }
 }
