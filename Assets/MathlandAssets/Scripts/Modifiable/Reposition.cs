@@ -43,7 +43,7 @@ public class Reposition : MonoBehaviour {
     }
 
 	float convertSliderValue(float originalValue) {
-		float convertedValue = (originalValue + 0.5f)*2f - 1f;
+		float convertedValue = ((originalValue + 0.5f)*2f - 1f);
 		return convertedValue;
 	}
 }

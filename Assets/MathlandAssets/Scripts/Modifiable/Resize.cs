@@ -17,27 +17,37 @@ public class Resize : MonoBehaviour {
 		
 	}
 
+	private float minMaxValue(float val)
+	{
+		if (val < 0.1f) // minimum boundary
+			return 0.1f;
+		else if (val > 1.5f) // maximum boundary
+			return 1.5f;
+		else
+			return val;
+	}
+
     public void resize(float valueSlider)
     {
-		Vector3 newValue = transform.localScale*convertSliderValue(valueSlider);
+		Vector3 newValue =new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
 
     public void resizeX(float valueSlider)
     {
-		Vector3 newValue = new Vector3(transform.localScale.x*convertSliderValue(valueSlider) , transform.localScale.y, transform.localScale.z);
+		Vector3 newValue = new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , transform.localScale.y, transform.localScale.z);
 		transform.localScale = newValue;
     }
 
     public void resizeY(float valueSlider)
     {
-		Vector3 newValue = new Vector3(transform.localScale.x , transform.localScale.y*convertSliderValue(valueSlider), transform.localScale.z);
+		Vector3 newValue = new Vector3(transform.localScale.x , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), transform.localScale.z);
         transform.localScale = newValue;
     }
 
     public void resizeZ(float valueSlider)
     {
-		Vector3 newValue = new Vector3(transform.localScale.x , transform.localScale.y, transform.localScale.z*convertSliderValue(valueSlider));
+		Vector3 newValue = new Vector3(transform.localScale.x , transform.localScale.y, minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
 
