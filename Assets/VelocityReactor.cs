@@ -78,11 +78,10 @@ public class VelocityReactor : MonoBehaviour {
 			float magnitudeCurrentForceVector = representationArrow.transform.localScale.x * 5;
 			Vector3 directionCurrentForceVector = - representationArrow.transform.right.normalized;
 
-			//calculate the experienced force vector... and do nothing with it?
+			//calculate the experienced force vector... and add it to the net Force
 			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
+			updateExperiencedForce += experiencedforce;
 
-			//reset gravity to 0? why are we doing this?
-            Physics.gravity = new Vector3(0,0,0);
         }
 
 
@@ -98,12 +97,12 @@ public class VelocityReactor : MonoBehaviour {
 			Vector3 directionCurrentForceVector = -1 * reparrow.transform.right.normalized;
 			float magnitudeCurrentForceVector = reparrow.transform.localScale.x * 10;
 
-			//calculate the entire experience force vector
+			//calculate the entire experience force vector and add it to the Net Experienced Force
 			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
-
-			//set gravity to this force???
-            Physics.gravity = experiencedforce;
+			updateExperiencedForce += experiencedforce;
         }
+
+		//this is where updateInitVelocity and updateExperiencedForce should get returned
 			
     }
 
