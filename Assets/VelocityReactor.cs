@@ -42,7 +42,7 @@ public class VelocityReactor : MonoBehaviour {
     }
 
 
-    public void updateVelocityandForce()
+	public void updateVelocityandForce(out Vector3 netVelocity,out Vector3 netForce)
     {
         //initialize the total velocity and experienced force which represents
 		//ball's vel / force after all game tool interactions
@@ -103,6 +103,8 @@ public class VelocityReactor : MonoBehaviour {
         }
 
 		//this is where updateInitVelocity and updateExperiencedForce should get returned
+		netVelocity = updateInitVelocity;
+		netForce = updateExperiencedForce;
 			
     }
 
