@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class VelocityReactor : MonoBehaviour {
     // Use this for initialization
-    public Vector3 initialvel = new Vector3(0, 0, 0);
-    public Vector3 experiencedforce= new Vector3(0, 0, 0);
-    private List<GameObject> velocities = new List<GameObject>();
-    private List<GameObject> forces = new List<GameObject>();
+    public Vector3 objectInitVelocity = new Vector3(0, 0, 0);
+    public Vector3 experiencedforce = new Vector3(0, 0, 0);
+    public List<GameObject> velocities = new List<GameObject>();
+    public List<GameObject> forces = new List<GameObject>();
     public GameObject fullScaledforce;
+
+
     void Start () {
         GetComponent<Rigidbody>().isKinematic=true;
     }
@@ -37,52 +39,71 @@ public class VelocityReactor : MonoBehaviour {
         forces.Remove(gb);
         Debug.Log("force removed now there are " + forces.Count + " force vectors attached");
     }
+
+
     public void updateVelocityandForce()
     {
-        
-        Vector3 total_velocity = new Vector3(0, 0, 0);
-        experiencedforce= new Vector3(0, 0, 0);
-        //if (velocities == null) Debug.Log("veloicities is null");
-        for (int i = 0; i < velocities.Count; i++)
-        {
-            //Debug.Log("THIS RUNS VELZONE" + i);
-            GameObject curr_velvect = velocities[i];
-            //Debug.Log("The currvect for index "+i+" is "+curr_velvect);
-            float size = curr_velvect.transform.localScale.x*5;
-            Vector3 VelocityVector =-1*size * curr_velvect.transform.right.normalized;
-            total_velocity += VelocityVector;
+        //initialize the total velocity and experienced force which represents
+		//ball's vel / force after all game tool interactions
+        Vector3 updateInitVelocity = new Vector3(0, 0, 0);
+        Vector3 updateExperiencedForce = new Vector3(0, 0, 0);
 
-        }
-        //if (velocities == null) Debug.Log("veloicities is null");
-        for (int i = 0; i < forces.Count; i++)
+
+
+		//start by looping through all game objects that contribute to velocity
+        foreach (GameObject velocityAffectingGameObject in velocities)
         {
-            //Debug.Log("THIS RUNS FORCEZONE"+i);
-            GameObject curr_forvect = forces[i];
-            GameObject reparrow = curr_forvect.GetComponent<ArrowManager>().representativearrow;
-            //if (reparrow == null) Debug.Log("reparrow is null bruh");
-            Vector3 FDirection = -1 * reparrow.transform.right.normalized;
-            float magnitude = reparrow.transform.localScale.x * 5;
-            experiencedforce = magnitude * FDirection;
+			//get the magnitude of velocity arrow
+			float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 5; 
+
+			//impose this magnitude on the direction of the arrow
+			Vector3 VelocityVector = - magnitudeCurrentForceVelocity * 
+				velocityAffectingGameObject.transform.right.normalized;
+
+			//add this to the ball's total velocity
+			updateInitVelocity += VelocityVector;
+        }
+
+		//set our gameobject's initial velocity to be the total velocity of gameobjects acting on it
+		objectInitVelocity = updateInitVelocity;
+
+
+
+		//loop through all game objects that apply a force on the ball
+		foreach (GameObject forceAffectingGameObject in forces)
+        {
+			// get magnitude and direction of the current force affecting our object
+			GameObject representationArrow = forceAffectingGameObject.GetComponent<ArrowManager>().representativearrow;
+			float magnitudeCurrentForceVector = representationArrow.transform.localScale.x * 5;
+			Vector3 directionCurrentForceVector = - representationArrow.transform.right.normalized;
+
+			//calculate the experienced force vector... and do nothing with it?
+			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
+
+			//reset gravity to 0? why are we doing this?
             Physics.gravity = new Vector3(0,0,0);
-
-            //Debug.Log("Normal force of " + experiencedforce + "applies.");
         }
+
+
+
+		//what is fullScaledforce?? why is this a public gameobject??
         if (fullScaledforce != null)
         {
-            GameObject reparrow = fullScaledforce.GetComponent<SliderReactor>().child.GetComponent<ArrowManager>().representativearrow;
-            if (reparrow == null) Debug.Log("reparrow is null bruh fullscalezone");
-            Vector3 FDirection = -1 * reparrow.transform.right.normalized;
-            float magnitude = reparrow.transform.localScale.x * 10;
-            experiencedforce = magnitude * FDirection;
-            //Debug.Log("VelocityReactor force: " + experiencedforce); 
+			//assuming this is a unique gameobject that applies force, so get its arrow representation
+            GameObject reparrow = 
+				fullScaledforce.GetComponent<SliderReactor>().child.GetComponent<ArrowManager>().representativearrow;
+            
+			//get the direction and magnitude of this unique gameobject's effects on force
+			Vector3 directionCurrentForceVector = -1 * reparrow.transform.right.normalized;
+			float magnitudeCurrentForceVector = reparrow.transform.localScale.x * 10;
+
+			//calculate the entire experience force vector
+			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
+
+			//set gravity to this force???
             Physics.gravity = experiencedforce;
-
-            //Debug.Log("Fullscaled force of " + experiencedforce + "applies.");
         }
-        initialvel = total_velocity;
-
-
-        //transform.gameObject.GetComponent<Rigidbody>().velocity=initialvel;
+			
     }
 
 
