@@ -9,8 +9,6 @@ public class TrajectoryPredictorScript : MonoBehaviour {
     public Vector3 velocity_of_ball = new Vector3(0, 0, 0);
     public GameObject objToLaunch;
 	public Transform launchPoint;
-
-
 	// Use this for initialization
 	void Start () {
 		tp = GetComponent<TrajectoryPredictor>();
