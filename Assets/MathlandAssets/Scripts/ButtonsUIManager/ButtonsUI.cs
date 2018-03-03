@@ -16,6 +16,10 @@ public class ButtonsUI : MonoBehaviour
 	public Button YButton;
 	public Button ZButton;
 
+	public Button MoveButton;
+	public Button ResizeButton;
+	public Button RotateButton;
+
     // Use this for initialization
     void Start()
     {
@@ -80,19 +84,37 @@ public class ButtonsUI : MonoBehaviour
 	//MODIFY_SCREEN
     public void MoveButtonHandler()
     {
-        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
+		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
+		if (ModifiableManager.Instance.actionSelected[0]) {
+			MoveButton.targetGraphic.color = Color.black;
+		} else {
+			MoveButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.actionSelected[0] = !ModifiableManager.Instance.actionSelected[0];
         Debug.Log("Move");
     }
 
     public void ResizeButtonHandler()
     {
         ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.RESIZE;
+		if (ModifiableManager.Instance.actionSelected[1]) {
+			ResizeButton.targetGraphic.color = Color.black;
+		} else {
+			ResizeButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.actionSelected[1] = !ModifiableManager.Instance.actionSelected[1];
         Debug.Log("Resize");
     }
 
     public void RotateButtonHandler()
     {
-        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
+		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
+		if (ModifiableManager.Instance.actionSelected[2]) {
+			RotateButton.targetGraphic.color = Color.black;
+		} else {
+			RotateButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.actionSelected[2] = !ModifiableManager.Instance.actionSelected[2];
         Debug.Log("Rotate");
     }
 
