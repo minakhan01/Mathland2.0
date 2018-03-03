@@ -5,8 +5,8 @@ using Lean.Touch;
 
 public class SliderUpdate : MonoBehaviour {
 
-	public int MAX_ROTATION_VALUE = 360; 
-	public int MAX_REPOSITION_VALUE = 1000;
+	public float MAX_ROTATION_VALUE = 1.1f; 
+	public float MAX_REPOSITION_VALUE = 1.1f;
 
 	[Tooltip("Does rotation require an object to be selected?")]
 	public LeanSelectable RequiredSelectable;
@@ -37,10 +37,8 @@ public class SliderUpdate : MonoBehaviour {
 		}
 
 		bool sliderValueChanged = ModifiableManager.Instance.sliderValueChanged;
-		Debug.Log ("before change " + sliderValueChanged);
 
 		if (!sliderValueChanged) {
-			Debug.Log ("Slider value not changed");
 			return;
 		}
 		ModifiableManager.ModifyingAction action = ModifiableManager.Instance.action;
@@ -51,25 +49,23 @@ public class SliderUpdate : MonoBehaviour {
 		} else if (action == ModifiableManager.ModifyingAction.RESIZE) {
 			resizeAction(value);
 		} else if (action == ModifiableManager.ModifyingAction.ROTATE) {
-			Debug.Log ("Call rotateAction");
 			rotateAction(value);
 		}
 		ModifiableManager.Instance.sliderValueChanged = false;
-		Debug.Log ("after change " + sliderValueChanged);
-		
 	}
 
 	#region Rotate
 	void rotateAction (float value) {
-		value *= MAX_ROTATION_VALUE;
-
-		if (axisToModify[0] && axisToModify[1] && axisToModify[2]) rotate(value);
-		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateX(value); rotateY(value); }
-		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateX(value); rotateZ(value); }
-		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { rotateX(value); }
-		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { rotateY(value); rotateZ(value); }
-		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateY(value); }
-		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateZ(value); }
+		//value *= MAX_ROTATION_VALUE;
+		Debug.Log(value);
+		value *= 0.00005f;
+		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) rotate(value);
+		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateX(value); rotateY(value); }
+		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateX(value); rotateZ(value); }
+		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { rotateX(value); }
+		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { rotateY(value); rotateZ(value); }
+		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateY(value); }
+		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateZ(value); }
 	}
 
 	void rotate(float value)
@@ -101,15 +97,16 @@ public class SliderUpdate : MonoBehaviour {
 	#region resize
 	void resizeAction(float value)
 	{
-		value += 0.5f;
+		//value += 0.00005f;
+		value *= 0.00005f;
 
-		if (axisToModify[0] && axisToModify[1] && axisToModify[2]) resize(value);
-		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeX(value); resizeY(value); }
-		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeX(value); resizeZ(value); }
-		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { resizeX(value); }
-		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { resizeY(value); resizeZ(value); }
-		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeY(value); }
-		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeZ(value); }
+		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) resize(value);
+		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeX(value); resizeY(value); }
+		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeX(value); resizeZ(value); }
+		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { resizeX(value); }
+		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { resizeY(value); resizeZ(value); }
+		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeY(value); }
+		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeZ(value); }
 	}
 
 	void resize(float value)
@@ -137,15 +134,15 @@ public class SliderUpdate : MonoBehaviour {
 	#region Reposition
 	void repositionAction(float value)
 	{
-		value *= MAX_REPOSITION_VALUE;
-
-		if (axisToModify[0] && axisToModify[1] && axisToModify[2]) reposition(value);
-		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionX(value); repositionY(value); }
-		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionX(value); repositionZ(value); }
-		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { repositionX(value); }
-		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { repositionY(value); repositionZ(value); }
-		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionY(value); }
-		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionZ(value); }
+		//value *= MAX_REPOSITION_VALUE;
+		value *= 0.0005f;
+		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) reposition(value);
+		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionX(value); repositionY(value); }
+		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionX(value); repositionZ(value); }
+		if (!axisToModify[0] && axisToModify[1] && axisToModify[2]) { repositionX(value); }
+		if (axisToModify[0] && !axisToModify[1] && !axisToModify[2]) { repositionY(value); repositionZ(value); }
+		if (axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionY(value); }
+		if (axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionZ(value); }
 	}
 
 	void reposition(float value)

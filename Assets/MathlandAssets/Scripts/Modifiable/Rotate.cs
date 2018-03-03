@@ -15,7 +15,9 @@ public class Rotate : MonoBehaviour {
 	}
 
 	float convertSliderValue(float originalValue) {
-		float convertedValue = (originalValue + 0.5f)*2*Mathf.PI - 1f;
+		float convertedValue = (originalValue + 0.5f)*2*Mathf.PI - Mathf.PI;
+		Debug.Log ("Converted value " + convertedValue);
+		//float convertedValue = (originalValue)*2*Mathf.PI;
 		return convertedValue;
 	}
 
