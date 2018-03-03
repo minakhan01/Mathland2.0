@@ -5,8 +5,8 @@ using Lean.Touch;
 
 public class SliderUpdate : MonoBehaviour {
 
-	public float MAX_ROTATION_VALUE = 1.1f; 
-	public float MAX_REPOSITION_VALUE = 1.1f;
+	public int MAX_ROTATION_VALUE = 360; 
+	public int MAX_REPOSITION_VALUE = 1000;
 
 	[Tooltip("Does rotation require an object to be selected?")]
 	public LeanSelectable RequiredSelectable;
@@ -56,9 +56,6 @@ public class SliderUpdate : MonoBehaviour {
 
 	#region Rotate
 	void rotateAction (float value) {
-		//value *= MAX_ROTATION_VALUE;
-		Debug.Log(value);
-		value *= 0.00005f;
 		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) rotate(value);
 		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { rotateX(value); rotateY(value); }
 		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { rotateX(value); rotateZ(value); }
@@ -97,9 +94,6 @@ public class SliderUpdate : MonoBehaviour {
 	#region resize
 	void resizeAction(float value)
 	{
-		//value += 0.00005f;
-		value *= 0.00005f;
-
 		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) resize(value);
 		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { resizeX(value); resizeY(value); }
 		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { resizeX(value); resizeZ(value); }
@@ -134,8 +128,6 @@ public class SliderUpdate : MonoBehaviour {
 	#region Reposition
 	void repositionAction(float value)
 	{
-		//value *= MAX_REPOSITION_VALUE;
-		value *= 0.0005f;
 		if (!axisToModify[0] && !axisToModify[1] && !axisToModify[2]) reposition(value);
 		if (!axisToModify[0] && !axisToModify[1] && axisToModify[2]) { repositionX(value); repositionY(value); }
 		if (!axisToModify[0] && axisToModify[1] && !axisToModify[2]) { repositionX(value); repositionZ(value); }
