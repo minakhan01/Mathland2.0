@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColtonTrajectoryPredictor : MonoBehaviour {
+public class Mathland2TrajectoryPredictor : MonoBehaviour {
 	//create a trajectory predictor in code
 	TrajectoryPredictor tp;
 	Rigidbody rb;

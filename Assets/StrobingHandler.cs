@@ -8,6 +8,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	public GameObject ball;
 	private int updateCount = 0;
 	public GameObject ballPrefab;
+//	public Color colorOfStrobe;
 
     private List<GameObject> strobes = new List<GameObject>();
 
@@ -31,6 +32,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 
 				//get our ballInstance color and set it to the same color as our TrailRenderer
 				Color color = ballMesh.material.color;
+//				color = colorOfStrobe;
 				color = ball.GetComponent<TrailRenderer>().startColor;
 
 				//make trail appropriately transparent, and measured via velocity
@@ -40,6 +42,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				{
 					color.a = transparency;
 				}
+
 				ballMesh.material.color = color;
 
 
