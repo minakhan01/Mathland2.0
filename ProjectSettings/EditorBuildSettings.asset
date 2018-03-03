@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene1_button_draggingTrail.unity
     guid: ffdbb60dee3ae4e3a91ad3da8336988f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene_Milestone1_Achieved.unity
     guid: b4648f56772bb41e5b2f0a69c6d9e4cc
+  - enabled: 1
+    path: Assets/TestProjectile.unity
+    guid: a6bb3ef2bfe944cc2aaa7894f0a265d4
