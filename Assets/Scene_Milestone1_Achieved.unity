@@ -2792,6 +2792,9 @@ MonoBehaviour:
   XButton: {fileID: 898422270}
   YButton: {fileID: 2097242676}
   ZButton: {fileID: 809545786}
+  MoveButton: {fileID: 863283835}
+  ResizeButton: {fileID: 385199925}
+  RotateButton: {fileID: 1518102569}
 --- !u!1 &797696953
 GameObject:
   m_ObjectHideFlags: 0
