@@ -8,6 +8,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	public GameObject ball;
 	private int updateCount = 0;
 	public GameObject ballPrefab;
+//	public Color colorOfStrobe;
 
     private List<GameObject> strobes = new List<GameObject>();
 
@@ -20,23 +21,37 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 
     // Update is called once per frame
     void Update () {
-		if (BallStateManager.Instance.currentBallState == BallStateManager.BallState.Launched) {
+//		if (BallStateManager.Instance.currentBallState == BallStateManager.BallState.Launched) {
+		if (true) {
 			updateCount++;
 			if (updateCount % 10 == 0)
 			{
-				Debug.Log("creating an instance");
+				//instantiate our strobe ball
 				GameObject ballInstance = Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
 				MeshRenderer ballMesh = ballInstance.GetComponent<MeshRenderer>();
+
+				//get our ballInstance color and set it to the same color as our TrailRenderer
 				Color color = ballMesh.material.color;
+//				color = colorOfStrobe;
 				color = ball.GetComponent<TrailRenderer>().startColor;
+
+				//make trail appropriately transparent, and measured via velocity
 				float velocity = ball.GetComponent<Rigidbody>().velocity.magnitude;
 				float transparency = velocity / 25 + 0.5f;
 				if (transparency < 1)
 				{
 					color.a = transparency;
 				}
+
 				ballMesh.material.color = color;
-				ballInstance.GetComponentInChildren<BallInformation>().setVelocity(velocity);
+
+
+				//set strobe ball velocity to 0 and not affected by gravity
+				ballInstance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+				ballInstance.GetComponent<Rigidbody> ().useGravity = false;
+
+				//once we create 'BallInformation' property
+//				ballInstance.GetComponentInChildren<BallInformation>().setVelocity(velocity);
 
 
                 strobes.Add(ballInstance); 
@@ -61,7 +76,8 @@ public class StrobingHandler : Singleton<StrobingHandler> {
     {
         Debug.Log("Clearing all strobes");
 
-        ball.GetComponent<TrailRenderer>().Clear(); 
+		//add this back in once we get strobes working on their own
+//        ball.GetComponent<TrailRenderer>().Clear(); 
 
         foreach (GameObject strobe in strobes)  {
             Destroy(strobe); 
