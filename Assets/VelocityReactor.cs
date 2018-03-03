@@ -6,8 +6,8 @@ public class VelocityReactor : MonoBehaviour {
     // Use this for initialization
     public Vector3 initialvel = new Vector3(0, 0, 0);
     public Vector3 experiencedforce= new Vector3(0, 0, 0);
-    public List<GameObject> velocities = new List<GameObject>();
-    public List<GameObject> forces = new List<GameObject>();
+    private List<GameObject> velocities = new List<GameObject>();
+    private List<GameObject> forces = new List<GameObject>();
     public GameObject fullScaledforce;
     void Start () {
         GetComponent<Rigidbody>().isKinematic=true;

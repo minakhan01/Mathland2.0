@@ -4078,6 +4078,10 @@ Prefab:
       propertyPath: m_Parameters.colorGradient.key1.b
       value: 0.8235294
       objectReference: {fileID: 0}
+    - target: {fileID: 1999649283055584, guid: 24229ee5f708f4ed4898b6bf6f3a25b9, type: 2}
+      propertyPath: m_Name
+      value: SphereStrobeEx
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 24229ee5f708f4ed4898b6bf6f3a25b9, type: 2}
   m_IsPrefabParent: 0
