@@ -12,6 +12,7 @@ public class ModifiableManager : Singleton<ModifiableManager>
 
     public enum ModifyingAction { ROTATE, RESIZE, REPOSITION };
     public bool[] axisToModify = { true, true, true };
+	public bool[] actionSelected = { true, true, true };
     public ModifyingAction action { get; set; }
     public GameObject selectedObjectToModify;
 
@@ -41,7 +42,6 @@ public class ModifiableManager : Singleton<ModifiableManager>
     {
 		sliderValue = value;
 		sliderValueChanged = true;
-		Debug.Log ("SliderValueChangeHandler Called");
     }
 
 //    #region Rotate
