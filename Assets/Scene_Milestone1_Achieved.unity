@@ -1136,7 +1136,7 @@ RectTransform:
   m_GameObject: {fileID: 299875776}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2101246928}
   m_Father: {fileID: 248042283}
@@ -1173,21 +1173,21 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 348498656}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7882517, y: 0.78825164, z: 0.78825146}
   m_Children:
   - {fileID: 728836180}
   - {fileID: 1368439575}
   - {fileID: 120966280}
   - {fileID: 1490671675}
   - {fileID: 192191026}
-  m_Father: {fileID: 590290422}
-  m_RootOrder: 1
+  m_Father: {fileID: 1717702040}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -211.50002, y: 159.45683}
   m_SizeDelta: {x: 800, y: 200}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!1 &373784896
@@ -1903,7 +1903,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 794424762}
-  - {fileID: 348498657}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2788,6 +2787,7 @@ MonoBehaviour:
   playUI: {fileID: 1903804400}
   buildUI: {fileID: 2081467626}
   editObjectUI: {fileID: 1836649383}
+  ObjectsUI: {fileID: 348498656}
   slider: {fileID: 248042284}
   XButton: {fileID: 898422270}
   YButton: {fileID: 2097242676}
@@ -2795,6 +2795,10 @@ MonoBehaviour:
   MoveButton: {fileID: 863283835}
   ResizeButton: {fileID: 385199925}
   RotateButton: {fileID: 1518102569}
+  GraphButton: {fileID: 1194051592}
+  PlayButton: {fileID: 645110802}
+  RewindButton: {fileID: 1021847229}
+  AddButton: {fileID: 1717702041}
 --- !u!1 &797696953
 GameObject:
   m_ObjectHideFlags: 0
@@ -4760,7 +4764,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.2716048, y: 1.2716048, z: 1.2716048}
-  m_Children: []
+  m_Children:
+  - {fileID: 348498657}
   m_Father: {fileID: 1903804401}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}

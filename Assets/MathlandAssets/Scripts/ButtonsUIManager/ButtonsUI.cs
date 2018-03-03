@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class ButtonsUI : MonoBehaviour
 {
-
-    public GameObject settingsBtn;
     public GameObject playUI;
     public GameObject buildUI;
     public GameObject editObjectUI;
+	public GameObject ObjectsUI;
     public Slider slider;
 
+	// Buttons for Build Mode 
 	public Button XButton;
 	public Button YButton;
 	public Button ZButton;
@@ -19,6 +19,12 @@ public class ButtonsUI : MonoBehaviour
 	public Button MoveButton;
 	public Button ResizeButton;
 	public Button RotateButton;
+
+	// Buttons for Add Mode
+	public Button GraphButton;
+	public Button PlayButton;
+	public Button RewindButton;
+	public Button AddButton;
 
     // Use this for initialization
     void Start()
@@ -34,21 +40,50 @@ public class ButtonsUI : MonoBehaviour
     public void AddButtonHandler()
     {
         Debug.Log("Add Object");
+		if (ModifiableManager.Instance.playMenuSelected[0]) {
+			AddButton.targetGraphic.color = Color.black;
+			GetComponent<ButtonsUI>().ObjectsUI.SetActive(true);
+		} else {
+			AddButton.targetGraphic.color = Color.white;
+			GetComponent<ButtonsUI>().ObjectsUI.SetActive(false);
+		}
+		ModifiableManager.Instance.playMenuSelected[0] = !ModifiableManager.Instance.playMenuSelected[0];
     }
 
     public void PlayButtonHandler()
     {
         Debug.Log("Play");
+		if (ModifiableManager.Instance.playMenuSelected[1]) {
+			PlayButton.targetGraphic.color = Color.black;
+		} else {
+			PlayButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
+
     }
 
     public void RewindButtonHandler()
     {
         Debug.Log("Rewind");
+		if (ModifiableManager.Instance.playMenuSelected[2]) {
+			RewindButton.targetGraphic.color = Color.black;
+		} else {
+			RewindButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.playMenuSelected[2] = !ModifiableManager.Instance.playMenuSelected[2];
+
     }
 
     public void GraphButtonHandler()
     {
         Debug.Log("Graph");
+		if (ModifiableManager.Instance.playMenuSelected[3]) {
+			GraphButton.targetGraphic.color = Color.black;
+		} else {
+			GraphButton.targetGraphic.color = Color.white;
+		}
+		ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
+
     }
 
 	public void AddForceButtonHandler()

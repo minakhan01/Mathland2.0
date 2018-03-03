@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
     public GameObject buttons; 
 
@@ -24,23 +25,15 @@ public class UIManager : MonoBehaviour
         if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY)
         {
             //PLAY MODE
-            hideEditObjectUI();
             hideBuildUI();
             showPlayUI();
         }
-        else if (GameStateManager.currentGameState == GameStateManager.gameState.TOOL_MENU)
-        {
-            //EDIT MODE
-            hidePlayUI();
-            hideBuildUI();
-            showEditObjectUI();
-        } else
+        else if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD)
         {
             //BUILD MODE
-            hideEditObjectUI();
             hidePlayUI();
-            showBuildUI();
-        }
+			showBuildUI ();
+        } 
     }
 
 
@@ -53,7 +46,7 @@ public class UIManager : MonoBehaviour
     {
         buttons.GetComponent<ButtonsUI>().buildUI.SetActive(false);
     }
-
+		
     void showPlayUI()
     {
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(true);
@@ -63,15 +56,4 @@ public class UIManager : MonoBehaviour
     {
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(false);
     }
-
-    void showEditObjectUI()
-    {
-        buttons.GetComponent<ButtonsUI>().editObjectUI.SetActive(true);
-    }
-
-    void hideEditObjectUI()
-    {
-        buttons.GetComponent<ButtonsUI>().editObjectUI.SetActive(false);
-    }
-
 }
