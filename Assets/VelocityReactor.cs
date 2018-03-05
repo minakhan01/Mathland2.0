@@ -10,6 +10,8 @@ public class VelocityReactor : MonoBehaviour {
     public List<GameObject> velocities = new List<GameObject>();
     public List<GameObject> forces = new List<GameObject>();
     public GameObject fullScaledforce;
+	public Vector3 updateInitVelocity = new Vector3(0, 0, 0);
+	public Vector3 updateExperiencedForce = new Vector3(0, 0, 0);
 
 
     void Start () {
@@ -42,12 +44,11 @@ public class VelocityReactor : MonoBehaviour {
     }
 
 
-	public void updateVelocityandForce(out Vector3 netVelocity,out Vector3 netForce)
+	public void updateVelocityandForce()
     {
         //initialize the total velocity and experienced force which represents
 		//ball's vel / force after all game tool interactions
-        Vector3 updateInitVelocity = new Vector3(0, 0, 0);
-        Vector3 updateExperiencedForce = new Vector3(0, 0, 0);
+       
 
 
 
@@ -101,10 +102,6 @@ public class VelocityReactor : MonoBehaviour {
 			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
 			updateExperiencedForce += experiencedforce;
         }
-
-		//this is where updateInitVelocity and updateExperiencedForce should get returned
-		netVelocity = updateInitVelocity;
-		netForce = updateExperiencedForce;
 			
     }
 

@@ -124,7 +124,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 
         ballPosition = ball.transform.position;
         rbi.isKinematic = false;
-        rbi.velocity = ball.GetComponent<VelocityReactor>().initialvel;
+        rbi.velocity = ball.GetComponent<VelocityReactor>().updateInitVelocity;
         rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
         Debug.Log("Ball should have moved as vel is " + rbi.velocity + " and force is " + ball.GetComponent<VelocityReactor>().experiencedforce);
         //rbi.isKinematic = false;

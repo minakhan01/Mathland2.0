@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114558054925326424}
   - component: {fileID: 114004730285740700}
   - component: {fileID: 114776948091875740}
+  - component: {fileID: 114066697744229560}
   m_Layer: 0
   m_Name: VelocityVectorArrow
   m_TagString: Untagged
@@ -138,6 +139,17 @@ MonoBehaviour:
   Camera: {fileID: 0}
   RotateAxis: {x: 0, y: 0, z: 1}
   Relative: 0
+--- !u!114 &114066697744229560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320043251653084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4c4696efde840c78687d495df6a1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114349294304911046
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -44,8 +44,8 @@ public class TrajectoryPredictorScript : MonoBehaviour {
             if (objToLaunch == null) Debug.Log("objToLaunch is null");
             else if (objToLaunch.GetComponent<VelocityReactor>() != null) {
                 objToLaunch.GetComponent<VelocityReactor>().updateVelocityandForce();
-                velocity_of_ball = objToLaunch.GetComponent<VelocityReactor>().initialvel;
-                force_exp = objToLaunch.GetComponent<VelocityReactor>().experiencedforce;
+				velocity_of_ball = objToLaunch.GetComponent<VelocityReactor>().updateInitVelocity;
+                force_exp = objToLaunch.GetComponent<VelocityReactor>().updateExperiencedForce;
                 
             }
             else

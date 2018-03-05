@@ -6,8 +6,8 @@ public class ArrowManager : MonoBehaviour {
 
 
 	public GameObject arrow;
-	public float ArrowManagerScale=1.0f;
-	public Quaternion ArrowRotation;
+	public float ArrowManagerScale=0.01f;
+	public Quaternion ArrowRotation=new Quaternion(0,0,0,0);
 	public GameObject representativearrow;
 	// Use this for initialization
 
@@ -35,7 +35,7 @@ public class ArrowManager : MonoBehaviour {
 	{
 		//shrink down the huge arrow
 
-		arrow.transform.localScale = new Vector3(0.04f, 0.04f, 0.04f)*ArrowManagerScale;
+		arrow.transform.localScale = new Vector3(0.0025f, 0.0025f, 0.0025f)*ArrowManagerScale;
 		arrow.transform.rotation = ArrowRotation;
 		//Destroy all children
 		foreach (Transform child in transform)
@@ -44,9 +44,9 @@ public class ArrowManager : MonoBehaviour {
 		}
 
 		//Get the size of the forceItem object now
-		float ForceBoxSize = transform.localScale.x/10f;
+		float ForceBoxSize = transform.localScale.x;
 		Debug.Log("ForceBoxSize is " + ForceBoxSize);
-		int numOfArrows=2*(int)Mathf.Lerp(1,6,ForceBoxSize/4);
+		int numOfArrows=(int)Mathf.Lerp(1,6,ForceBoxSize/4);
 		float spacing = ForceBoxSize / numOfArrows;
 		Debug.Log("Arrows num is " + numOfArrows);
 		//TODO
