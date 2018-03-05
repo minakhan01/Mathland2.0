@@ -31,6 +31,12 @@ public class GameStateManager : Singleton<GameStateManager> {
 		Debug.Log ("Switch Display State");
 	}
 
+	public static void resetDisplayState()
+	{
+		GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
+		UIManager.Instance.switchUI ();	
+	}
+
 	void Start() {
 		//initialize starting gameState to BUILD for now
 	}

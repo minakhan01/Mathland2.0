@@ -150,8 +150,9 @@ public class ButtonsUI : MonoBehaviour
 
     public void DeleteButtonHandler()
     {
-		GameToolManager.Instance.DestroyAllGameTools ();
+		GameToolManager.Instance.DestroyObject();
         Debug.Log("Delete");
+		GameStateManager.resetDisplayState ();
     }
 
 	public void XAxisHandler()

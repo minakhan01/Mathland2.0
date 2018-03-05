@@ -40,6 +40,12 @@ public class GameToolManager : Singleton<GameToolManager> {
 		if(gameToolList.Contains(gb))gameToolList.Remove (gb);
 	}
 
+	public void DestroyObject()
+	{
+		Destroy (SelectedObjectManager.Instance.selectedObject);
+		SelectedObjectManager.Instance.selectedObject = null;
+	}
+
 	public void DestroyAllGameTools(){
 		foreach (GameObject gb in gameToolList) {
 			gameToolList.Remove (gb);

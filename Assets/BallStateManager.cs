@@ -37,7 +37,7 @@ public class BallStateManager : Singleton<BallStateManager> {
         {
             if (ball.GetComponent<VelocityReactor>() != null)
             {
-                rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
+                //rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
             }
         }
     }
@@ -125,8 +125,8 @@ public class BallStateManager : Singleton<BallStateManager> {
         ballPosition = ball.transform.position;
         rbi.isKinematic = false;
         rbi.velocity = ball.GetComponent<VelocityReactor>().updateInitVelocity;
-        rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
-        Debug.Log("Ball should have moved as vel is " + rbi.velocity + " and force is " + ball.GetComponent<VelocityReactor>().experiencedforce);
+        //rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
+        //Debug.Log("Ball should have moved as vel is " + rbi.velocity + " and force is " + ball.GetComponent<VelocityReactor>().experiencedforce);
         //rbi.isKinematic = false;
         //rbi.useGravity = true;
         //rbi.velocity = ball.transform.forward * PhysicsManager.Instance.force;

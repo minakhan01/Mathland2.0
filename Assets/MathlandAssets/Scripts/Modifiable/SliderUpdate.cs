@@ -36,6 +36,8 @@ public class SliderUpdate : MonoBehaviour {
 			return;
 		}
 
+		SelectedObjectManager.Instance.selectedObject = RequiredSelectable.gameObject;
+
 		bool sliderValueChanged = ModifiableManager.Instance.sliderValueChanged;
 
 		if (!sliderValueChanged) {

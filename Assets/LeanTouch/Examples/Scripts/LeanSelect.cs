@@ -53,7 +53,7 @@ namespace Lean.Touch
 		public bool DeselectOnUp;
 
 		[Tooltip("The maximum amount of selectables that can be selected at once (0 = Unlimited)")]
-		public int MaxSelectables;
+		public int MaxSelectables=1;
 
 		// NOTE: This must be called from somewhere
 		public void SelectStartScreenPosition(LeanFinger finger)

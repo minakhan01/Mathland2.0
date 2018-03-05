@@ -51,12 +51,14 @@ namespace Lean.Touch
 
 		protected override void OnSelect(LeanFinger finger)
 		{
+			GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
 			GameStateManager.switchDisplayState ();
 			ChangeColor(SelectedColor);
 		}
 
 		protected override void OnDeselect()
 		{
+			GameStateManager.currentGameState = GameStateManager.gameState.BUILD;
 			GameStateManager.switchDisplayState ();
 			ChangeColor(DefaultColor);
 		}
