@@ -5,26 +5,30 @@ using UnityEngine.UI;
 
 public class ButtonsUI : MonoBehaviour
 {
+    [Header("Button groups")]
     public GameObject playUI;
     public GameObject buildUI;
     public GameObject editObjectUI;
 	public GameObject ObjectsUI;
     public Slider slider;
 
+    [Header("Axis")]
 	// Buttons for Build Mode 
-	public Button XButton;
-	public Button YButton;
-	public Button ZButton;
+    public ButtonProperties XButton;
+    public ButtonProperties YButton;
+    public ButtonProperties ZButton;
 
-	public Button MoveButton;
-	public Button ResizeButton;
-	public Button RotateButton;
+    [Header("Build Mode")]
+    public ButtonProperties MoveButton;
+    public ButtonProperties ResizeButton;
+    public ButtonProperties RotateButton;
 
+    [Header("Add Mode")]
 	// Buttons for Add Mode
-	public Button GraphButton;
-	public Button PlayButton;
-	public Button RewindButton;
-	public Button AddButton;
+    public ButtonProperties GraphButton;
+    public ButtonProperties PlayButton;
+    public ButtonProperties RewindButton;
+    public ButtonProperties AddButton;
 
     // Use this for initialization
     void Start()
@@ -36,28 +40,39 @@ public class ButtonsUI : MonoBehaviour
     {
     }
 
+    void switchAction (ModifiableManager.ModifyingAction action) {
+        switch (action) {
+            case ModifiableManager.ModifyingAction.REPOSITION:
+                MoveButton.switchState();
+                ResizeButton.cancelState();
+                RotateButton.cancelState();
+                break;
+            case ModifiableManager.ModifyingAction.ROTATE:
+                RotateButton.switchState();
+                MoveButton.cancelState();
+                ResizeButton.cancelState();
+                break;
+            case ModifiableManager.ModifyingAction.RESIZE:
+                ResizeButton.switchState();
+                MoveButton.cancelState();
+                RotateButton.cancelState();
+                break;
+        }
+    }
+
 	//PLAY_SCREEN
     public void AddButtonHandler()
     {
         Debug.Log("Add Object");
-		if (ModifiableManager.Instance.playMenuSelected[0]) {
-			AddButton.targetGraphic.color = Color.black;
-			GetComponent<ButtonsUI>().ObjectsUI.SetActive(true);
-		} else {
-			AddButton.targetGraphic.color = Color.white;
-			GetComponent<ButtonsUI>().ObjectsUI.SetActive(false);
-		}
+        ObjectsUI.SetActive(!ObjectsUI.activeSelf);
+        AddButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[0] = !ModifiableManager.Instance.playMenuSelected[0];
     }
 
     public void PlayButtonHandler()
     {
         Debug.Log("Play");
-		if (ModifiableManager.Instance.playMenuSelected[1]) {
-			PlayButton.targetGraphic.color = Color.black;
-		} else {
-			PlayButton.targetGraphic.color = Color.white;
-		}
+        PlayButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
 
     }
@@ -65,11 +80,7 @@ public class ButtonsUI : MonoBehaviour
     public void RewindButtonHandler()
     {
         Debug.Log("Rewind");
-		if (ModifiableManager.Instance.playMenuSelected[2]) {
-			RewindButton.targetGraphic.color = Color.black;
-		} else {
-			RewindButton.targetGraphic.color = Color.white;
-		}
+        RewindButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[2] = !ModifiableManager.Instance.playMenuSelected[2];
 
     }
@@ -77,11 +88,7 @@ public class ButtonsUI : MonoBehaviour
     public void GraphButtonHandler()
     {
         Debug.Log("Graph");
-		if (ModifiableManager.Instance.playMenuSelected[3]) {
-			GraphButton.targetGraphic.color = Color.black;
-		} else {
-			GraphButton.targetGraphic.color = Color.white;
-		}
+        GraphButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
 
     }
@@ -119,36 +126,24 @@ public class ButtonsUI : MonoBehaviour
 	//MODIFY_SCREEN
     public void MoveButtonHandler()
     {
+        switchAction(ModifiableManager.ModifyingAction.REPOSITION);
 		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
-		if (ModifiableManager.Instance.actionSelected[0]) {
-			MoveButton.targetGraphic.color = Color.black;
-		} else {
-			MoveButton.targetGraphic.color = Color.white;
-		}
 		ModifiableManager.Instance.actionSelected[0] = !ModifiableManager.Instance.actionSelected[0];
         Debug.Log("Move");
     }
 
     public void ResizeButtonHandler()
     {
+        switchAction(ModifiableManager.ModifyingAction.RESIZE);
         ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.RESIZE;
-		if (ModifiableManager.Instance.actionSelected[1]) {
-			ResizeButton.targetGraphic.color = Color.black;
-		} else {
-			ResizeButton.targetGraphic.color = Color.white;
-		}
 		ModifiableManager.Instance.actionSelected[1] = !ModifiableManager.Instance.actionSelected[1];
         Debug.Log("Resize");
     }
 
     public void RotateButtonHandler()
     {
+        switchAction(ModifiableManager.ModifyingAction.ROTATE);
 		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
-		if (ModifiableManager.Instance.actionSelected[2]) {
-			RotateButton.targetGraphic.color = Color.black;
-		} else {
-			RotateButton.targetGraphic.color = Color.white;
-		}
 		ModifiableManager.Instance.actionSelected[2] = !ModifiableManager.Instance.actionSelected[2];
         Debug.Log("Rotate");
     }
@@ -161,39 +156,22 @@ public class ButtonsUI : MonoBehaviour
 
 	public void XAxisHandler()
 	{
-		if (ModifiableManager.Instance.axisToModify [0]) {
-			Debug.Log ("Change X button to black");
-			XButton.targetGraphic.color = Color.black;
-		} else {
-			Debug.Log ("Change X button to white");
-			XButton.targetGraphic.color = Color.white;
-		}
+	
+        XButton.switchState();
         ModifiableManager.Instance.axisToModify[0] = !ModifiableManager.Instance.axisToModify[0];
 		Debug.Log("XAxisHandler");
 	}
 
 	public void YAxisHandler()
 	{
-		if (ModifiableManager.Instance.axisToModify [1]) {
-			Debug.Log ("Change Y button to black");
-			YButton.targetGraphic.color = Color.black;
-		} else {
-			Debug.Log ("Change Y button to white");
-			YButton.targetGraphic.color = Color.white;
-		}
+        YButton.switchState();
         ModifiableManager.Instance.axisToModify[1] = !ModifiableManager.Instance.axisToModify[1];
 		Debug.Log("YAxisHandler");
 	}
 
 	public void ZAxisHandler()
 	{
-		if (ModifiableManager.Instance.axisToModify [2]) {
-			Debug.Log ("Change Z button to black");
-			ZButton.targetGraphic.color = Color.black;
-		} else {
-			Debug.Log ("Change Z button to white");
-			ZButton.targetGraphic.color = Color.white;
-		}
+        ZButton.switchState();
         ModifiableManager.Instance.axisToModify[2] = !ModifiableManager.Instance.axisToModify[2];
 		Debug.Log("ZAxisHandler");
 	}
@@ -202,4 +180,5 @@ public class ButtonsUI : MonoBehaviour
 		ModifiableManager.Instance.sliderValueChangeHandler (slider.value);
 		Debug.Log ("Handle slider value");
 	}
+
 }

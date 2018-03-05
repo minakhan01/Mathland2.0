@@ -52,8 +52,20 @@ public class UIManager : Singleton<UIManager>
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(true);
     }
 
+    void hideObjectsUI()
+    {
+        buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(false);
+    }
+
+    void showObjectsUI()
+    {
+        buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(true);
+    }
+
     void hidePlayUI()
     {
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(false);
     }
+
+
 }
