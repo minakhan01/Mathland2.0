@@ -5,7 +5,7 @@ using UnityEngine;
 public class VelocityReactor : MonoBehaviour {
     // Use this for initialization
     public Vector3 objectInitVelocity = new Vector3(0, 0, 0);
-    public Vector3 experiencedforce = new Vector3(0, 0, 0);
+    public Vector3 experiencedForce = new Vector3(0, 0, 0);
 
     public List<GameObject> velocities = new List<GameObject>();
     public List<GameObject> forces = new List<GameObject>();
@@ -80,8 +80,8 @@ public class VelocityReactor : MonoBehaviour {
 			Vector3 directionCurrentForceVector = - representationArrow.transform.right.normalized;
 
 			//calculate the experienced force vector... and add it to the net Force
-			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
-			updateExperiencedForce += experiencedforce;
+			updateExperiencedForce = magnitudeCurrentForceVector * directionCurrentForceVector;
+			experiencedForce += updateExperiencedForce;
 
         }
 
@@ -99,9 +99,10 @@ public class VelocityReactor : MonoBehaviour {
 			float magnitudeCurrentForceVector = reparrow.transform.localScale.x * 10;
 
 			//calculate the entire experience force vector and add it to the Net Experienced Force
-			experiencedforce = magnitudeCurrentForceVector * directionCurrentForceVector;
-			updateExperiencedForce += experiencedforce;
+			updateExperiencedForce = magnitudeCurrentForceVector * directionCurrentForceVector;
+			experiencedForce += updateExperiencedForce;
         }
+			
 			
     }
 

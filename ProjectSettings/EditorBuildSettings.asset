@@ -32,6 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/TestProjectile.unity
     guid: a6bb3ef2bfe944cc2aaa7894f0a265d4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scene_PhysicsBehavior.unity
     guid: ddbbb997de71349989fdad4bff837e50
