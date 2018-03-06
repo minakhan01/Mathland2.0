@@ -35,6 +35,7 @@ public class GameToolManager : Singleton<GameToolManager> {
 		Debug.Log ("The list now is");
 		Debug.Log(gameToolList);
 	}
+
 	public void DestroyGameTool(GameObject gb){
 		GameObject.Destroy (gb);
 		if(gameToolList.Contains(gb))gameToolList.Remove (gb);
@@ -42,7 +43,9 @@ public class GameToolManager : Singleton<GameToolManager> {
 
 	public void DestroyObject()
 	{
+        
 		Destroy (SelectedObjectManager.Instance.selectedObject);
+        if (gameToolList.Contains(SelectedObjectManager.Instance.selectedObject)) gameToolList.Remove(SelectedObjectManager.Instance.selectedObject);
 		SelectedObjectManager.Instance.selectedObject = null;
 	}
 
