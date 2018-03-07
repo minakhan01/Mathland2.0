@@ -30,7 +30,7 @@ public class GameStateManager : Singleton<GameStateManager> {
 		}
 		else if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY) {
 			GameStateManager.currentGameState = GameStateManager.gameState.BUILD;
-			GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
+			//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
 			UIManager.Instance.switchUI ();
 		}
 		Debug.Log ("Switch Display State");

@@ -22,19 +22,19 @@ public class StrobingHandler : Singleton<StrobingHandler> {
     // Update is called once per frame
     void Update () {
 //		if (BallStateManager.Instance.currentBallState == BallStateManager.BallState.Launched) {
-		if (true) {
+		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
-			if (updateCount % 10 == 0)
+			if (updateCount % 4 == 0)
 			{
 				//instantiate our strobe ball
-				GameObject ballInstance = Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
+				GameObject ballInstance = (GameObject) Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
 				MeshRenderer ballMesh = ballInstance.GetComponent<MeshRenderer>();
-
+				Debug.Log ("Strobe after MeshRendere");
 				//get our ballInstance color and set it to the same color as our TrailRenderer
 				Color color = ballMesh.material.color;
 //				color = colorOfStrobe;
 				color = ball.GetComponent<TrailRenderer>().startColor;
-
+				Debug.Log ("Strobe after color");
 				//make trail appropriately transparent, and measured via velocity
 				float velocity = ball.GetComponent<Rigidbody>().velocity.magnitude;
 				float transparency = velocity / 25 + 0.5f;
@@ -42,14 +42,14 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				{
 					color.a = transparency;
 				}
-
+				Debug.Log ("Strobe after velocity");
 				ballMesh.material.color = color;
 
-
+				Debug.Log ("Strobe after material");
 				//set strobe ball velocity to 0 and not affected by gravity
-				ballInstance.GetComponent<Rigidbody>().velocity = Vector3.zero;
-				ballInstance.GetComponent<Rigidbody> ().useGravity = false;
-
+				//ballInstance.GetComponent<Rigidbody>().velocity = Vector3.zero;
+				//ballInstance.GetComponent<Rigidbody>().useGravity = false;
+				Debug.Log ("Strobe after rigidbody");
 				//once we create 'BallInformation' property
 //				ballInstance.GetComponentInChildren<BallInformation>().setVelocity(velocity);
 

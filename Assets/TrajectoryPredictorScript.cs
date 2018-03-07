@@ -56,8 +56,10 @@ public class TrajectoryPredictorScript : MonoBehaviour {
 			// if we have a velocityReactor component, update its initVel / experiencedForce
             if (objToLaunch.GetComponent<VelocityReactor>() != null) {
                 objToLaunch.GetComponent<VelocityReactor>().updateVelocityandForce();
-				velocity_of_ball = objToLaunch.GetComponent<VelocityReactor>().objectInitVelocity;
-				force_exp = objToLaunch.GetComponent<VelocityReactor>().experiencedForce;
+
+				velocity_of_ball = objToLaunch.GetComponent<VelocityReactor>().updateInitVelocity;
+				force_exp = objToLaunch.GetComponent<VelocityReactor>().updateExperiencedForce;
+				Debug.Log ("Velocity of ball is " + velocity_of_ball + " and force is " + force_exp);
             }
 
 			//otherwise, reset the initVel and experiencedForce to 0

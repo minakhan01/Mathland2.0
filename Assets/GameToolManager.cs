@@ -5,7 +5,7 @@ using HoloToolkit.Unity;
 
 public class GameToolManager : Singleton<GameToolManager> {
 
-	public GameObject ForceField, VelocityVector, Rope, Cube, Ramp;
+	public GameObject ForceField, VelocityVector, Rope, Cube, Ramp,ball;
 	private List<GameObject> gameToolList = new List<GameObject> ();
 
 	public void CreateForceField() {
@@ -13,7 +13,9 @@ public class GameToolManager : Singleton<GameToolManager> {
 	}
 
 	public void CreateVelocityVector() {
-		CreateGameToolPrefab (VelocityVector);
+		GameObject velocityVector = (GameObject) CreateGameToolPrefab (VelocityVector);
+		velocityVector.GetComponent<VelocityManager> ().BALL = ball;
+
 	}
 
 	public void CreateRope() {
@@ -29,11 +31,12 @@ public class GameToolManager : Singleton<GameToolManager> {
 		CreateGameToolPrefab (Ramp);
 	}
 
-	private void CreateGameToolPrefab(GameObject prefab){
+	private GameObject CreateGameToolPrefab(GameObject prefab){
 		GameObject gb=Instantiate (prefab, new Vector3(1,0,5),Quaternion.identity) as GameObject;
 		gameToolList.Add (gb);
 		Debug.Log ("The list now is");
 		Debug.Log(gameToolList);
+		return gb;
 	}
 
 	public void DestroyGameTool(GameObject gb){

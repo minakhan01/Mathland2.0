@@ -24,6 +24,7 @@ public class VelocityManager : MonoBehaviour {
             gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
             collidee.gameObject.GetComponent<VelocityReactor>().addVelocityVector(gameObject);
+			Debug.Log ("VelocityVector and ball collided!");
         }
     }
     private void OnTriggerExit(Collider collidee)
@@ -33,6 +34,7 @@ public class VelocityManager : MonoBehaviour {
             //BALL = null;
             gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
             collidee.gameObject.GetComponent<VelocityReactor>().removeVelocityVector(gameObject);
+			Debug.Log ("VelocityVector and ball collision removed");
             //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Inactive");
         }
     }
