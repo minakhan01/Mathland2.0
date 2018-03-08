@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VelocityManager : MonoBehaviour {
+public class VelocityTrigger : MonoBehaviour {
     public Vector3 VelocityVector=new Vector3(0,0,0);
     public float VelocityVectorMagnitude=1.0f;
     public GameObject BALL;

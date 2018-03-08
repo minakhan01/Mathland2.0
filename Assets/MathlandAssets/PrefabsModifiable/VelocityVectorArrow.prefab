@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 114607286574761392}
   - component: {fileID: 114611335371259392}
   - component: {fileID: 114611607433811736}
+  - component: {fileID: 114343237004295192}
   m_Layer: 0
   m_Name: VelocityVectorArrow
   m_TagString: Untagged
@@ -178,6 +179,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9868899f3054d3597697261528e9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114343237004295192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320043251653084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 937ff14eb0ea54fe4b5057478eb9764e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VelocityVector: {x: 0, y: 0, z: 0}
+  VelocityVectorMagnitude: 1
+  BALL: {fileID: 0}
 --- !u!114 &114349294304911046
 MonoBehaviour:
   m_ObjectHideFlags: 1
