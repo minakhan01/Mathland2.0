@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ForcefieldApplier : MonoBehaviour {
 	public GameObject siblingarrow;
+	public Vector3 updateExperiencedForce = new Vector3(0, 0, 0);
 
 	// Use this for initialization
 	void Start () {
@@ -15,12 +16,13 @@ public class ForcefieldApplier : MonoBehaviour {
 	void Update () {
 		
 	}
+		
 	void OnTriggerEnter(Collider collidee)
 
 	{
 		if (collidee.gameObject.GetComponent<VelocityReactor>() != null)
 		{
-			collidee.gameObject.GetComponent<VelocityReactor>().addForceVector(siblingarrow);
+			collidee.gameObject.GetComponent<ForceResponse>().addForceVector(siblingarrow);
 			//AffectedObjects.Add(collidee.gameObject);
 			Debug.Log("Thing entered ForceField");
 			siblingarrow.GetComponent<MeshRenderer> ().material.color = Color.blue;
@@ -30,7 +32,7 @@ public class ForcefieldApplier : MonoBehaviour {
 	{
 		if (collidee.gameObject.GetComponent<VelocityReactor>() != null)
 		{
-			collidee.gameObject.GetComponent<VelocityReactor>().removeForceVector(siblingarrow);
+			collidee.gameObject.GetComponent<ForceResponse>().removeForceVector(siblingarrow);
 			//AffectedObjects.Remove(collidee.gameObject);
 			//collidee.gameObject.GetComponent<VelocityReactor>().experiencedforce = new Vector3(0, 0, 0);
 			Debug.Log("Thing escaped ForceField");

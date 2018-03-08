@@ -23,7 +23,7 @@ public class VelocityTrigger : MonoBehaviour {
             BALL = collidee.gameObject;
             gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
             //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
-            collidee.gameObject.GetComponent<VelocityReactor>().addVelocityVector(gameObject);
+			collidee.gameObject.GetComponent<VelocityResponse>().addVelocityVector(gameObject);
 			Debug.Log ("VelocityVector and ball collided!");
         }
     }
@@ -33,7 +33,7 @@ public class VelocityTrigger : MonoBehaviour {
         {
             //BALL = null;
             gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-            collidee.gameObject.GetComponent<VelocityReactor>().removeVelocityVector(gameObject);
+			collidee.gameObject.GetComponent<VelocityResponse>().removeVelocityVector(gameObject);
 			Debug.Log ("VelocityVector and ball collision removed");
             //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Inactive");
         }

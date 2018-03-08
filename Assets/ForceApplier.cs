@@ -26,7 +26,7 @@ public class ForceApplier : MonoBehaviour
 				color.a -= 0.6f;
 				gameObject.GetComponent<MeshRenderer>().material.color = color;
 			}
-			collidee.gameObject.GetComponent<VelocityReactor>().addForceVector(gameObject);
+			collidee.gameObject.GetComponent<ForceResponse>().addForceVector(gameObject);
 			AffectedObjects.Add(collidee.gameObject);
 			Debug.Log("Thing entered ForceField");
 		}
@@ -42,7 +42,7 @@ public class ForceApplier : MonoBehaviour
 				gameObject.GetComponent<MeshRenderer>().material.color = color;
 			}
 
-			collidee.gameObject.GetComponent<VelocityReactor>().removeForceVector(gameObject);
+			collidee.gameObject.GetComponent<ForceResponse>().removeForceVector(gameObject);
 			AffectedObjects.Remove(collidee.gameObject);
 			//collidee.gameObject.GetComponent<VelocityReactor>().experiencedforce = new Vector3(0, 0, 0);
 			Debug.Log("Thing escaped ForceField");
@@ -53,7 +53,7 @@ public class ForceApplier : MonoBehaviour
 	{
 		for(int i = 0; i < AffectedObjects.Count; i++)
 		{
-			AffectedObjects[i].GetComponent<VelocityReactor>().removeForceVector(gameObject);
+			AffectedObjects[i].GetComponent<ForceResponse>().removeForceVector(gameObject);
 		}
 	}
 }

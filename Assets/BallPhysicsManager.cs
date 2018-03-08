@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
 
+public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
-public class BallMotionManager : MonoBehaviour {
-
-    private Vector3 ballNetForceExperienced;
-    private Vector3 ballCurrentVelocity;
+	private Vector3 ballNetForceExperienced;
+	private Vector3 ballCurrentVelocity;
 
 	public Vector3 updatedVelocity = new Vector3(0, 0, 0);
 	public Vector3 updatedForce = new Vector3(0, 0, 0);
@@ -15,9 +14,9 @@ public class BallMotionManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
@@ -39,6 +38,4 @@ public class BallMotionManager : MonoBehaviour {
 		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
 
 	}
-
-
 }
