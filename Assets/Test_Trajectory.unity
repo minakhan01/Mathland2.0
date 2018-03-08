@@ -1716,6 +1716,11 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114551510405973462, guid: a08729dcb8420453ab194fd995e3c510,
+        type: 2}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 1729522972}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a08729dcb8420453ab194fd995e3c510, type: 2}
   m_IsPrefabParent: 0
@@ -3244,9 +3249,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef1849d7dfb08e4e826a7b69b4afc27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocityVector: {x: 0, y: 0, z: 0}
-  VelocityVectorMagnitude: 1
-  BALL: {fileID: 1729522972}
 --- !u!114 &1247415977
 MonoBehaviour:
   m_ObjectHideFlags: 0

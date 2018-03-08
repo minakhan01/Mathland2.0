@@ -124,7 +124,7 @@ public class BallStateManager : Singleton<BallStateManager> {
 
         ballPosition = ball.transform.position;
         rbi.isKinematic = false;
-        rbi.velocity = ball.GetComponent<VelocityReactor>().updateInitVelocity;
+		rbi.velocity = BallPhysicsManager.Instance.updatedVelocity;
         //rbi.AddForce(ball.GetComponent<VelocityReactor>().experiencedforce);
         //Debug.Log("Ball should have moved as vel is " + rbi.velocity + " and force is " + ball.GetComponent<VelocityReactor>().experiencedforce);
         //rbi.isKinematic = false;
@@ -150,8 +150,8 @@ public class BallStateManager : Singleton<BallStateManager> {
 //		rbi.useGravity = false;
 		Debug.Log("ball state changed from "+currentBallState+" to reset");
         GameObject.Find("TrajectoryPredictor").GetComponent<TrajectoryPredictorScript>().resetBall();
-        ball.GetComponent<VelocityReactor>().velocities = new List<GameObject>();
-        ball.GetComponent<VelocityReactor>().forces = new List<GameObject>();
+        VelocityResponse.Instance.velocities = new List<GameObject>();
+		ForceResponse.Instance.forces = new List<GameObject>();
         rbi.isKinematic = true;
         
         if (ballJointConnectedBody)

@@ -11,6 +11,8 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	public Vector3 updatedVelocity = new Vector3(0, 0, 0);
 	public Vector3 updatedForce = new Vector3(0, 0, 0);
 
+	public GameObject ball;
+
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +23,7 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 
-			Rigidbody rbi = GetComponent<Rigidbody> ();
+			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
 			rbi.velocity += updatedVelocity;
 			Debug.Log ("velocity of the ball should be" + updatedVelocity);
