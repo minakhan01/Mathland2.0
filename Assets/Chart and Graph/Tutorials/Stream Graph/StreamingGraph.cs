@@ -21,7 +21,7 @@ public class StreamingGraph : MonoBehaviour
 
         for (int i = 0; i < TotalPoints; i++)  //add random points to the graph
         {
-            Graph.DataSource.AddPointToCategory("Player 1", System.DateTime.Now - System.TimeSpan.FromSeconds(x), Random.value * 20f + 10f); // each time we call AddPointToCategory 
+			Graph.DataSource.AddPointToCategory("Player 1", System.DateTime.Now - System.TimeSpan.FromSeconds(x), BallPhysicsManager.Instance.updatedVelocity.magnitude); // each time we call AddPointToCategory 
             Graph.DataSource.AddPointToCategory("Player 2", System.DateTime.Now  - System.TimeSpan.FromSeconds(x), Random.value * 10f); // each time we call AddPointToCategory 
             x -= Random.value * 3f;
             lastX = x;
@@ -32,13 +32,14 @@ public class StreamingGraph : MonoBehaviour
 
     void Update()
     {
-        float time = Time.time;
+		BallPhysicsManager.Instance.updateVelocityandForce ();
+		float time = Time.time;
         if (lastTime + 2f < time)
         {
             lastTime = time;
             lastX += Random.value * 3f;
 //            System.DateTime t = ChartDateUtility.ValueToDate(lastX);
-            Graph.DataSource.AddPointToCategoryRealtime("Player 1", System.DateTime.Now, Random.value * 20f + 10f, 1f); // each time we call AddPointToCategory 
+			Graph.DataSource.AddPointToCategoryRealtime("Player 1", System.DateTime.Now, BallPhysicsManager.Instance.updatedVelocity.magnitude); // each time we call AddPointToCategory 
             Graph.DataSource.AddPointToCategoryRealtime("Player 2", System.DateTime.Now, Random.value * 10f, 1f); // each time we call AddPointToCategory
         }
 
