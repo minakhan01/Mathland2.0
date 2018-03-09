@@ -13,6 +13,8 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
 	public GameObject ball;
 
+    Vector3 initialPosition;
+
 
 	// Use this for initialization
 	void Start () {
@@ -22,13 +24,12 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	// Update is called once per frame
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
-
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
 			rbi.velocity += updatedVelocity;
 			Debug.Log ("velocity of the ball should be" + updatedVelocity);
 			rbi.AddForce(updatedForce); 
-		}
+        }
 	}
 
 
@@ -40,4 +41,12 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
 
 	}
+
+    public void setInitialPosition () {
+        initialPosition = ball.transform.position;
+    }
+
+    public void resetBallPosition() {
+        ball.transform.position = initialPosition;
+    }
 }
