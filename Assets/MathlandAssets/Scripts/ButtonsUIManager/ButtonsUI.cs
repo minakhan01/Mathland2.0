@@ -74,8 +74,16 @@ public class ButtonsUI : MonoBehaviour
         Debug.Log("Play");
         PlayButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
-		GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
+        //BallPhysicsManager.Instance.setInitialPosition();
+        GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
 
+        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+            //Has changed to on
+            BallPhysicsManager.Instance.setInitialPosition();
+        }else {
+            //Has changed to off -> reset
+            BallPhysicsManager.Instance.resetBallPosition();
+        }
     }
 
     public void RewindButtonHandler()
