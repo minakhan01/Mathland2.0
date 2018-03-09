@@ -11,9 +11,9 @@ public class ModifiableManager : Singleton<ModifiableManager>
     public int MAX_REPOSITION_VALUE = 1000;
 
     public enum ModifyingAction { ROTATE, RESIZE, REPOSITION };
-    public bool[] axisToModify = { true, true, true };
-	public bool[] actionSelected = { true, true, true };
-	public bool[] playMenuSelected = { true, true, true, true };
+    public bool[] axisToModify = { true, true, true }; //{X, Y, Z}
+    public bool[] actionSelected = { true, true, true }; //{REPOSITION, RESIZE, ROTATE}
+    public bool[] playMenuSelected = { true, true, true, true }; //{ADD, PLAY, REWIND, DELETE}
     public ModifyingAction action { get; set; }
     public GameObject selectedObjectToModify;
 
