@@ -5,12 +5,12 @@ using HoloToolkit.Unity;
 
 public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 
-	public GameObject vectorTail, vectorHead;
-	private Vector3 initialTailScale;
+	public GameObject velocityTail, velocityHead;
+	private Vector3 initialTailScale, headTailRelativeDistance;
 
 	// Use this for initialization
 	void Start () {
-		initialTailScale = vectorTail.transform.localScale;
+		initialTailScale = velocityTail.transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -23,15 +23,15 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 
 	public void updateVectorArrowPosition()
 	{
-		vectorTail.transform.position = BallPhysicsManager.Instance.ball.transform.position;
-		Vector3 headpos = vectorHead.transform.position;
-		vectorHead.transform.position = new Vector3 (headpos.x, 1.9f*vectorTail.transform.localScale.y, headpos.z);
+		velocityTail.transform.position = BallPhysicsManager.Instance.ball.transform.position;
+		Vector3 headpos = velocityHead.transform.position;
+		velocityHead.transform.position = new Vector3 (headpos.x, 1.9f*velocityTail.transform.localScale.y, headpos.z);
 	}
 
 	public void updateVectorArrowSize()
 	{
 		float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
-		vectorTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
+		velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
 	}
 
 	public void updateVectorArrowAngle()

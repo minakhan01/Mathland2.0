@@ -2758,8 +2758,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789e82820fe184c83965c38fe855eb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vectorTail: {fileID: 899583431}
-  vectorHead: {fileID: 899583430}
+  velocityTail: {fileID: 899583431}
+  velocityHead: {fileID: 899583430}
 --- !u!1001 &960184902
 Prefab:
   m_ObjectHideFlags: 0
