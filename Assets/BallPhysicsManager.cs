@@ -26,6 +26,7 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
+
 			rbi.velocity += updatedVelocity;
 			Debug.Log ("velocity of the ball should be" + updatedVelocity);
 			rbi.AddForce(updatedForce); 

@@ -29,14 +29,14 @@ GameObject:
   - component: {fileID: 114558054925326424}
   - component: {fileID: 114004730285740700}
   - component: {fileID: 114776948091875740}
-  - component: {fileID: 114066697744229560}
   - component: {fileID: 114425127486954758}
   - component: {fileID: 114131569133456336}
   - component: {fileID: 114167958794471698}
   - component: {fileID: 114607286574761392}
   - component: {fileID: 114611335371259392}
   - component: {fileID: 114611607433811736}
-  - component: {fileID: 114343237004295192}
+  - component: {fileID: 65354310918431406}
+  - component: {fileID: 114023726924146354}
   m_Layer: 0
   m_Name: VelocityVectorArrow
   m_TagString: Untagged
@@ -51,8 +51,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1320043251653084}
   m_LocalRotation: {x: -0.5, y: -0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: -1.9512273, y: -4.513145, z: 6.7792788}
-  m_LocalScale: {x: 0.02, y: 0.02, z: 0.02}
+  m_LocalPosition: {x: 0.143, y: 0.026, z: 1}
+  m_LocalScale: {x: 0.006, y: 0.006, z: 0.006}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -106,12 +106,24 @@ MeshCollider:
   m_GameObject: {fileID: 1320043251653084}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 4c2fadd781c844aa18cab7b0d2f3fe0f, type: 3}
+--- !u!65 &65354310918431406
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320043251653084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.4803147, y: 79.13386, z: 29.52756}
+  m_Center: {x: -3.8775904, y: -0.19684982, z: 0.23218632}
 --- !u!95 &95293399416871956
 Animator:
   serializedVersion: 3
@@ -146,7 +158,7 @@ MonoBehaviour:
   Camera: {fileID: 0}
   RotateAxis: {x: 0, y: 0, z: 1}
   Relative: 0
---- !u!114 &114066697744229560
+--- !u!114 &114023726924146354
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -154,9 +166,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1320043251653084}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4c4696efde840c78687d495df6a1f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 937ff14eb0ea54fe4b5057478eb9764e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VelocityVector: {x: 0, y: 0, z: 0}
+  VelocityVectorMagnitude: 1
+  BALL: {fileID: 0}
 --- !u!114 &114131569133456336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -179,20 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c9868899f3054d3597697261528e9fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114343237004295192
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320043251653084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 937ff14eb0ea54fe4b5057478eb9764e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VelocityVector: {x: 0, y: 0, z: 0}
-  VelocityVectorMagnitude: 1
-  BALL: {fileID: 0}
 --- !u!114 &114349294304911046
 MonoBehaviour:
   m_ObjectHideFlags: 1
