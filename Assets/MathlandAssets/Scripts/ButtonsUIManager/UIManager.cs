@@ -32,6 +32,7 @@ public class UIManager : Singleton<UIManager>
         {
             //BUILD MODE
             hidePlayUI();
+            resetBuildUI();
 			showBuildUI ();
         } 
     }
@@ -65,6 +66,11 @@ public class UIManager : Singleton<UIManager>
     void hidePlayUI()
     {
         buttons.GetComponent<ButtonsUI>().playUI.SetActive(false);
+    }
+
+    void resetBuildUI()
+    {
+        buttons.GetComponent<ButtonsUI>().resetBuildButtons();
     }
 
 

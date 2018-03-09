@@ -183,4 +183,14 @@ public class ButtonsUI : MonoBehaviour
 		Debug.Log ("Handle slider value");
 	}
 
+    public void resetBuildButtons () {
+        XButton.cancelState();
+        YButton.cancelState();
+        ZButton.cancelState();
+        MoveButton.cancelState();
+        ResizeButton.cancelState();
+        RotateButton.cancelState();
+        slider.value = 0;
+    }
+
 }
