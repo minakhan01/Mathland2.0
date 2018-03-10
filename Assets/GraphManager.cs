@@ -9,40 +9,32 @@ public class GraphManager : Singleton<GraphManager> {
 
 	public const string VELOCITY = "Velocity";
 	public const string FORCE = "Force";
-//	public List<float> time = new List<float>();
-//	public List<float> velocity = new List<float>();
-	public List<float> force = new List<float>();
-	public GraphChart Graph; 
+	public GraphChart Graph;
+	float lastTime = 0f;
 
 	// Use this for initialization
 	void Start () {
-		
-		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
-
-	public void DisplayGraph(){
-//		if (Graph != null) {
-//			Graph.DataSource.StartBatch ();
-//			Graph.DataSource.ClearCategory (VELOCITY);
-//			Graph.DataSource.ClearCategory (FORCE);
-//
+		//get time in seconds since start of game
+		float time = Time.time;
+		//check to see that 2 seconds have passed
+		if (lastTime + 2f < time)
+		{
+			lastTime = time;
+			//add new (x,y) points to graph--one for VELOCITY and one for FORCE
+//			Graph.DataSource.AddPointToCategoryRealtime(VELOCITY, System.DateTime.Now, BallPhysicsManager.Instance.updatedVelocity.magnitude); // each time we call AddPointToCategory 
+//			Graph.DataSource.AddPointToCategoryRealtime(FORCE, System.DateTime.Now, BallPhysicsManager.Instance.updatedForce.magnitude); // each time we call AddPointToCategory
+			Graph.DataSource.AddPointToCategoryRealtime(VELOCITY, time, BallPhysicsManager.Instance.updatedVelocity.magnitude); // each time we call AddPointToCategory 
+			Graph.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.updatedForce.magnitude); // each time we call AddPointToCategory
 		}
 	}
-
-//	public void addnewValues(){
-//		velocity.Add(BallPhysicsManager.Instance.updatedVelocity.magnitude);
-//		force.Add (BallPhysicsManager.Instance.updatedForce.magnitude);
-//	}
-
-//	private void addtimeValues(){
-//	BallPhysicsManager
-//	}
-//}
+	//hide/show display
+	public void toggleDisplay(){
+		}
+	}
 
 
 	
