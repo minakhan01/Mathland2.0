@@ -9,11 +9,9 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 	private const float ARROW_SCALE_PROPORTIONALITY = 0.1f;
 	private const float INITIAL_ARROW_HEAD_Z_SCALE = 08f;
 
-	//start by getting tail and head children of arrow
+	//intialize tail and head game objects
 	protected GameObject arrowTail;
 	protected GameObject arrowHead;
-
-	// initialize tail scale and relative distance
 	void Start () {
 		arrowTail = gameObject.transform.Find("tailfbd").gameObject;
 		arrowHead = arrowTail.transform.Find("headfbd").gameObject;
@@ -24,17 +22,9 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 	void Update () {
 		BallPhysicsManager.Instance.updateVelocityandForce ();
 		updateForceArrowAngle ();
-		updateForceArrowPosition ();
 		updateForceArrowSize ();
-
-		Debug.Log ("position of arrow is" + gameObject.transform.position);
 	}
-
-	//update tail and head posititions with respect to ball
-	public void updateForceArrowPosition()
-	{
-		//when the ball moves, all its children should move too
-	}
+		
 
 	public void updateForceArrowSize()
 	{
@@ -43,7 +33,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 		//get new scale of arrow and rescale arrow
 		float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
 		float rescaleTail = ballForceMagnitude * ARROW_SCALE_PROPORTIONALITY; 
-		float rescaleHead = (1.0f / ballForceMagnitude) * INITIAL_ARROW_HEAD_Z_SCALE;
+		float rescaleHead = (1.0f / ballForceMagnitude) * INITIAL_ARROW_HEAD_Z_SCALE; //keeps it same size as parent changes
 
 		//rescale arrow
 		arrowTail.transform.localScale = new Vector3 (arrowTail.transform.localScale.x,
@@ -57,11 +47,8 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 
 	public void updateForceArrowAngle()
 	{
-//		Vector3 forceDirectionAngle = Vector3.Angle(Vector3.up, BallPhysicsManager.Instance.updatedForce);
-//		gameObject.transform.localEulerAngles = forceDirectionAngle;
 		transform.rotation = Quaternion.FromToRotation(transform.rotation.eulerAngles, 
 			BallPhysicsManager.Instance.updatedForce);
-		Debug.Log ("direction of local arrow is" + transform.rotation.eulerAngles);
 	}
 }
 
