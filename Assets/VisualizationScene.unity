@@ -2733,10 +2733,25 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 14a1630aa08e9ef48a53ce1b836ae2ff, type: 2}
+<<<<<<< HEAD
     - target: {fileID: 4027084676836970, guid: 6ad232bbc9c534279970c5836c43dcfc, type: 2}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+=======
+    - target: {fileID: 4502051326246628, guid: 6ad232bbc9c534279970c5836c43dcfc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502051326246628, guid: 6ad232bbc9c534279970c5836c43dcfc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4502051326246628, guid: 6ad232bbc9c534279970c5836c43dcfc, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.33
+      objectReference: {fileID: 0}
+>>>>>>> eacc893ba0e7350ae4bf3031b144585c4ed5fdf9
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6ad232bbc9c534279970c5836c43dcfc, type: 2}
   m_IsPrefabParent: 0
@@ -2766,8 +2781,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 789e82820fe184c83965c38fe855eb0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vectorTail: {fileID: 899583431}
-  vectorHead: {fileID: 899583430}
+  velocityTail: {fileID: 899583431}
+  velocityHead: {fileID: 899583430}
 --- !u!1001 &960184902
 Prefab:
   m_ObjectHideFlags: 0

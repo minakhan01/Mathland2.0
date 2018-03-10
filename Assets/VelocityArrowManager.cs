@@ -5,39 +5,38 @@ using HoloToolkit.Unity;
 
 public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 
-	public GameObject vectorTail, vectorHead;
+	public GameObject velocityTail, velocityHead;
 	private Vector3 initialTailScale;
 
 	// Use this for initialization
 	void Start () {
-		initialTailScale = vectorTail.transform.localScale;
+		initialTailScale = velocityTail.transform.localScale;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		BallPhysicsManager.Instance.updateVelocityandForce ();
-		updateVectorArrowAngle ();
-		updateVectorArrowPosition ();
-		updateVectorArrowSize ();
+		updateVelocityArrowAngle ();
+		updateVelocityArrowSize ();
+		updateVelocityArrowPosition ();
 	}
 
-	public void updateVectorArrowPosition()
+	public void updateVelocityArrowPosition()
 	{
-		vectorTail.transform.position = BallPhysicsManager.Instance.ball.transform.position;
-		Vector3 headpos = vectorHead.transform.position;
-		vectorHead.transform.position = new Vector3 (headpos.x, 1.9f*vectorTail.transform.localScale.y, headpos.z);
+		velocityTail.transform.position = BallPhysicsManager.Instance.ball.transform.position;
+		Vector3 vectorTailSize = velocityTail.GetComponent<Renderer>().bounds.size; 
+		velocityHead.transform.position = transform.position + (Vector3.Scale(velocityTail.transform.forward.normalized, vectorTailSize));
 	}
 
-	public void updateVectorArrowSize()
+	public void updateVelocityArrowSize()
 	{
 		float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
-		vectorTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
+		velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
 	}
 
-	public void updateVectorArrowAngle(){
-		
-	Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedVelocity);
-	transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.time);
 
+	public void updateVelocityArrowAngle()
+	{
+		transform.rotation = Quaternion.LookRotation (BallPhysicsManager.Instance.updatedVelocity);
 	}
 }
