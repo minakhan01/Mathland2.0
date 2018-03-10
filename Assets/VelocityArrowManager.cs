@@ -34,8 +34,10 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 		vectorTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
 	}
 
-	public void updateVectorArrowAngle()
-	{
-		transform.rotation = Quaternion.LookRotation (BallPhysicsManager.Instance.updatedVelocity);
+	public void updateVectorArrowAngle(){
+		
+	Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedVelocity);
+	transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.time);
+
 	}
 }
