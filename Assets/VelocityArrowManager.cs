@@ -37,6 +37,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 
 	public void updateVelocityArrowAngle()
 	{
-		transform.rotation = Quaternion.LookRotation (BallPhysicsManager.Instance.updatedVelocity);
+		Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedVelocity);
+		transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, 1.0f * Time.time);
 	}
 }
