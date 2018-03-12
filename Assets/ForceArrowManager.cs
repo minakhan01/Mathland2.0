@@ -7,7 +7,8 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 
 	//the proportionality contant of (change in arrow size)/(change in force magnitude)
 	private const float ARROW_SCALE_PROPORTIONALITY = 0.1f;
-	private const float INITIAL_ARROW_HEAD_Z_SCALE = 08f;
+	private const float ARROW_CHANGE_DIRECTION_SPEED = 1.0f;
+	private float INITIAL_ARROW_HEAD_Z_SCALE;
 
 	//intialize tail and head game objects
 	protected GameObject arrowTail;
@@ -15,6 +16,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 	void Start () {
 		arrowTail = gameObject.transform.Find("tailfbd").gameObject;
 		arrowHead = arrowTail.transform.Find("headfbd").gameObject;
+		INITIAL_ARROW_HEAD_Z_SCALE = arrowHead.transform.localScale.z;
 	}
 
 
@@ -47,8 +49,10 @@ public class ForceArrowManager : Singleton<ForceArrowManager> {
 
 	public void updateForceArrowAngle()
 	{
-		transform.rotation = Quaternion.FromToRotation(transform.rotation.eulerAngles, 
-			BallPhysicsManager.Instance.updatedForce);
+//		transform.rotation = Quaternion.FromToRotation(transform.rotation.eulerAngles, 
+//			BallPhysicsManager.Instance.updatedForce);
+		Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedForce);
+		transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, ARROW_CHANGE_DIRECTION_SPEED * Time.time);
 	}
 }
 
