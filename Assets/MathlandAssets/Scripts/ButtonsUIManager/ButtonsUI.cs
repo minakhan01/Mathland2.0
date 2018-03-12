@@ -99,6 +99,7 @@ public class ButtonsUI : MonoBehaviour
         Debug.Log("Graph");
         GraphButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
+        GraphManager.Instance.graph.SetActive(!GraphManager.Instance.graph.activeSelf);
 
     }
 
