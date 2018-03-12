@@ -52,5 +52,6 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
         ball.transform.position = initialPosition;
         Rigidbody rbi = ball.GetComponent<Rigidbody>();
         rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GraphManager.Instance.stopGraph();
     }
 }

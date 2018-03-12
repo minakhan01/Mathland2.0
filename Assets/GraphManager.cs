@@ -7,17 +7,18 @@ using ChartAndGraph;
 
 public class GraphManager : Singleton<GraphManager>
 {
-    private const float SAMPLE_FREQ = 0.25F;
+    private const float SAMPLE_FREQ = 0.15F;
 
     public const string VELOCITY = "Velocity";
     public const string FORCE = "Force";
 
     public GraphChart graphChart;
     public GameObject graph;
-    float initTime = 0f;
+    //float initTime = 0f;
 
     float time;
     IEnumerator timer;
+    float maxYValue = 0;
 
     // Use this for initialization
     void Start()
@@ -55,17 +56,24 @@ public class GraphManager : Singleton<GraphManager>
         while (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
         {
             yield return new WaitForSeconds(SAMPLE_FREQ);
-            time++;
-            Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.updatedVelocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
-            graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY, time, BallPhysicsManager.Instance.updatedVelocity.magnitude);
-            graphChart.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
+            float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
+            if (velocity > maxYValue) maxYValue = velocity;
+
+            time++;
+            Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
+
+            graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY, time, velocity);
+            //graphChart.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().for.magnitude);
+
+            graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
         }
 
     }
 
     public void startGraph()
     {
+        graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
         StartCoroutine(timer);
     }
 
@@ -73,6 +81,8 @@ public class GraphManager : Singleton<GraphManager>
     {
         StopCoroutine(timer);
         time = 0.0f;
+        maxYValue = 0.0f;
+        Debug.Log("Stop coroutine: " + time);
         graphChart.DataSource.Clear();
     }
 }
