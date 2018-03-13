@@ -11,7 +11,8 @@ public class RopeResize : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		cursor = GetComponentInChildren<ObiRopeCursor>();
+		//cursor = GetComponentInChildren<ObiRopeCursor>();
+		cursor = rope.GetComponent<ObiRopeCursor> ();
 	}
 	
 	// Update is called once per frame
@@ -20,6 +21,8 @@ public class RopeResize : MonoBehaviour {
 	}
 
 	public void resizeRope (float value) {
+		Debug.Log ("resizing rope");
+		Debug.Log ("value " + value);
 		cursor.ChangeLength(rope.RestLength * (value + 0.5f));
 	}
 }
