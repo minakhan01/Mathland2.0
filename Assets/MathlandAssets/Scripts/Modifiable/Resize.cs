@@ -29,24 +29,40 @@ public class Resize : MonoBehaviour {
 
     public void resize(float valueSlider)
     {
+		if (hasRopeResizeComponent ()) {
+			resizeRope (valueSlider);
+			return;
+		}
 		Vector3 newValue =new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
 
     public void resizeX(float valueSlider)
     {
+		if (hasRopeResizeComponent ()) {
+			resizeRope (valueSlider);
+			return;
+		}
 		Vector3 newValue = new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , transform.localScale.y, transform.localScale.z);
 		transform.localScale = newValue;
     }
 
     public void resizeY(float valueSlider)
     {
+		if (hasRopeResizeComponent ()) {
+			resizeRope (valueSlider);
+			return;
+		}
 		Vector3 newValue = new Vector3(transform.localScale.x , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), transform.localScale.z);
         transform.localScale = newValue;
     }
 
     public void resizeZ(float valueSlider)
     {
+		if (hasRopeResizeComponent ()) {
+			resizeRope (valueSlider);
+			return;
+		}
 		Vector3 newValue = new Vector3(transform.localScale.x , transform.localScale.y, minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
@@ -54,5 +70,18 @@ public class Resize : MonoBehaviour {
 	float convertSliderValue(float originalValue) {
 		float convertedValue = (originalValue + 0.5f)*2f;
 		return convertedValue;
+	}
+
+	void resizeRope (float value) {
+		transform.GetComponent<RopeResize> ().resizeRope (value);
+		return;
+	}
+
+	bool hasRopeResizeComponent() {
+		if(transform.GetComponent<RopeResize>() != null)
+		{
+			return true;
+		}
+		return false;
 	}
 }
