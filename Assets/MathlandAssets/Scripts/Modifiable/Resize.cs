@@ -73,6 +73,7 @@ public class Resize : MonoBehaviour {
 	}
 
 	void resizeRope (float value) {
+		transform.GetComponent<RopeResize> ().resizeRope (value);
 		return;
 	}
 
