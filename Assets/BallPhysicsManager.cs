@@ -43,11 +43,15 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
 	}
 
-    public void setInitialPosition () {
+    public void initBallPhysics () {
         initialPosition = ball.transform.position;
+        GraphManager.Instance.startGraph();
     }
 
-    public void resetBallPosition() {
+    public void resetBall() {
         ball.transform.position = initialPosition;
+        Rigidbody rbi = ball.GetComponent<Rigidbody>();
+        rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        GraphManager.Instance.stopGraph();
     }
 }

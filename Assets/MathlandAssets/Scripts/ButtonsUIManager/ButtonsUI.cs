@@ -71,22 +71,19 @@ public class ButtonsUI : MonoBehaviour
 
     public void PlayButtonHandler()
     {
-        Debug.Log("Play");
         PlayButton.switchState();
-		ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
-        //BallPhysicsManager.Instance.setInitialPosition();
-		GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
-        
-//		if (!ModifiableManager.Instance.playMenuSelected[1]) {
-//            //Has changed to on
-//			GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
-//            BallPhysicsManager.Instance.setInitialPosition();
-//        }else {
-//			
-//            //Has changed to off -> reset
-//			GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-//            BallPhysicsManager.Instance.resetBallPosition();
-//        }
+        ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
+		//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
+
+        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.OFF) {
+            Debug.Log("Play");
+            GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
+            BallPhysicsManager.Instance.initBallPhysics ();
+        } else if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+            Debug.Log("Reset");
+            GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
+            BallPhysicsManager.Instance.resetBall();
+        }
     }
 
     public void RewindButtonHandler()
@@ -102,6 +99,7 @@ public class ButtonsUI : MonoBehaviour
         Debug.Log("Graph");
         GraphButton.switchState();
 		ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
+        GraphManager.Instance.graph.SetActive(!GraphManager.Instance.graph.activeSelf);
 
     }
 
