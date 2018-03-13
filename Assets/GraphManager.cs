@@ -64,7 +64,7 @@ public class GraphManager : Singleton<GraphManager>
             Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
             graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY, time, velocity);
-            //graphChart.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().for.magnitude);
+            graphChart.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
 
             graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
         }
@@ -74,6 +74,7 @@ public class GraphManager : Singleton<GraphManager>
     public void startGraph()
     {
         graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
+        graphChart.DataSource.AddPointToCategoryRealtime(FORCE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
         StartCoroutine(timer);
     }
 
@@ -83,7 +84,8 @@ public class GraphManager : Singleton<GraphManager>
         time = 0.0f;
         maxYValue = 0.0f;
         Debug.Log("Stop coroutine: " + time);
-        graphChart.DataSource.Clear();
+        graphChart.DataSource.ClearAndMakeLinear(VELOCITY);
+        graphChart.DataSource.ClearCategory(FORCE);
     }
 }
 
