@@ -41,9 +41,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/GraphingScene.unity
     guid: c387067d0bb0747c2b113438767a451c
-  - enabled: 1
+  - enabled: 0
     path: Assets/VisualizationScene.unity
     guid: 09d2f2e3c402b421aaa2241bb1148d7a
-  - enabled: 0
+  - enabled: 1
     path: Assets/RopeScene.unity
     guid: fd2ceb7481ac846289a79d3457c990c5

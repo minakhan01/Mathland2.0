@@ -29,40 +29,40 @@ public class Resize : MonoBehaviour {
 
     public void resize(float valueSlider)
     {
-		if (hasRopeResizeComponent ()) {
-			resizeRope (valueSlider);
-			return;
-		}
+//		if (hasRopeResizeComponent ()) {
+//			resizeRope (valueSlider);
+//			return;
+//		}
 		Vector3 newValue =new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
 
     public void resizeX(float valueSlider)
     {
-		if (hasRopeResizeComponent ()) {
-			resizeRope (valueSlider);
-			return;
-		}
+//		if (hasRopeResizeComponent ()) {
+//			resizeRope (valueSlider);
+//			return;
+//		}
 		Vector3 newValue = new Vector3(minMaxValue(transform.localScale.x*convertSliderValue(valueSlider)) , transform.localScale.y, transform.localScale.z);
 		transform.localScale = newValue;
     }
 
     public void resizeY(float valueSlider)
     {
-		if (hasRopeResizeComponent ()) {
-			resizeRope (valueSlider);
-			return;
-		}
+//		if (hasRopeResizeComponent ()) {
+//			resizeRope (valueSlider);
+//			return;
+//		}
 		Vector3 newValue = new Vector3(transform.localScale.x , minMaxValue(transform.localScale.y*convertSliderValue(valueSlider)), transform.localScale.z);
         transform.localScale = newValue;
     }
 
     public void resizeZ(float valueSlider)
     {
-		if (hasRopeResizeComponent ()) {
-			resizeRope (valueSlider);
-			return;
-		}
+//		if (hasRopeResizeComponent ()) {
+//			resizeRope (valueSlider);
+//			return;
+//		}
 		Vector3 newValue = new Vector3(transform.localScale.x , transform.localScale.y, minMaxValue(transform.localScale.z*convertSliderValue(valueSlider)));
         transform.localScale = newValue;
     }
