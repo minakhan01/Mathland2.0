@@ -8816,7 +8816,6 @@ GameObject:
   - component: {fileID: 899583441}
   - component: {fileID: 899583440}
   - component: {fileID: 899583439}
-  - component: {fileID: 899583437}
   m_Layer: 0
   m_Name: headfbd
   m_TagString: Untagged
@@ -8919,19 +8918,6 @@ Transform:
   m_Father: {fileID: 899583435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!138 &899583437
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 899583430}
-  m_ConnectedBody: {fileID: 899583438}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!54 &899583438
 Rigidbody:
   m_ObjectHideFlags: 0
