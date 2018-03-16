@@ -16,15 +16,18 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 
 	// Update is called once per frame
 	void Update () {
-		BallPhysicsManager.Instance.updateVelocityandForce ();
-		updateVelocityArrowAngle ();
-		updateVelocityArrowSize ();
-		updateVelocityArrowPosition ();
+        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+            BallPhysicsManager.Instance.updateVelocityandForce();
+            updateVelocityArrowAngle();
+            //updateVelocityArrowSize();
+            updateVelocityArrowPosition();
+        }
 	}
 
 	public void updateVelocityArrowPosition()
 	{
-		velocityTail.transform.position = BallPhysicsManager.Instance.ball.transform.position;
+		transform.position = BallPhysicsManager.Instance.ball.transform.position;
+        Debug.Log("new arrow position: " + transform.position);
 		//Vector3 vectorTailSize = velocityTail.GetComponent<Renderer>().bounds.size; 
 		//velocityHead.transform.position = transform.position + (Vector3.Scale(velocityTail.transform.forward.normalized, vectorTailSize));
 	}
@@ -32,6 +35,8 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager> {
 	public void updateVelocityArrowSize()
 	{
 		float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
+        //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
+        Debug.Log("ballVelocityMagnitude: " + ballVelocityMagnitude);
 		velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z*ballVelocityMagnitude);
 		velocityHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z*(1/ballVelocityMagnitude));
 	}
