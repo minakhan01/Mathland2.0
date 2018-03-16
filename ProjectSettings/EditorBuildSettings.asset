@@ -47,6 +47,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/RopeScene.unity
     guid: fd2ceb7481ac846289a79d3457c990c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/RopeSceneNew_Mina.unity
     guid: 8f42c260e7d3744e39329b64bba7b608
+  - enabled: 1
+    path: Assets/graphingAndVisualizationScene.unity
+    guid: 843ee610f02234aa39faaed8c2047828
