@@ -47,6 +47,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/RopeScene.unity
     guid: fd2ceb7481ac846289a79d3457c990c5
-  - enabled: 1
+  - enabled: 0
     path: Assets/RopeSceneNew_Mina.unity
     guid: 8f42c260e7d3744e39329b64bba7b608
+  - enabled: 0
+    path: Assets/ChainToRopeScene.unity
+    guid: deefe382390044bf092f6ab009cb7618
+  - enabled: 1
+    path: Assets/RopeSceneTry.unity
+    guid: 6671275f884ff4512bce85e22ffa916b
