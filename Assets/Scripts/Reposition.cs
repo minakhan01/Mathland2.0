@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Reposition : MonoBehaviour {
 
+	private float previousSliderValue = 0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -43,7 +45,12 @@ public class Reposition : MonoBehaviour {
     }
 
 	float convertSliderValue(float originalValue) {
-		float convertedValue = ((originalValue + 0.5f)*2f - 1f);
+		//float convertedValue = ((originalValue + 0.5f)*2f - 1f);
+		float convertedValue = originalValue;
+		if (originalValue < previousSliderValue && previousSliderValue > 0 || originalValue > previousSliderValue && previousSliderValue < 0) {
+			convertedValue = -convertedValue;
+		}
+		previousSliderValue = originalValue;
 		return convertedValue;
 	}
 }

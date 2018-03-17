@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour {
 
+	private float previousSliderValue = 0f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +18,11 @@ public class Rotate : MonoBehaviour {
 
 	float convertSliderValue(float originalValue) {
 		float convertedValue = (originalValue + 0.5f)*2*Mathf.PI - Mathf.PI;
+		if (originalValue < previousSliderValue && previousSliderValue > 0 || originalValue > previousSliderValue && previousSliderValue < 0) {
+			convertedValue = -convertedValue;
+		}
 		Debug.Log ("Converted value " + convertedValue);
+		previousSliderValue = originalValue;
 		return convertedValue;
 	}
 

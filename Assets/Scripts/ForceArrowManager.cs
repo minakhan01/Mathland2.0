@@ -47,7 +47,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
     {
         float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
-        Debug.Log("ballVelocityMagnitude: " + ballForceMagnitude);
+        Debug.Log("ballForceMagnitude: " + ballForceMagnitude);
         forceTail.transform.localScale = new Vector3(initialTailScale.x, initialTailScale.y, initialTailScale.z * ballForceMagnitude);
         forceHead.transform.localScale = new Vector3(initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballForceMagnitude));
     }
