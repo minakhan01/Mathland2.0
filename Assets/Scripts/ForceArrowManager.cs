@@ -3,57 +3,74 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
 
-public class ForceArrowManager : Singleton<ForceArrowManager> {
+public class ForceArrowManager : Singleton<ForceArrowManager>
+{
 
-	//the proportionality contant of (change in arrow size)/(change in force magnitude)
-	private const float ARROW_SCALE_PROPORTIONALITY = 0.1f;
-	private const float ARROW_CHANGE_DIRECTION_SPEED = 1.0f;
-	private float INITIAL_ARROW_HEAD_Z_SCALE;
+    public GameObject forceTail, forceHead;
+    private Vector3 initialTailScale, initialHeadScale;
 
-	//intialize tail and head game objects
-	protected GameObject arrowTail;
-	protected GameObject arrowHead;
-	void Start () {
-		arrowTail = gameObject.transform.Find("tailfbd").gameObject;
-		arrowHead = arrowTail.transform.Find("headfbd").gameObject;
-		INITIAL_ARROW_HEAD_Z_SCALE = arrowHead.transform.localScale.z;
-	}
+    // Use this for initialization
+    void Start()
+    {
+        Debug.Log("Start forcetail arrow: " + forceTail);
+        initialTailScale = forceTail.transform.localScale;
+        initialHeadScale = forceHead.transform.localScale;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
+        {
+            activeArrow(true);
+            BallPhysicsManager.Instance.updateVelocityandForce();
+            updateForceArrowAngle();
+            //updateForceArrowSize();
+            updateForceArrowPosition();
+        }
+        else
+        {
+            activeArrow(false);
+        }
+
+    }
+
+    public void updateForceArrowPosition()
+    {
+        transform.position = BallPhysicsManager.Instance.ball.transform.position;
+        Debug.Log("new arrow position: " + transform.position);
+        //Vector3 vectorTailSize = velocityTail.GetComponent<Renderer>().bounds.size; 
+        //velocityHead.transform.position = transform.position + (Vector3.Scale(velocityTail.transform.forward.normalized, vectorTailSize));
+    }
+
+    public void updateForceArrowSize()
+    {
+        float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
+        //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
+        Debug.Log("ballVelocityMagnitude: " + ballForceMagnitude);
+        forceTail.transform.localScale = new Vector3(initialTailScale.x, initialTailScale.y, initialTailScale.z * ballForceMagnitude);
+        forceHead.transform.localScale = new Vector3(initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballForceMagnitude));
+    }
 
 
-	// Each update, move and rescale arrow to represent proper force specs
-	void Update () {
-		BallPhysicsManager.Instance.updateVelocityandForce ();
-		updateForceArrowAngle ();
-		updateForceArrowSize ();
-	}
-		
+    public void updateForceArrowAngle()
+    {
+        //Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedVelocity);
+        //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(BallPhysicsManager.Instance.updatedVelocity), 1.0f * Time.time);
+        //transform.rotation = Quaternion.LookRotation (new Vector3(BallPhysicsManager.Instance.updatedVelocity.z, BallPhysicsManager.Instance.updatedVelocity.y, BallPhysicsManager.Instance.updatedVelocity.x));
+        Vector3 direction = BallPhysicsManager.Instance.updatedForce;
+        Quaternion rot = Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 0);
+        Debug.Log("updateForceArrowAngle: - direction: " + direction);
+        Debug.Log("updateForceArrowAngle: - rot: " + rot);
+        transform.rotation = rot;
+    }
 
-	public void updateForceArrowSize()
-	{
-		Vector3 oldArrowHeadSize = arrowHead.transform.localScale;
-
-		//get new scale of arrow and rescale arrow
-		float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
-		float rescaleTail = ballForceMagnitude * ARROW_SCALE_PROPORTIONALITY; 
-		float rescaleHead = (1.0f / ballForceMagnitude) * INITIAL_ARROW_HEAD_Z_SCALE; //keeps it same size as parent changes
-
-		//rescale arrow
-		arrowTail.transform.localScale = new Vector3 (arrowTail.transform.localScale.x,
-				arrowTail.transform.localScale.y, rescaleTail);
-
-		//fix local position of head after tail has been updated
-		arrowHead.transform.localScale = new Vector3 (arrowHead.transform.localScale.x,
-			arrowHead.transform.localScale.y, rescaleHead);
-
-	}
-
-	public void updateForceArrowAngle()
-	{
-//		transform.rotation = Quaternion.FromToRotation(transform.rotation.eulerAngles, 
-//			BallPhysicsManager.Instance.updatedForce);
-		Quaternion toRotation = Quaternion.FromToRotation(transform.up, BallPhysicsManager.Instance.updatedForce);
-		transform.rotation = Quaternion.Lerp(transform.rotation, toRotation, ARROW_CHANGE_DIRECTION_SPEED * Time.time);
-	}
+    public void activeArrow(bool isActive)
+    {
+        Debug.Log("Force tail: " + forceTail);
+        forceTail.SetActive(isActive);
+        forceHead.SetActive(isActive);
+    }
 }
 
 
