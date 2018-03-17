@@ -3187,6 +3187,7 @@ GameObject:
   - component: {fileID: 348258072}
   - component: {fileID: 348258071}
   - component: {fileID: 348258070}
+  - component: {fileID: 348258073}
   m_Layer: 0
   m_Name: headfbd
   m_TagString: Untagged
@@ -3270,6 +3271,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 348258068}
   m_Mesh: {fileID: 4300000, guid: 8ca6dd4c407f8471eb795c862ed056b9, type: 3}
+--- !u!54 &348258073
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348258068}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &348498656
 GameObject:
   m_ObjectHideFlags: 0
@@ -4340,6 +4356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367c57541dca64662b317ae12228cd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  forceTail: {fileID: 829008933}
+  forceHead: {fileID: 348258068}
 --- !u!1 &522182973
 GameObject:
   m_ObjectHideFlags: 0
@@ -7465,6 +7483,7 @@ GameObject:
   - component: {fileID: 829008937}
   - component: {fileID: 829008936}
   - component: {fileID: 829008935}
+  - component: {fileID: 829008938}
   m_Layer: 0
   m_Name: tailfbd
   m_TagString: Untagged
@@ -7548,6 +7567,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 829008933}
   m_Mesh: {fileID: 4300000, guid: c2f2b3ccd3b6446e397d457adf9706df, type: 3}
+--- !u!54 &829008938
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 829008933}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &832770014
 GameObject:
   m_ObjectHideFlags: 0
@@ -8268,7 +8302,6 @@ GameObject:
   - component: {fileID: 899583442}
   - component: {fileID: 899583441}
   - component: {fileID: 899583440}
-  - component: {fileID: 899583439}
   - component: {fileID: 899583437}
   m_Layer: 0
   m_Name: headfbd
@@ -8290,7 +8323,6 @@ GameObject:
   - component: {fileID: 899583445}
   - component: {fileID: 899583444}
   - component: {fileID: 899583438}
-  - component: {fileID: 899583443}
   m_Layer: 0
   m_Name: tailfbd
   m_TagString: Untagged
@@ -8372,40 +8404,27 @@ Transform:
   m_Father: {fileID: 899583435}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
---- !u!138 &899583437
-FixedJoint:
+--- !u!54 &899583437
+Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899583430}
-  m_ConnectedBody: {fileID: 899583438}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &899583438
 Rigidbody:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899583431}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!54 &899583439
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 899583430}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -8476,19 +8495,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 899583430}
   m_Mesh: {fileID: 4300000, guid: 8ca6dd4c407f8471eb795c862ed056b9, type: 3}
---- !u!138 &899583443
-FixedJoint:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 899583431}
-  m_ConnectedBody: {fileID: 899583439}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_EnableCollision: 0
-  m_EnablePreprocessing: 1
-  m_MassScale: 1
-  m_ConnectedMassScale: 1
 --- !u!95 &899583444
 Animator:
   serializedVersion: 3
