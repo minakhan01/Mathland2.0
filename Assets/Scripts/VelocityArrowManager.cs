@@ -24,7 +24,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
             activeArrow(true);
             BallPhysicsManager.Instance.updateVelocityandForce();
             updateVelocityArrowAngle();
-            //updateVelocityArrowSize();
+            updateVelocityArrowSize();
             updateVelocityArrowPosition();
         } else {
             activeArrow(false);
