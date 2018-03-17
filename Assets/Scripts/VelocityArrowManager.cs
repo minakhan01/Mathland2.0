@@ -47,6 +47,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
         Debug.Log("ballVelocityMagnitude: " + ballVelocityMagnitude);
         velocityTail.transform.localScale = new Vector3(initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude);
         velocityHead.transform.localScale = new Vector3(initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballVelocityMagnitude));
+		Debug.Log ("velocity arrow manager velocity arrow localscale" + transform.localScale);
     }
 
 

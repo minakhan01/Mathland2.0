@@ -8,20 +8,27 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	public GameObject ball;
 	private int updateCount = 0;
 	public GameObject ballPrefab;
-//	public Color colorOfStrobe;
+	//	public Color colorOfStrobe;
 
-    private List<GameObject> strobes = new List<GameObject>();
+	private List<GameObject> strobes = new List<GameObject>();
 
-    // Use this for initialization
-    void Start () {
+	// arrows
+	public GameObject realArrowVelocity;
+	public GameObject realArrowForce;
+	public GameObject arrowVelocity;
+	public GameObject arrowForce;
+	private Vector3 initialVelocityScale, initialForceScale;
 
-   }
+	// Use this for initialization
+	void Start () {
+		initialVelocityScale = arrowVelocity.transform.localScale;
+		initialForceScale = arrowForce.transform.localScale;
+	}
 
-		
 
-    // Update is called once per frame
-    void Update () {
-//		if (BallStateManager.Instance.currentBallState == BallStateManager.BallState.Launched) {
+
+	// Update is called once per frame
+	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
 			if (updateCount % 4 == 0)
@@ -29,12 +36,27 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				//instantiate our strobe ball
 				GameObject ballInstance = (GameObject) Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
 				MeshRenderer ballMesh = ballInstance.GetComponent<MeshRenderer>();
-				Debug.Log ("Strobe after MeshRendere");
+				Debug.Log ("Strobe after MeshRenderer");
+
+				//instantiate arrows
+				BallPhysicsManager.Instance.updateVelocityandForce();
+				GameObject arrowVelocityInstance = (GameObject) Instantiate(arrowVelocity, realArrowVelocity.transform.position, realArrowVelocity.transform.rotation);
+				GameObject arrowForceInstance = (GameObject) Instantiate(arrowForce, realArrowForce.transform.position, realArrowForce.transform.rotation);
+
+				//resize strobe arrow
+				float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
+				float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
+				Debug.Log ("velocity of ball " + BallPhysicsManager.Instance.updatedVelocity);
+				arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z);
+				arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z);
+				Debug.Log ("arrow velocity localscale " + arrowVelocityInstance .transform.localScale);
+				Debug.Log ("arrow force localscale " + arrowForceInstance.transform.localScale);
+
 				//get our ballInstance color and set it to the same color as our TrailRenderer
 				Color color = ballMesh.material.color;
-//				color = colorOfStrobe;
 				color = ball.GetComponent<TrailRenderer>().startColor;
 				Debug.Log ("Strobe after color");
+
 				//make trail appropriately transparent, and measured via velocity
 				float velocity = ball.GetComponent<Rigidbody>().velocity.magnitude;
 				float transparency = velocity / 25 + 0.5f;
@@ -46,41 +68,28 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				ballMesh.material.color = color;
 
 				Debug.Log ("Strobe after material");
-				//set strobe ball velocity to 0 and not affected by gravity
-				//ballInstance.GetComponent<Rigidbody>().velocity = Vector3.zero;
-				//ballInstance.GetComponent<Rigidbody>().useGravity = false;
+
 				Debug.Log ("Strobe after rigidbody");
 				//once we create 'BallInformation' property
-//				ballInstance.GetComponentInChildren<BallInformation>().setVelocity(velocity);
+				//				ballInstance.GetComponentInChildren<BallInformation>().setVelocity(velocity);
 
 
-                strobes.Add(ballInstance); 
-
-//				GameObject ballInstance2 = Instantiate(ballPrefab, ball2.transform.position, ball2.transform.rotation);
-//				MeshRenderer ballMesh2 = ballInstance2.GetComponent<MeshRenderer>();
-//				Color color2 = ballMesh2.material.color;
-//				float velocity2 = ball2.GetComponent<Rigidbody>().velocity.magnitude;
-//				float transparency2 = velocity / 25 + 0.3f;
-//				color2 = ball2.GetComponent<TrailRenderer>().startColor;
-//				if (transparency2 < 1)
-//				{
-//					color2.a = transparency2;
-//				}
-//				ballMesh2.material.color = color2;
-//				ballInstance2.GetComponentInChildren<BallInformation>().setVelocity(velocity2);
+				strobes.Add(ballInstance); 
+				strobes.Add (arrowVelocityInstance);
+				strobes.Add (arrowForceInstance);
 			}
 		}
 	}
 
-    public void clearStrobes()
-    {
-        Debug.Log("Clearing all strobes");
+	public void clearStrobes()
+	{
+		Debug.Log("Clearing all strobes");
 
 		//add this back in once we get strobes working on their own
-//        ball.GetComponent<TrailRenderer>().Clear(); 
+		//        ball.GetComponent<TrailRenderer>().Clear(); 
 
-        foreach (GameObject strobe in strobes)  {
-            Destroy(strobe); 
-        }
-    }
+		foreach (GameObject strobe in strobes)  {
+			Destroy(strobe); 
+		}
+	}
 }

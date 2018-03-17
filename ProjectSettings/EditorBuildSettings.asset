@@ -62,6 +62,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/FinalSceneUnclean_16March.unity
     guid: 3aacdb17fdde54fdf9bdb0f0dddcaed8
-  - enabled: 1
+  - enabled: 0
     path: Assets/FinalScene_16March2018.unity
     guid: 6a8fd2deb2a144e169feea8b3abd13f2
+  - enabled: 1
+    path: Assets/FinalSceneClean_16March2018.unity
+    guid: 160d8fb0b2b7544088c5b842ab57f481
