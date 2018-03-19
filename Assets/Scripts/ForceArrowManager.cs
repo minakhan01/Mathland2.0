@@ -25,7 +25,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
             activeArrow(true);
             BallPhysicsManager.Instance.updateVelocityandForce();
             updateForceArrowAngle();
-            //updateForceArrowSize();
+            updateForceArrowSize();
             updateForceArrowPosition();
         }
         else
@@ -48,8 +48,14 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
         float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         Debug.Log("ballForceMagnitude: " + ballForceMagnitude);
-        forceTail.transform.localScale = new Vector3(initialTailScale.x, initialTailScale.y, initialTailScale.z * ballForceMagnitude);
-        forceHead.transform.localScale = new Vector3(initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballForceMagnitude));
+		if (ballForceMagnitude != 0) {
+			forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballForceMagnitude);
+			forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballForceMagnitude));
+		} else {
+			forceTail.transform.localScale = new Vector3 (0, 0, 0);
+			forceHead.transform.localScale = new Vector3 (0, 0, 0);
+
+		}
     }
 
 

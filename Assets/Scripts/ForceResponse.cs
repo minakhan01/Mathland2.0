@@ -35,7 +35,7 @@ public class ForceResponse : Singleton<ForceResponse> {
 		foreach (GameObject representationArrow in forces)
 		{
 			// get magnitude and direction of the current force affecting our object
-			float magnitudeCurrentForceVector = representationArrow.transform.localScale.x*1000;
+			float magnitudeCurrentForceVector = representationArrow.transform.localScale.y*1000;
 			Vector3 directionCurrentForceVector = - representationArrow.transform.up.normalized;
 
 			//calculate the experienced force vector... and add it to the net Force
@@ -44,6 +44,7 @@ public class ForceResponse : Singleton<ForceResponse> {
 
 		}
 		updatedForce = experiencedforce;
+		Debug.Log ("ForceResponse updatedForce " + updatedForce);
 	}
 
 }

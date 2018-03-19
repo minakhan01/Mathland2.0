@@ -47,8 +47,8 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
 				float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
 				Debug.Log ("velocity of ball " + BallPhysicsManager.Instance.updatedVelocity);
-				arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z);
-				arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z);
+				arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z*ballVelocityMagnitude);
+				arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*ballForceMagnitude);
 				Debug.Log ("arrow velocity localscale " + arrowVelocityInstance .transform.localScale);
 				Debug.Log ("arrow force localscale " + arrowForceInstance.transform.localScale);
 
