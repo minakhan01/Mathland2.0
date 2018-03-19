@@ -24,7 +24,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
             activeArrow(true);
             BallPhysicsManager.Instance.updateVelocityandForce();
             updateVelocityArrowAngle();
-            //updateVelocityArrowSize();
+            updateVelocityArrowSize();
             updateVelocityArrowPosition();
         } else {
             activeArrow(false);
@@ -45,8 +45,14 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
         float ballVelocityMagnitude = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         Debug.Log("ballVelocityMagnitude: " + ballVelocityMagnitude);
-        velocityTail.transform.localScale = new Vector3(initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude);
-        velocityHead.transform.localScale = new Vector3(initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballVelocityMagnitude));
+		if (ballVelocityMagnitude != 0) {
+			velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude);
+			velocityHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballVelocityMagnitude));
+		} else {
+			velocityTail.transform.localScale = new Vector3 (0, 0, 0);
+			velocityHead.transform.localScale = new Vector3 (0, 0, 0);
+
+		}		
 		Debug.Log ("velocity arrow manager velocity arrow localscale" + transform.localScale);
     }
 
