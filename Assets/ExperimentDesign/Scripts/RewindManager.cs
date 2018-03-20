@@ -12,7 +12,8 @@ public class RewindManager : Singleton<RewindManager>
 
     public float currentSpeed { get; set; }
     public PlayMode currentPlayMode { get; set; }
-    public float currentTime { get; set; }
+    public int currentPointInTime { get; set; }
+    public List<RewindableObject> currentRewindables;
 
     [Header("Rewind Objects")]
     public GameObject rewindUI;
@@ -21,7 +22,7 @@ public class RewindManager : Singleton<RewindManager>
     // Use this for initialization
     void Start()
     {
-        currentTime = 0f;
+        currentPointInTime = 0;
         currentSpeed = 1f;
         rewindUI.SetActive(false);
     }
@@ -34,7 +35,7 @@ public class RewindManager : Singleton<RewindManager>
 
     public void replay()
     {
-        currentTime = 0f;
+        currentPointInTime = 0;
     }
 
     public void play()
