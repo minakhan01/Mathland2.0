@@ -10192,6 +10192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceField: {fileID: 80888595}
+  ForceMagnitude: 1
 --- !u!4 &1076386239
 Transform:
   m_ObjectHideFlags: 0
