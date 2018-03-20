@@ -1093,7 +1093,18 @@ MonoBehaviour:
   m_Value: 0
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 667702526}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &58766904
@@ -6552,9 +6563,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseButtonSprite: {fileID: 21300000, guid: 8b3515004f069428faa2e4991a446893, type: 3}
   playButtonSprite: {fileID: 21300000, guid: 61aaab3da92844660a7d7e1729685ee5, type: 3}
-  playPauseButton: {fileID: 1802271537}
-  replayButton: {fileID: 756210529}
   speedButton: {fileID: 1360890606}
+  rewindSlider: {fileID: 57228875}
+  playPauseImage: {fileID: 1802271539}
   speedMenu: {fileID: 69662347}
   speedMenuText: {fileID: 1798073572}
 --- !u!1 &670202793
@@ -7268,7 +7279,6 @@ GameObject:
   - component: {fileID: 756210532}
   - component: {fileID: 756210531}
   - component: {fileID: 756210530}
-  - component: {fileID: 756210529}
   m_Layer: 5
   m_Name: Replay
   m_TagString: Untagged
@@ -7294,17 +7304,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 270}
   m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &756210529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 756210527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b3a34e9df38646bdae34e21a2a9b64e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &756210530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7343,7 +7342,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 756210531}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 667702528}
+        m_MethodName: replayButtonHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &756210531
@@ -17708,7 +17718,6 @@ GameObject:
   - component: {fileID: 1802271540}
   - component: {fileID: 1802271539}
   - component: {fileID: 1802271538}
-  - component: {fileID: 1802271537}
   m_Layer: 5
   m_Name: PlayPause
   m_TagString: Untagged
@@ -17734,17 +17743,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -70}
   m_SizeDelta: {x: 170, y: 170}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1802271537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1802271535}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b3a34e9df38646bdae34e21a2a9b64e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1802271538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17783,7 +17781,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1802271539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 667702528}
+        m_MethodName: playPauseButtonHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1802271539

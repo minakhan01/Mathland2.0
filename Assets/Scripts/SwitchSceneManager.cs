@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class SwitchSceneManager : MonoBehaviour
 {
+    public readonly int[] SCENES_END_TIME = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
+
     const char DELIMITER = '_';
     const string SCENE = "scene";
     const int NUM_OF_SCENES = 10;
@@ -17,7 +19,7 @@ public class SwitchSceneManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        setCurrentScene();
+        currentScene = Convert.ToInt32(name.Split('_')[1]);
     }
 
     // Update is called once per frame
@@ -26,16 +28,13 @@ public class SwitchSceneManager : MonoBehaviour
 
     }
 
-    string getCurrentScene()
+    int getCurrentScene()
     {
-        return SceneManager.GetActiveScene().name;
+        return currentScene;
     }
 
     void setCurrentScene()
     {
-        string name = getCurrentScene();
-        currentScene = Convert.ToInt32(name.Split('_')[1]);
-
         if (currentScene == NUM_OF_SCENES)
         {
             forwardButton.SetActive(false);

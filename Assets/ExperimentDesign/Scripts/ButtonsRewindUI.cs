@@ -11,12 +11,9 @@ public class ButtonsRewindUI : MonoBehaviour
     public Sprite pauseButtonSprite;
     public Sprite playButtonSprite;
 
-    [Header("ButtonsProperties")]
-    public ButtonProperties playPauseButton;
-    public ButtonProperties replayButton;
     public ButtonProperties speedButton;
-
-
+    public Slider rewindSlider;
+    public Image playPauseImage;
     public GameObject speedMenu;
     public Text speedMenuText;
 
@@ -34,7 +31,6 @@ public class ButtonsRewindUI : MonoBehaviour
 
     public void playPauseButtonHandler()
     {
-        playPauseButton.switchState();
         if (RewindManager.Instance.currentPlayMode == RewindManager.PlayMode.PLAY)
         {
             RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PAUSE;
@@ -56,8 +52,8 @@ public class ButtonsRewindUI : MonoBehaviour
 
     public void speedButtonHandler()
     {
-        speedMenu.GetComponent<ButtonProperties>().switchState();
-        speedMenu.SetActive(true);
+        speedButton.switchState();
+        speedMenu.SetActive(!speedMenu.activeSelf);
     }
 
     public void doubleSlowSpeedButtonHandler()
@@ -90,14 +86,17 @@ public class ButtonsRewindUI : MonoBehaviour
         updateSpeedButton();
     }
 
+    public void rewindSliderHandler() {
+        RewindManager.Instance.setSliderValue(rewindSlider.value);
+    }
+
     void updateSpeedButton () {
         speedMenu.SetActive(false);
         speedMenuText.text = "x" + RewindManager.Instance.currentSpeed.ToString();
     }
 
     void setPlayButtonSprite(Sprite sprite) {
-        Image image = playPauseButton.GetComponent<Image>();
-        image.sprite = sprite;
+        playPauseImage.sprite = sprite;
     }
 
 }
