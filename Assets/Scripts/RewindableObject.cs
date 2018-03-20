@@ -19,15 +19,15 @@ public class RewindableObject : MonoBehaviour {
 			ApplyPointInTime (pointInTime);
 		}
 	}
-	void EnableRewinding(){
+	public void EnableRewinding(){
 		rb.isKinematic = true;
 	}
-	void ResetRewind(){
+	public void ResetRewind(){
 		rb.isKinematic = false;
 		ApplyPointInTime (0);
 		RewindManager.Instance.currentRewindables = new List<RewindableObject> ();
 	}
-	void Record(){
+	public void Record(){
 		pointsInTime.Add (getPosition (), getRotation (), getScale (), getVelocity (), getForce ());
 
 	}
