@@ -6,6 +6,7 @@ public class SwitchSceneManager : MonoBehaviour
 {
     const char DELIMITER = '_';
     const string SCENE = "scene";
+    const int NUM_OF_SCENES = 10;
 
     public GameObject forwardButton;
     public GameObject backButton;
@@ -16,7 +17,7 @@ public class SwitchSceneManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        
+        setCurrentScene();
     }
 
     // Update is called once per frame
@@ -25,20 +26,35 @@ public class SwitchSceneManager : MonoBehaviour
 
     }
 
-
-    void getCurrentScene()
+    string getCurrentScene()
     {
-        string name = SceneManager.GetActiveScene().name;
-        currentScene = Convert.ToInt32(name.Split('_')[1]);
+        return SceneManager.GetActiveScene().name;
     }
 
-    public void goForward() {
-        string newScene = SCENE + (currentScene + 1).ToString();
+    void setCurrentScene()
+    {
+        string name = getCurrentScene();
+        currentScene = Convert.ToInt32(name.Split('_')[1]);
+
+        if (currentScene == NUM_OF_SCENES)
+        {
+            forwardButton.SetActive(false);
+        }
+        else if (currentScene == 1)
+        {
+            backButton.SetActive(false);
+        }
+    }
+
+    public void goForward()
+    {
+        string newScene = SCENE + DELIMITER + (currentScene + 1).ToString();
         SceneManager.LoadScene(newScene);
     }
 
-    public void goBack(){
-        string newScene = SCENE + (currentScene - 1).ToString();
+    public void goBack()
+    {
+        string newScene = SCENE + DELIMITER + (currentScene - 1).ToString();
         SceneManager.LoadScene(newScene);
     }
 }

@@ -31,7 +31,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
-			if (updateCount % 4 == 0)
+			if (updateCount % 12 == 0)
 			{
 				//instantiate our strobe ball
 				GameObject ballInstance = (GameObject) Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
@@ -47,8 +47,14 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
 				float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
 				Debug.Log ("velocity of ball " + BallPhysicsManager.Instance.updatedVelocity);
-				arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z);
-				arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z);
+				if (ballVelocityMagnitude == 0.0)
+					arrowVelocityInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
+				else
+					arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z*ballVelocityMagnitude);
+				if (ballForceMagnitude == 0.0)
+					arrowForceInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
+				else
+					arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*ballForceMagnitude);
 				Debug.Log ("arrow velocity localscale " + arrowVelocityInstance .transform.localScale);
 				Debug.Log ("arrow force localscale " + arrowForceInstance.transform.localScale);
 
