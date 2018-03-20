@@ -11096,6 +11096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ForceField: {fileID: 80888595}
+  ForceMagnitude: 1
 --- !u!4 &1076386239
 Transform:
   m_ObjectHideFlags: 0
@@ -19639,7 +19640,7 @@ GameObject:
   - component: {fileID: 2055887274}
   - component: {fileID: 2055887273}
   m_Layer: 5
-  m_Name: RewineManager
+  m_Name: RewindManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19656,6 +19657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31c426d10037f401aa4cc10fea5a9d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentRewindables: []
   rewindUI: {fileID: 667702526}
 --- !u!4 &2055887274
 Transform:
