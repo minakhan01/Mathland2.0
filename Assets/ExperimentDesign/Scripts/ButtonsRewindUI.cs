@@ -8,8 +8,8 @@ public class ButtonsRewindUI : MonoBehaviour
 {
 
     [Header("Sprites")]
-    public Sprite pauseButton;
-    public Sprite playButton;
+    public Sprite pauseButtonSprite;
+    public Sprite playButtonSprite;
 
     [Header("ButtonsProperties")]
     public ButtonProperties playPauseButton;
@@ -39,11 +39,13 @@ public class ButtonsRewindUI : MonoBehaviour
         {
             RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PAUSE;
             RewindManager.Instance.pause();
+            setPlayButtonSprite(pauseButtonSprite);
         }
         else
         {
             RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PLAY;
             RewindManager.Instance.play();
+            setPlayButtonSprite(playButtonSprite);
         }
     }
 
@@ -93,5 +95,9 @@ public class ButtonsRewindUI : MonoBehaviour
         speedMenuText.text = "x" + RewindManager.Instance.currentSpeed.ToString();
     }
 
+    void setPlayButtonSprite(Sprite sprite) {
+        Image image = playPauseButton.GetComponent<Image>();
+        image.sprite = sprite;
+    }
 
 }
