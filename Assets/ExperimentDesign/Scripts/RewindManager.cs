@@ -21,20 +21,22 @@ public class RewindManager : Singleton<RewindManager>
     bool isRecordable = true;
     public List<RewindableObject> currentRewindables;
 
-	// TO DO: Judith, set this based on speed
-	public float updateSpeed = 1;
+    // TO DO: Judith, set this based on speed
+    public float updateSpeed = 1;
 
     [Header("Rewind Objects")]
     public GameObject rewindUI;
+    public GameObject startSimulationUI;
 
 
     // Use this for initialization
     void Start()
     {
+        currentPlayMode = PlayMode.PAUSE;
         currentPointInTime = 0;
         currentSpeed = 1f;
         rewindUI.SetActive(false);
-
+        startSimulationUI.SetActive(true);
     }
 
     // Update is called once per frame
@@ -58,13 +60,13 @@ public class RewindManager : Singleton<RewindManager>
         currentPlayMode = PlayMode.PAUSE;
     }
 
-    public void setRewindUIActiveAgain()
-    {
-        rewindUI.SetActive(true);
+    public void starRecording () {
+        isRecordable = true;
     }
 
-    public void setSliderValue(float value) {
-        currentPointInTime = (int) value * pointsInTimeCount;
+    public void setSliderValue(float value)
+    {
+        currentPointInTime = (int)value * pointsInTimeCount;
     }
 
     void FixedUpdate()
@@ -77,18 +79,21 @@ public class RewindManager : Singleton<RewindManager>
 
     void Rewind()
     {
-		if (currentPointInTime < pointsInTimeCount) {
-			for (int i = 0; i < currentRewindables.Count; i++) {
-				currentRewindables[i].GetComponent<RewindableObject> ().Rewind ();
-			}
-			UpdateCurrentPointsInTime ();
-		}
+        if (currentPointInTime < pointsInTimeCount)
+        {
+            for (int i = 0; i < currentRewindables.Count; i++)
+            {
+                currentRewindables[i].GetComponent<RewindableObject>().Rewind();
+            }
+            UpdateCurrentPointsInTime();
+        }
 
     }
-		
-	void UpdateCurrentPointsInTime () {
-		currentPointInTime = currentPointInTime + Mathf.RoundToInt (1f * updateSpeed);
-	}
+
+    void UpdateCurrentPointsInTime()
+    {
+        currentPointInTime = currentPointInTime + Mathf.RoundToInt(1f * updateSpeed);
+    }
 
     void Record()
     {
@@ -96,12 +101,12 @@ public class RewindManager : Singleton<RewindManager>
         {
             for (int i = 0; i < currentRewindables.Count; i++)
             {
-				currentRewindables[i].GetComponent<RewindableObject>().Record();
+                currentRewindables[i].GetComponent<RewindableObject>().Record();
             }
             pointsInTimeCount++;
             if (pointsInTimeCount > Mathf.Round(maxRecordTime / Time.fixedDeltaTime))
             {
-				stopRecording();
+                stopRecording();
             }
         }
     }
@@ -111,22 +116,27 @@ public class RewindManager : Singleton<RewindManager>
         isRecordable = true;
         pointsInTimeCount = 0;
         currentPointInTime = 0;
-		GraphManager.Instance.stopGraph ();
+        GraphManager.Instance.stopGraph();
         for (int i = 0; i < currentRewindables.Count; i++)
         {
-			currentRewindables[i].GetComponent<RewindableObject> ().ResetRewind();
+            currentRewindables[i].GetComponent<RewindableObject>().ResetRewind();
         }
     }
 
     void stopRecording()
     {
         isRecordable = false;
-		GraphManager.Instance.stopGraphRecording ();
+        GraphManager.Instance.pauseGraph();
         for (int i = 0; i < currentRewindables.Count; i++)
         {
-			currentRewindables[i].GetComponent<RewindableObject> ().EnableRewinding();
+            currentRewindables[i].GetComponent<RewindableObject>().EnableRewinding();
         }
-		rewindUI.SetActive(true);
+        switchToRewindManager();
+    }
+
+    void switchToRewindManager() {
+        startSimulationUI.SetActive(false);
+        rewindUI.SetActive(true);
     }
 
 }

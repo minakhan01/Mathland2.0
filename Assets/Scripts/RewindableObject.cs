@@ -14,7 +14,7 @@ public class RewindableObject : MonoBehaviour
         pointsInTime = new List<PointInTime>();
         rb = GetComponent<Rigidbody>();
     }
-    void Rewind()
+    public void Rewind()
     {
         int currentPointInTime = RewindManager.Instance.currentPointInTime;
         if (currentPointInTime > 0)

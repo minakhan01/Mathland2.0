@@ -11,11 +11,15 @@ public class ButtonsRewindUI : MonoBehaviour
     public Sprite pauseButtonSprite;
     public Sprite playButtonSprite;
 
+    [Header("Rewind UI")]
     public ButtonProperties speedButton;
     public Slider rewindSlider;
     public Image playPauseImage;
     public GameObject speedMenu;
     public Text speedMenuText;
+
+    [Header("Start Simulation UI")]
+    public ButtonProperties playSimulationButton;
 
     // Use this for initialization
     void Start()
@@ -39,10 +43,22 @@ public class ButtonsRewindUI : MonoBehaviour
         }
         else
         {
+            Debug.Log("Play");
             RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PLAY;
             RewindManager.Instance.play();
             setPlayButtonSprite(playButtonSprite);
         }
+    }
+
+    public void playSimulationButtonHandler()
+    {
+        Debug.Log("Play");
+        playSimulationButton.switchState();
+        GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
+        Debug.Log("current physics play state: " + GameStateManager.Instance.currentPhysicsPlayState);
+        BallPhysicsManager.Instance.initBallPhysics();
+        RewindManager.Instance.starRecording();
+
     }
 
     public void replayButtonHandler()

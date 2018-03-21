@@ -23,6 +23,7 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
 	// Update is called once per frame
 	void Update () {
+        Debug.Log("Game Play Physiscs State: " + GameStateManager.Instance.currentPhysicsPlayState);
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;

@@ -23,7 +23,7 @@ public class GraphManager : Singleton<GraphManager>
     // Use this for initialization
     void Start()
     {
-        graph.SetActive(false);
+        //graph.SetActive(false);
         timer = addValuesToGraph();
     }
 
@@ -88,7 +88,7 @@ public class GraphManager : Singleton<GraphManager>
         graphChart.DataSource.ClearCategory(FORCE);
     }
 
-	public void stopGraphRecording()
+	public void pauseGraph()
 	{
 		StopCoroutine(timer);
 	}
