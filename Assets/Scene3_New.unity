@@ -5951,9 +5951,28 @@ Prefab:
       propertyPath: graph
       value: 
       objectReference: {fileID: 1299666969}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114793615886081906, guid: d9b81b8d8b5bf41e48c7894e7c9a67d5, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d9b81b8d8b5bf41e48c7894e7c9a67d5, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &78059351 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1868960755793478, guid: d9b81b8d8b5bf41e48c7894e7c9a67d5,
+    type: 2}
+  m_PrefabInternal: {fileID: 78059350}
+--- !u!114 &78059352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 78059351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaae6349716ff4af3b611406233914bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphs:
+  - {fileID: 1026863498}
 --- !u!1 &79892668
 GameObject:
   m_ObjectHideFlags: 27
@@ -34374,6 +34393,7 @@ MonoBehaviour:
   playPauseImage: {fileID: 1802271539}
   speedMenu: {fileID: 69662347}
   speedMenuText: {fileID: 1798073572}
+  playSimulationButton: {fileID: 0}
 --- !u!1 &668474756
 GameObject:
   m_ObjectHideFlags: 0
@@ -104749,6 +104769,7 @@ MonoBehaviour:
   currentRewindables: []
   updateSpeed: 1
   rewindUI: {fileID: 667702526}
+  startSimulationUI: {fileID: 0}
 --- !u!4 &2055887274
 Transform:
   m_ObjectHideFlags: 0
