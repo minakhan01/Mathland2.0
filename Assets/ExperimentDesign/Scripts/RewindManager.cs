@@ -131,7 +131,9 @@ public class RewindManager : Singleton<RewindManager>
         {
             currentRewindables[i].GetComponent<RewindableObject>().EnableRewinding();
         }
+        GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
         switchToRewindManager();
+
     }
 
     void switchToRewindManager() {

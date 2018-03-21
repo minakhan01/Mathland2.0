@@ -68,6 +68,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/FinalSceneClean_16March2018.unity
     guid: 160d8fb0b2b7544088c5b842ab57f481
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: Assets/Scene3_New.unity
+    guid: e3ff78554d9664034968457378616c7b
   - enabled: 1
-    path: Assets/ExperimentDesign/Scene3.unity
-    guid: d7079d2def6bc4fe9a032831efb2df92
+    path: Assets/ExperimentDesign/Scene_3.unity
+    guid: 1fcc3e99bf3654f2eb21c69fb49b513d

@@ -31,13 +31,16 @@ public class GraphHandler : MonoBehaviour {
 
 	public void startGraph()
 	{
+        
 	}
 
 	public void stopGraph()
 	{
+        
 	}
 
 	public void stopGraphRecording()
 	{
+        
 	}
 }

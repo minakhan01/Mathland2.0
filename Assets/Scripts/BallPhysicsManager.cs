@@ -46,7 +46,9 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 		updatedForce = ForceResponse.Instance.updatedForce;
 		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
 
-		if (ballTwo != null) {
+        Debug.Log("value of ball two: " + ballTwo);
+        if (ballTwo != null && ballTwo.activeSelf) {
+            Debug.Log("ball two is not null");
 			ForceResponseBallTwo.Instance.updateForce ();
 			VelocityResponseBallTwo.Instance.updateVelocity ();
 			updatedVelocityBallTwo = ForceResponseBallTwo.Instance.updatedForce;

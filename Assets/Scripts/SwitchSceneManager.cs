@@ -1,18 +1,17 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class SwitchSceneManager : MonoBehaviour
 {
-    public readonly int[] SCENES_END_TIME = {10, 10, 10, 10, 10, 10, 10, 10, 10, 10};
-
     const char DELIMITER = '_';
     const string SCENE = "scene";
     const int NUM_OF_SCENES = 10;
 
     public GameObject forwardButton;
     public GameObject backButton;
-    public GameObject sceneNameText;
+    public Text sceneNameText;
 
     private int currentScene;
 
@@ -20,6 +19,8 @@ public class SwitchSceneManager : MonoBehaviour
     void Start()
     {
         currentScene = Convert.ToInt32(name.Split('_')[1]);
+        Debug.Log("currentScene: " + currentScene);
+        sceneNameText.text = currentScene.ToString();
     }
 
     // Update is called once per frame

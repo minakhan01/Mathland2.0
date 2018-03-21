@@ -50,7 +50,7 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 		graphChart.DataSource.ClearCategory(ACCL_HORIZONTAL);
 	}
 
-	public void stopGraphRecording()
+    public void stopGraphRecording()
 	{
 		StopCoroutine(timer);
 	}
@@ -58,7 +58,6 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
-		graph.SetActive(false);
 		timer = addValuesToGraph();
 	}
 
