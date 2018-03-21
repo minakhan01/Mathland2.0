@@ -16856,6 +16856,17 @@ MonoBehaviour:
   MAX_ROTATION_VALUE: 360
   MAX_REPOSITION_VALUE: 1000
   RequiredSelectable: {fileID: 1729522977}
+--- !u!114 &1729522979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1729522972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff381e4bfbaf5410ab1bfcdbc26d67ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1736044151
 GameObject:
   m_ObjectHideFlags: 0
