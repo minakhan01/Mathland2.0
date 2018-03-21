@@ -87,6 +87,11 @@ public class GraphManager : Singleton<GraphManager>
         graphChart.DataSource.ClearAndMakeLinear(VELOCITY);
         graphChart.DataSource.ClearCategory(FORCE);
     }
+
+	public void stopGraphRecording()
+	{
+		StopCoroutine(timer);
+	}
 }
 
 
