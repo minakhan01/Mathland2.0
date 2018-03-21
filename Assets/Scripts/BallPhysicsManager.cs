@@ -11,7 +11,11 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	public Vector3 updatedVelocity = new Vector3(0, 0, 0);
 	public Vector3 updatedForce = new Vector3(0, 0, 0);
 
+	public Vector3 updatedVelocityBallTwo = new Vector3(0, 0, 0);
+	public Vector3 updatedForceBallTwo = new Vector3(0, 0, 0);
+
 	public GameObject ball;
+	public GameObject ballTwo;
 
     Vector3 initialPosition;
 
@@ -40,6 +44,13 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 		VelocityResponse.Instance.updateVelocity ();
 		updatedForce = ForceResponse.Instance.updatedForce;
 		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
+
+		if (ballTwo != null) {
+			ForceResponseBallTwo.Instance.updateForce ();
+			VelocityResponseBallTwo.Instance.updateVelocity ();
+			updatedVelocityBallTwo = ForceResponseBallTwo.Instance.updatedForce;
+			updatedForceBallTwo = VelocityResponseBallTwo.Instance.updatedVelocity;
+		}
 
 	}
 
