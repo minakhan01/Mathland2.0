@@ -13,7 +13,7 @@ public class SwitchSceneManager : MonoBehaviour
     public GameObject backButton;
     public Text sceneNameText;
 
-    private int currentScene;
+    int currentScene;
 
     // Use this for initialization
     void Start()

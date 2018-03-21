@@ -3,48 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
 
-public class ForceResponseBallTwo : Singleton<ForceResponse> {
+public class ForceResponseBallTwo : Singleton<ForceResponseBallTwo>
+{
 
-	public List<GameObject> forces = new List<GameObject>();
-	public Vector3 updatedForce = new Vector3(0, 0, 0);
+    public List<GameObject> forces = new List<GameObject>();
+    public Vector3 updatedForce = new Vector3(0, 0, 0);
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
 
-	public void addForceVector(GameObject gb)
-	{
-		forces.Add(gb);
-		Debug.Log("New force added now there are " + forces.Count + " force vectors attached");
-	}
-	public void removeForceVector(GameObject gb)
-	{
-		forces.Remove(gb);
-		Debug.Log("force removed now there are " + forces.Count + " force vectors attached");
-	}
-	public void updateForce() {
-		Vector3 experiencedforce = new Vector3(0, 0, 0);
+    }
 
-		//loop through all game objects that apply a force on the ball
-		foreach (GameObject representationArrow in forces)
-		{
-			// get magnitude and direction of the current force affecting our object
-			float magnitudeCurrentForceVector = representationArrow.transform.localScale.y*1000;
-			Vector3 directionCurrentForceVector = - representationArrow.transform.up.normalized;
+    // Update is called once per frame
+    void Update()
+    {
 
-			//calculate the experienced force vector... and add it to the net Force
-			Vector3 effective_force = magnitudeCurrentForceVector * directionCurrentForceVector;
-			experiencedforce += effective_force;
+    }
 
-		}
-		updatedForce = experiencedforce;
-		Debug.Log ("ForceResponse updatedForce " + updatedForce);
-	}
+    public void addForceVector(GameObject gb)
+    {
+        forces.Add(gb);
+        Debug.Log("New force added now there are " + forces.Count + " force vectors attached");
+    }
+    public void removeForceVector(GameObject gb)
+    {
+        forces.Remove(gb);
+        Debug.Log("force removed now there are " + forces.Count + " force vectors attached");
+    }
+    public void updateForce()
+    {
+        Vector3 experiencedforce = new Vector3(0, 0, 0);
+
+        //loop through all game objects that apply a force on the ball
+        foreach (GameObject representationArrow in forces)
+        {
+            // get magnitude and direction of the current force affecting our object
+            float magnitudeCurrentForceVector = representationArrow.transform.localScale.y * 1000;
+            Vector3 directionCurrentForceVector = -representationArrow.transform.up.normalized;
+
+            //calculate the experienced force vector... and add it to the net Force
+            Vector3 effective_force = magnitudeCurrentForceVector * directionCurrentForceVector;
+            experiencedforce += effective_force;
+
+        }
+        updatedForce = experiencedforce;
+        Debug.Log("ForceResponse updatedForce " + updatedForce);
+    }
 
 }

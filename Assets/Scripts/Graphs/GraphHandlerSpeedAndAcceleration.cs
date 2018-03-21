@@ -58,7 +58,6 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
-		graph.SetActive(false);
 		timer = addValuesToGraph();
 	}
 
