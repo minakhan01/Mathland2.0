@@ -77,7 +77,7 @@ public class RewindManager : Singleton<RewindManager>
             Record();
     }
 
-    void Rewind()
+    public void Rewind()
     {
         if (currentPointInTime < pointsInTimeCount)
         {
