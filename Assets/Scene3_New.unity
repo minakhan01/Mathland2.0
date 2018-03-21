@@ -4547,12 +4547,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702526}
-        m_MethodName: 
+      - m_Target: {fileID: 794424764}
+        m_MethodName: rewindSliderHandler
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5968,7 +5968,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 78059351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aaae6349716ff4af3b611406233914bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 3993c9676d32c4e4f9de538c755b112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   graphs:
@@ -17030,7 +17030,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: doubleFastSpeedButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -24305,7 +24305,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -31985,7 +31985,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: doubleSlowSpeedButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -34345,14 +34345,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 667702527}
-  - component: {fileID: 667702528}
   m_Layer: 5
   m_Name: RewindUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &667702527
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34375,25 +34374,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &667702528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 667702526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d08eeb4a382d45f6b708fdff710fd1d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pauseButtonSprite: {fileID: 21300000, guid: 8b3515004f069428faa2e4991a446893, type: 3}
-  playButtonSprite: {fileID: 21300000, guid: 61aaab3da92844660a7d7e1729685ee5, type: 3}
-  speedButton: {fileID: 1360890606}
-  rewindSlider: {fileID: 57228875}
-  playPauseImage: {fileID: 1802271539}
-  speedMenu: {fileID: 69662347}
-  speedMenuText: {fileID: 1798073572}
-  playSimulationButton: {fileID: 0}
 --- !u!1 &668474756
 GameObject:
   m_ObjectHideFlags: 0
@@ -36251,7 +36231,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -38449,7 +38429,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: replayButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -40622,6 +40602,7 @@ GameObject:
   m_Component:
   - component: {fileID: 794424762}
   - component: {fileID: 794424763}
+  - component: {fileID: 794424764}
   m_Layer: 5
   m_Name: Panels
   m_TagString: Untagged
@@ -40643,6 +40624,7 @@ RectTransform:
   - {fileID: 1903804401}
   - {fileID: 860982139}
   - {fileID: 667702527}
+  - {fileID: 982482892}
   m_Father: {fileID: 590290422}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40677,6 +40659,25 @@ MonoBehaviour:
   PlayButton: {fileID: 645110805}
   RewindButton: {fileID: 1021847232}
   AddButton: {fileID: 1717702044}
+--- !u!114 &794424764
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794424761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d08eeb4a382d45f6b708fdff710fd1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseButtonSprite: {fileID: 21300000, guid: 8b3515004f069428faa2e4991a446893, type: 3}
+  playButtonSprite: {fileID: 21300000, guid: 61aaab3da92844660a7d7e1729685ee5, type: 3}
+  speedButton: {fileID: 1360890606}
+  rewindSlider: {fileID: 57228875}
+  playPauseImage: {fileID: 1802271539}
+  speedMenu: {fileID: 69662347}
+  speedMenuText: {fileID: 1798073572}
+  playSimulationButton: {fileID: 1357377402}
 --- !u!1 &794961947
 GameObject:
   m_ObjectHideFlags: 27
@@ -50024,7 +50025,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: normalSpeedButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -51609,6 +51610,40 @@ Transform:
   m_Father: {fileID: 990918400}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &982482891
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 982482892}
+  m_Layer: 5
+  m_Name: StartSimulationUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &982482892
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 982482891}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999986, y: 0.9999986, z: 0.9999986}
+  m_Children:
+  - {fileID: 1357377401}
+  m_Father: {fileID: 794424762}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 0}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!1 &986785913
 GameObject:
   m_ObjectHideFlags: 0
@@ -71951,6 +71986,139 @@ Transform:
   m_Father: {fileID: 1215597206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1357377400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1357377401}
+  - component: {fileID: 1357377405}
+  - component: {fileID: 1357377404}
+  - component: {fileID: 1357377403}
+  - component: {fileID: 1357377402}
+  m_Layer: 5
+  m_Name: Play
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1357377401
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357377400}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 982482892}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -70}
+  m_SizeDelta: {x: 170, y: 170}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &1357377402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357377400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3a34e9df38646bdae34e21a2a9b64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1357377403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357377400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1357377404}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 794424764}
+        m_MethodName: playSimulationButtonHandler
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1357377404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357377400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 61aaab3da92844660a7d7e1729685ee5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1357377405
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1357377400}
 --- !u!1 &1357918489
 GameObject:
   m_ObjectHideFlags: 0
@@ -72316,7 +72484,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: speedButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -78657,7 +78825,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: quarterSlowSpeedButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -93061,7 +93229,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: playPauseButtonHandler
         m_Mode: 1
         m_Arguments:
@@ -106577,7 +106745,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 667702528}
+      - m_Target: {fileID: 794424764}
         m_MethodName: fourTimesFastSpeedButtonHandler
         m_Mode: 1
         m_Arguments:
