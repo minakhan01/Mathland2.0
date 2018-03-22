@@ -8,44 +8,73 @@ using ChartAndGraph;
 public class GraphManager : Singleton<GraphManager>
 {
 
-	public List<GameObject> graphs;
-	//float initTime = 0f;
+    //public List<GameObject> graphs;
+    public List<GraphHandler> allGraphs;
+    List<GraphHandler> activeGraphs;
 
-	// Use this for initialization
-	void Start()
-	{
+    // Use this for initialization
+    void Start()
+    {
+        for (int i = 0; i < allGraphs.Count; i++)
+        {
+            if (allGraphs[i].gameObject.activeSelf) activeGraphs.Add(allGraphs[i]);
+        }
+    }
 
-	}
+    // Update is called once per frame
+    void Update()
+    {
 
-	// Update is called once per frame
-	void Update()
-	{
+    }
 
-	}		
+    public void startGraph()
+    {
+        for (int i = 0; i < activeGraphs.Count; i++)
+        {
+            GraphHandler graphHandler = activeGraphs[i];
 
-	public void startGraph()
-	{
-		for (int i = 0; i < graphs.Count; i++) {
-			graphs[i].GetComponent<GraphHandler> ().startGraph ();
-		}
-	}
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StartGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StartGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerAccelerationBallOneandTwo)) ((GraphHandlerAccelerationBallOneandTwo)graphHandler).StartGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerVerticalVelocityAcceleration)) ((GraphHandlerVerticalVelocityAcceleration)graphHandler).StartGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVelocityAcceleration)) ((GraphHandlerHorizontalVelocityAcceleration)graphHandler).StartGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVerticalCombinedSpeed)) ((GraphHandlerHorizontalVerticalCombinedSpeed)graphHandler).StartGraph();
+        }
+    }
 
-	public void pauseGraph()
-	{
-		stopGraphRecording ();
-	}
+    public void pauseGraph()
+    {
+        stopGraphRecording();
+    }
 
-	public void stopGraph()
-	{
-		for (int i = 0; i < graphs.Count; i++) {
-			graphs[i].GetComponent<GraphHandler> ().stopGraph ();
-		}
-	}
+    public void stopGraph()
+    {
+        for (int i = 0; i < activeGraphs.Count; i++)
+        {
+            GraphHandler graphHandler = activeGraphs[i];
 
-	public void stopGraphRecording()
-	{
-		for (int i = 0; i < graphs.Count; i++) {
-			graphs[i].GetComponent<GraphHandler> ().stopGraphRecording ();
-		}
-	}
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerAccelerationBallOneandTwo)) ((GraphHandlerAccelerationBallOneandTwo)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerVerticalVelocityAcceleration)) ((GraphHandlerVerticalVelocityAcceleration)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVelocityAcceleration)) ((GraphHandlerHorizontalVelocityAcceleration)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVerticalCombinedSpeed)) ((GraphHandlerHorizontalVerticalCombinedSpeed)graphHandler).StopGraph();
+        }
+    }
+
+    public void stopGraphRecording()
+    {
+        for (int i = 0; i < activeGraphs.Count; i++)
+        {
+            GraphHandler graphHandler = activeGraphs[i];
+
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopRecordingGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopRecordingGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerAccelerationBallOneandTwo)) ((GraphHandlerAccelerationBallOneandTwo)graphHandler).StopRecordingGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerVerticalVelocityAcceleration)) ((GraphHandlerVerticalVelocityAcceleration)graphHandler).StopRecordingGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVelocityAcceleration)) ((GraphHandlerHorizontalVelocityAcceleration)graphHandler).StopRecordingGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVerticalCombinedSpeed)) ((GraphHandlerHorizontalVerticalCombinedSpeed)graphHandler).StopRecordingGraph();
+        }
+    }
+
 }

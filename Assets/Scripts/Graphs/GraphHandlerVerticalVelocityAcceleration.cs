@@ -8,11 +8,9 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 	public GraphChart graphChart;
 	//float initTime = 0f;
 
-	float time;
-	IEnumerator timer;
 	float maxYValue = 0;
 
-	IEnumerator addValuesToGraph()
+    IEnumerator AddValuesToGraph()
 	{
 		while (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
 		{
@@ -31,16 +29,9 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 
 	}
 
-	public void startGraph()
+    public void StopGraph()
 	{
-		graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, BallPhysicsManager.Instance.updatedVelocity.y);
-		graphChart.DataSource.AddPointToCategoryRealtime(ACCL_VERTICAL, time, BallPhysicsManager.Instance.updatedForce.y);
-		StartCoroutine(timer);
-	}
-
-	public void stopGraph()
-	{
-		StopCoroutine(timer);
+        StopRecordingGraph();
 		time = 0.0f;
 		maxYValue = 0.0f;
 		Debug.Log("Stop coroutine: " + time);
@@ -48,16 +39,11 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 		graphChart.DataSource.ClearCategory(ACCL_VERTICAL);
 	}
 
-	public void stopGraphRecording()
-	{
-		StopCoroutine(timer);
-	}
-
 	// Use this for initialization
 	void Start()
 	{
 		graphChart = GetComponent<GraphChart> ();
-		timer = addValuesToGraph();
+		timer = AddValuesToGraph();
 	}
 
 	// Update is called once per frame

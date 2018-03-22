@@ -9,11 +9,11 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 	public GameObject graph;
 	//float initTime = 0f;
 
-	float time;
-	IEnumerator timer;
+    //float time;
+    //IEnumerator timer;
 	float maxYValue = 0;
 
-	IEnumerator addValuesToGraph()
+    IEnumerator AddValuesToGraph()
 	{
 		while (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
 		{
@@ -23,42 +23,33 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 			if (velocity > maxYValue) maxYValue = velocity;
 
 			time++;
-			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, velocity);
-			graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
+            graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, velocity);
+            graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
 
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 
 	}
 
-	public void startGraph()
+    public void StopGraph()
 	{
-		graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
-		graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
-		StartCoroutine(timer);
-	}
-
-	public void stopGraph()
-	{
-		StopCoroutine(timer);
+        StopRecordingGraph();
 		time = 0.0f;
 		maxYValue = 0.0f;
-		Debug.Log("Stop coroutine: " + time);
-		graphChart.DataSource.ClearAndMakeLinear(VELOCITY_BALL_ONE);
-		graphChart.DataSource.ClearCategory(ACCL_BALL_ONE);
+        graphChart.DataSource.ClearAndMakeLinear(VELOCITY_HORIZONTAL);
+        graphChart.DataSource.ClearCategory(ACCL_HORIZONTAL);
 	}
 
-	public void stopGraphRecording()
-	{
-		StopCoroutine(timer);
-	}
+ //   public void StopRecordingGraph()
+	//{
+		
+	//}
 
 	// Use this for initialization
 	void Start()
 	{
-		timer = addValuesToGraph();
+		timer = AddValuesToGraph();
 	}
 
 	// Update is called once per frame
