@@ -8,17 +8,21 @@ using ChartAndGraph;
 public class GraphManager : Singleton<GraphManager>
 {
 
-    //public List<GameObject> graphs;
-    public List<GraphHandler> allGraphs;
-    List<GraphHandler> activeGraphs;
+    public List<GraphHandler> graphs;
+    List<GraphHandler> activeGraphs = new List<GraphHandler>();
 
     // Use this for initialization
     void Start()
     {
-        for (int i = 0; i < allGraphs.Count; i++)
+        for (int i = 0; i < graphs.Count; i++)
         {
-            if (allGraphs[i].gameObject.activeSelf) activeGraphs.Add(allGraphs[i]);
+            if (graphs[i].gameObject.activeSelf)
+            {
+                Debug.Log("Graph - Adding new active graph"); 
+                activeGraphs.Add(graphs[i]);
+            }
         }
+        Debug.Log("Graph - active graphs count: " + activeGraphs.Count);
     }
 
     // Update is called once per frame
@@ -32,6 +36,11 @@ public class GraphManager : Singleton<GraphManager>
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
+
+            if (graphHandler is GraphHandlerAccelerationBallOneandTwo) Debug.Log("Graph - graph manager is GraphHandlerAccelerationBallOneandTwo");
+
+            Debug.Log("Graph - type of graph: " + graphHandler.GetType());
+            Debug.Log("Graph - is equals to speed and acc: " + (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)));
 
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StartGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StartGraph();
