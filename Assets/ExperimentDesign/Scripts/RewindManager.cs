@@ -125,6 +125,7 @@ public class RewindManager : Singleton<RewindManager>
 
     void stopRecording()
     {
+        Debug.Log("Stop recording");
         isRecordable = false;
         GraphManager.Instance.pauseGraph();
         for (int i = 0; i < currentRewindables.Count; i++)
