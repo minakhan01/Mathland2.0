@@ -28,6 +28,7 @@ public class RewindableObject : MonoBehaviour
     }
     public void ResetRewind()
     {
+		Debug.Log ("This gets called");
         rb.isKinematic = false;
         ApplyPointInTime(0);
         RewindManager.Instance.currentRewindables = new List<RewindableObject>();

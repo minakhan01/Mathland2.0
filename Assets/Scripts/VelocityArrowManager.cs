@@ -45,7 +45,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
         float ballVelocityMagnitude = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         Debug.Log("ballVelocityMagnitude: " + ballVelocityMagnitude);
-		if (ballVelocityMagnitude != 0) {
+		if (ballVelocityMagnitude != 0f) {
 			velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude);
 			velocityHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballVelocityMagnitude));
 		} else {

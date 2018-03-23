@@ -9,11 +9,9 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 	public GameObject graph;
 	//float initTime = 0f;
 
-	float time;
-	IEnumerator timer;
 	float maxYValue = 0;
 
-	IEnumerator addValuesToGraph()
+    IEnumerator AddValuesToGraph()
 	{
 		while (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
 		{
@@ -33,16 +31,10 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 	}
 
-	public void startGraph()
-	{
-		graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
-		graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y);
-		StartCoroutine(timer);
-	}
 
-	public void stopGraph()
+    public void StopGraph()
 	{
-		StopCoroutine(timer);
+        StopRecordingGraph();
 		time = 0.0f;
 		maxYValue = 0.0f;
 		Debug.Log("Stop coroutine: " + time);
@@ -50,16 +42,10 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 		graphChart.DataSource.ClearCategory(VELOCITY_VERTICAL);
 	}
 
-	public void stopGraphRecording()
-	{
-		StopCoroutine(timer);
-	}
-
 	// Use this for initialization
 	void Start()
 	{
-		graph.SetActive(false);
-		timer = addValuesToGraph();
+		timer = AddValuesToGraph();
 	}
 
 	// Update is called once per frame

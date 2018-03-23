@@ -13,14 +13,15 @@ public class SwitchSceneManager : MonoBehaviour
     public GameObject backButton;
     public Text sceneNameText;
 
-    private int currentScene;
+    int currentScene;
 
     // Use this for initialization
     void Start()
     {
-        currentScene = Convert.ToInt32(name.Split('_')[1]);
+        Debug.Log("Initiallize scene");
+        currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
         Debug.Log("currentScene: " + currentScene);
-        sceneNameText.text = currentScene.ToString();
+        sceneNameText.text = SCENE + " " + currentScene.ToString();
     }
 
     // Update is called once per frame

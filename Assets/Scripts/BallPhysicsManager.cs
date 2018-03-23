@@ -51,8 +51,8 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
             Debug.Log("ball two is not null");
 			ForceResponseBallTwo.Instance.updateForce ();
 			VelocityResponseBallTwo.Instance.updateVelocity ();
-			updatedVelocityBallTwo = ForceResponseBallTwo.Instance.updatedForce;
-			updatedForceBallTwo = VelocityResponseBallTwo.Instance.updatedVelocity;
+			updatedForceBallTwo = ForceResponseBallTwo.Instance.updatedForce;
+			updatedVelocityBallTwo= VelocityResponseBallTwo.Instance.updatedVelocity;
 		}
 
 	}
@@ -62,11 +62,16 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
         GraphManager.Instance.startGraph();
     }
 
-    public void resetBall() {
-        ball.transform.position = initialPosition;
+    public void stopBallPhysics() {
+        GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
         Rigidbody rbi = ball.GetComponent<Rigidbody>();
         rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
         GraphManager.Instance.stopGraph();
+    }
+
+    public void resetBall() {
+        ball.transform.position = initialPosition;
 		StrobingHandler.Instance.clearStrobes ();
+        stopBallPhysics();
     }
 }
