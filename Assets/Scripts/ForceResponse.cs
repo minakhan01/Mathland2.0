@@ -21,12 +21,12 @@ public class ForceResponse : Singleton<ForceResponse> {
 	public void addForceVector(GameObject gb)
 	{
 		forces.Add(gb);
-		Debug.Log("New force added now there are " + forces.Count + " force vectors attached");
+//		Debug.Log("New force added now there are " + forces.Count + " force vectors attached");
 	}
 	public void removeForceVector(GameObject gb)
 	{
 		forces.Remove(gb);
-		Debug.Log("force removed now there are " + forces.Count + " force vectors attached");
+//		Debug.Log("force removed now there are " + forces.Count + " force vectors attached");
 	}
 	public void updateForce() {
 		Vector3 experiencedforce = new Vector3(0, 0, 0);
@@ -44,7 +44,7 @@ public class ForceResponse : Singleton<ForceResponse> {
 
 		}
 		updatedForce = experiencedforce;
-		Debug.Log ("ForceResponse updatedForce " + updatedForce);
+//		Debug.Log ("ForceResponse updatedForce " + updatedForce);
 	}
 
 }

@@ -44,7 +44,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				GameObject arrowForceInstance = (GameObject) Instantiate(arrowForce, realArrowForce.transform.position, realArrowForce.transform.rotation);
 
 				//resize strobe arrow
-				float ballVelocityMagnitude = BallPhysicsManager.Instance.updatedVelocity.magnitude;
+				float ballVelocityMagnitude = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 				float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
 				Debug.Log ("velocity of ball " + BallPhysicsManager.Instance.updatedVelocity);
 				if (ballVelocityMagnitude == 0.0)

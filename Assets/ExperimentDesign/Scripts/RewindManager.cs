@@ -20,7 +20,7 @@ public class RewindManager : Singleton<RewindManager>
     bool isRewinding = false;
     int pointsInTimeCount = 0;
     bool isRecording = false;
-    public List<RewindableObject> currentRewindables;
+	public List<GameObject> currentRewindables = new List<GameObject>();
 
     // TO DO: Judith, set this based on speed
     public float updateSpeed = 1;
@@ -39,6 +39,7 @@ public class RewindManager : Singleton<RewindManager>
         rewindUI.SetActive(false);
         startSimulationUI.SetActive(true);
         timer = timeSimulation();
+		Debug.Log ("CurrentRewindables Count: " + currentRewindables.Count);
         Debug.Log("Simulation - starting rewind manager script");
     }
 
@@ -56,11 +57,15 @@ public class RewindManager : Singleton<RewindManager>
     public void play()
     {
         currentPlayMode = PlayMode.PLAY;
+		isRewinding = true;
+		Debug.Log ("RewindManager play");
     }
 
     public void pause()
     {
         currentPlayMode = PlayMode.PAUSE;
+		isRewinding = false;
+		Debug.Log ("RewindManager pause");
     }
 
     public void starRecording()
@@ -72,23 +77,31 @@ public class RewindManager : Singleton<RewindManager>
 
     public void setSliderValue(float value)
     {
+		Debug.Log ("RewindManager setSliderValue value: "+value);
         currentPointInTime = (int)value * pointsInTimeCount;
+		Debug.Log ("RewindManager setSliderValue currentPointInTime: "+currentPointInTime);
     }
 
     void FixedUpdate()
     {
-        if (isRewinding)
-            Rewind();
-        else if (isRecording)
-            Record();
+		Debug.Log ("RewindManager isRewinding: "+isRewinding+" ; isRecording: "+ isRecording);
+		if (isRewinding) {
+			Rewind ();
+		}
+		if (isRecording) {
+			Record ();
+		}
     }
 
     public void Rewind()
     {
+		Debug.Log ("RewindManager rewind");
+		Debug.Log ("RewindManager currentPointInTime: "+ currentPointInTime+" pointsInTimeCount: "+pointsInTimeCount);
         if (currentPointInTime < pointsInTimeCount)
         {
             for (int i = 0; i < currentRewindables.Count; i++)
             {
+				Debug.Log ("RewindManager currentRewindables[i] .Rewind() "+i);
                 currentRewindables[i].GetComponent<RewindableObject>().Rewind();
             }
             UpdateCurrentPointsInTime();
@@ -103,9 +116,11 @@ public class RewindManager : Singleton<RewindManager>
 
     void Record()
     {
-        //Debug.Log("Simulation - Recording");
+        Debug.Log("Simulation - Recording");
+		Debug.Log ("RewindManager currentRewindables.Count "+ currentRewindables.Count);
         for (int i = 0; i < currentRewindables.Count; i++)
         {
+			Debug.Log ("RewindManager currentRewindables[i] .Record() "+i);
             currentRewindables[i].GetComponent<RewindableObject>().Record();
         }
         pointsInTimeCount++;
@@ -148,8 +163,7 @@ public class RewindManager : Singleton<RewindManager>
         {
             yield return new WaitForSeconds(1f);
             maxRecordTime--;
-            Debug.Log("Simulation - time: " + maxRecordTime);
-
+			Debug.Log("RewindManager timeSimulation: " + maxRecordTime);
 
             if (maxRecordTime == 0)
             {

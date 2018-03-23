@@ -17,8 +17,10 @@ public class RewindableObject : MonoBehaviour
     public void Rewind()
     {
         int currentPointInTime = RewindManager.Instance.currentPointInTime;
+		Debug.Log ("RewindableObject Rewind: currentPointInTime - "+currentPointInTime);
         if (currentPointInTime > 0)
         {
+			Debug.Log ("RewindableObject: ApplyPointInTime");
             ApplyPointInTime(currentPointInTime);
         }
     }
@@ -31,11 +33,19 @@ public class RewindableObject : MonoBehaviour
 		Debug.Log ("This gets called");
         rb.isKinematic = false;
         ApplyPointInTime(0);
-        RewindManager.Instance.currentRewindables = new List<RewindableObject>();
+		RewindManager.Instance.currentRewindables = new List<GameObject>();
     }
     public void Record()
     {
-        pointsInTime.Add(new PointInTime(getPosition(), getRotation(), getScale(), getVelocity(), getForce()));
+		Vector3 scale,velocity,force,position;
+		Quaternion rotation;
+		scale = getScale ();
+		velocity = getVelocity ();
+		position = getPosition ();
+		rotation = getRotation ();
+		force = getForce ();
+		Debug.Log ("RewindableObject Record: position: "+position+ " rotation: "+rotation+" scale: "+scale+ " velocity: "+velocity+" force: "+force);
+		pointsInTime.Add(new PointInTime(position, rotation, scale, velocity, force));
 
     }
     Vector3 getPosition()
@@ -54,7 +64,7 @@ public class RewindableObject : MonoBehaviour
     {
         if (gameObject.name.Contains("MainBall"))
         {
-            return BallPhysicsManager.Instance.updatedVelocity;
+			return BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
         }
         return new Vector3();
     }
@@ -68,6 +78,7 @@ public class RewindableObject : MonoBehaviour
     }
     void ApplyPointInTime(int pointInTimeIndex)
     {
+		Debug.Log ("ApplyPointInTime: "+pointInTimeIndex);
         PointInTime currentPointInTime = pointsInTime[pointInTimeIndex];
         transform.position = currentPointInTime.position;
         transform.rotation = currentPointInTime.rotation;
