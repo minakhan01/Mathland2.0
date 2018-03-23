@@ -15,7 +15,7 @@ public class ModifiableManager : Singleton<ModifiableManager>
     public bool[] actionSelected = { true, true, true }; //{REPOSITION, RESIZE, ROTATE}
     public bool[] playMenuSelected = { true, true, true, true }; //{ADD, PLAY, REWIND, DELETE}
     public ModifyingAction action { get; set; }
-    public GameObject selectedObjectToModify;
+    public GameObject selectedObjectToModify; //is unused
 
 	public bool sliderValueChanged = false;
 	float sliderValue;

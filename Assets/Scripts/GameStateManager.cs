@@ -13,7 +13,7 @@ public class GameStateManager : Singleton<GameStateManager> {
 
 	//game states are represented as an enum
 	public enum gameState {PLAY, BUILD};
-	public enum GameDisplayState { PLAY_SCREEN, MODIFY_SCREEN };
+	public enum GameDisplayState { PLAY_SCREEN, MODIFY_SCREEN }; // is unused (Mina)
 	public enum GamePlayPhysicsState { ON, OFF };
 	public static gameState currentGameState { get; set; }
 	public static GameDisplayState currentDisplayState;
