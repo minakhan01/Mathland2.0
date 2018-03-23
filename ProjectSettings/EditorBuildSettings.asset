@@ -74,6 +74,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene3_New.unity
     guid: e3ff78554d9664034968457378616c7b
-  - enabled: 1
+  - enabled: 0
     path: Assets/ExperimentDesign/Scene_3.unity
     guid: 1fcc3e99bf3654f2eb21c69fb49b513d
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_4.unity
+    guid: 3b1b7813a2cfb49a8b7a396c3380ca16
