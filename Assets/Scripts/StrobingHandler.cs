@@ -1,9 +1,8 @@
-﻿using HoloToolkit.Unity;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StrobingHandler : Singleton<StrobingHandler> {
+public class StrobingHandler : MonoBehaviour {
 
 	public GameObject ball;
 	private int updateCount = 0;
@@ -39,13 +38,22 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 				Debug.Log ("Strobe after MeshRenderer");
 
 				//instantiate arrows
+
 				BallPhysicsManager.Instance.updateVelocityandForce();
 				GameObject arrowVelocityInstance = (GameObject) Instantiate(arrowVelocity, realArrowVelocity.transform.position, realArrowVelocity.transform.rotation);
 				GameObject arrowForceInstance = (GameObject) Instantiate(arrowForce, realArrowForce.transform.position, realArrowForce.transform.rotation);
+				float ballVelocityMagnitude = 0;
+				float ballForceMagnitude = 0;
+				if (transform.root.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+					//resize strobe arrow
+					ballVelocityMagnitude = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody> ().velocity.magnitude;
+					ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
+				} else if (transform.root.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+					//resize strobe arrow
+					ballVelocityMagnitude = BallPhysicsManager.Instance.ballTwo.GetComponent<Rigidbody> ().velocity.magnitude;
+					ballForceMagnitude = BallPhysicsManager.Instance.updatedForceBallTwo.magnitude;
+				}
 
-				//resize strobe arrow
-				float ballVelocityMagnitude = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
-				float ballForceMagnitude = BallPhysicsManager.Instance.updatedForce.magnitude;
 				Debug.Log ("velocity of ball " + BallPhysicsManager.Instance.updatedVelocity);
 				if (ballVelocityMagnitude == 0.0)
 					arrowVelocityInstance.transform.localScale = new Vector3 (0f, 0f, 0f);

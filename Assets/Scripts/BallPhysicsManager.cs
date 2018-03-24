@@ -17,12 +17,15 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	public GameObject ball;
 	public GameObject ballTwo;
 
+	public bool sceneHasTwoBalls;
+
     Vector3 initialPosition;
+	Vector3 initialPositionBallTwo;
 
 
 	// Use this for initialization
 	void Start () {
-
+		sceneHasTwoBalls = ballTwo != null && ballTwo.activeSelf;
 	}
 
 	// Update is called once per frame
@@ -35,6 +38,15 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			rbi.velocity += updatedVelocity;
 			Debug.Log ("velocity of the ball should be" + updatedVelocity);
 			rbi.AddForce(updatedForce); 
+
+			if (sceneHasTwoBalls) {
+				Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody> ();
+				rbi.isKinematic = false;
+
+				rbiTwo.velocity += updatedVelocityBallTwo;
+				Debug.Log ("velocity of the ball should be" + updatedVelocity);
+				rbiTwo.AddForce(updatedForceBallTwo);
+			}
         }
 	}
 
@@ -59,19 +71,35 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
     public void initBallPhysics () {
         initialPosition = ball.transform.position;
+
+		if (sceneHasTwoBalls) {
+			initialPositionBallTwo = ballTwo.transform.position;
+		}
+
         GraphManager.Instance.startGraph();
     }
 
     public void stopBallPhysics() {
         GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-        Rigidbody rbi = ball.GetComponent<Rigidbody>();
+        
+		Rigidbody rbi = ball.GetComponent<Rigidbody>();
         rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+
+		if (sceneHasTwoBalls) {
+			Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody>();
+			rbiTwo.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+		}
+
         GraphManager.Instance.stopGraph();
     }
 
     public void resetBall() {
         ball.transform.position = initialPosition;
-		StrobingHandler.Instance.clearStrobes ();
+		if (sceneHasTwoBalls) {
+			ballTwo.transform.position = initialPositionBallTwo;
+			ballTwo.GetComponent<StrobingHandler>().clearStrobes ();
+		}
+		ball.GetComponent<StrobingHandler>().clearStrobes ();
         stopBallPhysics();
     }
 }

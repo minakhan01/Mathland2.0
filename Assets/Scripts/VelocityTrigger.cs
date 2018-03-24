@@ -18,16 +18,26 @@ public class VelocityTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collidee)
     {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-            //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
-			VelocityResponse.Instance.addVelocityVector(gameObject);
-			Debug.Log ("VelocityVector and ball collided!");
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
+        //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+			VelocityResponse.Instance.addVelocityVector (gameObject);
+		}
+		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
+			VelocityResponseBallTwo.Instance.addVelocityVector (gameObject);
+		}
+		Debug.Log ("VelocityVector and ball collided!");
     }
     private void OnTriggerExit(Collider collidee)
     {
-            gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
-			VelocityResponse.Instance.removeVelocityVector(gameObject);
-			Debug.Log ("VelocityVector and ball collision removed");
+        gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+			VelocityResponse.Instance.removeVelocityVector (gameObject);
+		}
+		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
+			VelocityResponseBallTwo.Instance.removeVelocityVector (gameObject);
+		}
+		Debug.Log ("VelocityVector and ball collision removed");
     }
     private void OnDestroy()
     {

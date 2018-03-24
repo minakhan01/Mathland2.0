@@ -46,8 +46,14 @@ public class TrajectoryPredictorScript : MonoBehaviour
 			// if we have a velocityReactor component, update its initVel / experiencedForce
 			BallPhysicsManager.Instance.updateVelocityandForce ();
 
-			velocity_of_ball = BallPhysicsManager.Instance.updatedVelocity;
-			force_exp = BallPhysicsManager.Instance.updatedForce;
+			if (gameObject.name == BallPhysicsManager.Instance.ball.name) {
+				velocity_of_ball = BallPhysicsManager.Instance.updatedVelocity;
+				force_exp = BallPhysicsManager.Instance.updatedForce;
+			}
+			else if (gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+				velocity_of_ball = BallPhysicsManager.Instance.updatedVelocityBallTwo;
+				force_exp = BallPhysicsManager.Instance.updatedForceBallTwo;
+			}
 			Debug.Log ("Velocity of ball is " + velocity_of_ball + " and force is " + force_exp);
 
 			/*********** Here we work with the trajectory predictor to draw the correct line ********/

@@ -33,7 +33,7 @@ public class RewindableObject : MonoBehaviour
 		Debug.Log ("This gets called");
         rb.isKinematic = false;
         ApplyPointInTime(0);
-		RewindManager.Instance.currentRewindables = new List<GameObject>();
+//		RewindManager.Instance.currentRewindables = new List<GameObject>();
     }
     public void Record()
     {
@@ -62,18 +62,23 @@ public class RewindableObject : MonoBehaviour
     }
     Vector3 getVelocity()
     {
-        if (gameObject.name.Contains("MainBall"))
+		if (gameObject.name == BallPhysicsManager.Instance.ball.name)
         {
 			return BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
         }
+		else if (gameObject.name == BallPhysicsManager.Instance.ballTwo.name)
+		{
+			return BallPhysicsManager.Instance.ballTwo.GetComponent<Rigidbody>().velocity;
+		}
         return new Vector3();
     }
     Vector3 getForce()
     {
-        if (gameObject.name.Contains("MainBall"))
-        {
-            return BallPhysicsManager.Instance.updatedForce;
-        }
+		if (gameObject.name == BallPhysicsManager.Instance.ball.name) {
+			return BallPhysicsManager.Instance.updatedForce;
+		} else if (gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+			return BallPhysicsManager.Instance.updatedForceBallTwo;
+		}
         return new Vector3();
     }
     void ApplyPointInTime(int pointInTimeIndex)
