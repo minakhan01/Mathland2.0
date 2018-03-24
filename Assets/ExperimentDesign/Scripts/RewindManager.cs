@@ -111,6 +111,7 @@ public class RewindManager : Singleton<RewindManager>
 
     void UpdateCurrentPointsInTime()
     {
+		updateSpeed = currentSpeed;
         currentPointInTime = currentPointInTime + Mathf.RoundToInt(1f * updateSpeed);
     }
 
