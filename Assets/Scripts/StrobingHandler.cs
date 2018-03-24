@@ -30,7 +30,7 @@ public class StrobingHandler : MonoBehaviour {
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
-			if (updateCount % 12 == 0)
+			if (updateCount % 6 == 0)
 			{
 				//instantiate our strobe ball
 				GameObject ballInstance = (GameObject) Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);
