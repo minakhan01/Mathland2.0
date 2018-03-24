@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SwitchSceneManager : MonoBehaviour
 {
     const char DELIMITER = '_';
-    const string SCENE = "scene";
+    const string SCENE = "ExperimentDesign/Scene";
     const int NUM_OF_SCENES = 10;
 
     public GameObject forwardButton;
@@ -19,9 +19,9 @@ public class SwitchSceneManager : MonoBehaviour
     void Start()
     {
         Debug.Log("Initiallize scene");
-        currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
+//        currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
         Debug.Log("currentScene: " + currentScene);
-        sceneNameText.text = SCENE + " " + currentScene.ToString();
+//        sceneNameText.text = "Scene" + " " + currentScene.ToString();
     }
 
     // Update is called once per frame
@@ -49,13 +49,18 @@ public class SwitchSceneManager : MonoBehaviour
 
     public void goForward()
     {
+		currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
+		Debug.Log ("SwitchSceneManager: Going forward currentScene: "+currentScene);
         string newScene = SCENE + DELIMITER + (currentScene + 1).ToString();
         SceneManager.LoadScene(newScene);
+		Debug.Log ("SwitchSceneManager: Going forward currentScene: "+currentScene);
     }
 
     public void goBack()
     {
+		currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
         string newScene = SCENE + DELIMITER + (currentScene - 1).ToString();
         SceneManager.LoadScene(newScene);
+		Debug.Log ("SwitchSceneManager: Going backward");
     }
 }
