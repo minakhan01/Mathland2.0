@@ -5,81 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/OldScene/Scene1_TouchAsset.unity
-    guid: ac544c98c31f64c2b8f2b8d69c8993c4
-  - enabled: 0
-    path: Assets/UnusedAssets/GUIPack-Clean&Minimalist/Demo/Scenes/LightSkin-DemoHomeScene.unity
-    guid: 99f809d9248fc47a89ada8356ab3acbb
-  - enabled: 0
-    path: Assets/UnusedAssets/GUIPack-Clean&Minimalist/Demo/Scenes/LightSkin-DemoScene.unity
-    guid: ed69d3f9b5a8e446896934f79e173d08
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/OldScene/Scene1_Buttons.unity
-    guid: 6673de9dcc01a4a89a6a768b9725ca50
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/OldScene/Scene1_button_draggingTrail.unity
-    guid: ffdbb60dee3ae4e3a91ad3da8336988f
-  - enabled: 0
-    path: Assets/OldScene/Scene_Milestone1_Achieved.unity
-    guid: b4648f56772bb41e5b2f0a69c6d9e4cc
-  - enabled: 0
-    path: Assets/OldScene/TestProjectile.unity
-    guid: a6bb3ef2bfe944cc2aaa7894f0a265d4
-  - enabled: 0
-    path: Assets/OldScene/Scene_PhysicsBehavior.unity
-    guid: ddbbb997de71349989fdad4bff837e50
-  - enabled: 0
-    path: Assets/OldScene/Test_Trajectory.unity
-    guid: 91ab4ead70cc34a89b943d4f6d51abfc
-  - enabled: 0
-    path: Assets/OldScene/GraphingScene.unity
-    guid: c387067d0bb0747c2b113438767a451c
-  - enabled: 0
-    path: Assets/OldScene/VisualizationScene.unity
-    guid: 09d2f2e3c402b421aaa2241bb1148d7a
-  - enabled: 0
-    path: Assets/OldScene/RopeScene.unity
-    guid: fd2ceb7481ac846289a79d3457c990c5
-  - enabled: 0
-    path: Assets/OldScene/RopeSceneNew_Mina.unity
-    guid: 8f42c260e7d3744e39329b64bba7b608
-  - enabled: 0
-    path: Assets/OldScene/ChainToRopeScene.unity
-    guid: deefe382390044bf092f6ab009cb7618
-  - enabled: 0
-    path: Assets/OldScene/RopeSceneTry.unity
-    guid: 6671275f884ff4512bce85e22ffa916b
-  - enabled: 0
-    path: Assets/OldScene/graphingAndVisualizationScene.unity
-    guid: 843ee610f02234aa39faaed8c2047828
-  - enabled: 0
-    path: Assets/FinalSceneUnclean_16March.unity
-    guid: 3aacdb17fdde54fdf9bdb0f0dddcaed8
-  - enabled: 0
-    path: Assets/FinalScene_16March2018.unity
-    guid: 6a8fd2deb2a144e169feea8b3abd13f2
-  - enabled: 0
-    path: Assets/FinalSceneClean_16March2018.unity
-    guid: 160d8fb0b2b7544088c5b842ab57f481
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scene3_New.unity
-    guid: e3ff78554d9664034968457378616c7b
-  - enabled: 0
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_1.unity
+    guid: 34f6e43aac8ab4f4dbfcfdd9459d87ad
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_2.unity
+    guid: 576a478f442f941aa8e9a1a84d9d61b3
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_3.unity
     guid: 1fcc3e99bf3654f2eb21c69fb49b513d
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_4.unity
     guid: 3b1b7813a2cfb49a8b7a396c3380ca16
   - enabled: 1
-    path: Assets/ExperimentDesign/BaseScene_TwoBalls.unity
-    guid: 84160fb7da90944ecbf55880369a917a
+    path: Assets/ExperimentDesign/Scene_5.unity
+    guid: 814a4e20363c5468eba04b0e399878e8
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_6.unity
+    guid: 946f4aae0f7d34e329e55a91bb7055c4
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_7.unity
+    guid: bd268f721046c4168a7e17d746b9c39f
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_8.unity
+    guid: f3f84780e3f6044d6b6cc90409402c71
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_9.unity
+    guid: 65267b9c7432e48e4b06bbd3c7affafe
+  - enabled: 1
+    path: Assets/ExperimentDesign/Scene_10.unity
+    guid: c7123c4518cb64eb981c248b21b8536a
