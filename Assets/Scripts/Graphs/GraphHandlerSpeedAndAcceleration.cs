@@ -37,8 +37,8 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
         StopRecordingGraph();
 		time = 0.0f;
 		maxYValue = 0.0f;
-        graphChart.DataSource.ClearAndMakeLinear(VELOCITY_HORIZONTAL);
-        graphChart.DataSource.ClearCategory(ACCL_HORIZONTAL);
+		graphChart.DataSource.ClearAndMakeLinear(VELOCITY_BALL_ONE);
+		graphChart.DataSource.ClearCategory(ACCL_BALL_ONE);
 	}
 
  //   public void StopRecordingGraph()
