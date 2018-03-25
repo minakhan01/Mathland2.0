@@ -61,6 +61,7 @@ public class GraphManager : Singleton<GraphManager>
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
+			Debug.Log ("Graph stopGraph");
 
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopGraph();
@@ -76,6 +77,7 @@ public class GraphManager : Singleton<GraphManager>
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
+			Debug.Log ("Graph stopGraphRecording");
 
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopRecordingGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopRecordingGraph();

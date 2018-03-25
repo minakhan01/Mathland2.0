@@ -90,7 +90,7 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			rbiTwo.velocity = new Vector3(0.0f, 0.0f, 0.0f);
 		}
 
-        GraphManager.Instance.stopGraph();
+		GraphManager.Instance.stopGraphRecording();
     }
 
     public void resetBall() {

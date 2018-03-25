@@ -47,6 +47,7 @@ public class GraphHandler : MonoBehaviour
 
     public void StopRecordingGraph()
     {
+		Debug.Log ("StopRecordingGraph");
         StopCoroutine(timer);
     }
 }
