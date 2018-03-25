@@ -22,8 +22,8 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 			time++;
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_TWO, time, BallPhysicsManager.Instance.updatedForceBallTwo.magnitude);
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_TWO, time, BallPhysicsManager.Instance.ballTwo.GetComponent<Rigidbody>().velocity.magnitude);
 
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}

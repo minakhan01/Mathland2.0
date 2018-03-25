@@ -14,7 +14,7 @@ public class GameToolManager : Singleton<GameToolManager> {
 
 	public void CreateVelocityVector() {
 		GameObject velocityVector = (GameObject) CreateGameToolPrefab (VelocityVector);
-		velocityVector.GetComponent<VelocityTrigger> ().BALL = ball;
+//		velocityVector.GetComponent<VelocityTrigger> ().BALL = ball;
 
 	}
 
