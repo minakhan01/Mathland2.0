@@ -46,11 +46,12 @@ public class Marker : MonoBehaviour
 		if (Chart.DataSource.GetLastPoint("VelocityBallOne", out last))
         {
             Vector3 pos;
-			if(Chart.PointToWorldSpace(out pos, last.x, last.y, "VelocityBallOne"))
+			if(Chart.PointToWorldSpace(out pos, last.x, 0, "VelocityBallOne"))
             {
                 if(LastPoint != null)
                 {
                     LastPoint.transform.position = pos;
+					Area.transform.position = pos;
                 }
             }
         }
