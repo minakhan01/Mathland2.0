@@ -16,6 +16,7 @@ public class Scene7Initializer : MonoBehaviour {
 		DirectionArrow = ForceField.transform.Find ("Direction").gameObject;
 		DirectionArrow.transform.localScale = new Vector3(DirectionArrow.transform.localScale.x, ForceMagnitude, DirectionArrow.transform.localScale.z);
 		VelocityArrow.transform.localScale = new Vector3 (VelocityMagnitude, VelocityMagnitude, VelocityMagnitude);
+		RewindManager.Instance.maxRecordTimeInit = 2;
 	}
 
 	// Update is called once per frame

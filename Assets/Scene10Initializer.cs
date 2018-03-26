@@ -11,6 +11,7 @@ public class Scene10Initializer : MonoBehaviour {
 	void Start () {
 		VelocityMagnitude *= 0.001f;
 		VelocityArrow.transform.localScale = new Vector3 (VelocityMagnitude, VelocityMagnitude, VelocityMagnitude);
+		RewindManager.Instance.maxRecordTimeInit = 5;
 	}
 
 	// Update is called once per frame
