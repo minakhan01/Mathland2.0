@@ -9,59 +9,67 @@ public class Marker : MonoBehaviour
     public GraphChartBase Chart;
     public RectTransform LastPoint;
     public RectTransform Area;
+	DoubleVector3 last;
 
     private DoubleRect currentRect = new DoubleRect();
 	// Use this for initialization
 	void Start ()
     {
-        if (Chart != null)
-        {
-            Chart.OnRedraw.AddListener(Redraw);
-        }
+//        if (Chart != null)
+//        {
+//            Chart.OnRedraw.AddListener(Redraw);
+//        }
     }
 
-	void Redraw()
+	void Update()
     {
         if (Chart == null)
             return;
-
-//        if(Chart.IsRectVisible(currentRect) == false)
-//        {
-//            
-//            double endX = (float)(Chart.HorizontalScrolling + Chart.DataSource.HorizontalViewSize);
-//			double x = (endX - 1f);
-//            double y = (float)Chart.VerticalScrolling;
-//            double endY = (float)Chart.DataSource.GetMaxValue(1, false);
-//            currentRect = new DoubleRect(x, y, 200, endY - y);
-//			Debug.Log ("Marker endX: " + endX + " x: " + x);
-//        }
-//
-//        DoubleRect trimRect;
-//        if (Chart.TrimRect(currentRect, out trimRect))
-//        {
-//            Chart.RectToCanvas(Area, trimRect);
-//        }
+		if (!RewindManager.Instance.isRewinding) {
+//			Debug.Log ("Marker !isRewinding drawRewinderRectangleAndPoint");
+			drawRectangleAndPoint ();
+		} else {
+			Debug.Log ("Marker isRewinding drawRewinderRectangleAndPoint");
+			drawRewinderRectangleAndPoint ();
+		}
+        
 
 
-        DoubleVector3 last;
+    }
+
+	void drawRewinderRectangleAndPoint() {
+		double currentX = (RewindManager.Instance.sliderValue * last.x);
+		Vector3 pos;
+		if (Chart.PointToWorldSpace (out pos, currentX, 0, "VelocityBallOne")) {
+			if (LastPoint != null) {
+				Debug.Log ("Marker last point is not null");
+				LastPoint.transform.position = new Vector3( pos.x, pos.y, pos.z);
+				Area.transform.position = new Vector3(pos.x + 200, pos.y, pos.z);
+//				Area.transform.position = pos;
+			}
+		}
+	}
+
+	void drawRectangleAndPoint() {
+		
 		if (Chart.DataSource.GetLastPoint("VelocityBallOne", out last))
-        {
-            Vector3 pos;
+		{
+			Vector3 pos;
 			if(Chart.PointToWorldSpace(out pos, last.x, 0, "VelocityBallOne"))
-            {
-                if(LastPoint != null)
-                {
-                    LastPoint.transform.position = pos;
+			{
+				if(LastPoint != null)
+				{
+					LastPoint.transform.position = pos;
 					Debug.Log("Marker last position: "+LastPoint.transform.position);
 					Area.transform.position = new Vector3( pos.x + 200, pos.y, pos.z);
 					Debug.Log("Marker area position: "+Area.transform.position);
-                }
-            }
-        }
+				}
+			}
+		}
+	}
 
-    }
-	// Update is called once per frame
-	void Update () {
-        double mx, my;
-    }
+//	// Update is called once per frame
+//	void Update () {
+//        double mx, my;
+//    }
 }
