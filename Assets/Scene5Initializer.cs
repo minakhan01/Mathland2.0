@@ -13,6 +13,7 @@ public class Scene5Initializer : MonoBehaviour {
 		Velocity2Magnitude *= 0.002f;
 		VelocityArrow1.transform.localScale = new Vector3 (Velocity1Magnitude, Velocity1Magnitude, Velocity1Magnitude);
 		VelocityArrow2.transform.localScale = new Vector3 (Velocity2Magnitude, Velocity2Magnitude, Velocity2Magnitude);
+		RewindManager.Instance.maxRecordTimeInit = 1;
 	}
 	
 	// Update is called once per frame

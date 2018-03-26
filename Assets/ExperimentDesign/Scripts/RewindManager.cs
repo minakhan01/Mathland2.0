@@ -15,7 +15,7 @@ public class RewindManager : Singleton<RewindManager>
 
 
     public int currentPointInTime { get; set; }
-    int maxRecordTime = 5;
+	public int maxRecordTime, maxRecordTimeInit;
     IEnumerator timer;
     bool isRewinding = false;
     int pointsInTimeCount = 0;
@@ -35,6 +35,7 @@ public class RewindManager : Singleton<RewindManager>
     {
         currentPlayMode = PlayMode.PAUSE;
         currentPointInTime = 0;
+		maxRecordTime = maxRecordTimeInit;
         currentSpeed = PlaySpeed[2];
         rewindUI.SetActive(false);
         startSimulationUI.SetActive(true);
@@ -149,7 +150,7 @@ public class RewindManager : Singleton<RewindManager>
         Debug.Log("Simulation - stop recording");
         StopCoroutine(timer);
         isRecording = false;
-        maxRecordTime = 10;
+		maxRecordTime = maxRecordTimeInit;
         BallPhysicsManager.Instance.stopBallPhysics();
         for (int i = 0; i < currentRewindables.Count; i++)
         {
