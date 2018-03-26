@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4483227034927772}
   - component: {fileID: 114326795313344948}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Marker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,4 +54,3 @@ MonoBehaviour:
   Chart: {fileID: 0}
   LastPoint: {fileID: 0}
   Area: {fileID: 0}
-  MouseText: {fileID: 0}

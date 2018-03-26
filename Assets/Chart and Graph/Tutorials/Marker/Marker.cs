@@ -9,7 +9,6 @@ public class Marker : MonoBehaviour
     public GraphChartBase Chart;
     public RectTransform LastPoint;
     public RectTransform Area;
-    public Text MouseText;
 
     private DoubleRect currentRect = new DoubleRect();
 	// Use this for initialization
@@ -44,10 +43,10 @@ public class Marker : MonoBehaviour
 
 
         DoubleVector3 last;
-        if (Chart.DataSource.GetLastPoint("Player 1", out last))
+		if (Chart.DataSource.GetLastPoint("VelocityBallOne", out last))
         {
             Vector3 pos;
-            if(Chart.PointToWorldSpace(out pos, last.x, last.y, "Player 1"))
+			if(Chart.PointToWorldSpace(out pos, last.x, last.y, "VelocityBallOne"))
             {
                 if(LastPoint != null)
                 {
@@ -60,17 +59,5 @@ public class Marker : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         double mx, my;
-        if (MouseText != null)
-        {
-            if (Chart.MouseToClient(out mx, out my))
-            {
-                MouseText.text = string.Format("{0:0.00} , {1:0.00}", mx, my);
-            }
-        }
-        else
-        {
-            MouseText.text = "";
-        }
-
     }
 }
