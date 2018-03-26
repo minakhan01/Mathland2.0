@@ -77,8 +77,8 @@ public class RewindManager : Singleton<RewindManager>
 
     public void setSliderValue(float value)
     {
-		Debug.Log ("RewindManager setSliderValue value: "+value);
-        currentPointInTime = (int)value * pointsInTimeCount;
+		Debug.Log ("RewindManager setSliderValue value: "+value+" total pointsInTimeCount: "+pointsInTimeCount);
+		currentPointInTime = (int)(value * pointsInTimeCount);
 		Debug.Log ("RewindManager setSliderValue currentPointInTime: "+currentPointInTime);
     }
 
