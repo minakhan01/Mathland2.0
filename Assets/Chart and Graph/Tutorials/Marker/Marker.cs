@@ -38,7 +38,10 @@ public class Marker : MonoBehaviour
     }
 
 	void drawRewinderRectangleAndPoint() {
-		double currentX = (RewindManager.Instance.sliderValue * last.x);
+		double ratio = RewindManager.Instance.sliderValue;
+		ratio = RewindManager.Instance.rewindRatio;
+		Debug.Log ("Marker ratio: "+ratio);
+		double currentX = (ratio * last.x);
 		Vector3 pos;
 		if (Chart.PointToWorldSpace (out pos, currentX, 0, "VelocityBallOne")) {
 			if (LastPoint != null) {
@@ -60,9 +63,9 @@ public class Marker : MonoBehaviour
 				if(LastPoint != null)
 				{
 					LastPoint.transform.position = pos;
-					Debug.Log("Marker last position: "+LastPoint.transform.position);
+//					Debug.Log("Marker last position: "+LastPoint.transform.position);
 					Area.transform.position = new Vector3( pos.x + 200, pos.y, pos.z);
-					Debug.Log("Marker area position: "+Area.transform.position);
+//					Debug.Log("Marker area position: "+Area.transform.position);
 				}
 			}
 		}

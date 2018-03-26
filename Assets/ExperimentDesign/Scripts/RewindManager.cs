@@ -25,6 +25,8 @@ public class RewindManager : Singleton<RewindManager>
     // TO DO: Judith, set this based on speed
     public float updateSpeed = 1;
 
+	public double rewindRatio = 1;
+
 	public float sliderValue = 0;
 
     [Header("Rewind Objects")]
@@ -49,7 +51,9 @@ public class RewindManager : Singleton<RewindManager>
     // Update is called once per frame
     void Update()
     {
-
+		if (pointsInTimeCount > 0) {
+			rewindRatio = (double)currentPointInTime / pointsInTimeCount;
+		}
     }
 
     public void replay()
