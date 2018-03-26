@@ -18,20 +18,22 @@ public class GameStateManager : Singleton<GameStateManager> {
 	public static gameState currentGameState { get; set; }
 	public static GameDisplayState currentDisplayState;
 	public GamePlayPhysicsState currentPhysicsPlayState = GamePlayPhysicsState.OFF;
+	public bool experimentModeEnabled = true;
 
 
 	public static void switchDisplayState ()
 	{
 		Debug.Log ("current game state " + currentGameState);
-		if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
-			GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
-			//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-			UIManager.Instance.switchUI ();
-		}
-		else if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY) {
-			GameStateManager.currentGameState = GameStateManager.gameState.BUILD;
-			//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-			UIManager.Instance.switchUI ();
+		if (!GameStateManager.Instance.experimentModeEnabled) {
+			if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
+				GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
+				//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
+				UIManager.Instance.switchUI ();
+			} else if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY) {
+				GameStateManager.currentGameState = GameStateManager.gameState.BUILD;
+				//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
+				UIManager.Instance.switchUI ();
+			}
 		}
 		Debug.Log ("Switch Display State");
 	}
