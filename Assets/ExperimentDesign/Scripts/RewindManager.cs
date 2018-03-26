@@ -17,13 +17,15 @@ public class RewindManager : Singleton<RewindManager>
     public int currentPointInTime { get; set; }
 	public int maxRecordTime, maxRecordTimeInit;
     IEnumerator timer;
-    bool isRewinding = false;
+    public bool isRewinding = false;
     int pointsInTimeCount = 0;
     bool isRecording = false;
 	public List<GameObject> currentRewindables = new List<GameObject>();
 
     // TO DO: Judith, set this based on speed
     public float updateSpeed = 1;
+
+	public float sliderValue = 0;
 
     [Header("Rewind Objects")]
     public GameObject rewindUI;
@@ -80,6 +82,7 @@ public class RewindManager : Singleton<RewindManager>
     {
 		Debug.Log ("RewindManager setSliderValue value: "+value+" total pointsInTimeCount: "+pointsInTimeCount);
 		currentPointInTime = (int)(value * pointsInTimeCount);
+		sliderValue = value;
 		Debug.Log ("RewindManager setSliderValue currentPointInTime: "+currentPointInTime);
     }
 

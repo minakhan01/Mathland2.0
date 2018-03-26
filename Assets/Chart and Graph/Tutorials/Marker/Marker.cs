@@ -25,21 +25,22 @@ public class Marker : MonoBehaviour
         if (Chart == null)
             return;
 
-        if(Chart.IsRectVisible(currentRect) == false)
-        {
-            
-            double endX = (float)(Chart.HorizontalScrolling + Chart.DataSource.HorizontalViewSize);
-            double x = endX - 1f;
-            double y = (float)Chart.VerticalScrolling;
-            double endY = (float)Chart.DataSource.GetMaxValue(1, false);
-            currentRect = new DoubleRect(x, y, endX - x, endY - y);
-        }
-
-        DoubleRect trimRect;
-        if (Chart.TrimRect(currentRect, out trimRect))
-        {
-            Chart.RectToCanvas(Area, trimRect);
-        }
+//        if(Chart.IsRectVisible(currentRect) == false)
+//        {
+//            
+//            double endX = (float)(Chart.HorizontalScrolling + Chart.DataSource.HorizontalViewSize);
+//			double x = (endX - 1f);
+//            double y = (float)Chart.VerticalScrolling;
+//            double endY = (float)Chart.DataSource.GetMaxValue(1, false);
+//            currentRect = new DoubleRect(x, y, 200, endY - y);
+//			Debug.Log ("Marker endX: " + endX + " x: " + x);
+//        }
+//
+//        DoubleRect trimRect;
+//        if (Chart.TrimRect(currentRect, out trimRect))
+//        {
+//            Chart.RectToCanvas(Area, trimRect);
+//        }
 
 
         DoubleVector3 last;
@@ -51,7 +52,8 @@ public class Marker : MonoBehaviour
                 if(LastPoint != null)
                 {
                     LastPoint.transform.position = pos;
-					Area.transform.position = pos;
+
+					Area.transform.position = new Vector3( pos.x, pos.y, pos.z);
                 }
             }
         }
