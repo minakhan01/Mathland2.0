@@ -191,7 +191,7 @@ namespace ChartAndGraph.Legened
                 }
                 if (legendItemData.Text != null)
                 {
-                    legendItemData.Text.text = item.Name;
+					//legendItemData.Text.text = item.Name;
                     legendItemData.Text.fontSize = fontSize;
                 }
             }
