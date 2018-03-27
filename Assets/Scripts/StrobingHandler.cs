@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HoloToolkit.Unity;
 
-public class StrobingHandler : MonoBehaviour {
+public class StrobingHandler : Singleton<StrobingHandler> {
 
 	public GameObject ball;
 	private int updateCount = 0;
@@ -17,6 +18,7 @@ public class StrobingHandler : MonoBehaviour {
 	public GameObject arrowVelocity;
 	public GameObject arrowForce;
 	private Vector3 initialVelocityScale, initialForceScale;
+	public float VelocityConst, ForceConst;
 
 	// Use this for initialization
 	void Start () {
@@ -58,11 +60,11 @@ public class StrobingHandler : MonoBehaviour {
 				if (ballVelocityMagnitude == 0.0)
 					arrowVelocityInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
 				else
-					arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z*ballVelocityMagnitude);
+					arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z*ballVelocityMagnitude*VelocityConst);
 				if (ballForceMagnitude == 0.0)
 					arrowForceInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
 				else
-					arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*ballForceMagnitude);
+					arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*ballForceMagnitude*ForceConst);
 				Debug.Log ("arrow velocity localscale " + arrowVelocityInstance .transform.localScale);
 				Debug.Log ("arrow force localscale " + arrowForceInstance.transform.localScale);
 

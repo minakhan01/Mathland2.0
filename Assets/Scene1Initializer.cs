@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Scene1Initializer : MonoBehaviour {
-
+	public GameObject ball1, ball2;
 	public GameObject VelocityArrow2;
 
 	public GameObject ForceField;
@@ -22,6 +22,11 @@ public class Scene1Initializer : MonoBehaviour {
 		VelocityArrow2.transform.localScale = new Vector3 (Velocity2Magnitude, Velocity2Magnitude, Velocity2Magnitude);
 
 		RewindManager.Instance.maxRecordTimeInit = 1;
+
+		ball1.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
+		ball1.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.15f;
+		ball2.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
+		ball2.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.15f;
 	}
 
 	// Update is called once per frame
