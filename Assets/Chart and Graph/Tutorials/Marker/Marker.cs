@@ -25,7 +25,7 @@ public class Marker : MonoBehaviour
     {
         if (Chart == null)
             return;
-		if (!RewindManager.Instance.isRewinding) {
+		if (RewindManager.Instance.isRecording) {
 //			Debug.Log ("Marker !isRewinding drawRewinderRectangleAndPoint");
 			drawRectangleAndPoint ();
 		} else {

@@ -19,7 +19,7 @@ public class RewindManager : Singleton<RewindManager>
     IEnumerator timer;
     public bool isRewinding = false;
     int pointsInTimeCount = 0;
-    bool isRecording = false;
+    public bool isRecording = false;
 	public List<GameObject> currentRewindables = new List<GameObject>();
 
     // TO DO: Judith, set this based on speed
