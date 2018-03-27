@@ -19,6 +19,7 @@ public class RewindManager : Singleton<RewindManager>
     IEnumerator timer;
     public bool isRewinding = false;
     int pointsInTimeCount = 0;
+	float currentPointInTimeFloat;
     public bool isRecording = false;
 	public List<GameObject> currentRewindables = new List<GameObject>();
 
@@ -38,7 +39,8 @@ public class RewindManager : Singleton<RewindManager>
     void Start()
     {
         currentPlayMode = PlayMode.PAUSE;
-        currentPointInTime = 0;
+		currentPointInTimeFloat = 0;
+		currentPointInTime = (int) currentPointInTimeFloat;
 		maxRecordTime = maxRecordTimeInit;
         currentSpeed = PlaySpeed[2];
         rewindUI.SetActive(false);
@@ -58,7 +60,8 @@ public class RewindManager : Singleton<RewindManager>
 
     public void replay()
     {
-        currentPointInTime = 0;
+		currentPointInTimeFloat = 0;
+		currentPointInTime = (int) currentPointInTimeFloat;
     }
 
     public void play()
@@ -86,6 +89,7 @@ public class RewindManager : Singleton<RewindManager>
     {
 		Debug.Log ("RewindManager setSliderValue value: "+value+" total pointsInTimeCount: "+pointsInTimeCount);
 		currentPointInTime = (int)(value * pointsInTimeCount);
+		currentPointInTimeFloat = currentPointInTime;
 		sliderValue = value;
 		Debug.Log ("RewindManager setSliderValue currentPointInTime: "+currentPointInTime);
     }
@@ -119,9 +123,11 @@ public class RewindManager : Singleton<RewindManager>
 
     void UpdateCurrentPointsInTime()
     {
-//		updateSpeed = currentSpeed;
-//		Debug.Log ("RewindManager update speed: " + updateSpeed);
-        currentPointInTime = currentPointInTime + Mathf.RoundToInt(1f * updateSpeed);
+		updateSpeed = currentSpeed;
+		Debug.Log ("RewindManager UpdateCurrentPointsInTime update speed: " + updateSpeed+ " currentPointInTime: "+currentPointInTime);
+		currentPointInTimeFloat = currentPointInTimeFloat + updateSpeed;
+		currentPointInTime = (int)currentPointInTimeFloat;
+		Debug.Log ("RewindManager UpdateCurrentPointsInTime updated currentPointInTime: "+currentPointInTime);
     }
 
     void Record()
@@ -144,7 +150,7 @@ public class RewindManager : Singleton<RewindManager>
     {
         isRecording = true;
         pointsInTimeCount = 0;
-        currentPointInTime = 0;
+		currentPointInTimeFloat = currentPointInTime = 0;
         GraphManager.Instance.stopGraph();
         for (int i = 0; i < currentRewindables.Count; i++)
         {
