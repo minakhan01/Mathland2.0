@@ -20,8 +20,13 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 			yield return new WaitForSeconds(SAMPLE_FREQ);
 
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
+
 			if (velocity > maxYValue) maxYValue = velocity;
 
+			if (BallPhysicsManager.Instance.sceneHasTwoBalls) {
+				float velocityTwo = BallPhysicsManager.Instance.ballTwo.GetComponent<Rigidbody>().velocity.magnitude;
+				if (velocityTwo > maxYValue) maxYValue = velocityTwo;
+			}
 
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
