@@ -22,13 +22,14 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
 
-			time++;
+
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_TWO, time, BallPhysicsManager.Instance.ballTwo.GetComponent<Rigidbody>().velocity.magnitude);
 
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
+			time++;
 		}
 
 	}
