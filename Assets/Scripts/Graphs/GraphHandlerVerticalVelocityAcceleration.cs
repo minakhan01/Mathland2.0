@@ -8,6 +8,10 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 	public GraphChart graphChart;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
+
 	float maxYValue = 0;
 
     IEnumerator AddValuesToGraph()
@@ -29,6 +33,10 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 
 	}
 
+	public override string getCategoryOne() {
+		return categoryOneName;
+	}
+
     public void StopGraph()
 	{
         StopRecordingGraph();
@@ -42,6 +50,9 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = VELOCITY_VERTICAL;
+		categoryTwoName = ACCL_VERTICAL;
+
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
 	}

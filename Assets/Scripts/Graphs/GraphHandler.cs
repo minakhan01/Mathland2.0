@@ -45,6 +45,10 @@ public class GraphHandler : MonoBehaviour
 
     }
 
+	public virtual string getCategoryOne() {
+		return "";
+	}
+
     public void StopRecordingGraph()
     {
 		Debug.Log ("StopRecordingGraph");

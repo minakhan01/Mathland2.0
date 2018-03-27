@@ -8,6 +8,9 @@ public class GraphHandlerAccelerationBallOneandTwo : GraphHandler {
 	public GraphChart graphChart;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
 	float maxYValue = 0;
 
     IEnumerator AddValuesToGraph()
@@ -30,6 +33,9 @@ public class GraphHandlerAccelerationBallOneandTwo : GraphHandler {
 
 	}
 
+	public override string getCategoryOne() {
+		return categoryOneName;
+	}
 
     public void StopGraph()
 	{
@@ -44,6 +50,9 @@ public class GraphHandlerAccelerationBallOneandTwo : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = ACCL_BALL_ONE;
+		categoryTwoName = ACCL_BALL_TWO;
+
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
 	}

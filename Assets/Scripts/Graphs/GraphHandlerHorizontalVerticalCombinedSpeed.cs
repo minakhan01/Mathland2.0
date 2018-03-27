@@ -9,6 +9,9 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 	public GameObject graph;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
 	float maxYValue = 0;
 
     IEnumerator AddValuesToGraph()
@@ -31,6 +34,9 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 	}
 
+	public override string getCategoryOne() {
+		return categoryOneName;
+	}
 
     public void StopGraph()
 	{
@@ -45,6 +51,9 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = VELOCITY_BALL_ONE;
+		categoryTwoName = VELOCITY_HORIZONTAL;
+
 		timer = AddValuesToGraph();
 	}
 

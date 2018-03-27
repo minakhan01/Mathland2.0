@@ -38,12 +38,14 @@ public class Marker : MonoBehaviour
     }
 
 	void drawRewinderRectangleAndPoint() {
+		string categoryOneName = Chart.GetComponent<GraphHandler> ().getCategoryOne ();
+		Debug.Log("Marker categoryOneName: "+categoryOneName);
 		double ratio = RewindManager.Instance.sliderValue;
 		ratio = RewindManager.Instance.rewindRatio;
 		Debug.Log ("Marker ratio: "+ratio);
 		double currentX = (ratio * last.x);
 		Vector3 pos;
-		if (Chart.PointToWorldSpace (out pos, currentX, 0, "VelocityBallOne")) {
+		if (Chart.PointToWorldSpace (out pos, currentX, 0, categoryOneName)) {
 			if (LastPoint != null) {
 				Debug.Log ("Marker last point is not null");
 				LastPoint.transform.position = new Vector3( pos.x, pos.y, pos.z);
@@ -54,11 +56,11 @@ public class Marker : MonoBehaviour
 	}
 
 	void drawRectangleAndPoint() {
-		
+		string categoryOneName = Chart.GetComponent<GraphHandler> ().getCategoryOne ();
 		if (Chart.DataSource.GetLastPoint("VelocityBallOne", out last))
 		{
 			Vector3 pos;
-			if(Chart.PointToWorldSpace(out pos, last.x, 0, "VelocityBallOne"))
+			if(Chart.PointToWorldSpace(out pos, last.x, 0, categoryOneName))
 			{
 				if(LastPoint != null)
 				{

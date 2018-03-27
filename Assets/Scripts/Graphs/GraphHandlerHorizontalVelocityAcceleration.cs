@@ -9,6 +9,9 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 	public GameObject graph;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
 	float maxYValue = 0;
 
     IEnumerator AddValuesToGraph()
@@ -31,6 +34,10 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 
 	}
 
+	public override string getCategoryOne() {
+		return categoryOneName;
+	}
+
 
     public void StopGraph()
 	{
@@ -45,6 +52,9 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = VELOCITY_HORIZONTAL;
+		categoryTwoName = ACCL_HORIZONTAL;
+
 		timer = AddValuesToGraph();
 	}
 

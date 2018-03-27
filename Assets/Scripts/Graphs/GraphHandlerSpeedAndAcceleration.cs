@@ -9,6 +9,9 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 	public GameObject graph;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
     //float time;
     //IEnumerator timer;
 	float maxYValue = 0;
@@ -49,7 +52,13 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = VELOCITY_BALL_ONE;
+		categoryTwoName = ACCL_BALL_ONE;
 		timer = AddValuesToGraph();
+	}
+
+	public override string getCategoryOne() {
+		return categoryOneName;
 	}
 
 	// Update is called once per frame

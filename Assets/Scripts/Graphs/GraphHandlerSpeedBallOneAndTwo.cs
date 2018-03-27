@@ -8,6 +8,9 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 	public GraphChart graphChart;
 	//float initTime = 0f;
 
+	public string categoryOneName;
+	public string categoryTwoName;
+
 	float maxYValue = 0;
 
     IEnumerator AddValuesToGraph()
@@ -43,8 +46,15 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
+		categoryOneName = VELOCITY_BALL_ONE;
+		categoryTwoName = VELOCITY_BALL_ONE;
+
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
+	}
+
+	public override string getCategoryOne() {
+		return categoryOneName;
 	}
 
 	// Update is called once per frame
