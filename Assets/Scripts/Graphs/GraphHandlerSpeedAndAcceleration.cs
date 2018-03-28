@@ -27,9 +27,13 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 
 			time++;
 
-            graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, velocity);
-            graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
-
+			if (GameStateManager.Instance.sceneHasRope) {
+				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, 1.0f);
+				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, 1.0f);
+			} else {
+				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, velocity);
+				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
+			}
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 

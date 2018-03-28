@@ -19,6 +19,7 @@ public class GameStateManager : Singleton<GameStateManager> {
 	public static GameDisplayState currentDisplayState;
 	public GamePlayPhysicsState currentPhysicsPlayState = GamePlayPhysicsState.OFF;
 	public bool experimentModeEnabled = true;
+	public bool sceneHasRope = false;
 
 
 	public static void switchDisplayState ()
