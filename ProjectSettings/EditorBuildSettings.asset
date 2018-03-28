@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/ExperimentDesign/Scene_1.unity
     guid: c51a0800391b84594b49db80bf78cabc
-  - enabled: 1
+  - enabled: 0
     path: Assets/ExperimentDesign/Scene_2.unity
     guid: 576a478f442f941aa8e9a1a84d9d61b3
   - enabled: 1
@@ -41,3 +41,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/OldScene/Scene1_RepositionGraph.unity
     guid: 24285322e2ff84ceaaa3bfd0fb2568b6
+  - enabled: 1
+    path: Assets/Scene1_NewUI.unity
+    guid: b43bfa2a3d57b4244b5d00bddc98bec0
