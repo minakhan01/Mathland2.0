@@ -8,34 +8,34 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ExperimentDesign/Scene1_RewindGraph.unity
     guid: 09735e0a62f7e47e6968501a0bac6edc
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_1.unity
     guid: c51a0800391b84594b49db80bf78cabc
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_2.unity
     guid: 576a478f442f941aa8e9a1a84d9d61b3
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_3.unity
     guid: 1fcc3e99bf3654f2eb21c69fb49b513d
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_4.unity
     guid: 3b1b7813a2cfb49a8b7a396c3380ca16
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_5.unity
     guid: 814a4e20363c5468eba04b0e399878e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_6.unity
     guid: 946f4aae0f7d34e329e55a91bb7055c4
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_7.unity
     guid: bd268f721046c4168a7e17d746b9c39f
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_8.unity
     guid: f3f84780e3f6044d6b6cc90409402c71
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_9.unity
     guid: 417ca39ee30ef445dbeaa17b455e3c81
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_10.unity
     guid: c7123c4518cb64eb981c248b21b8536a
   - enabled: 0

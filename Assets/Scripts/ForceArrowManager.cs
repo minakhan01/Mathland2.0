@@ -8,6 +8,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 
     public GameObject forceTail, forceHead;
     private Vector3 initialTailScale, initialHeadScale;
+	public GameObject target;
 
     // Use this for initialization
     void Start()
@@ -23,10 +24,22 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
         if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
         {
             activeArrow(true);
-            BallPhysicsManager.Instance.updateVelocityandForce();
-            updateForceArrowAngle();
-            updateForceArrowSize();
-            updateForceArrowPosition();
+			if (GameStateManager.Instance.sceneHasRope) { //scene 10 only
+				//arrow angle
+				Vector3 direction = target.transform.position-BallPhysicsManager.Instance.ball.transform.position;
+				Quaternion rot = Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 0);
+				transform.rotation = rot;
+				// arrow size
+				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z);
+				forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z);
+				//arrow position
+				transform.position = BallPhysicsManager.Instance.ball.transform.position;
+			} else {
+				BallPhysicsManager.Instance.updateVelocityandForce ();
+				updateForceArrowAngle ();
+				updateForceArrowSize ();
+				updateForceArrowPosition ();
+			}
         }
         else
         {

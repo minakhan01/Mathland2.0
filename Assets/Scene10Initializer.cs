@@ -14,6 +14,7 @@ public class Scene10Initializer : MonoBehaviour {
 		RewindManager.Instance.maxRecordTimeInit = 5;
 		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
 		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
+		GameStateManager.Instance.sceneHasRope = true;
 	}
 
 	// Update is called once per frame
