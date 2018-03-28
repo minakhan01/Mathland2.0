@@ -191,8 +191,75 @@ namespace ChartAndGraph.Legened
                 }
                 if (legendItemData.Text != null)
                 {
-					//legendItemData.Text.text = item.Name;
-                    legendItemData.Text.fontSize = fontSize;
+					const string VELOCITY_BALL_ONE = "VelocityBallOne";
+					const string VELOCITY_BALL_TWO = "VelocityBallTwo";
+					const string ACCL_BALL_ONE = "AccelerationBallOne";
+					const string ACCL_BALL_TWO = "AccelerationBallTwo";
+					const string VELOCITY_HORIZONTAL = "VelocityHorizontal";
+					const string VELOCITY_VERTICAL = "VelocityVertical";
+					const string ACCL_HORIZONTAL = "AccelerationHorizontal";
+					const string ACCL_VERTICAL = "AccelerationVertical";
+
+					string VELOCITY_BALL_ONE_NAME = "Velocity (Ball One)";
+					string VELOCITY_BALL_TWO_NAME = "Velocity (Ball Two)";
+					string ACCL_BALL_ONE_NAME = "Acceleration (Ball One)";
+					string ACCL_BALL_TWO_NAME = "Acceleration (Ball Two)";
+					string VELOCITY_HORIZONTAL_NAME = "Velocity (Horizontal)";
+					string VELOCITY_VERTICAL_NAME = "Velocity (Vertical)";
+					string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
+					string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
+
+					Color VELOCITY_BALL_ONE_COLOR = Color.cyan;
+					Color VELOCITY_BALL_TWO_COLOR = Color.red;
+					Color ACCL_BALL_ONE_COLOR = Color.cyan;
+					Color ACCL_BALL_TWO_COLOR = Color.red;
+					Color VELOCITY_HORIZONTAL_COLOR = Color.yellow;
+					Color VELOCITY_VERTICAL_COLOR = Color.green;
+					Color ACCL_HORIZONTAL_COLOR = Color.magenta;
+					Color ACCL_VERTICAL_COLOR = Color.blue;
+
+					string itemName = item.Name;
+					Color textColor = Color.white;
+
+					switch (itemName) {
+					case VELOCITY_BALL_ONE:
+						itemName = VELOCITY_BALL_ONE_NAME;
+						textColor = VELOCITY_BALL_ONE_COLOR;
+						break;
+					case VELOCITY_BALL_TWO:
+						itemName = VELOCITY_BALL_TWO_NAME;
+						textColor = VELOCITY_BALL_TWO_COLOR;
+						break;
+					case ACCL_BALL_ONE:
+						itemName = ACCL_BALL_ONE_NAME;
+						textColor= ACCL_BALL_ONE_COLOR;
+						break;
+					case ACCL_BALL_TWO:
+						itemName = ACCL_BALL_TWO_NAME;
+						textColor = ACCL_BALL_TWO_COLOR;
+						break;
+					case VELOCITY_HORIZONTAL:
+						itemName = VELOCITY_HORIZONTAL_NAME;
+						textColor = VELOCITY_HORIZONTAL_COLOR;
+						break;
+					case VELOCITY_VERTICAL:
+						itemName = VELOCITY_VERTICAL_NAME;
+						textColor = VELOCITY_VERTICAL_COLOR;
+						break;
+					case ACCL_HORIZONTAL:
+						itemName = ACCL_HORIZONTAL_NAME;
+						textColor = ACCL_HORIZONTAL_COLOR;
+						break; 
+					case ACCL_VERTICAL:
+						itemName = ACCL_VERTICAL_NAME;
+						textColor = ACCL_VERTICAL_COLOR;
+						break;
+						
+					}
+					legendItemData.Text.text = itemName;
+
+                    legendItemData.Text.fontSize = 14;
+					legendItemData.Text.color = textColor;
                 }
             }
         }
