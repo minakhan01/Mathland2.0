@@ -61,7 +61,10 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 					arrowVelocityInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
 				else
 					arrowVelocityInstance.transform.localScale = new Vector3 (initialVelocityScale.x, initialVelocityScale.y, initialVelocityScale.z*ballVelocityMagnitude*VelocityConst);
-				if (ballForceMagnitude == 0.0)
+				if (GameStateManager.Instance.sceneHasRope) {
+					arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*0.5f);
+				}
+				else if (ballForceMagnitude == 0.0)
 					arrowForceInstance.transform.localScale = new Vector3 (0f, 0f, 0f);
 				else
 					arrowForceInstance.transform.localScale = new Vector3 (initialForceScale.x, initialForceScale.y, initialForceScale.z*ballForceMagnitude*ForceConst);
