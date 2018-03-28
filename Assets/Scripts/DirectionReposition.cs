@@ -16,7 +16,7 @@ public class DirectionReposition : MonoBehaviour {
 	void Update () {
 		Vector3 newPos = sibling.transform.position-initialpos*(sibling.transform.localScale.x/initialsize);
 		transform.position = newPos;
-		transform.rotation = sibling.transform.rotation;
+		//transform.rotation = sibling.transform.rotation;
 	}
 	void OnDestroy(){
 		Destroy (sibling);

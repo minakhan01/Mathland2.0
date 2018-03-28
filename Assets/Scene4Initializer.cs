@@ -10,7 +10,7 @@ public class Scene4Initializer : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		ForceMagnitude *= 0.001f;
+		ForceMagnitude *= 0.002f;
 		VelocityMagnitude *= 0.001f;
 		GameObject DirectionArrow;
 		DirectionArrow = ForceField.transform.Find ("Direction").gameObject;
