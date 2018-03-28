@@ -209,14 +209,14 @@ namespace ChartAndGraph.Legened
 					string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
 					string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
 
-					Color VELOCITY_BALL_ONE_COLOR = Color.cyan;
-					Color VELOCITY_BALL_TWO_COLOR = Color.red;
-					Color ACCL_BALL_ONE_COLOR = Color.cyan;
-					Color ACCL_BALL_TWO_COLOR = Color.red;
-					Color VELOCITY_HORIZONTAL_COLOR = Color.yellow;
-					Color VELOCITY_VERTICAL_COLOR = Color.green;
-					Color ACCL_HORIZONTAL_COLOR = Color.magenta;
-					Color ACCL_VERTICAL_COLOR = Color.blue;
+					Color VELOCITY_BALL_ONE_COLOR = ColorManager.Instance.BallOneVelocityColor;
+					Color VELOCITY_BALL_TWO_COLOR = ColorManager.Instance.BallTwoVelocityColor;
+					Color ACCL_BALL_ONE_COLOR = ColorManager.Instance.BallOneAccelerationColor;
+					Color ACCL_BALL_TWO_COLOR = ColorManager.Instance.BallOneAccelerationColor;
+					Color VELOCITY_HORIZONTAL_COLOR = ColorManager.Instance.BallHorizontalVelocityColor;
+					Color VELOCITY_VERTICAL_COLOR = ColorManager.Instance.BallVerticalVelocityColor;
+					Color ACCL_HORIZONTAL_COLOR = ColorManager.Instance.BallHorizontalAccelerationColor;
+					Color ACCL_VERTICAL_COLOR = ColorManager.Instance.BallVerticalAccelerationColor;
 
 					string itemName = item.Name;
 					Color textColor = Color.white;
