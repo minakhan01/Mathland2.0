@@ -209,57 +209,61 @@ namespace ChartAndGraph.Legened
 					string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
 					string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
 
-					Color VELOCITY_BALL_ONE_COLOR = ColorManager.Instance.BallOneVelocityColor;
-					Color VELOCITY_BALL_TWO_COLOR = ColorManager.Instance.BallTwoVelocityColor;
-					Color ACCL_BALL_ONE_COLOR = ColorManager.Instance.BallOneAccelerationColor;
-					Color ACCL_BALL_TWO_COLOR = ColorManager.Instance.BallOneAccelerationColor;
-					Color VELOCITY_HORIZONTAL_COLOR = ColorManager.Instance.BallHorizontalVelocityColor;
-					Color VELOCITY_VERTICAL_COLOR = ColorManager.Instance.BallVerticalVelocityColor;
-					Color ACCL_HORIZONTAL_COLOR = ColorManager.Instance.BallHorizontalAccelerationColor;
-					Color ACCL_VERTICAL_COLOR = ColorManager.Instance.BallVerticalAccelerationColor;
+					if (ColorManager.BallOneVelocityColor != null) {
+						Color VELOCITY_BALL_ONE_COLOR = ColorManager.BallOneVelocityColor;
+						Color VELOCITY_BALL_TWO_COLOR = ColorManager.BallTwoVelocityColor;
+						Color ACCL_BALL_ONE_COLOR = ColorManager.BallOneAccelerationColor;
+						Color ACCL_BALL_TWO_COLOR = ColorManager.BallOneAccelerationColor;
+						Color VELOCITY_HORIZONTAL_COLOR = ColorManager.BallHorizontalVelocityColor;
+						Color VELOCITY_VERTICAL_COLOR = ColorManager.BallVerticalVelocityColor;
+						Color ACCL_HORIZONTAL_COLOR = ColorManager.BallHorizontalAccelerationColor;
+						Color ACCL_VERTICAL_COLOR = ColorManager.BallVerticalAccelerationColor;
 
-					string itemName = item.Name;
-					Color textColor = Color.white;
+						string itemName = item.Name;
+						Color textColor = Color.white;
 
-					switch (itemName) {
-					case VELOCITY_BALL_ONE:
-						itemName = VELOCITY_BALL_ONE_NAME;
-						textColor = VELOCITY_BALL_ONE_COLOR;
-						break;
-					case VELOCITY_BALL_TWO:
-						itemName = VELOCITY_BALL_TWO_NAME;
-						textColor = VELOCITY_BALL_TWO_COLOR;
-						break;
-					case ACCL_BALL_ONE:
-						itemName = ACCL_BALL_ONE_NAME;
-						textColor= ACCL_BALL_ONE_COLOR;
-						break;
-					case ACCL_BALL_TWO:
-						itemName = ACCL_BALL_TWO_NAME;
-						textColor = ACCL_BALL_TWO_COLOR;
-						break;
-					case VELOCITY_HORIZONTAL:
-						itemName = VELOCITY_HORIZONTAL_NAME;
-						textColor = VELOCITY_HORIZONTAL_COLOR;
-						break;
-					case VELOCITY_VERTICAL:
-						itemName = VELOCITY_VERTICAL_NAME;
-						textColor = VELOCITY_VERTICAL_COLOR;
-						break;
-					case ACCL_HORIZONTAL:
-						itemName = ACCL_HORIZONTAL_NAME;
-						textColor = ACCL_HORIZONTAL_COLOR;
-						break; 
-					case ACCL_VERTICAL:
-						itemName = ACCL_VERTICAL_NAME;
-						textColor = ACCL_VERTICAL_COLOR;
-						break;
+						switch (itemName) {
+						case VELOCITY_BALL_ONE:
+							itemName = VELOCITY_BALL_ONE_NAME;
+							textColor = VELOCITY_BALL_ONE_COLOR;
+							break;
+						case VELOCITY_BALL_TWO:
+							itemName = VELOCITY_BALL_TWO_NAME;
+							textColor = VELOCITY_BALL_TWO_COLOR;
+							break;
+						case ACCL_BALL_ONE:
+							itemName = ACCL_BALL_ONE_NAME;
+							textColor = ACCL_BALL_ONE_COLOR;
+							break;
+						case ACCL_BALL_TWO:
+							itemName = ACCL_BALL_TWO_NAME;
+							textColor = ACCL_BALL_TWO_COLOR;
+							break;
+						case VELOCITY_HORIZONTAL:
+							itemName = VELOCITY_HORIZONTAL_NAME;
+							textColor = VELOCITY_HORIZONTAL_COLOR;
+							break;
+						case VELOCITY_VERTICAL:
+							itemName = VELOCITY_VERTICAL_NAME;
+							textColor = VELOCITY_VERTICAL_COLOR;
+							break;
+						case ACCL_HORIZONTAL:
+							itemName = ACCL_HORIZONTAL_NAME;
+							textColor = ACCL_HORIZONTAL_COLOR;
+							break; 
+						case ACCL_VERTICAL:
+							itemName = ACCL_VERTICAL_NAME;
+							textColor = ACCL_VERTICAL_COLOR;
+							break;
 						
-					}
-					legendItemData.Text.text = itemName;
+						}
 
-                    legendItemData.Text.fontSize = 14;
-					legendItemData.Text.color = textColor;
+						legendItemData.Text.text = itemName;
+
+						legendItemData.Text.fontSize = 20;
+						legendItemData.Text.color = textColor;
+					}
+
                 }
             }
         }
