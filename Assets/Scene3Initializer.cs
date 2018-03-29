@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scene3Initializer : MonoBehaviour {
 	public GameObject ball;
 	public GameObject ForceField;
-	public float ForceMagnitude = 2.0f;
+	public float ForceMagnitude = 1.0f;
 
 	// Use this for initialization
 	void Start () {
