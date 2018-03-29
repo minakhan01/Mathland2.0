@@ -23,12 +23,12 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
 
-			time++;
+
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
 			graphChart.DataSource.AddPointToCategoryRealtime(ACCL_HORIZONTAL, time, BallPhysicsManager.Instance.updatedForce.x);
-
+			time++;
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 

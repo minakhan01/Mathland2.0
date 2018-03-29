@@ -22,12 +22,12 @@ public class GraphHandlerAccelerationBallOneandTwo : GraphHandler {
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
 
-			time++;
+
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
 			graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
 			graphChart.DataSource.AddPointToCategoryRealtime(ACCL_BALL_TWO, time, BallPhysicsManager.Instance.updatedForceBallTwo.magnitude);
-
+			time++;
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 

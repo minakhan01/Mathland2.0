@@ -23,11 +23,11 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
 
-			time++;
+
 
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, BallPhysicsManager.Instance.updatedVelocity.y);
 			graphChart.DataSource.AddPointToCategoryRealtime(ACCL_VERTICAL, time, BallPhysicsManager.Instance.updatedForce.y);
-
+			time++;
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 

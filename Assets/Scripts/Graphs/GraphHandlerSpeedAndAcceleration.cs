@@ -24,16 +24,20 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
+			float accl = BallPhysicsManager.Instance.updatedForce.magnitude;
+			if (accl < 0.1f) {
+				accl = 0.1f;
+			}
 
-			time++;
 
 			if (GameStateManager.Instance.sceneHasRope) {
 				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, 1.0f);
 				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, 1.0f);
 			} else {
 				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, velocity);
-				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, BallPhysicsManager.Instance.updatedForce.magnitude);
+				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, accl);
 			}
+			time++;
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 		}
 
