@@ -18,6 +18,7 @@ public class RewindManager : Singleton<RewindManager>
 	public int maxRecordTime, maxRecordTimeInit;
     IEnumerator timer;
     public bool isRewinding = false;
+	bool recordingStarted = false;
     int pointsInTimeCount = 0;
 	float currentPointInTimeFloat;
     public bool isRecording = false;
@@ -56,6 +57,7 @@ public class RewindManager : Singleton<RewindManager>
 		if (pointsInTimeCount > 0) {
 			rewindRatio = (double)currentPointInTime / pointsInTimeCount;
 		}
+
     }
 
     public void replay()
@@ -82,6 +84,7 @@ public class RewindManager : Singleton<RewindManager>
     {
         Debug.Log("Simulation - start recording");
         isRecording = true;
+		recordingStarted = true;
         StartCoroutine(timer);
     }
 
@@ -99,6 +102,16 @@ public class RewindManager : Singleton<RewindManager>
 		Debug.Log ("RewindManager isRewinding: "+isRewinding+" ; isRecording: "+ isRecording);
 		if (isRewinding) {
 			Rewind ();
+		}
+		if (recordingStarted && !isRecording && !isRewinding) {
+			if (currentPointInTime < pointsInTimeCount)
+			{
+				for (int i = 0; i < currentRewindables.Count; i++)
+				{
+					Debug.Log ("RewindManager currentRewindables[i] .Rewind() "+i);
+					currentRewindables[i].GetComponent<RewindableObject>().Rewind();
+				}
+			}
 		}
 		if (isRecording) {
 			Record ();
