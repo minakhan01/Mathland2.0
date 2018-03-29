@@ -82,10 +82,13 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
     public void stopBallPhysics() {
         GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
         
+		ball.transform.Find ("Trail").gameObject.transform.parent = null;
 		Rigidbody rbi = ball.GetComponent<Rigidbody>();
         rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
 
 		if (sceneHasTwoBalls) {
+			ballTwo.transform.Find ("TrailTwo").gameObject.transform.parent = null;
+
 			Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody>();
 			rbiTwo.velocity = new Vector3(0.0f, 0.0f, 0.0f);
 		}
