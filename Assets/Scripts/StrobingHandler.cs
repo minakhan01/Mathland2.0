@@ -20,6 +20,8 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	private Vector3 initialVelocityScale, initialForceScale;
 	public float VelocityConst, ForceConst;
 
+	public int countInterval = 6;
+
 	// Use this for initialization
 	void Start () {
 		initialVelocityScale = arrowVelocity.transform.localScale;
@@ -32,7 +34,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 	void Update () {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
-			if (updateCount % 6 == 0)
+			if (updateCount % countInterval == 0)
 			{
 				//instantiate our strobe ball
 				GameObject ballInstance = (GameObject) Instantiate(ballPrefab, ball.transform.position, ball.transform.rotation);

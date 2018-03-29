@@ -16,6 +16,7 @@ public class Scene3Initializer : MonoBehaviour {
 		RewindManager.Instance.maxRecordTimeInit = 2;
 		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
 		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
+		StrobingHandler.Instance.countInterval = 13;
 	}
 	
 	// Update is called once per frame
