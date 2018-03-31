@@ -18,6 +18,8 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	public GameObject ballTwo;
 
 	public bool sceneHasTwoBalls;
+	public bool isScene10 = false;
+	public bool startStrobe = true;
 
     Vector3 initialPosition;
 	Vector3 initialPositionBallTwo;

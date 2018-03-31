@@ -35,10 +35,16 @@ public class RewindManager : Singleton<RewindManager>
     public GameObject rewindUI;
     public GameObject startSimulationUI;
 
+	GameObject ballTrail;
+
 
     // Use this for initialization
     void Start()
     {
+		if (BallPhysicsManager.Instance.isScene10) {
+			ballTrail = BallPhysicsManager.Instance.ball.transform.Find ("Trail").gameObject;
+			ballTrail.SetActive (false);
+		}
         currentPlayMode = PlayMode.PAUSE;
 		currentPointInTimeFloat = 0;
 		currentPointInTime = (int) currentPointInTimeFloat;
@@ -194,6 +200,10 @@ public class RewindManager : Singleton<RewindManager>
             maxRecordTime--;
 			Debug.Log("RewindManager timeSimulation: " + maxRecordTime);
 
+			if (maxRecordTime == 10 && BallPhysicsManager.Instance.isScene10) {
+				BallPhysicsManager.Instance.startStrobe = true;
+				ballTrail.SetActive (true);
+			}
             if (maxRecordTime == 0)
             {
                 stopRecording();

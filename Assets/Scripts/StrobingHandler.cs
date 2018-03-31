@@ -32,6 +32,9 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 
 	// Update is called once per frame
 	void Update () {
+		if (BallPhysicsManager.Instance.isScene10 && !BallPhysicsManager.Instance.startStrobe) {
+			return;
+		}
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			updateCount++;
 			if (updateCount % countInterval == 0)
