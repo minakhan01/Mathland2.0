@@ -53,8 +53,9 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 	// Use this for initialization
 	void Start()
 	{
-		categoryOneName = VELOCITY_BALL_ONE;
+		categoryOneName = VELOCITY_HORIZONTAL;
 		categoryTwoName = VELOCITY_VERTICAL;
+		categoryTwoName = VELOCITY_BALL_ONE;
 
 		timer = AddValuesToGraph();
 	}
