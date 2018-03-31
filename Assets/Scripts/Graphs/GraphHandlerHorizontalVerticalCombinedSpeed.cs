@@ -27,7 +27,7 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y);
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, Mathf.Abs(BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y));
 			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
 			time++;
 			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
