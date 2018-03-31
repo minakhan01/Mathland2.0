@@ -17,8 +17,8 @@ public class Scene4Initializer : MonoBehaviour {
 		DirectionArrow.transform.localScale = new Vector3(DirectionArrow.transform.localScale.x, ForceMagnitude, DirectionArrow.transform.localScale.z);
 		VelocityArrow.transform.localScale = new Vector3 (VelocityMagnitude, VelocityMagnitude, VelocityMagnitude);
 		RewindManager.Instance.maxRecordTimeInit = 1;
-		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
-		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
+		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.2f;
+		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.2f;
 	}
 	
 	// Update is called once per frame
