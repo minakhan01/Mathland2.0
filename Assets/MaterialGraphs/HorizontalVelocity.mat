@@ -80,7 +80,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.50425935, g: 0.30882353, b: 1, a: 1}
+    - _Color: {r: 0.9311358, g: 0.28676468, b: 1, a: 1}
     - _ColorFrom: {r: 0, g: 0.91379315, b: 0.1478194, a: 1}
     - _ColorTo: {r: 0, g: 0.7, b: 0.11115875, a: 1}
     - _Combine: {r: 1, g: 1, b: 1, a: 0}

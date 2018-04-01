@@ -9,8 +9,8 @@ public class ColorManager : Singleton<ColorManager> {
 	public static Color BallTwoVelocityColor = new Color32(0xFF, 0xFF, 0x4C, 0xFF);
 	public static Color BallOneAccelerationColor = new Color32(0x06, 0xFF, 0x64, 0xFF);
 	public static Color BallTwoAccelerationColor = new Color32(0xB2, 0x4C, 0xFF, 0xFF);
-	public static Color BallHorizontalVelocityColor = new Color32(0x81, 0x4F, 0xFF, 0xFF);
-	public static Color BallVerticalVelocityColor = new Color32(0xFF, 0x65, 0xF4, 0xFD);
+	public static Color BallHorizontalVelocityColor = new Color32(0xED, 0x49, 0xFF, 0xFF);
+	public static Color BallVerticalVelocityColor = new Color32(0xFF, 0x92, 0x36, 0xFD);
 	public static Color BallHorizontalAccelerationColor = new Color32(0x61, 0xED, 0x00, 0xFF);
 	public static Color BallVerticalAccelerationColor = new Color32(0xFF, 0xB9, 0x00, 0xFD);
 	 
