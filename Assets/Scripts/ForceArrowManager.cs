@@ -35,7 +35,6 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 				//arrow position
 				transform.position = BallPhysicsManager.Instance.ball.transform.position;
 			} else {
-				BallPhysicsManager.Instance.updateVelocityandForce ();
 				updateForceArrowAngle ();
 				updateForceArrowSize ();
 				updateForceArrowPosition ();

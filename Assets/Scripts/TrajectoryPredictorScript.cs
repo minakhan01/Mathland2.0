@@ -44,7 +44,7 @@ public class TrajectoryPredictorScript : MonoBehaviour
 			}
 
 			// if we have a velocityReactor component, update its initVel / experiencedForce
-			BallPhysicsManager.Instance.updateVelocityandForce ();
+//			BallPhysicsManager.Instance.updateVelocityandForce ();
 
 			if (gameObject.name == BallPhysicsManager.Instance.ball.name) {
 				velocity_of_ball = BallPhysicsManager.Instance.updatedVelocity;

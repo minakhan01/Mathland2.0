@@ -5,7 +5,7 @@ using UnityEngine;
 public class VelocityTrigger : MonoBehaviour {
     public Vector3 VelocityVector=new Vector3(0,0,0);
     public float VelocityVectorMagnitude=1.0f;
-	bool collided = false;
+
 	// Use this for initialization
 	void Start () {
 
@@ -18,31 +18,54 @@ public class VelocityTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collidee)
     {
-//		if (!collided) {
-			collided = true;
-			gameObject.GetComponent<MeshRenderer> ().material.color = Color.green;
-			//GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
-			if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+		
+		Debug.Log ("BallPhysicsManager update OnTriggerEnter velocity");
+		gameObject.GetComponent<MeshRenderer> ().material.color = Color.green;
+		//GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+			BallPhysicsManager.Instance.ball.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount++;
+			int count = BallPhysicsManager.Instance.ball.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount;
+			if (count == 1) {
 				VelocityResponse.Instance.addVelocityVector (gameObject);
-				Debug.Log ("VelocityVector and ball one collided!");
-			} else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+				Debug.Log ("BallPhysicsManager update VelocityVector and ball one collided!");
+				BallPhysicsManager.Instance.updateVelocity ();
+			}
+		} else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+			BallPhysicsManager.Instance.ballTwo.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount++;
+			int count = BallPhysicsManager.Instance.ballTwo.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount;
+			if (count == 1) {
 				VelocityResponseBallTwo.Instance.addVelocityVector (gameObject);
 				Debug.Log ("VelocityVector and ball two collided!");
+				BallPhysicsManager.Instance.updateVelocity ();
 			}
-//		}
+		}
+		
 
     }
     private void OnTriggerExit(Collider collidee)
     {
-		collided = false;
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+		Debug.Log ("BallPhysicsManager update OnTriggerEnter exit");
+
+		gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
 		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+			BallPhysicsManager.Instance.ball.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount--;
+			int count = BallPhysicsManager.Instance.ball.GetComponent<VelocityTriggerCounter> ().ballOneTriggeredCount;
+			if (count < 0) {
+				BallPhysicsManager.Instance.ball.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount = 0;
+			}
 			VelocityResponse.Instance.removeVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball one collision removed");
+			Debug.Log ("BallPhysicsManager update  VelocityVector and ball one collision removed");
+			BallPhysicsManager.Instance.updateVelocity ();
 		}
 		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
+			BallPhysicsManager.Instance.ballTwo.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount--;
+			int count = BallPhysicsManager.Instance.ballTwo.GetComponent<VelocityTriggerCounter> ().ballOneTriggeredCount;
+			if (count < 0) {
+				BallPhysicsManager.Instance.ballTwo.GetComponent<VelocityTriggerCounter>().ballOneTriggeredCount = 0;
+			}
 			VelocityResponseBallTwo.Instance.removeVelocityVector (gameObject);
 			Debug.Log ("VelocityVector and ball two collision removed");
+			BallPhysicsManager.Instance.updateVelocity ();
 		}
 
     }

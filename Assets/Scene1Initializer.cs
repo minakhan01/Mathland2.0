@@ -9,7 +9,7 @@ public class Scene1Initializer : MonoBehaviour {
 	public GameObject ForceField;
 	public float ForceMagnitude = 1f;
 
-	public float Velocity2Magnitude = 0.6f;
+	public float Velocity2Magnitude = 0.5f;
 
 	// Use this for initialization
 	void Start () {

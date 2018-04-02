@@ -37,7 +37,7 @@ public class VelocityResponse : Singleton<VelocityResponse> {
 			//start by looping through all game objects that contribute to velocity
 			foreach (GameObject velocityAffectingGameObject in velocities) {
 				//get the magnitude of velocity arrow
-				float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 100; 
+				float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 1000; 
 
 				//impose this magnitude on the direction of the arrow
 				Vector3 VelocityVector = -magnitudeCurrentForceVelocity *

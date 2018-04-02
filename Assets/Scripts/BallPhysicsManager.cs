@@ -32,7 +32,40 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
 	// Update is called once per frame
 	void Update () {
-        Debug.Log("Game Play Physiscs State: " + GameStateManager.Instance.currentPhysicsPlayState);
+
+//        Debug.Log("Game Play Physiscs State: " + GameStateManager.Instance.currentPhysicsPlayState);
+//		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+//			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
+//			rbi.isKinematic = false;
+//			Debug.Log ("BallPhysicsManager update before velocity: " + rbi.velocity.magnitude);
+//			rbi.velocity += updatedVelocity;
+//			Debug.Log ("BallPhysicsManager update velocityupdate of the ball should be" + updatedVelocity);
+//			Debug.Log ("BallPhysicsManager update after velocity: " + rbi.velocity.magnitude);
+//			rbi.AddForce(updatedForce); 
+//
+//			if (sceneHasTwoBalls) {
+//				Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody> ();
+//				rbi.isKinematic = false;
+//
+//				rbiTwo.velocity += updatedVelocityBallTwo;
+//				Debug.Log ("velocity of the ball should be" + updatedVelocity);
+//				rbiTwo.AddForce(updatedForceBallTwo);
+//			}
+//        }
+	}
+
+	public void updateVelocity()
+	{
+		VelocityResponse.Instance.updateVelocity ();
+		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
+		Debug.Log ("BallPhysicsManager update updatedVelocity: " + updatedVelocity);
+		Debug.Log("value of ball two: " + ballTwo);
+		if (ballTwo != null && ballTwo.activeSelf) {
+			//            Debug.Log("ball two is not null");
+			VelocityResponseBallTwo.Instance.updateVelocity ();
+			updatedVelocityBallTwo= VelocityResponseBallTwo.Instance.updatedVelocity;
+		}
+
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
@@ -40,43 +73,48 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			rbi.velocity += updatedVelocity;
 			Debug.Log ("BallPhysicsManager update velocityupdate of the ball should be" + updatedVelocity);
 			Debug.Log ("BallPhysicsManager update after velocity: " + rbi.velocity.magnitude);
-			rbi.AddForce(updatedForce); 
 
 			if (sceneHasTwoBalls) {
 				Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody> ();
-				rbi.isKinematic = false;
-
 				rbiTwo.velocity += updatedVelocityBallTwo;
 				Debug.Log ("velocity of the ball should be" + updatedVelocity);
-				rbiTwo.AddForce(updatedForceBallTwo);
 			}
-        }
+		}
+
 	}
 
-
-	public void updateVelocityandForce()
+	public void updateForce()
 	{
 		ForceResponse.Instance.updateForce ();
-		VelocityResponse.Instance.updateVelocity ();
 		updatedForce = ForceResponse.Instance.updatedForce;
-		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
-
-        Debug.Log("value of ball two: " + ballTwo);
         if (ballTwo != null && ballTwo.activeSelf) {
-//            Debug.Log("ball two is not null");
 			ForceResponseBallTwo.Instance.updateForce ();
-			VelocityResponseBallTwo.Instance.updateVelocity ();
 			updatedForceBallTwo = ForceResponseBallTwo.Instance.updatedForce;
-			updatedVelocityBallTwo= VelocityResponseBallTwo.Instance.updatedVelocity;
+		}
+
+		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
+			rbi.isKinematic = false;
+			rbi.AddForce(updatedForce, ForceMode.Acceleration); 
+
+			if (sceneHasTwoBalls) {
+				Rigidbody rbiTwo = ballTwo.GetComponent<Rigidbody> ();
+				rbiTwo.isKinematic = false;
+
+				rbiTwo.AddForce(updatedForceBallTwo, ForceMode.Acceleration);
+			}
 		}
 
 	}
 
     public void initBallPhysics () {
         initialPosition = ball.transform.position;
-
+		ball.GetComponent<Rigidbody> ().velocity = updatedVelocity;
+		ball.GetComponent<Rigidbody> ().AddForce (updatedForce);
 		if (sceneHasTwoBalls) {
 			initialPositionBallTwo = ballTwo.transform.position;
+			ballTwo.GetComponent<Rigidbody> ().velocity = updatedForceBallTwo;
+			ballTwo.GetComponent<Rigidbody> ().AddForce (updatedForceBallTwo);
 		}
 
         GraphManager.Instance.startGraph();

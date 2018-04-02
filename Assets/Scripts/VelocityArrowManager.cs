@@ -22,7 +22,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
         if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
         {
             activeArrow(true);
-            BallPhysicsManager.Instance.updateVelocityandForce();
+//            BallPhysicsManager.Instance.updateVelocityandForce();
             updateVelocityArrowAngle();
             updateVelocityArrowSize();
             updateVelocityArrowPosition();
