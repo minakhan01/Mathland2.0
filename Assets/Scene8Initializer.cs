@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scene8Initializer : MonoBehaviour {
 	public GameObject ball;
 	public GameObject ForceField, VelocityArrow;
-	public float ForceMagnitude = -10.0f;
+	public float ForceMagnitude = -2.0f;
 	public float VelocityMagnitude = 3.0f;
 
 	// Use this for initialization
