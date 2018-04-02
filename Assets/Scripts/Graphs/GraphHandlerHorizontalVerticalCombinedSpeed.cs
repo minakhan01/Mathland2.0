@@ -14,8 +14,6 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 	float maxYValue = 0;
 
-	bool stopGraph = false;
-
     IEnumerator AddValuesToGraph()
 	{
 		while (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
@@ -28,11 +26,11 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
 
-//			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
-//			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, Mathf.Abs(BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y));
-//			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
-//			time++;
-//			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, Mathf.Abs(BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y));
+			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
+			time++;
+			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
 
 		}
 
@@ -50,7 +48,6 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 		Debug.Log("Stop coroutine: " + time);
 		graphChart.DataSource.ClearAndMakeLinear(VELOCITY_HORIZONTAL);
 		graphChart.DataSource.ClearCategory(VELOCITY_VERTICAL);
-		stopGraph = true;
 	}
 
 	// Use this for initialization
@@ -65,20 +62,6 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 	// Update is called once per frame
 	void Update () {
-		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON && !stopGraph)
-		{
-			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
-			if (velocity > maxYValue) maxYValue = velocity;
 
-
-			Debug.Log("time:" + time + "    *VELOCITY: " + BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude + "   *FORCE: " + BallPhysicsManager.Instance.updatedForce.magnitude);
-
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_HORIZONTAL, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.x);
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_VERTICAL, time, Mathf.Abs(BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.y));
-			graphChart.DataSource.AddPointToCategoryRealtime(VELOCITY_BALL_ONE, time, BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude);
-			time++;
-			graphChart.DataSource.VerticalViewSize = maxYValue * 1.5f;
-
-		}
 	}
 }
