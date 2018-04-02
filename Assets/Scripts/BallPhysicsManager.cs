@@ -36,9 +36,10 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
-
+			Debug.Log ("BallPhysicsManager update before velocity: " + rbi.velocity.magnitude);
 			rbi.velocity += updatedVelocity;
-			Debug.Log ("velocity of the ball should be" + updatedVelocity);
+			Debug.Log ("BallPhysicsManager update velocityupdate of the ball should be" + updatedVelocity);
+			Debug.Log ("BallPhysicsManager update after velocity: " + rbi.velocity.magnitude);
 			rbi.AddForce(updatedForce); 
 
 			if (sceneHasTwoBalls) {

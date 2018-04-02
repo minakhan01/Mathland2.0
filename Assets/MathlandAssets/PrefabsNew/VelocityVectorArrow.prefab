@@ -34,7 +34,6 @@ GameObject:
   - component: {fileID: 114167958794471698}
   - component: {fileID: 114607286574761392}
   - component: {fileID: 114611335371259392}
-  - component: {fileID: 114611607433811736}
   - component: {fileID: 65354310918431406}
   - component: {fileID: 114023726924146354}
   m_Layer: 0
@@ -171,7 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   VelocityVector: {x: 0, y: 0, z: 0}
   VelocityVectorMagnitude: 1
-  BALL: {fileID: 0}
 --- !u!114 &114131569133456336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -288,20 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ba8600bcdaa47bc80e19f439d3dd4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114611607433811736
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1320043251653084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eef1849d7dfb08e4e826a7b69b4afc27, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VelocityVector: {x: 0, y: 0, z: 0}
-  VelocityVectorMagnitude: 1
-  BALL: {fileID: 0}
 --- !u!114 &114776948091875740
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,7 +5,7 @@ using UnityEngine;
 public class VelocityTrigger : MonoBehaviour {
     public Vector3 VelocityVector=new Vector3(0,0,0);
     public float VelocityVectorMagnitude=1.0f;
-
+	bool collided = false;
 	// Use this for initialization
 	void Start () {
 
@@ -18,20 +18,23 @@ public class VelocityTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collidee)
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-        //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
-		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
-			VelocityResponse.Instance.addVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball one collided!");
-		}
-		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
-			VelocityResponseBallTwo.Instance.addVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball two collided!");
-		}
+//		if (!collided) {
+			collided = true;
+			gameObject.GetComponent<MeshRenderer> ().material.color = Color.green;
+			//GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
+			if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
+				VelocityResponse.Instance.addVelocityVector (gameObject);
+				Debug.Log ("VelocityVector and ball one collided!");
+			} else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+				VelocityResponseBallTwo.Instance.addVelocityVector (gameObject);
+				Debug.Log ("VelocityVector and ball two collided!");
+			}
+//		}
 
     }
     private void OnTriggerExit(Collider collidee)
     {
+		collided = false;
         gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
 		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
 			VelocityResponse.Instance.removeVelocityVector (gameObject);

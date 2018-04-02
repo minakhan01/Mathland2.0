@@ -38,6 +38,7 @@ public class VelocityResponseBallTwo : Singleton<VelocityResponseBallTwo>
         //ball's vel / force after all game tool interactions
 
         Vector3 objectInitVelocity = new Vector3(0, 0, 0);
+		Debug.Log ("updateVelocity before for each");
 
         //start by looping through all game objects that contribute to velocity
         foreach (GameObject velocityAffectingGameObject in velocities)
@@ -51,7 +52,11 @@ public class VelocityResponseBallTwo : Singleton<VelocityResponseBallTwo>
 
             //add this to the ball's total velocity
             objectInitVelocity += VelocityVector;
+
+			Debug.Log ("updateVelocity velocity for each: "+VelocityVector+ " total: "+ objectInitVelocity);
         }
+
+		Debug.Log ("updateVelocity after for each");
 
         //set our gameobject's initial velocity to be the total velocity of gameobjects acting on it
         updatedVelocity = objectInitVelocity;

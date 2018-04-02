@@ -34,20 +34,18 @@ public class VelocityResponse : Singleton<VelocityResponse> {
 		//ball's vel / force after all game tool interactions
 
 		Vector3 objectInitVelocity = new Vector3(0, 0, 0);
+			//start by looping through all game objects that contribute to velocity
+			foreach (GameObject velocityAffectingGameObject in velocities) {
+				//get the magnitude of velocity arrow
+				float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 100; 
 
-		//start by looping through all game objects that contribute to velocity
-		foreach (GameObject velocityAffectingGameObject in velocities)
-		{
-			//get the magnitude of velocity arrow
-			float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x*100; 
+				//impose this magnitude on the direction of the arrow
+				Vector3 VelocityVector = -magnitudeCurrentForceVelocity *
+				                        velocityAffectingGameObject.transform.up.normalized;
 
-			//impose this magnitude on the direction of the arrow
-			Vector3 VelocityVector = - magnitudeCurrentForceVelocity * 
-				velocityAffectingGameObject.transform.up.normalized;
-
-			//add this to the ball's total velocity
-			objectInitVelocity += VelocityVector;
-		}
+				//add this to the ball's total velocity
+				objectInitVelocity += VelocityVector;
+			}
 
 		//set our gameobject's initial velocity to be the total velocity of gameobjects acting on it
 		updatedVelocity=objectInitVelocity;
