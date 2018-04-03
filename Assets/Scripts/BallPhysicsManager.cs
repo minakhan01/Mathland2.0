@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
+using Obi;
 
 public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
@@ -24,10 +25,20 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
     Vector3 initialPosition;
 	Vector3 initialPositionBallTwo;
 
+	public GameObject rope;
+
 
 	// Use this for initialization
 	void Start () {
 		sceneHasTwoBalls = ballTwo != null && ballTwo.activeSelf;
+	}
+
+	public void breakBallFromRope() {
+	 	if (rope != null) {
+			// Pin both ends of the rope (this enables two-way interaction between character and rope):
+			ObiPinConstraints pinConstraints = rope.GetComponent<ObiPinConstraints>();
+			pinConstraints.RemoveFromSolver(null);
+		}
 	}
 
 	// Update is called once per frame
