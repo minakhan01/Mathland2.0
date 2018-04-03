@@ -14,7 +14,7 @@ public class Scene5Initializer : MonoBehaviour {
 		Velocity2Magnitude *= 0.002f;
 		VelocityArrow1.transform.localScale = new Vector3 (Velocity1Magnitude, Velocity1Magnitude, Velocity1Magnitude);
 		VelocityArrow2.transform.localScale = new Vector3 (Velocity2Magnitude, Velocity2Magnitude, Velocity2Magnitude);
-		RewindManager.Instance.maxRecordTimeInit = 5;
+		RewindManager.Instance.maxRecordTimeInit = 1;
 		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.35f;
 		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
 	}
