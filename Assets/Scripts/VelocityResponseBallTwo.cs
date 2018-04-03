@@ -43,7 +43,7 @@ public class VelocityResponseBallTwo : Singleton<VelocityResponseBallTwo>
         foreach (GameObject velocityAffectingGameObject in velocities)
         {
             //get the magnitude of velocity arrow
-            float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 100;
+            float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x * 500;
 
             //impose this magnitude on the direction of the arrow
             Vector3 VelocityVector = -magnitudeCurrentForceVelocity *
@@ -52,6 +52,7 @@ public class VelocityResponseBallTwo : Singleton<VelocityResponseBallTwo>
             //add this to the ball's total velocity
             objectInitVelocity += VelocityVector;
         }
+		velocities = new List<GameObject> ();
 
         //set our gameobject's initial velocity to be the total velocity of gameobjects acting on it
         updatedVelocity = objectInitVelocity;

@@ -23,7 +23,7 @@ public class ForceArrowManagerBallTwo : Singleton<ForceArrowManagerBallTwo>
         if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
         {
             activeArrow(true);
-            BallPhysicsManager.Instance.updateVelocityandForce();
+//            BallPhysicsManager.Instance.updateVelocityandForce();
             updateForceArrowAngle();
             updateForceArrowSize();
             updateForceArrowPosition();

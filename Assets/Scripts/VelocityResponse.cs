@@ -21,12 +21,12 @@ public class VelocityResponse : Singleton<VelocityResponse> {
 	public void addVelocityVector(GameObject gb)
 	{
 		velocities.Add(gb);
-		Debug.Log("New velocity added now there are " + velocities.Count + " velocity vectors attached");
+		Debug.Log("Mina Debug VelocityResponse New velocity added now there are " + velocities.Count + " velocity vectors attached");
 	}
 	public void removeVelocityVector(GameObject gb)
 	{
 		velocities.Remove(gb);
-		Debug.Log("velocity removed now there are " + velocities.Count + " velocity vectors attached");
+		Debug.Log("Mina Debug VelocityResponse velocity removed now there are " + velocities.Count + " velocity vectors attached");
 	}
 
 	public void updateVelocity() {
@@ -39,7 +39,7 @@ public class VelocityResponse : Singleton<VelocityResponse> {
 		foreach (GameObject velocityAffectingGameObject in velocities)
 		{
 			//get the magnitude of velocity arrow
-			float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x*100; 
+			float magnitudeCurrentForceVelocity = velocityAffectingGameObject.transform.localScale.x*500; 
 
 			//impose this magnitude on the direction of the arrow
 			Vector3 VelocityVector = - magnitudeCurrentForceVelocity * 
@@ -48,7 +48,7 @@ public class VelocityResponse : Singleton<VelocityResponse> {
 			//add this to the ball's total velocity
 			objectInitVelocity += VelocityVector;
 		}
-
+		velocities = new List<GameObject> ();
 		//set our gameobject's initial velocity to be the total velocity of gameobjects acting on it
 		updatedVelocity=objectInitVelocity;
 	}

@@ -5,6 +5,7 @@ using UnityEngine;
 public class VelocityTrigger : MonoBehaviour {
     public Vector3 VelocityVector=new Vector3(0,0,0);
     public float VelocityVectorMagnitude=1.0f;
+	int collisionCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -18,28 +19,38 @@ public class VelocityTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collidee)
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
-        //GameObject.Find("AudioManager").GetComponent<Martana>().Sayit("Velocity Vector Active");
-		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
-			VelocityResponse.Instance.addVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball one collided!");
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name ||
+		    collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+			collisionCount++;
+			gameObject.GetComponent<MeshRenderer>().material.color = Color.green;
 		}
-		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name && collisionCount == 1) {
+			VelocityResponse.Instance.addVelocityVector (gameObject);
+			Debug.Log ("Mina Debug VelocityTrigger OnTriggerEnter VelocityVector and ball one collided!");
+		}
+		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name && collisionCount == 1){
 			VelocityResponseBallTwo.Instance.addVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball two collided!");
+			Debug.Log ("Mina Debug VelocityTrigger OnTriggerEnter VelocityVector and ball two collided!");
 		}
 
     }
     private void OnTriggerExit(Collider collidee)
     {
-        gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name ||
+			collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name) {
+			collisionCount--;
+			gameObject.GetComponent<MeshRenderer>().material.color = Color.white;
+			if (collisionCount < 0) {
+				collisionCount = 0;
+			}
+		}
 		if (collidee.gameObject.name == BallPhysicsManager.Instance.ball.name) {
 			VelocityResponse.Instance.removeVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball one collision removed");
+			Debug.Log ("Mina Debug VelocityTrigger OnTriggerExit VelocityVector and ball one collision removed");
 		}
 		else if (collidee.gameObject.name == BallPhysicsManager.Instance.ballTwo.name){
 			VelocityResponseBallTwo.Instance.removeVelocityVector (gameObject);
-			Debug.Log ("VelocityVector and ball two collision removed");
+			Debug.Log ("Mina Debug VelocityTrigger OnTriggerExit VelocityVector and ball two collision removed");
 		}
 
     }

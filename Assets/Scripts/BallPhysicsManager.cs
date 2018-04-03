@@ -34,11 +34,14 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 	void Update () {
         Debug.Log("Game Play Physiscs State: " + GameStateManager.Instance.currentPhysicsPlayState);
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+			updateVelocityandForce ();
 			Rigidbody rbi = ball.GetComponent<Rigidbody> ();
 			rbi.isKinematic = false;
-
+			Debug.Log ("Mina Debug BallPhysicsManager update before velocity " + rbi.velocity );
+			Debug.Log ("Mina Debug BallPhysicsManager updatedVelocity " + updatedVelocity );
 			rbi.velocity += updatedVelocity;
-			Debug.Log ("velocity of the ball should be" + updatedVelocity);
+			Debug.Log ("Mina Debug BallPhysicsManager update after velocity " + rbi.velocity );
+			Debug.Log ("Mina Debug BallPhysicsManager updatedForce " + updatedForce );
 			rbi.AddForce(updatedForce); 
 
 			if (sceneHasTwoBalls) {
@@ -55,14 +58,15 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 
 	public void updateVelocityandForce()
 	{
+		Debug.Log ("Mina Debug BallPhysicsManager before updateVelocityandForce updatedForce: "+updatedForce+" updatedVelocity: "+updatedVelocity);
 		ForceResponse.Instance.updateForce ();
 		VelocityResponse.Instance.updateVelocity ();
 		updatedForce = ForceResponse.Instance.updatedForce;
 		updatedVelocity = VelocityResponse.Instance.updatedVelocity;
+		Debug.Log ("Mina Debug BallPhysicsManager after updateVelocityandForce updatedForce: "+updatedForce+" updatedVelocity: "+updatedVelocity);
 
         Debug.Log("value of ball two: " + ballTwo);
         if (ballTwo != null && ballTwo.activeSelf) {
-//            Debug.Log("ball two is not null");
 			ForceResponseBallTwo.Instance.updateForce ();
 			VelocityResponseBallTwo.Instance.updateVelocity ();
 			updatedForceBallTwo = ForceResponseBallTwo.Instance.updatedForce;

@@ -46,7 +46,7 @@ public class StrobingHandler : Singleton<StrobingHandler> {
 
 				//instantiate arrows
 
-				BallPhysicsManager.Instance.updateVelocityandForce();
+//				BallPhysicsManager.Instance.updateVelocityandForce();
 				GameObject arrowVelocityInstance = (GameObject) Instantiate(arrowVelocity, realArrowVelocity.transform.position, realArrowVelocity.transform.rotation);
 				GameObject arrowForceInstance = (GameObject) Instantiate(arrowForce, realArrowForce.transform.position, realArrowForce.transform.rotation);
 				float ballVelocityMagnitude = 0;
