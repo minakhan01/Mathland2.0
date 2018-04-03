@@ -31,7 +31,7 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 
 
 			if (GameStateManager.Instance.sceneHasRope) {
-				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, 1.5f);
+				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, 1.2f);
 				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, 1.0f);
 			} else {
 				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, velocity);
