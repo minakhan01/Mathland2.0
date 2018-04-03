@@ -13,7 +13,7 @@ public class Scene3Initializer : MonoBehaviour {
 		GameObject DirectionArrow;
 		DirectionArrow = ForceField.transform.Find ("Direction").gameObject;
 		DirectionArrow.transform.localScale = new Vector3(DirectionArrow.transform.localScale.x, ForceMagnitude, DirectionArrow.transform.localScale.z);
-		RewindManager.Instance.maxRecordTimeInit = 2;
+		RewindManager.Instance.maxRecordTimeInit = 1;
 		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.5f;
 		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
 		StrobingHandler.Instance.countInterval = 13;
