@@ -200,12 +200,14 @@ namespace ChartAndGraph.Legened
 					const string ACCL_HORIZONTAL = "AccelerationHorizontal";
 					const string ACCL_VERTICAL = "AccelerationVertical";
 
-					string VELOCITY_BALL_ONE_NAME = "Velocity (Ball One)";
-					string VELOCITY_BALL_TWO_NAME = "Velocity (Ball Two)";
+					string VELOCITY_BALL_ONE_NAME = "Speed (Ball One)";
+					string VELOCITY_BALL = "Speed";
+					string VELOCITY_BALL_TWO_NAME = "Speed (Ball Two)";
 					string ACCL_BALL_ONE_NAME = "Acceleration (Ball One)";
+					string ACCL_BALL = "Acceleration";
 					string ACCL_BALL_TWO_NAME = "Acceleration (Ball Two)";
-					string VELOCITY_HORIZONTAL_NAME = "Velocity (Horizontal)";
-					string VELOCITY_VERTICAL_NAME = "Velocity (Vertical)";
+					string VELOCITY_HORIZONTAL_NAME = "Horizontal Speed";
+					string VELOCITY_VERTICAL_NAME = "Vertical Speed";
 					string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
 					string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
 
@@ -224,7 +226,11 @@ namespace ChartAndGraph.Legened
 
 						switch (itemName) {
 						case VELOCITY_BALL_ONE:
-							itemName = VELOCITY_BALL_ONE_NAME;
+							if (BallPhysicsManager.Instance.sceneHasTwoBalls) {
+								itemName = VELOCITY_BALL_ONE_NAME;
+							} else {
+								itemName = VELOCITY_BALL;
+							}
 							textColor = VELOCITY_BALL_ONE_COLOR;
 							break;
 						case VELOCITY_BALL_TWO:
@@ -232,7 +238,11 @@ namespace ChartAndGraph.Legened
 							textColor = VELOCITY_BALL_TWO_COLOR;
 							break;
 						case ACCL_BALL_ONE:
-							itemName = ACCL_BALL_ONE_NAME;
+							if (BallPhysicsManager.Instance.sceneHasTwoBalls) {
+								itemName = ACCL_BALL_ONE_NAME;
+							} else {
+								itemName = ACCL_BALL;
+							}
 							textColor = ACCL_BALL_ONE_COLOR;
 							break;
 						case ACCL_BALL_TWO:
