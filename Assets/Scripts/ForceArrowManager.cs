@@ -31,7 +31,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 				Quaternion rot = Quaternion.LookRotation (direction) * Quaternion.Euler (90, 0, 0);
 				transform.rotation = rot;
 				// arrow size
-				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z/2.2f);
+				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z);
 				forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z);
 				//arrow position
 				transform.position = BallPhysicsManager.Instance.ball.transform.position;
@@ -64,8 +64,8 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         Debug.Log("ballForceMagnitude: " + ballForceMagnitude);
 		if (ballForceMagnitude != 0) {
-			forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballForceMagnitude/2.5f);
-			forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballForceMagnitude));
+			forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z /2f);
+			forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * 1.7f);
 		} else {
 			forceTail.transform.localScale = new Vector3 (0, 0, 0);
 			forceHead.transform.localScale = new Vector3 (0, 0, 0);
