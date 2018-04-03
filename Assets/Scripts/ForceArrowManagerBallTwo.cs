@@ -9,6 +9,8 @@ public class ForceArrowManagerBallTwo : Singleton<ForceArrowManagerBallTwo>
     public GameObject forceTail, forceHead;
     private Vector3 initialTailScale, initialHeadScale;
 
+	public GameObject rewindUI;
+
     // Use this for initialization
     void Start()
     {
@@ -20,15 +22,15 @@ public class ForceArrowManagerBallTwo : Singleton<ForceArrowManagerBallTwo>
     // Update is called once per frame
     void Update()
     {
-        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
-        {
-            activeArrow(true);
+		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+			activeArrow (true);
 //            BallPhysicsManager.Instance.updateVelocityandForce();
-            updateForceArrowAngle();
-            updateForceArrowSize();
-            updateForceArrowPosition();
-        }
-        else
+			updateForceArrowAngle ();
+			updateForceArrowSize ();
+			updateForceArrowPosition ();
+		} else if (rewindUI.activeSelf && RewindManager.Instance.sliderValue > 0)
+			activeArrow (true);
+		else
         {
             activeArrow(false);
         }
