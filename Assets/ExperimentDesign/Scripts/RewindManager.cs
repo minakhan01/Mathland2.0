@@ -203,6 +203,7 @@ public class RewindManager : Singleton<RewindManager>
 			if (maxRecordTime == 10 && BallPhysicsManager.Instance.isScene10) {
 				BallPhysicsManager.Instance.startStrobe = true;
 				ballTrail.SetActive (true);
+				GraphManager.Instance.startGraph ();
 			}
 			if (maxRecordTime == 3 && BallPhysicsManager.Instance.isScene10) {
 				BallPhysicsManager.Instance.breakBallFromRope ();

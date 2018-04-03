@@ -38,6 +38,7 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			// Pin both ends of the rope (this enables two-way interaction between character and rope):
 			ObiPinConstraints pinConstraints = rope.GetComponent<ObiPinConstraints>();
 			pinConstraints.RemoveFromSolver(null);
+			ForceArrowManager.Instance.showRopeForce = false;
 		}
 	}
 
@@ -93,7 +94,9 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			initialPositionBallTwo = ballTwo.transform.position;
 		}
 
-        GraphManager.Instance.startGraph();
+		if (!isScene10) {
+			GraphManager.Instance.startGraph ();
+		}
     }
 
     public void stopBallPhysics() {

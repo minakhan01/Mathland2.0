@@ -11,6 +11,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 	public GameObject target;
 
 	public GameObject rewindUI;
+	public bool showRopeForce = true;
 
     // Use this for initialization
     void Start()
@@ -27,14 +28,18 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 			activeArrow (true);
 			if (GameStateManager.Instance.sceneHasRope) { //scene 10 only
 				//arrow angle
-				Vector3 direction = target.transform.position - BallPhysicsManager.Instance.ball.transform.position;
-				Quaternion rot = Quaternion.LookRotation (direction) * Quaternion.Euler (90, 0, 0);
-				transform.rotation = rot;
-				// arrow size
-				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z/2.2f);
-				forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z);
-				//arrow position
-				transform.position = BallPhysicsManager.Instance.ball.transform.position;
+				if (showRopeForce) {
+					Vector3 direction = target.transform.position - BallPhysicsManager.Instance.ball.transform.position;
+					Quaternion rot = Quaternion.LookRotation (direction) * Quaternion.Euler (90, 0, 0);
+					transform.rotation = rot;
+					// arrow size
+					forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z / 2.2f);
+					forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z);
+					//arrow position
+					transform.position = BallPhysicsManager.Instance.ball.transform.position;
+				} else {
+					activeArrow(false);
+				}
 			} else {
 //				BallPhysicsManager.Instance.updateVelocityandForce ();
 				updateForceArrowAngle ();
