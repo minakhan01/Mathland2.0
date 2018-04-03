@@ -10,6 +10,8 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
     private Vector3 initialTailScale, initialHeadScale;
 	public GameObject target;
 
+	public GameObject rewindUI;
+
     // Use this for initialization
     void Start()
     {
@@ -30,7 +32,7 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 				Quaternion rot = Quaternion.LookRotation(direction) * Quaternion.Euler(90, 0, 0);
 				transform.rotation = rot;
 				// arrow size
-				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z);
+				forceTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z/2f);
 				forceHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z);
 				//arrow position
 				transform.position = BallPhysicsManager.Instance.ball.transform.position;
@@ -41,10 +43,11 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
 				updateForceArrowPosition ();
 			}
         }
-        else
+		else if(rewindUI.activeSelf && RewindManager.Instance.sliderValue > 0)
         {
-            activeArrow(false);
-        }
+            activeArrow(true);
+		}
+		else activeArrow(false);
 
     }
 

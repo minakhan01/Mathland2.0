@@ -9,6 +9,8 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
     public GameObject velocityTail, velocityHead;
     private Vector3 initialTailScale, initialHeadScale;
 
+	public GameObject rewindUI;
+
     // Use this for initialization
     void Start()
     {
@@ -19,17 +21,16 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
     // Update is called once per frame
     void Update()
     {
-        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
-        {
-            activeArrow(true);
-            BallPhysicsManager.Instance.updateVelocityandForce();
-            updateVelocityArrowAngle();
-            updateVelocityArrowSize();
-            updateVelocityArrowPosition();
-        } else {
-            activeArrow(false);
-        }
-
+		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+			activeArrow (true);
+			BallPhysicsManager.Instance.updateVelocityandForce ();
+			updateVelocityArrowAngle ();
+			updateVelocityArrowSize ();
+			updateVelocityArrowPosition ();
+		} else if (rewindUI.activeSelf && RewindManager.Instance.sliderValue > 0) {
+			activeArrow (true);
+		} else
+			activeArrow (false);
     }
 
     public void updateVelocityArrowPosition()
@@ -46,7 +47,7 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
         //float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
         Debug.Log("ballVelocityMagnitude: " + ballVelocityMagnitude);
 		if (ballVelocityMagnitude != 0f) {
-			velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude);
+			velocityTail.transform.localScale = new Vector3 (initialTailScale.x, initialTailScale.y, initialTailScale.z * ballVelocityMagnitude/2f);
 			velocityHead.transform.localScale = new Vector3 (initialHeadScale.x, initialHeadScale.y, initialHeadScale.z * (1 / ballVelocityMagnitude));
 		} else {
 			velocityTail.transform.localScale = new Vector3 (0, 0, 0);
