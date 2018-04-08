@@ -46,8 +46,8 @@ public class VelocityAxisManager : MonoBehaviour {
 
 		Vector3 currentBallVelocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
 
-		velX.y = common.y - 20*Mathf.Abs(currentBallVelocity.x);
-		velY.x = common.x + 20*Mathf.Abs(currentBallVelocity.y);
+		velX.y = common.y - 30*Mathf.Abs(currentBallVelocity.x);
+		velY.x = common.x + 30*Mathf.Abs(currentBallVelocity.y);
 		result.y = velX.y;
 		result.x = velY.x;
 		lines.vectorLine.points2 [COMMON_POINT_IDX] = common;
