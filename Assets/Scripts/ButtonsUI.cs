@@ -11,6 +11,8 @@ public class ButtonsUI : MonoBehaviour
     public GameObject editObjectUI;
 	public GameObject ObjectsUI;
 	public GameObject GraphUI;
+	public GameObject StartSimulationUI;
+	public GameObject RewindUI;
     public Slider slider;
 
     [Header("Axis")]

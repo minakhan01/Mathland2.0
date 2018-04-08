@@ -27,13 +27,11 @@ public class UIManager : Singleton<UIManager>
             //PLAY MODE
             hideBuildUI();
             showPlayUI();
-			showGraphUI ();
         }
         else if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD)
         {
             //BUILD MODE
             hidePlayUI();
-			hideGraphUI ();
             resetBuildUI();
 			showBuildUI ();
         } 
@@ -58,6 +56,26 @@ public class UIManager : Singleton<UIManager>
 	void hideGraphUI()
 	{
 		buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(false);
+	}
+
+	void showRewindUI()
+	{
+		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(true);
+	}
+
+	void hideRewindUI()
+	{
+		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(false);
+	}
+
+	void showStartSimulationUI()
+	{
+		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(true);
+	}
+
+	void hideStartSimulationUI()
+	{
+		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(false);
 	}
 		
     void showPlayUI()
