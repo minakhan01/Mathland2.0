@@ -10,6 +10,7 @@ public class ButtonsUI : MonoBehaviour
     public GameObject buildUI;
     public GameObject editObjectUI;
 	public GameObject ObjectsUI;
+	public GameObject GraphUI;
     public Slider slider;
 
     [Header("Axis")]
