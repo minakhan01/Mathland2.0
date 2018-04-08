@@ -13,7 +13,6 @@ public class RewindManager : Singleton<RewindManager>
     public float currentSpeed { get; set; }
     public PlayMode currentPlayMode { get; set; }
 
-
     public int currentPointInTime { get; set; }
 	public int maxRecordTime, maxRecordTimeInit;
     IEnumerator timer;
@@ -41,6 +40,7 @@ public class RewindManager : Singleton<RewindManager>
     // Use this for initialization
     void Start()
     {
+        
 		if (BallPhysicsManager.Instance.isScene10) {
 			ballTrail = BallPhysicsManager.Instance.ball.transform.Find ("Trail").gameObject;
 			ballTrail.SetActive (false);
@@ -97,8 +97,8 @@ public class RewindManager : Singleton<RewindManager>
     public void setSliderValue(float value)
     {
 		Debug.Log ("RewindManager setSliderValue value: "+value+" total pointsInTimeCount: "+pointsInTimeCount);
-		currentPointInTime = (int)(value * pointsInTimeCount);
-		currentPointInTimeFloat = currentPointInTime;
+        currentPointInTimeFloat = value * pointsInTimeCount;
+        currentPointInTime = (int)currentPointInTimeFloat;
 		sliderValue = value;
 		Debug.Log ("RewindManager setSliderValue currentPointInTime: "+currentPointInTime);
     }

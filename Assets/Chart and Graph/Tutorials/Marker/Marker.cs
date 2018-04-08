@@ -49,7 +49,7 @@ public class Marker : MonoBehaviour
 			if (LastPoint != null) {
 				Debug.Log ("Marker last point is not null");
 				LastPoint.transform.position = new Vector3( pos.x, pos.y, pos.z);
-				Area.transform.position = new Vector3(pos.x + 200, pos.y, pos.z);
+				//Area.transform.position = new Vector3(pos.x, pos.y, pos.z);
 //				Area.transform.position = pos;
 			}
 		}
@@ -66,7 +66,7 @@ public class Marker : MonoBehaviour
 				{
 					LastPoint.transform.position = pos;
 //					Debug.Log("Marker last position: "+LastPoint.transform.position);
-					Area.transform.position = new Vector3( pos.x + 200, pos.y, pos.z);
+					//Area.transform.position = new Vector3( pos.x, pos.y, pos.z);
 //					Debug.Log("Marker area position: "+Area.transform.position);
 				}
 			}

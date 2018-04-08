@@ -35,17 +35,17 @@ public class ButtonsRewindUI : MonoBehaviour
 
     public void playPauseButtonHandler()
     {
-        if (RewindManager.Instance.currentPlayMode == RewindManager.PlayMode.PLAY)
+        if (RewindManager.Instance.currentPlayMode == RewindManager.PlayMode.PAUSE)
         {
-            RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PAUSE;
-            RewindManager.Instance.pause();
+            RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PLAY;
+            RewindManager.Instance.play();
             setPlayButtonSprite(pauseButtonSprite);
         }
         else
         {
-            Debug.Log("Play");
-            RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PLAY;
-            RewindManager.Instance.play();
+            Debug.Log("playPauseButtonHandler - Pause");
+            RewindManager.Instance.currentPlayMode = RewindManager.PlayMode.PAUSE;
+            RewindManager.Instance.pause();
             setPlayButtonSprite(playButtonSprite);
         }
     }
