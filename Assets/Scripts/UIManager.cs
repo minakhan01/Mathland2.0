@@ -47,6 +47,36 @@ public class UIManager : Singleton<UIManager>
     {
         buttons.GetComponent<ButtonsUI>().buildUI.SetActive(false);
     }
+
+	void showGraphUI()
+	{
+		buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(true);
+	}
+
+	void hideGraphUI()
+	{
+		buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(false);
+	}
+
+	void showRewindUI()
+	{
+		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(true);
+	}
+
+	void hideRewindUI()
+	{
+		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(false);
+	}
+
+	void showStartSimulationUI()
+	{
+		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(true);
+	}
+
+	void hideStartSimulationUI()
+	{
+		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(false);
+	}
 		
     void showPlayUI()
     {
