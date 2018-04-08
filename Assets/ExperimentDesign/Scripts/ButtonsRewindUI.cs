@@ -64,6 +64,7 @@ public class ButtonsRewindUI : MonoBehaviour
     public void replayButtonHandler()
     {
         RewindManager.Instance.replay();
+        rewindSlider.value = RewindManager.Instance.sliderValue;
     }
 
     public void speedButtonHandler()

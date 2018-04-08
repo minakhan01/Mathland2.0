@@ -11,6 +11,7 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 
 	public string categoryOneName;
 	public string categoryTwoName;
+    public string categoryThreeName;
 
 	float maxYValue = 0;
 
@@ -55,7 +56,11 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 	{
 		categoryOneName = VELOCITY_HORIZONTAL;
 		categoryTwoName = VELOCITY_VERTICAL;
-		categoryTwoName = VELOCITY_BALL_ONE;
+		categoryThreeName = VELOCITY_BALL_ONE;
+
+        categoryNames.Add(VELOCITY_HORIZONTAL);
+        categoryNames.Add(VELOCITY_VERTICAL);
+        categoryNames.Add(VELOCITY_BALL_ONE);
 
 		timer = AddValuesToGraph();
 	}

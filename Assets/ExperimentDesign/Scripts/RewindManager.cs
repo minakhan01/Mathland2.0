@@ -70,6 +70,7 @@ public class RewindManager : Singleton<RewindManager>
     {
 		currentPointInTimeFloat = 0;
 		currentPointInTime = (int) currentPointInTimeFloat;
+        sliderValue = 0;
     }
 
     public void play()

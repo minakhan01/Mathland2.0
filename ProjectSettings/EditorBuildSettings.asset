@@ -50,6 +50,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scene1_NewUITry2.unity
     guid: 665c9a5b1401c44d8a5490819993d54f
-  - enabled: 1
+  - enabled: 0
     path: Assets/ExperimentDesign/JUDScene_7.unity
     guid: 6a069758c74d247e09417445bdca3d8e
+  - enabled: 1
+    path: Assets/ExperimentDesign/JUDScene_7 working.unity
+    guid: a3261ae9615734f17bd554eeff3c7f97
