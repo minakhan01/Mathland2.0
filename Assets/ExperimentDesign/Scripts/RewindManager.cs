@@ -18,7 +18,7 @@ public class RewindManager : Singleton<RewindManager>
     IEnumerator timer;
     public bool isRewinding = false;
 	bool recordingStarted = false;
-    int pointsInTimeCount = 0;
+    public int pointsInTimeCount = 0;
 	float currentPointInTimeFloat;
     public bool isRecording = false;
 	public List<GameObject> currentRewindables = new List<GameObject>();

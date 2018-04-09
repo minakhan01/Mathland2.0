@@ -30,7 +30,10 @@ public class ButtonsRewindUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (RewindManager.Instance.currentPlayMode == RewindManager.PlayMode.PLAY) {
+            //update slider value
+            rewindSlider.value = (float) RewindManager.Instance.rewindRatio;
+        }
     }
 
     public void playPauseButtonHandler()
