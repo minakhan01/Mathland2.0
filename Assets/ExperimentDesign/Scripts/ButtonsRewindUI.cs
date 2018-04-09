@@ -56,7 +56,7 @@ public class ButtonsRewindUI : MonoBehaviour
     public void playSimulationButtonHandler()
     {
         Debug.Log("Play");
-        playSimulationButton.switchState();
+        //playSimulationButton.switchState();
         GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
         Debug.Log("current physics play state: " + GameStateManager.Instance.currentPhysicsPlayState);
         BallPhysicsManager.Instance.initBallPhysics();
@@ -72,7 +72,7 @@ public class ButtonsRewindUI : MonoBehaviour
 
     public void speedButtonHandler()
     {
-        speedButton.switchState();
+        //speedButton.switchState();
         speedMenu.SetActive(!speedMenu.activeSelf);
     }
 
