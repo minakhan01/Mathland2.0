@@ -80,9 +80,14 @@ public class VelocityAxisManager : MonoBehaviour
         DoubleVector3 last;
 
         chart.DataSource.GetLastPoint(chart.GetComponent<GraphHandler>().categoryNames[0], out last);
-        int currentX = (int)(RewindManager.Instance.sliderValue * (float)last.x);
+        //int currentX = (int)(RewindManager.Instance.sliderValue * (float)last.x);
 
 
+        double ratio = RewindManager.Instance.sliderValue;
+        ratio = RewindManager.Instance.rewindRatio;
+        int currentX = (int)(ratio * last.x);
+
+        Debug.Log("VELOCITY AXIS MANAGER - ratio " + ratio);
 
         float newVelocityHorizontal = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[0], currentX).y;
         float newVelocityVertical = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[1], currentX).y;
