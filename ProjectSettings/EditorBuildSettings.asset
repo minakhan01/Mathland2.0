@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ExperimentDesign/Scene1_RewindGraph.unity
     guid: 09735e0a62f7e47e6968501a0bac6edc
-  - enabled: 1
+  - enabled: 0
     path: Assets/ExperimentDesign/Scene_1.unity
     guid: c51a0800391b84594b49db80bf78cabc
   - enabled: 0
@@ -23,7 +23,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ExperimentDesign/Scene_5.unity
     guid: 814a4e20363c5468eba04b0e399878e8
-  - enabled: 0
+  - enabled: 1
     path: Assets/ExperimentDesign/Scene_6.unity
     guid: 946f4aae0f7d34e329e55a91bb7055c4
   - enabled: 0
