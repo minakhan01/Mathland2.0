@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224598742311752092}
   m_Layer: 5
-  m_Name: LineAxisManager
+  m_Name: LineAxisLegend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
