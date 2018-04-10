@@ -51,13 +51,15 @@ namespace ChartAndGraph.Legened
                 if (chart != null)
                     ((IInternalUse)chart).Generated -= CanvasLegend_Generated;
                 chart = value;
-                if(chart != null)
+                if (chart != null)
                     ((IInternalUse)chart).Generated += CanvasLegend_Generated;
                 PropertyChanged();
             }
         }
         void Start()
         {
+            if (chart == null)
+                chart = GraphManager.Instance.getFirstGraph();
             if (chart != null)
                 ((IInternalUse)chart).Generated += CanvasLegend_Generated;
             InnerGenerate();
@@ -72,7 +74,7 @@ namespace ChartAndGraph.Legened
         {
             if (chart != null)
                 ((IInternalUse)chart).Generated -= CanvasLegend_Generated;
-        //    Clear();
+            //    Clear();
         }
         void OnDestory()
         {
@@ -82,7 +84,7 @@ namespace ChartAndGraph.Legened
         }
         private void CanvasLegend_Generated()
         {
-           InnerGenerate();
+            InnerGenerate();
         }
         protected void OnValidate()
         {
@@ -98,13 +100,13 @@ namespace ChartAndGraph.Legened
         public void Clear()
         {
             CanvasLegendItem[] items = gameObject.GetComponentsInChildren<CanvasLegendItem>();
-            for(int i=0; i<items.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
                 if (items[i] == null || items[i].gameObject == null)
                     continue;
                 ChartCommon.SafeDestroy(items[i].gameObject);
             }
-            for(int i=0; i<mToDispose.Count; i++)
+            for (int i = 0; i < mToDispose.Count; i++)
             {
                 UnityEngine.Object obj = mToDispose[i];
                 if (obj != null)
@@ -163,9 +165,9 @@ namespace ChartAndGraph.Legened
             LegenedData inf = ((IInternalUse)chart).InternalLegendInfo;
             if (inf == null)
                 return;
-            foreach(LegenedData.LegenedItem item in inf.Items)
+            foreach (LegenedData.LegenedItem item in inf.Items)
             {
-                GameObject prefab =  (GameObject)GameObject.Instantiate(legendItemPrefab.gameObject);
+                GameObject prefab = (GameObject)GameObject.Instantiate(legendItemPrefab.gameObject);
                 prefab.transform.SetParent(transform, false);
                 ChartCommon.HideObject(prefab, true);
                 CanvasLegendItem legendItemData = prefab.GetComponent<CanvasLegendItem>();
@@ -191,78 +193,80 @@ namespace ChartAndGraph.Legened
                 }
                 if (legendItemData.Text != null)
                 {
-					const string VELOCITY_BALL_ONE = "VelocityBallOne";
-					const string VELOCITY_BALL_TWO = "VelocityBallTwo";
-					const string ACCL_BALL_ONE = "AccelerationBallOne";
-					const string ACCL_BALL_TWO = "AccelerationBallTwo";
-					const string VELOCITY_HORIZONTAL = "VelocityHorizontal";
-					const string VELOCITY_VERTICAL = "VelocityVertical";
-					const string ACCL_HORIZONTAL = "AccelerationHorizontal";
-					const string ACCL_VERTICAL = "AccelerationVertical";
+                    const string VELOCITY_BALL_ONE = "VelocityBallOne";
+                    const string VELOCITY_BALL_TWO = "VelocityBallTwo";
+                    const string ACCL_BALL_ONE = "AccelerationBallOne";
+                    const string ACCL_BALL_TWO = "AccelerationBallTwo";
+                    const string VELOCITY_HORIZONTAL = "VelocityHorizontal";
+                    const string VELOCITY_VERTICAL = "VelocityVertical";
+                    const string ACCL_HORIZONTAL = "AccelerationHorizontal";
+                    const string ACCL_VERTICAL = "AccelerationVertical";
 
-					string VELOCITY_BALL_ONE_NAME = "Velocity (Ball One)";
-					string VELOCITY_BALL_TWO_NAME = "Velocity (Ball Two)";
-					string ACCL_BALL_ONE_NAME = "Acceleration (Ball One)";
-					string ACCL_BALL_TWO_NAME = "Acceleration (Ball Two)";
-					string VELOCITY_HORIZONTAL_NAME = "Velocity (Horizontal)";
-					string VELOCITY_VERTICAL_NAME = "Velocity (Vertical)";
-					string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
-					string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
+                    string VELOCITY_BALL_ONE_NAME = "Velocity (Ball One)";
+                    string VELOCITY_BALL_TWO_NAME = "Velocity (Ball Two)";
+                    string ACCL_BALL_ONE_NAME = "Acceleration (Ball One)";
+                    string ACCL_BALL_TWO_NAME = "Acceleration (Ball Two)";
+                    string VELOCITY_HORIZONTAL_NAME = "Velocity (Horizontal)";
+                    string VELOCITY_VERTICAL_NAME = "Velocity (Vertical)";
+                    string ACCL_HORIZONTAL_NAME = "Acceleration (Horizontal)";
+                    string ACCL_VERTICAL_NAME = "Acceleration (Vertical)";
 
-					if (ColorManager.BallOneVelocityColor != null) {
-						Color VELOCITY_BALL_ONE_COLOR = ColorManager.BallOneVelocityColor;
-						Color VELOCITY_BALL_TWO_COLOR = ColorManager.BallTwoVelocityColor;
-						Color ACCL_BALL_ONE_COLOR = ColorManager.BallOneAccelerationColor;
-						Color ACCL_BALL_TWO_COLOR = ColorManager.BallOneAccelerationColor;
-						Color VELOCITY_HORIZONTAL_COLOR = ColorManager.BallHorizontalVelocityColor;
-						Color VELOCITY_VERTICAL_COLOR = ColorManager.BallVerticalVelocityColor;
-						Color ACCL_HORIZONTAL_COLOR = ColorManager.BallHorizontalAccelerationColor;
-						Color ACCL_VERTICAL_COLOR = ColorManager.BallVerticalAccelerationColor;
+                    if (ColorManager.BallOneVelocityColor != null)
+                    {
+                        Color VELOCITY_BALL_ONE_COLOR = ColorManager.BallOneVelocityColor;
+                        Color VELOCITY_BALL_TWO_COLOR = ColorManager.BallTwoVelocityColor;
+                        Color ACCL_BALL_ONE_COLOR = ColorManager.BallOneAccelerationColor;
+                        Color ACCL_BALL_TWO_COLOR = ColorManager.BallOneAccelerationColor;
+                        Color VELOCITY_HORIZONTAL_COLOR = ColorManager.BallHorizontalVelocityColor;
+                        Color VELOCITY_VERTICAL_COLOR = ColorManager.BallVerticalVelocityColor;
+                        Color ACCL_HORIZONTAL_COLOR = ColorManager.BallHorizontalAccelerationColor;
+                        Color ACCL_VERTICAL_COLOR = ColorManager.BallVerticalAccelerationColor;
 
-						string itemName = item.Name;
-						Color textColor = Color.white;
+                        string itemName = item.Name;
+                        Color textColor = Color.white;
 
-						switch (itemName) {
-						case VELOCITY_BALL_ONE:
-							itemName = VELOCITY_BALL_ONE_NAME;
-							textColor = VELOCITY_BALL_ONE_COLOR;
-							break;
-						case VELOCITY_BALL_TWO:
-							itemName = VELOCITY_BALL_TWO_NAME;
-							textColor = VELOCITY_BALL_TWO_COLOR;
-							break;
-						case ACCL_BALL_ONE:
-							itemName = ACCL_BALL_ONE_NAME;
-							textColor = ACCL_BALL_ONE_COLOR;
-							break;
-						case ACCL_BALL_TWO:
-							itemName = ACCL_BALL_TWO_NAME;
-							textColor = ACCL_BALL_TWO_COLOR;
-							break;
-						case VELOCITY_HORIZONTAL:
-							itemName = VELOCITY_HORIZONTAL_NAME;
-							textColor = VELOCITY_HORIZONTAL_COLOR;
-							break;
-						case VELOCITY_VERTICAL:
-							itemName = VELOCITY_VERTICAL_NAME;
-							textColor = VELOCITY_VERTICAL_COLOR;
-							break;
-						case ACCL_HORIZONTAL:
-							itemName = ACCL_HORIZONTAL_NAME;
-							textColor = ACCL_HORIZONTAL_COLOR;
-							break; 
-						case ACCL_VERTICAL:
-							itemName = ACCL_VERTICAL_NAME;
-							textColor = ACCL_VERTICAL_COLOR;
-							break;
-						
-						}
+                        switch (itemName)
+                        {
+                            case VELOCITY_BALL_ONE:
+                                itemName = VELOCITY_BALL_ONE_NAME;
+                                textColor = VELOCITY_BALL_ONE_COLOR;
+                                break;
+                            case VELOCITY_BALL_TWO:
+                                itemName = VELOCITY_BALL_TWO_NAME;
+                                textColor = VELOCITY_BALL_TWO_COLOR;
+                                break;
+                            case ACCL_BALL_ONE:
+                                itemName = ACCL_BALL_ONE_NAME;
+                                textColor = ACCL_BALL_ONE_COLOR;
+                                break;
+                            case ACCL_BALL_TWO:
+                                itemName = ACCL_BALL_TWO_NAME;
+                                textColor = ACCL_BALL_TWO_COLOR;
+                                break;
+                            case VELOCITY_HORIZONTAL:
+                                itemName = VELOCITY_HORIZONTAL_NAME;
+                                textColor = VELOCITY_HORIZONTAL_COLOR;
+                                break;
+                            case VELOCITY_VERTICAL:
+                                itemName = VELOCITY_VERTICAL_NAME;
+                                textColor = VELOCITY_VERTICAL_COLOR;
+                                break;
+                            case ACCL_HORIZONTAL:
+                                itemName = ACCL_HORIZONTAL_NAME;
+                                textColor = ACCL_HORIZONTAL_COLOR;
+                                break;
+                            case ACCL_VERTICAL:
+                                itemName = ACCL_VERTICAL_NAME;
+                                textColor = ACCL_VERTICAL_COLOR;
+                                break;
 
-						legendItemData.Text.text = itemName;
+                        }
 
-						legendItemData.Text.fontSize = 20;
-						legendItemData.Text.color = textColor;
-					}
+                        legendItemData.Text.text = itemName;
+
+                        legendItemData.Text.fontSize = 20;
+                        legendItemData.Text.color = textColor;
+                    }
 
                 }
             }

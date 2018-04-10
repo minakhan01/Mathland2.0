@@ -31,7 +31,7 @@ public class VelocityAxisManager : MonoBehaviour
     void Update()
     {
         if (chart == null)
-            return;
+            chart = GraphManager.Instance.getFirstGraph();
         if (RewindManager.Instance.isRecording)
         {
             updatePoints();

@@ -11,6 +11,8 @@ using HoloToolkit.Unity;
 /// </summary>
 public class GameStateManager : Singleton<GameStateManager> {
 
+    public int scene { get; set; }
+
 	//game states are represented as an enum
 	public enum gameState {PLAY, BUILD, REWIND};
 	public enum GameDisplayState { PLAY_SCREEN, MODIFY_SCREEN }; // is unused (Mina)

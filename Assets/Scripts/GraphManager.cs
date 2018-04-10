@@ -14,11 +14,12 @@ public class GraphManager : Singleton<GraphManager>
     // Use this for initialization
     void Start()
     {
+        initGraph();
         for (int i = 0; i < graphs.Count; i++)
         {
             if (graphs[i].gameObject.activeSelf)
             {
-                Debug.Log("Graph - Adding new active graph"); 
+                Debug.Log("Graph - Adding new active graph");
                 activeGraphs.Add(graphs[i]);
             }
         }
@@ -31,13 +32,55 @@ public class GraphManager : Singleton<GraphManager>
 
     }
 
+    public GraphChartBase getFirstGraph()
+    {
+        return activeGraphs[0].gameObject.GetComponent<GraphChart>();
+    }
+
+    public void initGraph()
+    {
+        switch (GameStateManager.Instance.scene)
+        {
+            case 1:
+                graphs[1].gameObject.SetActive(true);
+                break;
+            case 2:
+                graphs[1].gameObject.SetActive(true);
+                break;
+            case 3:
+                graphs[0].gameObject.SetActive(true);
+                break;
+            case 4:
+                graphs[0].gameObject.SetActive(true);
+                break;
+            case 5:
+                graphs[4].gameObject.SetActive(true);
+                break;
+            case 6:
+                graphs[4].gameObject.SetActive(true);
+                break;
+            case 7:
+                graphs[4].gameObject.SetActive(true);
+                break;
+            case 8:
+                graphs[0].gameObject.SetActive(true);
+                break;
+            case 9:
+                graphs[4].gameObject.SetActive(true);
+                break;
+            case 10:
+                graphs[0].gameObject.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
     public void startGraph()
     {
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
-
-            if (graphHandler is GraphHandlerAccelerationBallOneandTwo) Debug.Log("Graph - graph manager is GraphHandlerAccelerationBallOneandTwo");
 
             Debug.Log("Graph - type of graph: " + graphHandler.GetType());
             Debug.Log("Graph - is equals to speed and acc: " + (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)));
@@ -61,7 +104,7 @@ public class GraphManager : Singleton<GraphManager>
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
-			Debug.Log ("Graph stopGraph");
+            Debug.Log("Graph stopGraph");
 
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopGraph();
@@ -77,7 +120,7 @@ public class GraphManager : Singleton<GraphManager>
         for (int i = 0; i < activeGraphs.Count; i++)
         {
             GraphHandler graphHandler = activeGraphs[i];
-			Debug.Log ("Graph stopGraphRecording");
+            Debug.Log("Graph stopGraphRecording");
 
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedBallOneAndTwo)) ((GraphHandlerSpeedBallOneAndTwo)graphHandler).StopRecordingGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerSpeedAndAcceleration)) ((GraphHandlerSpeedAndAcceleration)graphHandler).StopRecordingGraph();

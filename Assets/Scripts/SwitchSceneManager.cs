@@ -18,10 +18,12 @@ public class SwitchSceneManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         Debug.Log("Initiallize scene");
-//        currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
+        currentScene = Convert.ToInt32(SceneManager.GetActiveScene().name.Split('_')[1]);
+        GameStateManager.Instance.scene = currentScene;
         Debug.Log("currentScene: " + currentScene);
-//        sceneNameText.text = "Scene" + " " + currentScene.ToString();
+        sceneNameText.text = "Scene" + " " + currentScene.ToString();
     }
 
     // Update is called once per frame
