@@ -5,7 +5,12 @@ using HoloToolkit.Unity;
 
 public class UIManager : Singleton<UIManager>
 {
-    public GameObject buttons; 
+    public GameObject buttons;
+    public GameObject rewindUI;
+    public GameObject playUI;
+    public GameObject buildUI;
+    public GameObject startSimulationUI;
+
 
     // Use this for initialization
     void Start()

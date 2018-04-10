@@ -40,6 +40,10 @@ public class RewindManager : Singleton<RewindManager>
     // Use this for initialization
     void Start()
     {
+        if(rewindUI == null)
+            rewindUI = UIManager.Instance.rewindUI;
+        if(startSimulationUI == null)
+            startSimulationUI = UIManager.Instance.startSimulationUI;
         
 		if (BallPhysicsManager.Instance.isScene10) {
 			ballTrail = BallPhysicsManager.Instance.ball.transform.Find ("Trail").gameObject;

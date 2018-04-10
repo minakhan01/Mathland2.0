@@ -14,6 +14,8 @@ public class VelocityArrowManager : Singleton<VelocityArrowManager>
     // Use this for initialization
     void Start()
     {
+        if (rewindUI == null)
+            rewindUI = UIManager.Instance.rewindUI;
         initialTailScale = velocityTail.transform.localScale;
         initialHeadScale = velocityHead.transform.localScale;
     }

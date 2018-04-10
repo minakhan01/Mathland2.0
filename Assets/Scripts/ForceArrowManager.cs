@@ -16,6 +16,8 @@ public class ForceArrowManager : Singleton<ForceArrowManager>
     // Use this for initialization
     void Start()
     {
+        if (rewindUI == null)
+            rewindUI = UIManager.Instance.rewindUI;
         Debug.Log("Start forcetail arrow: " + forceTail);
         initialTailScale = forceTail.transform.localScale;
         initialHeadScale = forceHead.transform.localScale;
