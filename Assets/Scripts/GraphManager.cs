@@ -11,6 +11,8 @@ public class GraphManager : Singleton<GraphManager>
     public List<GraphHandler> graphs;
     List<GraphHandler> activeGraphs = new List<GraphHandler>();
 
+    public GraphChartBase currentGraph;
+
     // Use this for initialization
     void Start()
     {
@@ -34,7 +36,7 @@ public class GraphManager : Singleton<GraphManager>
 
     public GraphChartBase getFirstGraph()
     {
-        return activeGraphs[0].gameObject.GetComponent<GraphChart>();
+        return currentGraph;
     }
 
     public void initGraph()

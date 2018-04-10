@@ -22,6 +22,8 @@ public class ForceArrowManagerBallTwo : Singleton<ForceArrowManagerBallTwo>
     // Update is called once per frame
     void Update()
     {
+        if (rewindUI == null)
+            rewindUI = UIManager.Instance.rewindUI;
 		if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
 			activeArrow (true);
 //            BallPhysicsManager.Instance.updateVelocityandForce();
