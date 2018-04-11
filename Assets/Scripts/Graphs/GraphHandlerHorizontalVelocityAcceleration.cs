@@ -56,6 +56,9 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 		categoryTwoName = ACCL_HORIZONTAL;
 
 		timer = AddValuesToGraph();
+
+        //categoryNames.Add(VELOCITY_HORIZONTAL);
+        //categoryNames.Add(ACCL_HORIZONTAL);
 	}
 
 	// Update is called once per frame

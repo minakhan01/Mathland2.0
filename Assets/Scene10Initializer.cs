@@ -11,7 +11,7 @@ public class Scene10Initializer : MonoBehaviour {
 	void Start () {
 		VelocityMagnitude *= 0.001f;
 		VelocityArrow.transform.localScale = new Vector3 (VelocityMagnitude, VelocityMagnitude, VelocityMagnitude);
-		RewindManager.Instance.maxRecordTimeInit = 35;
+		RewindManager.Instance.maxRecordTimeInit = 3;
 		ball.GetComponentInChildren<StrobingHandler> ().VelocityConst = 0.36f;
 		ball.GetComponentInChildren<StrobingHandler> ().ForceConst = 0.35f;
 		GameStateManager.Instance.sceneHasRope = true;

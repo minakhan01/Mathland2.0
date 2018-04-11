@@ -53,10 +53,13 @@ public class GraphHandlerSpeedBallOneAndTwo : GraphHandler {
 	void Start()
 	{
 		categoryOneName = VELOCITY_BALL_ONE;
-		categoryTwoName = VELOCITY_BALL_ONE;
+		categoryTwoName = VELOCITY_BALL_TWO;
 
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
+
+        //categoryNames.Add(VELOCITY_BALL_ONE);
+        //categoryNames.Add(VELOCITY_BALL_TWO);
 	}
 
 	public override string getCategoryOne() {

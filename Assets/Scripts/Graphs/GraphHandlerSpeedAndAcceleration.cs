@@ -29,9 +29,10 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 				accl = 0.1f;
 			}
 
-
+            Debug.Log("SCENE 10 - " + GameStateManager.Instance.sceneHasRope);
 			if (GameStateManager.Instance.sceneHasRope) {
-				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, 1.2f);
+                Debug.Log("SCENE 10 - Scene has rope");
+				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, velocity);
 				graphChart.DataSource.AddPointToCategoryRealtime (ACCL_BALL_ONE, time, 1.0f);
 			} else {
 				graphChart.DataSource.AddPointToCategoryRealtime (VELOCITY_BALL_ONE, time, velocity);
@@ -63,6 +64,9 @@ public class GraphHandlerSpeedAndAcceleration : GraphHandler {
 		categoryOneName = VELOCITY_BALL_ONE;
 		categoryTwoName = ACCL_BALL_ONE;
 		timer = AddValuesToGraph();
+
+        //categoryNames.Add(VELOCITY_BALL_ONE);
+        //categoryNames.Add(ACCL_BALL_ONE);
 	}
 
 	public override string getCategoryOne() {

@@ -94,9 +94,9 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			initialPositionBallTwo = ballTwo.transform.position;
 		}
 
-		if (!isScene10) {
+		//if (!isScene10) {
 			GraphManager.Instance.startGraph ();
-		}
+		//}
     }
 
     public void stopBallPhysics() {

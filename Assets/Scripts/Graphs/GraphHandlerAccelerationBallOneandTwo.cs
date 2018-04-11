@@ -55,6 +55,9 @@ public class GraphHandlerAccelerationBallOneandTwo : GraphHandler {
 
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
+
+        //categoryNames.Add(ACCL_BALL_ONE);
+        //categoryNames.Add(ACCL_BALL_TWO);
 	}
 	
 	// Update is called once per frame

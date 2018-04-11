@@ -55,6 +55,10 @@ public class GraphHandlerVerticalVelocityAcceleration : GraphHandler {
 
 		graphChart = GetComponent<GraphChart> ();
 		timer = AddValuesToGraph();
+
+        //categoryNames.Add(VELOCITY_VERTICAL);
+        //categoryNames.Add(ACCL_VERTICAL);
+
 	}
 
 	// Update is called once per frame
