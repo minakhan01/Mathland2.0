@@ -4,8 +4,9 @@ using UnityEngine;
 
 using Vectrosity;
 using ChartAndGraph;
+using HoloToolkit.Unity;
 
-public class VelocityAxisManager : MonoBehaviour
+public class VelocityAxisManager : Singleton<VelocityAxisManager>
 {
     public int RESULT_POINT_IDX = 5;
     public int VELX_POINT_IDX = 3;
@@ -18,12 +19,14 @@ public class VelocityAxisManager : MonoBehaviour
 
     public VectorObject2D lines;
 
+    public List<Vector3> velocitiesOverTime = new List<Vector3>();
+
     Vector2 common;
     Vector2 result;
     Vector2 velY;
     Vector2 velX;
 
-    public GraphChartBase chart;
+    //public GraphChartBase chart;
 
     // Use this for initialization
     void Start()
@@ -34,8 +37,8 @@ public class VelocityAxisManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (chart == null)
-            chart = GraphManager.Instance.getFirstGraph();
+        //if (chart == null)
+        //chart = GraphManager.Instance.getFirstGraph();
         if (RewindManager.Instance.isRecording)
         {
             updatePoints();
@@ -83,28 +86,28 @@ public class VelocityAxisManager : MonoBehaviour
     {
         DoubleVector3 last;
 
-        chart.DataSource.GetLastPoint(chart.GetComponent<GraphHandler>().categoryNames[0], out last);
+        //chart.DataSource.GetLastPoint(chart.GetComponent<GraphHandler>().categoryNames[0], out last);
         //int currentX = (int)(RewindManager.Instance.sliderValue * (float)last.x);
 
-        Vector3 currentBallVelocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
-
-        Debug.Log("VELOCITY AXIS MANAGER - currentBallVelocity " + currentBallVelocity);
 
         double ratio = RewindManager.Instance.sliderValue;
         ratio = RewindManager.Instance.rewindRatio;
-        int currentX = (int)(ratio * last.x);
+        int currentX = (int)(ratio * velocitiesOverTime[velocitiesOverTime.Count - 1].x);
+
+        Vector3 currentBallVelocity = velocitiesOverTime[currentX];
+        Debug.Log("VELOCITY AXIS MANAGER - currentBallVelocity " + currentBallVelocity);
 
         Debug.Log("VELOCITY AXIS MANAGER - ratio " + ratio);
 
-        float newVelocityHorizontal = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[0], currentX).y;
-        float newVelocityVertical = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[1], currentX).y;
+        //float newVelocityHorizontal = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[0], currentX).y;
+        //float newVelocityVertical = (float)chart.DataSource.GetPoint(chart.GetComponent<GraphHandler>().categoryNames[1], currentX).y;
 
-        Debug.Log("VELOCITY AXIS MANAGER - currentX " + currentX);
-        Debug.Log("VELOCITY AXIS MANAGER - new vel horizontal " + newVelocityHorizontal);
-        Debug.Log("VELOCITY AXIS MANAGER - new vel vertical " + newVelocityVertical);
+        //Debug.Log("VELOCITY AXIS MANAGER - currentX " + currentX);
+        //Debug.Log("VELOCITY AXIS MANAGER - new vel horizontal " + newVelocityHorizontal);
+        //Debug.Log("VELOCITY AXIS MANAGER - new vel vertical " + newVelocityVertical);
 
-        velX.y = common.y - 30 * Mathf.Abs(newVelocityHorizontal) * VelocityYMagnitude;
-        velY.x = common.x + 30 * Mathf.Abs(newVelocityVertical) * VelocityXMagnitude;
+        velX.y = common.y - 30 * Mathf.Abs(currentBallVelocity.x) * VelocityYMagnitude;
+        velY.x = common.x + 30 * Mathf.Abs(currentBallVelocity.y) * VelocityXMagnitude;
         result.y = velX.y;
         result.x = velY.x;
         lines.vectorLine.points2[COMMON_POINT_IDX] = common;

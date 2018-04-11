@@ -20,6 +20,9 @@ public class GraphHandlerHorizontalVelocityAcceleration : GraphHandler {
 		{
 			yield return new WaitForSeconds(SAMPLE_FREQ);
 
+            VelocityAxisManager.Instance.velocitiesOverTime.Add(BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity);
+
+
 			float velocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity.magnitude;
 			if (velocity > maxYValue) maxYValue = velocity;
 
