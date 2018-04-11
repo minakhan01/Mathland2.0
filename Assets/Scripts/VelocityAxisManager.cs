@@ -67,7 +67,7 @@ public class VelocityAxisManager : MonoBehaviour
 
         Vector3 currentBallVelocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
 
-        velX.y = common.y - 30 * Mathf.Abs(currentBallVelocity.x) * VelocityXMagnitude;
+        velX.y = common.y - 30 * Mathf.Abs(currentBallVelocity.x) * VelocityYMagnitude;
         velY.x = common.x + 30 * Mathf.Abs(currentBallVelocity.y) * VelocityXMagnitude;
         result.y = velX.y;
         result.x = velY.x;
@@ -86,6 +86,9 @@ public class VelocityAxisManager : MonoBehaviour
         chart.DataSource.GetLastPoint(chart.GetComponent<GraphHandler>().categoryNames[0], out last);
         //int currentX = (int)(RewindManager.Instance.sliderValue * (float)last.x);
 
+        Vector3 currentBallVelocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
+
+        Debug.Log("VELOCITY AXIS MANAGER - currentBallVelocity " + currentBallVelocity);
 
         double ratio = RewindManager.Instance.sliderValue;
         ratio = RewindManager.Instance.rewindRatio;
@@ -100,7 +103,7 @@ public class VelocityAxisManager : MonoBehaviour
         Debug.Log("VELOCITY AXIS MANAGER - new vel horizontal " + newVelocityHorizontal);
         Debug.Log("VELOCITY AXIS MANAGER - new vel vertical " + newVelocityVertical);
 
-        velX.y = common.y - 30 * Mathf.Abs(newVelocityHorizontal) * VelocityXMagnitude;
+        velX.y = common.y - 30 * Mathf.Abs(newVelocityHorizontal) * VelocityYMagnitude;
         velY.x = common.x + 30 * Mathf.Abs(newVelocityVertical) * VelocityXMagnitude;
         result.y = velX.y;
         result.x = velY.x;
