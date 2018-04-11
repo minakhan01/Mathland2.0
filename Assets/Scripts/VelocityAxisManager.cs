@@ -12,6 +12,10 @@ public class VelocityAxisManager : MonoBehaviour
     public int COMMON_POINT_IDX = 0;
     public int VELY_POINT_IDX = 1;
 
+
+    public float VelocityXMagnitude = 1f;
+    public float VelocityYMagnitude = 1f;
+
     public VectorObject2D lines;
 
     Vector2 common;
@@ -63,8 +67,8 @@ public class VelocityAxisManager : MonoBehaviour
 
         Vector3 currentBallVelocity = BallPhysicsManager.Instance.ball.GetComponent<Rigidbody>().velocity;
 
-        velX.y = common.y - 30 * Mathf.Abs(currentBallVelocity.x);
-        velY.x = common.x + 30 * Mathf.Abs(currentBallVelocity.y);
+        velX.y = common.y - 30 * Mathf.Abs(currentBallVelocity.x) * VelocityXMagnitude;
+        velY.x = common.x + 30 * Mathf.Abs(currentBallVelocity.y) * VelocityXMagnitude;
         result.y = velX.y;
         result.x = velY.x;
         lines.vectorLine.points2[COMMON_POINT_IDX] = common;
@@ -96,8 +100,8 @@ public class VelocityAxisManager : MonoBehaviour
         Debug.Log("VELOCITY AXIS MANAGER - new vel horizontal " + newVelocityHorizontal);
         Debug.Log("VELOCITY AXIS MANAGER - new vel vertical " + newVelocityVertical);
 
-        velX.y = common.y - 30 * Mathf.Abs(newVelocityHorizontal);
-        velY.x = common.x + 30 * Mathf.Abs(newVelocityVertical);
+        velX.y = common.y - 30 * Mathf.Abs(newVelocityHorizontal) * VelocityXMagnitude;
+        velY.x = common.x + 30 * Mathf.Abs(newVelocityVertical) * VelocityXMagnitude;
         result.y = velX.y;
         result.x = velY.x;
         lines.vectorLine.points2[COMMON_POINT_IDX] = common;
