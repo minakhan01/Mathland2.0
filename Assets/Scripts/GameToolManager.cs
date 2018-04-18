@@ -34,8 +34,8 @@ public class GameToolManager : Singleton<GameToolManager> {
 	private GameObject CreateGameToolPrefab(GameObject prefab){
 		GameObject gb=Instantiate (prefab, new Vector3(1,0,5),Quaternion.identity) as GameObject;
 		gameToolList.Add (gb);
-		Debug.Log ("The list now is");
-		Debug.Log(gameToolList);
+        Debug.Log ("GAME TOOL MANAGER - Game Tool List: " + gameToolList);
+		//Debug.Log(gameToolList);
 		return gb;
 	}
 

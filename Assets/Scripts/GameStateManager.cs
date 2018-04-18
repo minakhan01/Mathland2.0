@@ -31,20 +31,26 @@ public class GameStateManager : Singleton<GameStateManager> {
 			if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD) {
 				GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
 				//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-				UIManager.Instance.switchUI ();
+				UIManager.Instance.switchScreenUI ();
 			} else if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY) {
 				GameStateManager.currentGameState = GameStateManager.gameState.BUILD;
 				//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
-				UIManager.Instance.switchUI ();
+				UIManager.Instance.switchScreenUI ();
 			}
 		}
 		Debug.Log ("Switch Display State");
 	}
 
+    public static void switchGameStateMode(gameState gameState) {
+        currentGameState = gameState;
+        Debug.Log("GAME STATE MANAGER: Current Game State " + currentGameState);
+        UIManager.Instance.switchScreenUI();
+    }
+
 	public static void resetDisplayState()
 	{
 		GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
-		UIManager.Instance.switchUI ();	
+		UIManager.Instance.switchScreenUI ();	
 	}
 
 	void Start() {

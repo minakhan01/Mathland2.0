@@ -6,17 +6,12 @@ using UnityEngine.UI;
 public class ButtonsUI : MonoBehaviour
 {
     [Header("Button groups")]
-    public GameObject playUI;
-    public GameObject buildUI;
-    public GameObject editObjectUI;
-	public GameObject ObjectsUI;
-	public GameObject GraphUI;
-	public GameObject StartSimulationUI;
-	public GameObject RewindUI;
+    public GameObject ObjectsToAddInPlayUI;
+    public GameObject ObjectsToAddInRewindUI;
     public Slider slider;
 
     [Header("Axis")]
-	// Buttons for Build Mode 
+    // Buttons for Build Mode 
     public ButtonProperties XButton;
     public ButtonProperties YButton;
     public ButtonProperties ZButton;
@@ -27,7 +22,7 @@ public class ButtonsUI : MonoBehaviour
     public ButtonProperties RotateButton;
 
     [Header("Add Mode")]
-	// Buttons for Add Mode
+    // Buttons for Add Mode
     public ButtonProperties GraphButton;
     public ButtonProperties PlayButton;
     public ButtonProperties RewindButton;
@@ -36,6 +31,9 @@ public class ButtonsUI : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        GraphButton.switchState();
     }
 
     // Update is called once per frame
@@ -43,8 +41,10 @@ public class ButtonsUI : MonoBehaviour
     {
     }
 
-    void switchAction (ModifiableManager.ModifyingAction action) {
-        switch (action) {
+    void switchAction(ModifiableManager.ModifyingAction action)
+    {
+        switch (action)
+        {
             case ModifiableManager.ModifyingAction.REPOSITION:
                 MoveButton.switchState();
                 ResizeButton.cancelState();
@@ -63,26 +63,39 @@ public class ButtonsUI : MonoBehaviour
         }
     }
 
-	//PLAY_SCREEN
+    //PLAY_SCREEN
     public void AddButtonHandler()
     {
-        Debug.Log("Add Object");
-        ObjectsUI.SetActive(!ObjectsUI.activeSelf);
-        AddButton.switchState();
-		ModifiableManager.Instance.playMenuSelected[0] = !ModifiableManager.Instance.playMenuSelected[0];
+        Debug.Log("BUTTON UI - Add Button");
+        Debug.Log("BUTTON UI - CurrentGameState: " + GameStateManager.currentGameState);
+
+        if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY)
+        {
+            ObjectsToAddInPlayUI.SetActive(!ObjectsToAddInPlayUI.activeSelf);
+            AddButton.switchState();
+            ModifiableManager.Instance.playMenuSelected[0] = !ModifiableManager.Instance.playMenuSelected[0];
+        }
+        else if (GameStateManager.currentGameState == GameStateManager.gameState.REWIND)
+        {
+            ObjectsToAddInRewindUI.SetActive(!ObjectsToAddInRewindUI.activeSelf);
+            AddButton.switchState();
+        }
     }
 
     public void PlayButtonHandler()
     {
         PlayButton.switchState();
         ModifiableManager.Instance.playMenuSelected[1] = !ModifiableManager.Instance.playMenuSelected[1];
-		//GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
+        //GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
 
-        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.OFF) {
+        if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.OFF)
+        {
             Debug.Log("Play");
             GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.ON;
-            BallPhysicsManager.Instance.initBallPhysics ();
-        } else if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON) {
+            BallPhysicsManager.Instance.initBallPhysics();
+        }
+        else if (GameStateManager.Instance.currentPhysicsPlayState == GameStateManager.GamePlayPhysicsState.ON)
+        {
             Debug.Log("Reset");
             GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
             BallPhysicsManager.Instance.resetBall();
@@ -93,7 +106,7 @@ public class ButtonsUI : MonoBehaviour
     {
         Debug.Log("Rewind");
         RewindButton.switchState();
-		ModifiableManager.Instance.playMenuSelected[2] = !ModifiableManager.Instance.playMenuSelected[2];
+        ModifiableManager.Instance.playMenuSelected[2] = !ModifiableManager.Instance.playMenuSelected[2];
 
     }
 
@@ -101,48 +114,65 @@ public class ButtonsUI : MonoBehaviour
     {
         Debug.Log("Graph");
         GraphButton.switchState();
-		ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
-		//TO DO: Judith, what is this?
-//        GraphManager.Instance.graph.SetActive(!GraphManager.Instance.graph.activeSelf);
+        ModifiableManager.Instance.playMenuSelected[3] = !ModifiableManager.Instance.playMenuSelected[3];
+        if (UIManager.Instance.graphUI.activeSelf)
+        {
+            UIManager.Instance.hideGraphsUI();
+        }
+        else
+        {
+            UIManager.Instance.showGraphUI();
+        }
+
 
     }
 
-	public void AddForceButtonHandler()
-	{
-		GameToolManager.Instance.CreateForceField ();
-		Debug.Log("Graph");
-	}
+    public void AddForceButtonHandler()
+    {
+        GameToolManager.Instance.CreateForceField();
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        Debug.Log("Graph");
+    }
 
-	public void AddVelocityButtonHandler()
-	{
-		GameToolManager.Instance.CreateVelocityVector ();
-		Debug.Log("Graph");
-	}
+    public void AddVelocityButtonHandler()
+    {
+        GameToolManager.Instance.CreateVelocityVector();
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        Debug.Log("Graph");
+    }
 
-	public void AddRopeButtonHandler()
-	{
-		GameToolManager.Instance.CreateRope ();
-		Debug.Log("Graph");
-	}
+    public void AddRopeButtonHandler()
+    {
+        GameToolManager.Instance.CreateRope();
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        Debug.Log("Graph");
+    }
 
-	public void AddCubeButtonHandler()
-	{
-		GameToolManager.Instance.CreateCube ();
-		Debug.Log("Graph");
-	}
+    public void AddCubeButtonHandler()
+    {
+        GameToolManager.Instance.CreateCube();
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        Debug.Log("Graph");
+    }
 
-	public void AddRampButtonHandler()
-	{
-		GameToolManager.Instance.CreateRamp ();
-		Debug.Log("Ramp");
-	}
+    public void AddRampButtonHandler()
+    {
+        GameToolManager.Instance.CreateRamp();
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+        Debug.Log("Ramp");
+    }
 
-	//MODIFY_SCREEN
+    //MODIFY_SCREEN
     public void MoveButtonHandler()
     {
         switchAction(ModifiableManager.ModifyingAction.REPOSITION);
-		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
-		ModifiableManager.Instance.actionSelected[0] = !ModifiableManager.Instance.actionSelected[0];
+        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.REPOSITION;
+        ModifiableManager.Instance.actionSelected[0] = !ModifiableManager.Instance.actionSelected[0];
         Debug.Log("Move");
     }
 
@@ -150,53 +180,56 @@ public class ButtonsUI : MonoBehaviour
     {
         switchAction(ModifiableManager.ModifyingAction.RESIZE);
         ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.RESIZE;
-		ModifiableManager.Instance.actionSelected[1] = !ModifiableManager.Instance.actionSelected[1];
+        ModifiableManager.Instance.actionSelected[1] = !ModifiableManager.Instance.actionSelected[1];
         Debug.Log("Resize");
     }
 
     public void RotateButtonHandler()
     {
         switchAction(ModifiableManager.ModifyingAction.ROTATE);
-		ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
-		ModifiableManager.Instance.actionSelected[2] = !ModifiableManager.Instance.actionSelected[2];
+        ModifiableManager.Instance.action = ModifiableManager.ModifyingAction.ROTATE;
+        ModifiableManager.Instance.actionSelected[2] = !ModifiableManager.Instance.actionSelected[2];
         Debug.Log("Rotate");
     }
 
     public void DeleteButtonHandler()
     {
-		GameToolManager.Instance.DestroyObject();
+        GameToolManager.Instance.DestroyObject();
         Debug.Log("Delete");
-		GameStateManager.resetDisplayState ();
+        //GameStateManager.resetDisplayState();
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
     }
 
-	public void XAxisHandler()
-	{
-	
+    public void XAxisHandler()
+    {
+
         XButton.switchState();
         ModifiableManager.Instance.axisToModify[0] = !ModifiableManager.Instance.axisToModify[0];
-		Debug.Log("XAxisHandler");
-	}
+        Debug.Log("XAxisHandler");
+    }
 
-	public void YAxisHandler()
-	{
+    public void YAxisHandler()
+    {
         YButton.switchState();
         ModifiableManager.Instance.axisToModify[1] = !ModifiableManager.Instance.axisToModify[1];
-		Debug.Log("YAxisHandler");
-	}
+        Debug.Log("YAxisHandler");
+    }
 
-	public void ZAxisHandler()
-	{
+    public void ZAxisHandler()
+    {
         ZButton.switchState();
         ModifiableManager.Instance.axisToModify[2] = !ModifiableManager.Instance.axisToModify[2];
-		Debug.Log("ZAxisHandler");
-	}
+        Debug.Log("ZAxisHandler");
+    }
 
-	public void SliderHandler() {
-		ModifiableManager.Instance.sliderValueChangeHandler (slider.value);
-		Debug.Log ("Handle slider value");
-	}
+    public void SliderHandler()
+    {
+        ModifiableManager.Instance.sliderValueChangeHandler(slider.value);
+        Debug.Log("Handle slider value");
+    }
 
-    public void resetBuildButtons () {
+    public void resetBuildButtons()
+    {
         XButton.cancelState();
         YButton.cancelState();
         ZButton.cancelState();
@@ -204,6 +237,11 @@ public class ButtonsUI : MonoBehaviour
         ResizeButton.cancelState();
         RotateButton.cancelState();
         slider.value = 0;
+
+        //From other UI
+        ObjectsToAddInPlayUI.SetActive(false);
+        ObjectsToAddInRewindUI.SetActive(false);
+
     }
 
 }

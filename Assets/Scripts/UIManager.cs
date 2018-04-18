@@ -10,6 +10,9 @@ public class UIManager : Singleton<UIManager>
     public GameObject playUI;
     public GameObject buildUI;
     public GameObject startSimulationUI;
+    public GameObject graphUI;
+    public GameObject linesUI;
+    public GameObject linesLegendUI;
 
 
     // Use this for initialization
@@ -25,85 +28,117 @@ public class UIManager : Singleton<UIManager>
     }
 
     // Switches the UI from one mode to another (Play and build)
-    public void switchUI()
+    public void switchScreenUI()
     {
         if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY)
         {
             //PLAY MODE
-            hideBuildUI();
+            hideAllUI();
+            showGraphUI();
             showPlayUI();
         }
         else if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD)
         {
             //BUILD MODE
-            hidePlayUI();
-            resetBuildUI();
-			showBuildUI ();
-        } 
+            RewindManager.Instance.Reset();
+            hideAllUI();
+            hideGraphsUI();
+            resetBuildUIButtons();
+            showBuildUI();
+        }
+        else if (GameStateManager.currentGameState == GameStateManager.gameState.REWIND)
+        {
+            //REWIND MODE
+            hideAllUI();
+            showGraphUI();
+            showRewindUI();
+        }
+    }
+
+    public void hideGraphsUI()
+    {
+        graphUI.SetActive(false);
+        linesUI.SetActive(false);
+        linesLegendUI.SetActive(false);
+    }
+
+    public void showGraphUI()
+    {
+        graphUI.SetActive(true);
+        linesUI.SetActive(true);
+        linesLegendUI.SetActive(true);
+    }
+
+    void hideAllUI()
+    {
+        buildUI.SetActive(false);
+        playUI.SetActive(false);
+        rewindUI.SetActive(false);
+        hideGraphsUI();
     }
 
 
     void showBuildUI()
     {
-        buttons.GetComponent<ButtonsUI>().buildUI.SetActive(true);
+        buildUI.SetActive(true);
     }
 
-    void hideBuildUI()
+    //void hideBuildUI()
+    //{
+    //    buttons.GetComponent<ButtonsUI>().buildUI.SetActive(false);
+    //}
+
+    //void showGraphUI()
+    //{
+    //	buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(true);
+    //}
+
+    //void hideGraphUI()
+    //{
+    //	buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(false);
+    //}
+
+    void showRewindUI()
     {
-        buttons.GetComponent<ButtonsUI>().buildUI.SetActive(false);
+        rewindUI.SetActive(true);
     }
 
-	void showGraphUI()
-	{
-		buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(true);
-	}
+    //void hideRewindUI()
+    //{
+    //	buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(false);
+    //}
 
-	void hideGraphUI()
-	{
-		buttons.GetComponent<ButtonsUI>().GraphUI.SetActive(false);
-	}
+    //void showStartSimulationUI()
+    //{
+    //	buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(true);
+    //}
 
-	void showRewindUI()
-	{
-		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(true);
-	}
+    //void hideStartSimulationUI()
+    //{
+    //	buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(false);
+    //}
 
-	void hideRewindUI()
-	{
-		buttons.GetComponent<ButtonsUI>().RewindUI.SetActive(false);
-	}
-
-	void showStartSimulationUI()
-	{
-		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(true);
-	}
-
-	void hideStartSimulationUI()
-	{
-		buttons.GetComponent<ButtonsUI>().StartSimulationUI.SetActive(false);
-	}
-		
     void showPlayUI()
     {
-        buttons.GetComponent<ButtonsUI>().playUI.SetActive(true);
+        playUI.SetActive(true);
     }
 
-    void hideObjectsUI()
-    {
-        buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(false);
-    }
+    //void hideObjectsUI()
+    //{
+    //    buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(false);
+    //}
 
-    void showObjectsUI()
-    {
-        buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(true);
-    }
+    //void showObjectsUI()
+    //{
+    //    buttons.GetComponent<ButtonsUI>().ObjectsUI.SetActive(true);
+    //}
 
-    void hidePlayUI()
-    {
-        buttons.GetComponent<ButtonsUI>().playUI.SetActive(false);
-    }
+    //void hidePlayUI()
+    //{
+    //    buttons.GetComponent<ButtonsUI>().playUI.SetActive(false);
+    //}
 
-    void resetBuildUI()
+    void resetBuildUIButtons()
     {
         buttons.GetComponent<ButtonsUI>().resetBuildButtons();
     }

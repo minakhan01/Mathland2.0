@@ -49,7 +49,8 @@ public class TouchListenerManager : Singleton<TouchListenerManager> {
 		if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.PLAY_SCREEN && longPressObjectDetected ()) 
 		{
 			Debug.Log ("change to modify screen");
-			GameStateManager.switchDisplayState ();
+			//GameStateManager.switchDisplayState ();
+            GameStateManager.switchGameStateMode(GameStateManager.gameState.BUILD);
 		} 
 //		else if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.MODIFY_SCREEN && objectDragging())
 //		{
@@ -60,7 +61,8 @@ public class TouchListenerManager : Singleton<TouchListenerManager> {
 		else if (GameStateManager.currentDisplayState == GameStateManager.GameDisplayState.MODIFY_SCREEN && longPressOutsideDetected ()) 
 		{
 			Debug.Log ("change to play screen");
-			GameStateManager.switchDisplayState ();
+			//GameStateManager.switchDisplayState ();
+            GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
 		}
 
 
