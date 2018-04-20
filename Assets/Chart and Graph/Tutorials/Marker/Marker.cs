@@ -2,8 +2,9 @@
 using System.Collections;
 using ChartAndGraph;
 using UnityEngine.UI;
+using HoloToolkit.Unity;
 
-public class Marker : MonoBehaviour
+public class Marker : Singleton<Marker>
 {
 
     public GraphChartBase Chart;
@@ -78,6 +79,10 @@ public class Marker : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void resetMarker () {
+        drawRectangleAndPoint();
     }
 
     //	// Update is called once per frame

@@ -113,7 +113,7 @@ public class GraphManager : Singleton<GraphManager>
             if (graphHandler.GetType() == typeof(GraphHandlerAccelerationBallOneandTwo)) ((GraphHandlerAccelerationBallOneandTwo)graphHandler).StopGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerVerticalVelocityAcceleration)) ((GraphHandlerVerticalVelocityAcceleration)graphHandler).StopGraph();
             if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVelocityAcceleration)) ((GraphHandlerHorizontalVelocityAcceleration)graphHandler).StopGraph();
-            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVerticalCombinedSpeed)) ((GraphHandlerHorizontalVerticalCombinedSpeed)graphHandler).StopGraph();
+            if (graphHandler.GetType() == typeof(GraphHandlerHorizontalVerticalCombinedSpeed)) ((GraphHandlerHorizontalVerticalCombinedSpeed)graphHandler).resetGraph();
         }
     }
 

@@ -1,9 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using HoloToolkit.Unity;
 
-public class StrobingHandler : Singleton<StrobingHandler> {
+
+public class StrobingHandler : MonoBehaviour {
 
 	public GameObject ball;
 	private int updateCount = 0;

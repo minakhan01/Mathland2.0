@@ -35,6 +35,13 @@ public class RewindableObject : MonoBehaviour
         ApplyPointInTime(0);
 //		RewindManager.Instance.currentRewindables = new List<GameObject>();
     }
+
+    public void ForgetRewind () {
+        Debug.Log("REWIND UI - REWINDABLE OBJECT - forgetRewind()");
+        ApplyPointInTime(0);
+        pointsInTime = new List<PointInTime>();
+        rb.isKinematic = false;
+    }
     public void Record()
     {
 		Vector3 scale,velocity,force,position;

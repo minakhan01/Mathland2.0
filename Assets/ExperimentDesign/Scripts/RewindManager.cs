@@ -200,13 +200,34 @@ public class RewindManager : Singleton<RewindManager>
         maxRecordTimeInit = 2;
         maxRecordTime = maxRecordTimeInit;
         currentSpeed = PlaySpeed[2];
-        StrobingHandler.Instance.clearStrobes();
 
+    }
+
+    public void forgetRewind() {
+        Debug.Log("REWIND UI - REWIND MANAGER - forgetRewind()");
+        updateSpeed = 1;
+        rewindRatio = 1;
+        sliderValue = 0;
+        pointsInTimeCount = 0;
+        isRecording = false;
+        isRewinding = false;
+        recordingStarted = false;
+        currentPlayMode = PlayMode.PAUSE;
+        currentPointInTimeFloat = 0.0f;
+        currentPointInTime = (int)currentPointInTimeFloat;
+        maxRecordTime = maxRecordTimeInit;
+        currentSpeed = PlaySpeed[2];
+        foreach (GameObject current in currentRewindables) {
+            current.GetComponent<RewindableObject>().ForgetRewind();
+        }
+        GraphManager.Instance.stopGraph();
+        Marker.Instance.resetMarker();
+        BallPhysicsManager.Instance.resetBall();
     }
 
     void stopRecording()
     {
-        Debug.Log("Simulation - stop recording");
+        Debug.Log("REWIND UI - REWIND MANAGER - stopRecording()");
         StopCoroutine(timer);
         isRecording = false;
         maxRecordTime = maxRecordTimeInit;
@@ -226,7 +247,7 @@ public class RewindManager : Singleton<RewindManager>
         {
             yield return new WaitForSeconds(1f);
             maxRecordTime--;
-            Debug.Log("RewindManager timeSimulation: " + maxRecordTime);
+            Debug.Log("REWIND UI - REWIND MANAGER - timeSimulation(): " + maxRecordTime);
 
             if (maxRecordTime == 10 && BallPhysicsManager.Instance.isScene10)
             {

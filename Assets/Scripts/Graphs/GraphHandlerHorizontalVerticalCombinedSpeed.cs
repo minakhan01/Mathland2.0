@@ -44,14 +44,18 @@ public class GraphHandlerHorizontalVerticalCombinedSpeed : GraphHandler {
 		return categoryOneName;
 	}
 
-    public void StopGraph()
+    public void resetGraph()
 	{
         StopRecordingGraph();
 		time = 0.0f;
 		maxYValue = 0.0f;
 		Debug.Log("Stop coroutine: " + time);
-		graphChart.DataSource.ClearAndMakeLinear(VELOCITY_HORIZONTAL);
-		graphChart.DataSource.ClearCategory(VELOCITY_VERTICAL);
+
+
+        foreach(string category in categoryNames) {
+            graphChart.DataSource.ClearAndMakeLinear(category);    
+        }
+
 	}
 
 	// Use this for initialization

@@ -40,7 +40,7 @@ public class UIManager : Singleton<UIManager>
         else if (GameStateManager.currentGameState == GameStateManager.gameState.BUILD)
         {
             //BUILD MODE
-            RewindManager.Instance.Reset();
+            RewindManager.Instance.forgetRewind();
             hideAllUI();
             hideGraphsUI();
             resetBuildUIButtons();

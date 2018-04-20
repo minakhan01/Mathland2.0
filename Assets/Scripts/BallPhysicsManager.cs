@@ -100,11 +100,14 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
     }
 
     public void stopBallPhysics() {
+        Debug.Log("REWIND UI - BALL PHYSICS MANAGER - stopBallPhysics()");
+
         GameStateManager.Instance.currentPhysicsPlayState = GameStateManager.GamePlayPhysicsState.OFF;
         
-		ball.transform.Find ("Trail").gameObject.transform.parent = null;
+		//ball.transform.Find ("Trail").gameObject.transform.parent = null;
 		Rigidbody rbi = ball.GetComponent<Rigidbody>();
         rbi.velocity = new Vector3(0.0f, 0.0f, 0.0f);
+        Debug.Log("REWIND UI - BALL PHYSICS MANAGER - new velocity " + rbi.velocity);
 
 		if (sceneHasTwoBalls) {
 			ballTwo.transform.Find ("TrailTwo").gameObject.transform.parent = null;
@@ -122,7 +125,8 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
 			ballTwo.transform.position = initialPositionBallTwo;
 			ballTwo.GetComponent<StrobingHandler>().clearStrobes ();
 		}
-		ball.GetComponent<StrobingHandler>().clearStrobes ();
+        Debug.Log("REWIND UI - BALL PHYSICS MANAGER - clear Strobes()");
+        ball.GetComponent<StrobingHandler>().clearStrobes();
         stopBallPhysics();
     }
 }
