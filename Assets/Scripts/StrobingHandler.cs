@@ -26,6 +26,7 @@ public class StrobingHandler : MonoBehaviour {
 	void Start () {
 		initialVelocityScale = arrowVelocity.transform.localScale;
 		initialForceScale = arrowForce.transform.localScale;
+
 	}
 
 
@@ -109,11 +110,15 @@ public class StrobingHandler : MonoBehaviour {
 	{
 		Debug.Log("Clearing all strobes");
 
-		//add this back in once we get strobes working on their own
-		//        ball.GetComponent<TrailRenderer>().Clear(); 
+        //add this back in once we get strobes working on their own
+        //ball.GetComponent<TrailRenderer>().Clear(); 
+
+        Debug.Log("Strobes: " + strobes);
 
 		foreach (GameObject strobe in strobes)  {
-			Destroy(strobe); 
+            Debug.Log("Destroying strobe: " + strobe);
+			//Destroy(strobe);
+            DestroyImmediate(strobe);
 		}
 	}
 }

@@ -90,7 +90,11 @@ public class RewindableObject : MonoBehaviour
     }
     void ApplyPointInTime(int pointInTimeIndex)
     {
-		Debug.Log ("ApplyPointInTime: "+pointInTimeIndex);
+		Debug.Log ("ApplyPointInTime: " + pointInTimeIndex);
+        Debug.Log("points in time: " + pointsInTime);
+        if (pointsInTime.Count == 0)
+            return;
+        
         PointInTime currentPointInTime = pointsInTime[pointInTimeIndex];
         transform.position = currentPointInTime.position;
         transform.rotation = currentPointInTime.rotation;

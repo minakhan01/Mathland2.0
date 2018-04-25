@@ -120,13 +120,14 @@ public class BallPhysicsManager : Singleton<BallPhysicsManager> {
     }
 
     public void resetBall() {
-        ball.transform.position = initialPosition;
+        //ball.transform.position = initialPosition;
 		if (sceneHasTwoBalls) {
 			ballTwo.transform.position = initialPositionBallTwo;
 			ballTwo.GetComponent<StrobingHandler>().clearStrobes ();
 		}
         Debug.Log("REWIND UI - BALL PHYSICS MANAGER - clear Strobes()");
-        ball.GetComponent<StrobingHandler>().clearStrobes();
-        stopBallPhysics();
+        ball.GetComponentInChildren<StrobingHandler>().clearStrobes();
+        //stopBallPhysics();
+        //ball.GetComponent<Rigidbody>().velocity = updatedVelocity;
     }
 }

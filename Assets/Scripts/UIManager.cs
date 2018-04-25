@@ -57,6 +57,7 @@ public class UIManager : Singleton<UIManager>
 
     public void hideGraphsUI()
     {
+        
         graphUI.SetActive(false);
         linesUI.SetActive(false);
         linesLegendUI.SetActive(false);
@@ -75,6 +76,8 @@ public class UIManager : Singleton<UIManager>
         playUI.SetActive(false);
         rewindUI.SetActive(false);
         hideGraphsUI();
+        Debug.Log("GAME STATE MANAGER: All UI is hidden");
+
     }
 
 

@@ -59,7 +59,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/ExperimentDesign/Scene_7.unity
     guid: ed91c8657d3df41cf895d206d7f45292
-  - enabled: 1
+  - enabled: 0
     path: Assets/App/Init.unity
     guid: b67305f08509f4512881a649be9e7262
   - enabled: 1
