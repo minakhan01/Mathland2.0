@@ -111,7 +111,7 @@ public class StrobingHandler : MonoBehaviour {
 		Debug.Log("Clearing all strobes");
 
         //add this back in once we get strobes working on their own
-        //ball.GetComponent<TrailRenderer>().Clear(); 
+        ball.GetComponentInChildren<TrailRenderer>().Clear(); 
 
         Debug.Log("Strobes: " + strobes);
 

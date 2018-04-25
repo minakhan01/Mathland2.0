@@ -132,7 +132,8 @@ public class ButtonsUI : MonoBehaviour
         GameToolManager.Instance.CreateForceField();
         ObjectsToAddInPlayUI.SetActive(false);
         ObjectsToAddInRewindUI.SetActive(false);
-        Debug.Log("Graph");
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
+        Debug.Log("Force");
     }
 
     public void AddVelocityButtonHandler()
@@ -140,7 +141,8 @@ public class ButtonsUI : MonoBehaviour
         GameToolManager.Instance.CreateVelocityVector();
         ObjectsToAddInPlayUI.SetActive(false);
         ObjectsToAddInRewindUI.SetActive(false);
-        Debug.Log("Graph");
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
+        Debug.Log("Velocity");
     }
 
     public void AddRopeButtonHandler()
@@ -148,7 +150,8 @@ public class ButtonsUI : MonoBehaviour
         GameToolManager.Instance.CreateRope();
         ObjectsToAddInPlayUI.SetActive(false);
         ObjectsToAddInRewindUI.SetActive(false);
-        Debug.Log("Graph");
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
+        Debug.Log("Rope");
     }
 
     public void AddCubeButtonHandler()
@@ -156,7 +159,8 @@ public class ButtonsUI : MonoBehaviour
         GameToolManager.Instance.CreateCube();
         ObjectsToAddInPlayUI.SetActive(false);
         ObjectsToAddInRewindUI.SetActive(false);
-        Debug.Log("Graph");
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
+        Debug.Log("Cube");
     }
 
     public void AddRampButtonHandler()
@@ -164,6 +168,7 @@ public class ButtonsUI : MonoBehaviour
         GameToolManager.Instance.CreateRamp();
         ObjectsToAddInPlayUI.SetActive(false);
         ObjectsToAddInRewindUI.SetActive(false);
+        GameStateManager.switchGameStateMode(GameStateManager.gameState.PLAY);
         Debug.Log("Ramp");
     }
 

@@ -33,6 +33,7 @@ public class UIManager : Singleton<UIManager>
         if (GameStateManager.currentGameState == GameStateManager.gameState.PLAY)
         {
             //PLAY MODE
+            RewindManager.Instance.forgetRewind();
             hideAllUI();
             showGraphUI();
             showPlayUI();

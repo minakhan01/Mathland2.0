@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HoloToolkit.Unity;
+using Lean.Touch;
 
 public class GameToolManager : Singleton<GameToolManager> {
 
 	public GameObject ForceField, VelocityVector, Rope, Cube, Ramp,ball;
 	private List<GameObject> gameToolList = new List<GameObject> ();
 
+    public LeanSelect leanSelect;
+
 	public void CreateForceField() {
-		CreateGameToolPrefab (ForceField);
+		GameObject ff = CreateGameToolPrefab (ForceField);
+        leanSelect.Select(null, ff.GetComponent<LeanSelectable>());
 	}
 
 	public void CreateVelocityVector() {
