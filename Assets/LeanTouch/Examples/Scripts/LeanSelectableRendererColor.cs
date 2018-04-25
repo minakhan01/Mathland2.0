@@ -49,6 +49,14 @@ namespace Lean.Touch
 			}
 		}
 
+		public void OnSelectObject()
+		{
+			//GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
+			//GameStateManager.switchDisplayState ();
+			GameStateManager.switchGameStateMode(GameStateManager.gameState.BUILD);
+			ChangeColor(SelectedColor);
+		}
+
 		protected override void OnSelect(LeanFinger finger)
 		{
 			//GameStateManager.currentGameState = GameStateManager.gameState.PLAY;

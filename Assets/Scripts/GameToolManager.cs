@@ -35,6 +35,8 @@ public class GameToolManager : Singleton<GameToolManager> {
 		GameObject gb=Instantiate (prefab, new Vector3(1,0,5),Quaternion.identity) as GameObject;
 		gameToolList.Add (gb);
         Debug.Log ("GAME TOOL MANAGER - Game Tool List: " + gameToolList);
+		GameStateManager.currentGameState = GameStateManager.gameState.PLAY;
+		Lean.Touch.LeanSelectableRendererColor.OnSelectObject();
 		//Debug.Log(gameToolList);
 		return gb;
 	}
